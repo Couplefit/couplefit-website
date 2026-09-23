@@ -1,0 +1,180 @@
+<header class="site-header">
+  <div class="cf-header-inner">
+    <a href="/" class="brand" aria-label="CoupleFit">
+      <img
+        src="/assets/logo/logo.svg"
+        class="logo"
+        alt="CoupleFit logo"
+        height="46"
+        width="auto"
+        decoding="async"
+        loading="eager"
+      />
+    </a>
+
+    <nav class="cf-nav">
+      <a href="#plans">Pricing</a>
+      <a href="#features">Features</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <a href="/#cta" class="cf-cta">Start free, invite your partner</a>
+  </div>
+
+  <style>
+    /* Header component styles (scoped) */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      padding-top: 26px;      /* breathing room */
+      padding-bottom: 14px;   /* balance with CTA */
+      border-bottom: 1px solid rgba(17,17,17,0.06);
+    }
+
+    /* Ensure inner nav content is vertically centered */
+    .site-header .nav,
+    .site-header nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* ===== Premium Glass Header ===== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      /* spacing (kept) */
+      padding-top: 26px;
+      padding-bottom: 14px;
+
+      /* glass */
+      background: rgba(255,255,255,0.60);             /* must be translucent for blur to show */
+      -webkit-backdrop-filter: saturate(180%) blur(14px);
+      backdrop-filter: saturate(180%) blur(14px);
+
+      /* subtle structure */
+      border-bottom: 1px solid rgba(17,17,17,0.08);
+      box-shadow: 0 8px 20px rgba(17,17,17,0.04);
+    }
+
+    /* Slightly increase opacity when scrolled for readability */
+    .site-header.is-scrolled {
+      background: rgba(255,255,255,0.72);
+      border-bottom-color: rgba(17,17,17,0.10);
+      box-shadow: 0 10px 24px rgba(17,17,17,0.05);
+    }
+
+    /* Ensure inner nav centers nicely */
+    .site-header .nav,
+    .site-header nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Accessibility / fallback: if blur isn’t supported, use solid white */
+    @supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+      .site-header {
+        background: #fff;
+      }
+    }
+
+    .site-header .logo {
+      max-height: 38px;
+      height: auto;
+      width: auto;
+      display: block;
+      opacity: 1 !important;
+    }
+
+    /* ===== HEADER LOGO SIZING ===== */
+    .site-header .logo {
+      height: 46px !important;     /* perfect premium height */
+      width: auto !important;
+      max-height: none !important; 
+      display: block;
+      opacity: 1 !important;
+    }
+
+    /* Fix parent container so it doesn’t shrink the logo */
+    .site-header .nav,
+    .site-header nav {
+      min-height: 78px !important;     /* balanced with 46px logo */
+      align-items: center !important;
+    }
+
+    /* Prevent any rules from forcing images smaller */
+    .site-header img {
+      max-height: none !important;
+      height: auto;
+    }
+
+    /* Remove previous constraints or overrides */
+    img.logo {
+      max-height: none !important;
+      height: 46px !important;
+    }
+
+    /* ===== FORCE HEADER LOGO SIZE (bulletproof) ===== */
+    .site-header .brand > img.logo,
+    .site-header .brand img.logo,
+    .site-header .logo,
+    .site-header a.brand img,
+    .site-header img.logo {
+      height: 46px !important;
+      width: auto !important;
+      max-height: none !important;
+      display: block !important;
+      opacity: 1 !important;
+    }
+
+    /* Ensure the header has enough room for a 46px logo */
+    .site-header .nav,
+    .site-header nav {
+      min-height: 78px !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+
+    /* Remove any conflicting old rules that shrink images in the nav */
+    :where(.site-header, .nav) img {
+      max-height: none !important;
+    }
+
+    /* Kill known bad rules if they exist */
+    .nav img,
+    header img,
+    .site-header img {
+      height: auto; /* reset */
+    }
+
+    /* If someone forced tiny images earlier, neutralize it */
+    img[height="20"],
+    img[style*="height:20px"],
+    img[style*="height: 20px"] {
+      height: 46px !important;
+      width: auto !important;
+    }
+
+    /* Header logo inherits currentColor for the sanitized SVG */
+    .site-header .logo {
+      color: #111;
+    }
+  </style>
+</header>
+
+<script>
+  (function () {
+    const h = document.querySelector('.site-header');
+    if (!h) return;
+    const onScroll = () => {
+      if (window.scrollY > 8) h.classList.add('is-scrolled');
+      else h.classList.remove('is-scrolled');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>
