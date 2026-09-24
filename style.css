@@ -1194,8 +1194,8 @@ a:focus {
   text-align: center;
 }
 .pricing-grid .plan:not(.popular):not(.elite) .btn {
-  background: transparent;
-  color: var(--navy);
+  background: var(--navy);
+  color: #ffffff;
   border: 1px solid var(--navy);
   box-shadow: none;
 }
@@ -2791,4 +2791,376 @@ main {
     font-size: 15px !important;
     line-height: 1.5;
   }
+}
+/* ===== Story / About page ===== */
+:root {
+  --radius-lg: 24px;
+  --glass-light-bg: rgba(255, 255, 255, 0.55);
+  --glass-light-border: rgba(255, 255, 255, 0.4);
+}
+
+.glass-card {
+  background: var(--glass-light-bg);
+  border: 1px solid var(--glass-light-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  padding: 40px 32px;
+}
+
+.story-section {
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+
+.story-hero {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.story-subtitle {
+  max-width: 560px;
+  margin: 16px auto 48px;
+}
+
+.story-hero-photo,
+.story-final-photo {
+  width: 70%;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.story-hero-photo img,
+.story-final-photo img,
+.story-lifestyle-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.story-row {
+  margin-bottom: 120px;
+}
+
+.story-lifestyle-photo {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.story-born {
+  text-align: center;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 120px;
+}
+
+.story-born p {
+  margin-bottom: 24px;
+}
+
+.story-founders {
+  margin-bottom: 120px;
+}
+
+.founders-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-top: 48px;
+}
+
+.founder-card {
+  text-align: center;
+}
+
+.founder-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 24px;
+}
+
+.founder-name {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.story-believe {
+  margin-bottom: 120px;
+}
+
+.believe-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.believe-card {
+  text-align: center;
+}
+
+.believe-title {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.story-vision {
+  text-align: center;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 120px;
+}
+
+.story-final-cta {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .founders-grid,
+  .believe-grid {
+    grid-template-columns: 1fr;
+  }
+  .story-hero-photo,
+  .story-final-photo {
+    width: 100%;
+  }
+}
+/* ===== Story page refinements ===== */
+
+.story-hero,
+.story-row,
+.story-born,
+.story-founders,
+.story-believe,
+.story-vision {
+  margin-bottom: 120px;
+}
+
+.story-born,
+.story-born h3,
+.story-born p {
+  text-align: center;
+}
+
+.founder-row {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  margin-top: 48px;
+  margin-bottom: 56px;
+}
+
+.founder-row:last-child {
+  margin-bottom: 0;
+}
+
+.founder-photo-wrap {
+  flex: 0 0 220px;
+}
+
+.founder-photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.founder-text {
+  flex: 1;
+  text-align: left;
+}
+
+.founder-name {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.story-believe,
+.story-believe h3 {
+  text-align: center;
+}
+
+.believe-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 640px;
+  margin: 48px auto 0;
+}
+
+.believe-bar {
+  text-align: center;
+}
+
+.believe-title {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.story-vision,
+.story-vision h3,
+.story-vision p {
+  text-align: center;
+}
+
+.story-final-cta,
+.story-final-cta h3,
+.story-final-cta p {
+  text-align: center;
+}
+
+.story-cta-btn {
+  margin-top: 32px;
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .founder-row {
+    flex-direction: column;
+    text-align: center;
+  }
+  .founder-text {
+    text-align: center;
+  }
+}
+/* ===== Extra spacing + centering fixes ===== */
+
+.story-born h3,
+.story-vision h3,
+.story-final-cta h3 {
+  margin-bottom: 28px !important;
+}
+
+.story-born p,
+.story-vision p {
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.story-final-cta p {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+}
+
+.story-final-cta h3 {
+  margin-top: 0;
+}
+/* ===== Fine-tune spacing around photos ===== */
+
+.story-vision {
+  margin-bottom: 64px !important;
+}
+
+.story-final-photo {
+  margin-bottom: 56px !important;
+}
+/* ===== Pricing trust row ===== */
+.pricing-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 48px;
+  font-size: 0.8rem;
+  color: rgba(42, 42, 42, 0.6);
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .pricing-trust-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+/* ===== Billing toggle (monthly/yearly) ===== */
+.billing-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 32px auto 40px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 50px;
+  padding: 6px;
+  width: fit-content;
+}
+
+.billing-toggle-btn {
+  border: none;
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.billing-toggle-btn.active {
+  background: var(--navy);
+  color: #ffffff;
+}
+
+.billing-toggle-btn .save-badge {
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.billing-toggle-btn:not(.active) .save-badge {
+  background: rgba(42, 42, 42, 0.08);
+  color: var(--navy);
+}
+
+
+.plan-price-row .plan-price-old {
+  position: absolute;
+  left: 100%;
+  margin-left: 10px;
+  white-space: nowrap;
+  bottom: 0.15em;
+}
+
+
+.plan-price-old {
+  font-size: 1rem;
+  color: rgba(42, 42, 42, 0.5);
+  text-decoration: line-through;
+}
+
+[hidden] {
+  display: none !important;
+}
+/* ===== Fixed height for pricing wrapper (prevents card height jump) ===== */
+.plan-price-wrapper {
+  min-height: 130px;
+}
+/* ===== Fixed height for price note (prevents text shifting) ===== */
+.plan-price-row {
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-start;
+}
+/* ===== Consolidated fixed height for price + note block ===== */
+.price-monthly,
+.price-yearly {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 96px;
 }
