@@ -3263,3 +3263,68 @@ main {
   background: rgba(255, 255, 255, 0.8);
   border-color: rgba(71, 97, 132, 0.7);
 }
+/* =========================================
+   STORY: witte glaskaarten achter de teksten
+   ========================================= */
+
+/* Gedeelde kaartstijl */
+.story-row .feature-copy,
+.story-born,
+.founder-text {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+  box-shadow: 0 8px 32px rgba(20, 20, 20, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: clamp(28px, 4vw, 48px);
+}
+
+/* Why We Started: ruimte tussen de alinea's */
+.story-row .feature-copy p + p {
+  margin-top: 16px;
+}
+
+/* How CoupleFit Was Born: gecentreerde kaart, niet te breed */
+.story-born {
+  width: min(860px, calc(100% - 32px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.story-born p + p {
+  margin-top: 16px;
+}
+
+/* Foto's: zelfde ronde hoeken als de kaarten */
+.story-lifestyle-photo img,
+.founder-photo {
+  border-radius: 28px;
+}
+/* Visie: kaart met subtiele navy-tint als hoogtepunt */
+.story-vision {
+  width: min(900px, calc(100% - 32px));
+  margin-left: auto;
+  margin-right: auto;
+  padding: clamp(32px, 5vw, 64px);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(71, 97, 132, 0.08) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+  box-shadow: 0 8px 32px rgba(20, 20, 20, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.story-vision p + p {
+  margin-top: 16px;
+}
+
+/* Grote Story-foto's: zelfde ronde hoeken */
+.story-hero-photo img,
+.story-final-photo img {
+  border-radius: 28px;
+}
