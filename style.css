@@ -3560,3 +3560,241 @@ main {
     display: none;
   }
 }
+/* Features: titel en subtekst boven de sectie */
+.features-intro {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.features-intro-subtitle {
+  max-width: 640px;
+  margin: 16px auto 0;
+}
+/* =========================================
+   APPLE-STIJL STAP 1: typografie en tekstkleuren
+   ========================================= */
+
+/* Apple's tekstkleuren en lettertype */
+:root {
+  --ink: #1d1d1f;
+  --muted-ink: #424245;
+  --text-heading: #1d1d1f;
+  --text-paragraph: #424245;
+  --text-muted: #6e6e73;
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Titels: strakker en krachtiger */
+h1, h2, h3, h4,
+.section-title-lg,
+.section-title-md {
+  color: #1d1d1f;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.section-title-lg {
+  line-height: 1.07;
+}
+
+/* Lopende tekst: zachter donkergrijs in plaats van zwart */
+.feature-description {
+  color: #424245;
+}
+/* =========================================
+   APPLE-STIJL STAP 2: achtergronden en ritme
+   ========================================= */
+
+/* Basis: Apple's zachte grijs */
+:root {
+  --bg-1: #f5f5f7;
+}
+
+html,
+body {
+  background: #f5f5f7;
+}
+
+/* Witte secties voor afwisseling */
+#features,
+#testimonials,
+#whats-included {
+  background: #ffffff;
+}
+
+/* What's included: grijze tegel op wit */
+#whats-included .included-container {
+  background: #f5f5f7;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* What We Believe: het donkere moment */
+#story .story-believe {
+  width: min(1100px, calc(100% - 32px));
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  padding: clamp(48px, 7vw, 88px) clamp(24px, 5vw, 64px);
+  background: #1d1d1f;
+  border-radius: 32px;
+}
+
+#story .story-believe h3 {
+  color: #f5f5f7;
+}
+
+#story .story-believe .believe-bar {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+#story .story-believe .believe-title {
+  color: #f5f5f7;
+}
+
+#story .story-believe .feature-description {
+  color: #a1a1a6;
+}
+/* =========================================
+   APPLE-TEGELS: Features en Story
+   ========================================= */
+
+:root {
+  --tile-radius: 0px;   /* rechte hoeken; zet op 28px voor ronde hoeken */
+  --tile-gap: 12px;     /* witte strook tussen de tegels */
+  --tile-gray: #f5f5f7;
+  --tile-blue-light: linear-gradient(180deg, #dfeaf3 0%, #f4f7fa 100%);
+  --tile-blue: linear-gradient(180deg, #b8dcee 0%, #dcedf6 100%);
+}
+
+/* Witte achtergrond, zodat de strookjes tussen de tegels wit zijn */
+#features,
+#story {
+  background: #ffffff;
+}
+
+/* Gedeelde tegelvorm: bijna schermbreed, inhoud blijft netjes in het midden */
+#features .feature-row,
+#story .story-hero,
+#story .story-row,
+#story .story-tile,
+#story .story-founders,
+#story .story-believe {
+  box-sizing: border-box;
+  width: calc(100% - 2 * var(--tile-gap));
+  max-width: none;
+  margin: 0 auto var(--tile-gap);
+  padding-top: clamp(56px, 8vw, 104px);
+  padding-bottom: clamp(56px, 8vw, 104px);
+  padding-left: max(24px, calc((100% - 1100px) / 2));
+  padding-right: max(24px, calc((100% - 1100px) / 2));
+  border-radius: var(--tile-radius);
+}
+
+/* ---- Features ---- */
+#features .feature-row-1 { background: var(--tile-blue-light); }
+#features .feature-row-2 { background: #ffffff; }
+#features .feature-row-3 { background: var(--tile-blue); }
+#features .feature-row-4 { background: #ffffff; }
+
+/* ---- Story ---- */
+
+/* Our Story: grijs */
+#story .story-hero {
+  background: var(--tile-gray);
+}
+
+/* Why We Started: wit, met grijze kaart */
+#story .story-row {
+  background: #ffffff;
+}
+
+#story .story-row .feature-copy {
+  background: var(--tile-gray);
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* How CoupleFit Was Born: grijze tegel, witte kaart blijft */
+#story .story-tile {
+  background: var(--tile-gray);
+}
+
+#story .story-tile .story-born {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Meet The Founders: wit, met grijze kaarten */
+#story .story-founders {
+  background: #ffffff;
+}
+
+#story .founder-text {
+  background: var(--tile-gray);
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* What We Believe: blauw zoals iPad Air, met witte glaskaarten */
+#story .story-believe {
+  background: var(--tile-blue);
+}
+
+#story .story-believe h3,
+#story .story-believe .believe-title {
+  color: #1d1d1f;
+}
+
+#story .story-believe .feature-description {
+  color: #424245;
+}
+
+#story .story-believe .believe-bar {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 32px rgba(20, 20, 20, 0.05);
+}
+
+/* Mobiel: iets minder ruimte binnen de tegels */
+@media (max-width: 768px) {
+  #features .feature-row,
+  #story .story-hero,
+  #story .story-row,
+  #story .story-tile,
+  #story .story-founders,
+  #story .story-believe {
+    padding: 48px 20px;
+  }
+}
+/* Visie-kaart: meer witruimte boven, los van de blauwe tegel */
+#story .story-vision {
+  margin-top: clamp(64px, 8vw, 112px);
+}
+/* Geen extra witruimte tussen Features en Story: tegels sluiten op elkaar aan */
+#features {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+#story {
+  padding-top: 0;
+  margin-top: 0;
+}

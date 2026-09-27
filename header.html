@@ -107,6 +107,8 @@
     /* Main button */
     .site-header .cf-cta {
       justify-self: end;
+      align-self: center;
+      margin: 0;
       display: inline-flex;
       align-items: center;
       padding: 11px 22px;
@@ -155,17 +157,28 @@
       height: 84px;
       z-index: 99;
       pointer-events: none;
-      background: linear-gradient(
-        to bottom,
-        #f5f5f5 0%,
-        #f5f5f5 55%,
-        rgba(245, 245, 245, 0) 100%
-      );
+      background: rgba(255, 255, 255, 0.94);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
     }
 
     @media (max-width: 768px) {
       .header-fade {
         height: 64px;
+      }
+    }
+      /* Oude regels in style.css zetten de ruimte bovenin op 0; dit herstelt het */
+    .site-header {
+      margin-top: 12px !important;
+      padding-top: 10px !important;
+    }
+
+    @media (max-width: 768px) {
+      .site-header {
+        margin-top: 8px !important;
+        padding-top: 8px !important;
       }
     }
   </style>
