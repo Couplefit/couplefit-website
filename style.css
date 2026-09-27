@@ -3433,3 +3433,82 @@ main {
 #faq {
   scroll-margin-top: 5px;
 }
+/* =========================================
+   PRICING: compacter, alles in één oogopslag
+   ========================================= */
+
+/* Titel iets kleiner, minder ruimte eromheen */
+.plans-section .pricing-header .section-title-lg {
+  font-size: clamp(32px, 3.4vw, 42px);
+  margin-bottom: 8px;
+}
+
+.plans-section .pricing-savings {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.plans-section .billing-toggle {
+  margin-top: 20px;
+  margin-bottom: 36px;
+}
+
+/* Prijsgedeelte: minder lege ruimte, maar genoeg voor Monthly én Yearly */
+.plan-price-wrapper {
+  min-height: 90px;
+  margin-bottom: 20px;
+}
+
+.plan-price-wrapper .price-monthly,
+.plan-price-wrapper .price-yearly,
+.plan-price-row {
+  min-height: 0;
+}
+
+/* Lijstjes: geen vaste hoogte meer */
+.plan-list,
+.plan-list-strong {
+  min-height: 0;
+  margin-bottom: 24px;
+}
+
+/* Knoppen automatisch onderaan elke kaart, altijd op één lijn */
+.plans-section .plan {
+  display: flex;
+  flex-direction: column;
+}
+
+.plans-sect
+/* PRICING: nog compacter */
+
+/* Minder ruimte rond de schakelaar */
+.plans-section .billing-toggle {
+  margin-top: 16px;
+  margin-bottom: 28px;
+}
+
+/* Minder ruimte tussen plannaam en prijs */
+.plans-section .plan-title {
+  margin-bottom: 12px;
+}
+
+/* Prijsgedeelte: bijna geen lege ruimte meer */
+.plan-price-wrapper {
+  min-height: 64px;
+  margin-bottom: 16px;
+}
+
+/* Vinkjes: iets kleiner en dichter op elkaar */
+.plan-list li,
+.plan-list-strong li {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0 0 8px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.plan-list,
+.plan-list-strong {
+  margin-bottom: 16px;
+}
