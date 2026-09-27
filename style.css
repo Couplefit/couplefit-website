@@ -3328,3 +3328,55 @@ main {
 .story-final-photo img {
   border-radius: 28px;
 }
+/* Our Story foto: liggend formaat, focus op het koppel */
+.story-hero-photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 65%;
+}
+/* Why We Started foto: inzoomen op het koppel */
+.story-lifestyle-photo {
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.story-lifestyle-photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 58%;
+  transform: scale(1.3);
+  transform-origin: center 55%;
+}
+/* Founder-foto's: vierkant, gezicht in beeld */
+.founder-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.founder-photo[src*="max"] {
+  object-position: center 38%;
+}
+
+.founder-photo[src*="rachelle"] {
+  object-position: center 40%;
+}
+/* Final CTA foto: smaller en staand, zodat hij scherp blijft */
+.story-final-photo {
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.story-final-photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 80%;
+}
