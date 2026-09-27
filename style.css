@@ -3380,3 +3380,56 @@ main {
   object-fit: cover;
   object-position: center 80%;
 }
+/* What We Believe: bredere kaarten, subtekst op één regel */
+.believe-stack {
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.believe-bar {
+  width: 100%;
+  max-width: none;
+}
+
+.believe-bar .feature-description {
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* Alleen op grotere schermen alles op één regel;
+   op mobiel mag de tekst gewoon doorlopen */
+@media (min-width: 900px) {
+  .believe-bar .feature-description {
+    white-space: nowrap;
+  }
+}
+/* Born- en visie-kaart: zelfde breedte als de andere Story-blokken */
+#story .story-born,
+#story .story-vision {
+  width: min(900px, calc(100% - 32px));
+  max-width: none;
+}
+
+/* Tekst in deze kaarten prettig leesbaar houden */
+#story .story-born .feature-description,
+#story .story-vision .feature-description {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Klik op "Story" in het menu: iets verder doorscrollen */
+#story {
+  scroll-margin-top: -40px;
+}
+/* Klik op "Pricing" in het menu: titel onder de menubalk laten uitkomen */
+#plans {
+  scroll-margin-top: 100px;
+}
+/* Klik op "FAQ" in het menu: titel netjes onder de menubalk */
+#faq {
+  scroll-margin-top: 5px;
+}
