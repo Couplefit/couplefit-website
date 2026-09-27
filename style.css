@@ -3798,3 +3798,31 @@ body {
   padding-top: 0;
   margin-top: 0;
 }
+/* Join Us From The Beginning: lichtblauwe tegel, zelfde als Built for Two */
+#story .story-final-cta {
+  box-sizing: border-box;
+  width: calc(100% - 2 * var(--tile-gap));
+  max-width: none;
+  margin: clamp(48px, 6vw, 88px) auto var(--tile-gap);
+  padding-top: clamp(56px, 8vw, 104px);
+  padding-bottom: clamp(56px, 8vw, 104px);
+  padding-left: max(24px, calc((100% - 1100px) / 2));
+  padding-right: max(24px, calc((100% - 1100px) / 2));
+  border-radius: var(--tile-radius);
+  background: var(--tile-blue-light);
+}
+
+@media (max-width: 768px) {
+  #story .story-final-cta {
+    padding: 48px 20px;
+  }
+}
+/* Pricing: blauwe tegel, zelfde als What We Believe */
+.plans-section {
+  box-sizing: border-box;
+  width: calc(100% - 2 * var(--tile-gap));
+  max-width: none;
+  margin: var(--tile-gap) auto;
+  background: var(--tile-blue);
+  border-radius: var(--tile-radius);
+}
