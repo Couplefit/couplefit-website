@@ -3220,7 +3220,7 @@ main {
 
 /* Langere titel: iets kleiner zodat hij rustig leest */
 .hero-title {
-  font-size: clamp(28px, 2.8vw, 42px);
+  font-size: clamp(36px, 4.4vw, 64px);
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
@@ -3234,5 +3234,20 @@ main {
   }
   .hero-overlay-card {
     margin: 0 auto;
+  }
+}
+/* Hero als afgerond venster met witruimte eromheen */
+.hero {
+  width: auto;
+  margin: 16px clamp(12px, 2vw, 24px) 0;
+  border-radius: 32px;
+  /* zorgt dat Safari de ronde hoeken netjes afknipt */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    margin: 8px 8px 0;
+    border-radius: 24px;
   }
 }
