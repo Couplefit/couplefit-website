@@ -3512,3 +3512,51 @@ main {
 .plan-list-strong {
   margin-bottom: 16px;
 }
+/* =========================================
+   WHAT'S INCLUDED: glaskaart + verticaal lijntje
+   ========================================= */
+
+/* De kaart */
+.included-container {
+  width: min(900px, calc(100% - 32px));
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  padding: clamp(32px, 5vw, 56px);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+  box-shadow: 0 8px 32px rgba(20, 20, 20, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+
+  /* What's included: raster en lijntje met extra sterke selector */
+#whats-included .included-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 72px;
+  row-gap: 20px;
+}
+
+#whats-included .included-grid::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 50%;
+  width: 1px;
+  background: rgba(71, 97, 132, 0.25);
+}
+
+@media (max-width: 768px) {
+  #whats-included .included-grid {
+    grid-template-columns: 1fr;
+  }
+  #whats-included .included-grid::before {
+    display: none;
+  }
+}
