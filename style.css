@@ -4048,3 +4048,18 @@ section:not(.plans-section):not(.hero):not(#features):not(#story) {
 #cta.cta-section::after {
   display: none;
 }
+
+/* Features-link: titel direct onder de header */
+#features {
+  scroll-margin-top: 5px !important;
+}
+
+/* Story-link: titel direct onder de header */
+#story {
+  scroll-margin-top: -15px !important;
+}
+
+/* Pricing-link: titel direct onder de header */
+#plans {
+  scroll-margin-top: 80px !important;
+}
