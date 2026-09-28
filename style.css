@@ -3431,7 +3431,7 @@ main {
 }
 /* Klik op "FAQ" in het menu: titel netjes onder de menubalk */
 #faq {
-  scroll-margin-top: 5px;
+  scroll-margin-top: 70px;
 }
 /* =========================================
    PRICING: compacter, alles in één oogopslag
@@ -3931,4 +3931,20 @@ h1, h2 {
 #story .story-final-cta h3 {
   margin-top: 0;
   margin-bottom: 36px;
+}
+
+/* FAQ: zonder lijntje en met minder lege ruimte bovenin */
+#faq.faq-section {
+  margin-top: 0;
+  padding-top: 32px;
+  border: none;
+}
+#faq.faq-section::before,
+#faq .faq-container::before {
+  display: none;
+}
+#faq .faq-container {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
 }
