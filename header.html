@@ -2,13 +2,15 @@
 <header class="site-header">
   <div class="cf-header-inner">
     <a href="/" class="brand" aria-label="CoupleFit">
-      <img
-        src="/assets/logo/logo.svg"
-        class="logo"
-        alt="CoupleFit logo"
-        decoding="async"
-        loading="eager"
-      />
+        <svg class="logo-mark" viewBox="0 0 30 22" aria-hidden="true">
+        <defs>
+          <clipPath id="cf-overlap"><circle cx="11" cy="11" r="9"/></clipPath>
+        </defs>
+        <circle cx="11" cy="11" r="9" fill="#5B1E2D"/>
+        <circle cx="19" cy="11" r="9" fill="#B7C6D6"/>
+        <circle cx="19" cy="11" r="9" fill="#1E2A44" clip-path="url(#cf-overlap)"/>
+      </svg>
+      <span class="logo-text">CoupleFit</span>
     </a>
 
     <nav class="cf-nav">
