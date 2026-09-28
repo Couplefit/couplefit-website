@@ -3674,7 +3674,7 @@ body {
 
 :root {
   --tile-radius: 28px;
-  --tile-gap: 12px;     /* witte strook tussen de tegels */
+  --tile-gap: 20px;
   --tile-gray: #EFEAE0;
   --tile-blue-light: linear-gradient(180deg, #E6ECF2 0%, #F3EFE6 100%);
   --tile-blue: linear-gradient(180deg, #B7C6D6 0%, #DCE3EB 100%);
@@ -3947,4 +3947,104 @@ h1, h2 {
   border-top: none;
   margin-top: 0;
   padding-top: 0;
+}
+
+/* ===== Clean basis: één achtergrondkleur voor de hele pagina ===== */
+html,
+body {
+  background: #FAF8F5;
+}
+body {
+  overflow-x: clip;
+}
+
+/* Witte/grijze sectie-rechthoeken onzichtbaar, alleen de kaarten blijven */
+section:not(.plans-section):not(.hero),
+footer,
+.site-footer {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Header op mobiel: compacter, zodat niets uit beeld steekt */
+@media (max-width: 480px) {
+  #header .site-header .cf-cta {
+    font-size: 13px;
+    padding: 10px 14px;
+    white-space: nowrap;
+  }
+  #header .site-header .logo-mark {
+    width: 24px;
+    height: 18px;
+  }
+  #header .site-header .logo-text {
+    font-size: 17px;
+  }
+}
+
+/* ===== Eén vast ritme voor alle overgangen ===== */
+
+/* Secties die uit kaarten bestaan: geen eigen extra ruimte */
+#features,
+#story {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Alle andere secties: overal precies dezelfde ruimte */
+section:not(.plans-section):not(.hero):not(#features):not(#story) {
+  padding-top: 96px !important;
+  padding-bottom: 96px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Pricing-kaart en laatste Features-kaart: standaard kaart-afstand */
+#plans.plans-section {
+  margin-top: var(--tile-gap) !important;
+  margin-bottom: var(--tile-gap) !important;
+}
+#features .feature-row-4 {
+  margin-bottom: var(--tile-gap);
+}
+
+/* Menu-links: overal op dezelfde manier landen */
+#features,
+#story,
+#plans {
+  scroll-margin-top: 100px !important;
+}
+#faq {
+  scroll-margin-top: 10px !important;
+}
+
+/* Mobiel: iets compacter */
+@media (max-width: 768px) {
+  section:not(.plans-section):not(.hero):not(#features):not(#story) {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+}
+
+/* What's included: beige kaart in plaats van koel grijs */
+#whats-included .included-container {
+  background: var(--tile-gray) !important;
+}
+
+/* Afsluitende oproep: blauwe kaart, net als Pricing */
+#cta.cta-section {
+  box-sizing: border-box;
+  width: calc(100% - 2 * var(--tile-gap)) !important;
+  max-width: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background: var(--tile-blue) !important;
+  border-radius: var(--tile-radius);
+  overflow: hidden;
+}
+#cta.cta-section::before,
+#cta.cta-section::after {
+  display: none;
 }
