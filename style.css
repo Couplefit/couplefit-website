@@ -3673,7 +3673,7 @@ body {
    ========================================= */
 
 :root {
-  --tile-radius: 0px;   /* rechte hoeken; zet op 28px voor ronde hoeken */
+  --tile-radius: 28px;
   --tile-gap: 12px;     /* witte strook tussen de tegels */
   --tile-gray: #EFEAE0;
   --tile-blue-light: linear-gradient(180deg, #E6ECF2 0%, #F3EFE6 100%);
@@ -3866,7 +3866,7 @@ h1, h2 {
   background: #E6ECF2;
   border-radius: var(--tile-radius) var(--tile-radius) 0 0;
 }
-.features-section .feature-row-1 {
+#features .feature-row-1 {
   margin-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -3877,7 +3877,58 @@ h1, h2 {
   padding-top: 0;
 }
 
-/* Geen witte strook tussen Features en Story */
-section.story-section {
+
+
+/* Features: vloeiend kleurverloop tussen de tegels */
+#features .feature-row {
+  box-sizing: border-box;
+  width: calc(100% - 2 * var(--tile-gap));
+  max-width: none;
+  margin: 0 auto;
+  border-radius: 0;
+}
+#features .feature-row-1 {
+  background: linear-gradient(180deg, #E6ECF2 0%, #E6ECF2 40%, #FFFFFF 100%);
+}
+#features .feature-row-2 {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 40%, #D5DEE8 100%);
+}
+#features .feature-row-3 {
+  background: linear-gradient(180deg, #D5DEE8 0%, #D5DEE8 40%, #FFFFFF 100%);
+}
+#features .feature-row-4 {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 40%, var(--tile-gray) 100%);
+}
+
+/* Features als één grote ronde kaart: onderkant rond */
+#features .feature-row-4 {
+  border-radius: 0 0 var(--tile-radius) var(--tile-radius);
+  margin-bottom: 28px;
+}
+
+/* Visie-kaart: burgundy statement */
+#story .story-vision {
+  background: #5B1E2D;
+  border: none;
+  box-shadow: 0 24px 60px rgba(91, 30, 45, 0.25);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+#story .story-vision h3 {
+  color: #F3EFE6;
+}
+#story .story-vision .accent-word {
+  color: #B7C6D6;
+}
+#story .story-vision p {
+  color: rgba(243, 239, 230, 0.82);
+}
+
+/* Final CTA: titel boven de foto, minder lege ruimte bovenin */
+#story .story-final-cta {
+  padding-top: 64px;
+}
+#story .story-final-cta h3 {
   margin-top: 0;
+  margin-bottom: 36px;
 }
