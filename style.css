@@ -4063,3 +4063,31 @@ section:not(.plans-section):not(.hero):not(#features):not(#story) {
 #plans {
   scroll-margin-top: 80px !important;
 }
+
+/* Hero: precies één schermhoogte, zodat alles in één oogopslag te zien is */
+#hero.hero {
+  height: auto !important;
+  min-height: calc(100svh - 120px) !important;
+  max-height: none !important;
+  margin-bottom: var(--tile-gap);
+}
+
+/* Pricing: toggle dichter bij de subtitel, alles compacter */
+.plans-section .pricing-header,
+.plans-section .pricing-savings {
+  margin-bottom: 0 !important;
+}
+.plans-section .billing-toggle {
+  margin-top: 14px !important;
+  margin-bottom: 32px !important;
+}
+
+/* Pricing-kaarten: vinkjes dichter bij de prijs, kaarten compacter */
+.plans-section .plan-price-wrapper {
+  min-height: 0 !important;
+  height: auto !important;
+  margin-bottom: 0 !important;
+}
+.plans-section .plan-list {
+  margin-top: 28px !important;
+}
