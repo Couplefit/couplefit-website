@@ -4720,3 +4720,10 @@ body .cf-mobile-nav a,
 body .cf-mobile-nav a:visited {
   color: #1E2A44 !important;
 }
+
+/* ===== MOBIEL: "Become a Founding Couple" landt op de titel ===== */
+@media (max-width: 768px) {
+  #cta {
+    scroll-margin-top: 35px !important;
+  }
+}
