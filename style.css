@@ -3968,16 +3968,16 @@ footer,
 
 /* Header op mobiel: compacter, zodat niets uit beeld steekt */
 @media (max-width: 480px) {
-  #header .site-header .cf-cta {
+  body .site-header .cf-cta {
     font-size: 13px;
     padding: 10px 14px;
     white-space: nowrap;
   }
-  #header .site-header .logo-mark {
+  body .site-header .logo-mark {
     width: 24px;
     height: 18px;
   }
-  #header .site-header .logo-text {
+  body .site-header .logo-text {
     font-size: 17px;
   }
 }
@@ -4244,10 +4244,462 @@ body .site-footer {
 }
 
 /* Header: duidelijk aanwezig, zodat hij niet wegvalt */
-#header .site-header {
+body .site-header {
   background: #FFFFFF !important;
   border: 1px solid rgba(30, 42, 68, 0.12) !important;
   box-shadow:
     0 14px 40px rgba(30, 42, 68, 0.16),
     0 2px 6px rgba(30, 42, 68, 0.08) !important;
+}
+
+/* =========================================
+   MOBIEL (alleen telefoon, max 768px breed)
+   Alles hierbinnen heeft GEEN invloed op Mac/pc
+   ========================================= */
+@media (max-width: 768px) {
+
+}
+
+/* ===== MOBIEL: Hero-kaart netjes gecentreerd ===== */
+@media (max-width: 768px) {
+  #hero .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #hero .hero-title {
+    text-align: center;
+    font-size: clamp(34px, 9.5vw, 42px);
+    line-height: 1.1;
+    margin: 0 auto 16px;
+  }
+
+  #hero .hero-subtitle {
+    text-align: center;
+    max-width: 30ch;
+    margin: 0 auto 28px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  #hero .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  #hero .hero-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    font-size: 15px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  #hero .hero-reassure {
+    text-align: center;
+    margin: 18px auto 24px;
+    font-size: 13px;
+  }
+
+  #hero .platform-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  #hero .platform-badge {
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+}
+
+/* ===== MOBIEL: Features compacter en gecentreerd ===== */
+@media (max-width: 768px) {
+  /* Titel "Features" gecentreerd */
+  #features .features-intro {
+    text-align: center;
+  }
+
+  /* Elke feature: tekst boven, telefoon eronder (ook bij de omgedraaide rijen) */
+  #features .feature-row,
+  #features .feature-row.reverse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  /* Eerste feature dichter onder de titel "Features" */
+  #features .feature-row-1 {
+    padding-top: 16px;
+  }
+
+  /* Tekst gecentreerd, zelfde stijl als de hero */
+  #features .feature-copy {
+    order: 1;
+    text-align: center;
+    max-width: 34ch;
+    margin: 0 auto;
+  }
+
+  #features .feature-copy .section-title-md {
+    font-size: clamp(26px, 7.5vw, 32px);
+    line-height: 1.15;
+  }
+
+  #features .feature-description {
+    font-size: 16px;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Telefoon kleiner en in het midden */
+  #features .feature-visual {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+
+  #features .mockup-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  #features .feature-device {
+    width: 58%;
+    max-width: 220px;
+    height: auto;
+    aspect-ratio: 1 / 2;
+    margin: 0 auto;
+  }
+}
+
+/* ===== MOBIEL: bredere kaarten en compactere tekst ===== */
+@media (max-width: 768px) {
+  /* Kaarten dichter bij de schermrand, zelfde marge als de hero */
+  :root {
+    --tile-gap: 16px;
+  }
+
+  /* Lopende tekst op de hele pagina: iets kleiner en compacter */
+  #main .feature-description {
+    font-size: 16px;
+    line-height: 1.55;
+    max-width: none;
+  }
+  #main .feature-description + .feature-description {
+    margin-top: 12px;
+  }
+
+  /* Titels in de Story iets kleiner */
+  #story .section-title-md {
+    font-size: clamp(24px, 7vw, 28px);
+    line-height: 1.2;
+    margin-bottom: 16px !important;
+  }
+
+  /* Why We Started en Meet The Founders: geen witte tegel eromheen */
+  #story .story-row,
+  #story .story-founders {
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #story .story-row {
+    padding-top: 0;
+    padding-bottom: 0;
+    gap: var(--tile-gap);
+  }
+
+  /* Gekleurde tegels: smallere rand rond de kaarten erin */
+  #story .story-tile,
+  #story .story-believe {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  /* De kaarten zelf: minder ruimte rond de tekst */
+  #story .story-row .feature-copy,
+  #story .story-born,
+  #story .founder-text,
+  #story .story-vision {
+    padding: 28px 22px;
+  }
+  #story .story-born {
+    width: 100%;
+  }
+  #story .story-vision {
+    width: calc(100% - 2 * var(--tile-gap));
+  }
+  #story .founder-text {
+    min-height: 0;
+  }
+
+  /* What We Believe-kaartjes compacter */
+  #story .believe-bar {
+    padding: 22px 20px;
+  }
+}
+
+/* ===== MOBIEL: How CoupleFit Was Born als één blauwe kaart ===== */
+@media (max-width: 768px) {
+  /* Blauwe tegel eromheen weg */
+  #story .story-tile {
+    background: transparent !important;
+    padding: 0;
+  }
+
+  /* De kaart zelf wordt de blauwe kaart, volle breedte */
+  #story .story-tile .story-born {
+    width: 100%;
+    background: #E6ECF2;
+    border: none;
+    box-shadow: 0 10px 28px rgba(30, 42, 68, 0.08);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* Tekst links uitgelijnd, net als Why We Started */
+  #story .story-born,
+  #story .story-born h3,
+  #story .story-born p {
+    text-align: left !important;
+  }
+
+  /* Alinea's dichter op elkaar, geen extra ruimte onderaan */
+  #story .story-born p {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* ===== MOBIEL: What We Believe als één gegroepeerde lijst ===== */
+@media (max-width: 768px) {
+  #story .story-believe {
+    padding-top: 40px;
+    padding-bottom: 12px;
+  }
+
+  /* Eén witte kaart om de vier waarden heen */
+  #story .story-believe .believe-stack {
+    gap: 0;
+    margin-top: 24px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(30, 42, 68, 0.06);
+  }
+
+  /* De losse kaartjes worden regels in die kaart */
+  #story .story-believe .believe-bar {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 18px 20px;
+    text-align: left;
+  }
+
+  /* Dun lijntje tussen de regels */
+  #story .story-believe .believe-bar + .believe-bar {
+    border-top: 1px solid rgba(30, 42, 68, 0.10);
+  }
+
+  #story .story-believe .believe-title {
+    font-size: 17px;
+    margin: 0 0 4px;
+    text-align: left;
+  }
+
+  #story .story-believe .believe-bar .feature-description {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+  }
+}
+
+/* ===== MOBIEL: What We Believe gecentreerd ===== */
+@media (max-width: 768px) {
+  #story .story-believe .believe-bar,
+  #story .story-believe .believe-title,
+  #story .story-believe .believe-bar .feature-description {
+    text-align: center;
+  }
+}
+
+/* ===== MOBIEL: meer blauw onder What We Believe ===== */
+@media (max-width: 768px) {
+  #story .story-believe {
+    padding-bottom: 36px !important;
+  }
+  #story .story-believe .believe-stack {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* ===== MOBIEL: Why We Started gecentreerd ===== */
+@media (max-width: 768px) {
+  #story .story-row .feature-copy,
+  #story .story-row .feature-copy h3,
+  #story .story-row .feature-copy p {
+    text-align: center !important;
+  }
+}
+
+/* ===== MOBIEL: Story-link landt netjes onder de header ===== */
+@media (max-width: 768px) {
+  #story {
+    scroll-margin-top: 90px !important;
+  }
+}
+
+/* ===== MOBIEL: Pricing als veegbare kaarten ===== */
+@media (max-width: 768px) {
+  /* Kaarten naast elkaar, horizontaal vegen */
+  .plans-section .pricing-grid {
+    display: flex !important;
+    gap: 14px;
+    max-width: none;
+    margin: 0 -4px;
+    padding: 26px 4px 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    align-items: stretch;
+  }
+  .plans-section .pricing-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Elke kaart iets smaller dan het scherm, zodat de volgende zichtbaar is */
+  .plans-section .pricing-grid .plan {
+    flex: 0 0 84%;
+    height: auto;
+    scroll-snap-align: start;
+    padding: 26px 22px !important;
+  }
+
+  /* Volgorde: Premium, Elite, Basic */
+  .plans-section .plan.popular {
+    order: -1;
+    border: 2px solid #5B1E2D;
+    box-shadow: 0 10px 28px rgba(30, 42, 68, 0.12);
+  }
+  .plans-section .plan.elite {
+    order: 0;
+  }
+  .plans-section .plan:not(.popular):not(.elite) {
+    order: 1;
+  }
+
+  /* Geen "optil"-effect bij aanraken op de telefoon */
+  .plans-section .plan:hover,
+  .plans-section .plan.popular:hover,
+  .plans-section .plan.elite:hover {
+    transform: none;
+  }
+  .plans-section .plan.popular:hover {
+    border: 2px solid #5B1E2D;
+  }
+
+  /* Compacter: minder ruimte tussen prijs en vinkjes */
+  .plans-section .plan-price-wrapper {
+    min-height: 0 !important;
+    margin-bottom: 14px !important;
+  }
+  .plans-section .plan-list,
+  .plans-section .plan-list-strong {
+    margin-top: 0 !important;
+    margin-bottom: 18px;
+  }
+  .plans-section .plan-list li,
+  .plans-section .plan-list-strong li {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  /* Regeltje onder de kaarten */
+  .plans-section .android-note {
+    font-size: 14px;
+    margin-top: 16px;
+  }
+}
+
+/* ===== MOBIEL: Pricing cleaner, volle kaarten + puntjes ===== */
+.pricing-dots {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Geen halve kaarten meer: elke kaart volle breedte */
+  .plans-section .pricing-grid {
+    gap: 16px;
+    margin: 0;
+    padding: 26px 0 8px;
+    scroll-padding-left: 0;
+  }
+  .plans-section .pricing-grid .plan {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+  }
+
+  /* Volgorde weer normaal: Basic, Premium, Elite */
+  .plans-section .plan.popular,
+  .plans-section .plan.elite,
+  .plans-section .plan:not(.popular):not(.elite) {
+    order: 0;
+  }
+
+  /* Puntjes onder de kaarten */
+  .pricing-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .pricing-dots button {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background: rgba(30, 42, 68, 0.25);
+    cursor: pointer;
+    transition: width 0.25s ease, background 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pricing-dots button.active {
+    width: 22px;
+    background: #5B1E2D;
+  }
 }

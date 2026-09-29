@@ -21,6 +21,9 @@
     </nav>
 
     <a href="/#cta" class="cf-cta">Become a Founding Couple</a>
+        <label for="cf-menu-toggle" class="cf-burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </label>
   </div>
 
   <style>
@@ -183,8 +186,144 @@
         padding-top: 8px !important;
       }
     }
+      /* ===== Mobiel hamburger-menu (Apple-stijl) ===== */
+    .cf-burger,
+    .cf-menu-toggle,
+    .cf-mobile-menu {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      /* Knop uit de header; die staat nu onderaan in het menu */
+      .site-header .cf-cta {
+        display: none;
+      }
+
+      /* Drie streepjes */
+      .cf-burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        justify-self: end;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .cf-burger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 2px;
+        background: #1E2A44;
+      }
+
+      /* Volledig scherm menu */
+      .cf-mobile-menu {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: #FAF8F5;
+        padding: calc(96px + env(safe-area-inset-top)) 36px calc(40px + env(safe-area-inset-bottom));
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .cf-menu-toggle:checked ~ .cf-mobile-menu {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Kruisje rechtsboven */
+      .cf-menu-close {
+        position: absolute;
+        top: calc(16px + env(safe-area-inset-top));
+        right: 16px;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .cf-menu-close svg {
+        width: 22px;
+        height: 22px;
+        stroke: #1E2A44;
+        stroke-width: 2;
+        stroke-linecap: round;
+        fill: none;
+      }
+
+      /* Grote menu-links */
+      .cf-mobile-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .cf-mobile-nav a {
+        font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+        font-size: 34px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        color: #1E2A44;
+        text-decoration: none;
+        padding: 6px 0;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity 0.35s ease, transform 0.35s ease;
+      }
+      .cf-menu-toggle:checked ~ .cf-mobile-menu .cf-mobile-nav a {
+        opacity: 1;
+        transform: none;
+      }
+      .cf-menu-toggle:checked ~ .cf-mobile-menu .cf-mobile-nav a:nth-child(2) { transition-delay: 0.04s; }
+      .cf-menu-toggle:checked ~ .cf-mobile-menu .cf-mobile-nav a:nth-child(3) { transition-delay: 0.08s; }
+      .cf-menu-toggle:checked ~ .cf-mobile-menu .cf-mobile-nav a:nth-child(4) { transition-delay: 0.12s; }
+
+      /* Burgundy knop onderaan */
+      .cf-mobile-cta {
+        margin-top: auto;
+        display: block;
+        text-align: center;
+        padding: 16px 24px;
+        border-radius: 999px;
+        background: #5B1E2D;
+        color: #F3EFE6;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      /* Pagina niet laten scrollen als menu open is */
+      html:has(#cf-menu-toggle:checked),
+      html:has(#cf-menu-toggle:checked) body {
+        overflow: hidden;
+      }
+    }
   </style>
 </header>
+
+<input type="checkbox" id="cf-menu-toggle" class="cf-menu-toggle" aria-hidden="true">
+<div class="cf-mobile-menu">
+  <label for="cf-menu-toggle" class="cf-menu-close" aria-label="Sluit menu">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+  </label>
+  <nav class="cf-mobile-nav">
+    <a href="#features" onclick="document.getElementById('cf-menu-toggle').checked=false">Features</a>
+    <a href="#story" onclick="document.getElementById('cf-menu-toggle').checked=false">Story</a>
+    <a href="#plans" onclick="document.getElementById('cf-menu-toggle').checked=false">Pricing</a>
+    <a href="#faq" onclick="document.getElementById('cf-menu-toggle').checked=false">FAQ</a>
+  </nav>
+  <a href="/#cta" class="cf-mobile-cta" onclick="document.getElementById('cf-menu-toggle').checked=false">Become a Founding Couple</a>
+</div>
 
 <script>
   (function () {

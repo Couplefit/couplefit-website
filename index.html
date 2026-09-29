@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20260929t" />
+<link rel="stylesheet" href="/style.css?v=20260929ze" />
 <!-- GSAP Core -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
 
@@ -515,6 +515,34 @@
         </div>
 
         
+                <div class="pricing-dots" aria-label="Kies een abonnement">
+          <button type="button" aria-label="Basic"></button>
+          <button type="button" aria-label="Premium"></button>
+          <button type="button" aria-label="Elite"></button>
+        </div>
+        <script>
+          (function () {
+            const grid = document.querySelector('.plans-section .pricing-grid');
+            const dots = document.querySelectorAll('.pricing-dots button');
+            if (!grid || !dots.length) return;
+            const cards = grid.querySelectorAll('.plan');
+            const step = () => cards[1].offsetLeft - cards[0].offsetLeft;
+            const setActive = (i) => dots.forEach((d, n) => d.classList.toggle('active', n === i));
+            const goTo = (i, smooth) => {
+              grid.scrollTo({ left: step() * i, behavior: smooth ? 'smooth' : 'auto' });
+              setActive(i);
+            };
+            dots.forEach((d, i) => d.addEventListener('click', () => goTo(i, true)));
+            grid.addEventListener('scroll', () => {
+              setActive(Math.round(grid.scrollLeft / step()));
+            }, { passive: true });
+            const start = () => {
+              if (window.matchMedia('(max-width: 768px)').matches) goTo(1, false);
+            };
+            if (document.readyState === 'complete') start();
+            else window.addEventListener('load', start);
+          })();
+        </script>
         <p class="android-note">iOS and Android versions coming early 2026.</p>
       </div>
     </section>
