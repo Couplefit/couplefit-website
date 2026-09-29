@@ -4703,3 +4703,20 @@ body .site-header {
     background: #5B1E2D;
   }
 }
+
+/* ===== MOBIEL: Features-link iets hoger laten uitkomen ===== */
+@media (max-width: 768px) {
+  #features {
+    scroll-margin-top: -18px !important;
+  }
+}
+
+/* ===== Mobiel menu: tekst altijd zichtbaar, ook bij bezochte links ===== */
+body .cf-mobile-cta,
+body .cf-mobile-cta:visited {
+  color: #F3EFE6 !important;
+}
+body .cf-mobile-nav a,
+body .cf-mobile-nav a:visited {
+  color: #1E2A44 !important;
+}
