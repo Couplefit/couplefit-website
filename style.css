@@ -4091,3 +4091,163 @@ section:not(.plans-section):not(.hero):not(#features):not(#story) {
 .plans-section .plan-list {
   margin-top: 28px !important;
 }
+
+/* Founders: foto verticaal gecentreerd naast de tekstkaart */
+#story .founder-row {
+  align-items: center !important;
+}
+#story .founder-photo-wrap,
+#story .founder-text {
+  align-self: center !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+#story .founder-photo {
+  display: block;
+  margin: 0 !important;
+}
+
+/* Founders: beide tekstkaarten even hoog, tekst in het midden */
+#story .founder-text {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* "Become a Founding Couple"-knop: hele afsluitkaart in beeld */
+#cta {
+  scroll-margin-top: 185px !important;
+}
+
+/* Meer ruimte tussen de blauwe afsluitkaart en de footer */
+body footer,
+body .site-footer {
+  margin-top: 64px !important;
+}
+
+/* Footer: drie gelijke kolommen, alles gecentreerd */
+.footer .footer__inner {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 32px !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  align-items: start !important;
+}
+.footer .footer__col {
+  width: 100% !important;
+  max-width: none !important;
+  flex: none !important;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.footer .footer-links {
+  align-items: center !important;
+}
+.footer .social-icons {
+  justify-content: center !important;
+}
+
+/* Footer op mobiel: kolommen onder elkaar */
+@media (max-width: 768px) {
+  .footer .footer__inner {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
+
+/* Footer: subtekst onder CoupleFit netjes in het midden */
+.footer .footer__brand p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 300px !important;
+  text-align: center !important;
+}
+
+/* Why We Started: burgundy kaart, net als de visie-kaart */
+#story .story-row .feature-copy {
+  background: #5B1E2D !important;
+  border: none !important;
+  box-shadow: 0 24px 60px rgba(91, 30, 45, 0.25) !important;
+}
+#story .story-row .feature-copy h3 {
+  color: #F3EFE6 !important;
+}
+#story .story-row .feature-copy p {
+  color: rgba(243, 239, 230, 0.82) !important;
+}
+
+/* How CoupleFit Was Born: zacht blauwe tegel, zodat beige niet dubbel komt */
+#story .story-tile {
+  background: #E6ECF2 !important;
+}
+
+/* What's included: burgundy kaart, zodat blauw niet dubbel komt */
+#whats-included .included-container {
+  background: #5B1E2D !important;
+  box-shadow: 0 24px 60px rgba(91, 30, 45, 0.25) !important;
+  border: none !important;
+}
+#whats-included .included-title {
+  color: #F3EFE6 !important;
+}
+#whats-included .included-subtitle {
+  color: rgba(243, 239, 230, 0.82) !important;
+}
+#whats-included .included-item p {
+  color: #F3EFE6 !important;
+}
+#whats-included .included-icon {
+  color: #B7C6D6 !important;
+}
+#whats-included .included-grid,
+#whats-included .included-grid * {
+  border-color: rgba(243, 239, 230, 0.2) !important;
+}
+
+/* Minder lege ruimte tussen What's included en de FAQ */
+#whats-included#whats-included#whats-included {
+  padding-bottom: 24px !important;
+}
+
+/* Burgundy kaarten: subtiele neutrale schaduw, geen gekleurde waas */
+#whats-included .included-container,
+#story .story-vision,
+#story .story-row .feature-copy {
+  box-shadow: 0 10px 28px rgba(30, 42, 68, 0.10) !important;
+}
+
+/* FAQ als eigen beige kaart, even breed als de andere kaarten */
+#faq#faq#faq {
+  box-sizing: border-box;
+  width: calc(100% - 2 * var(--tile-gap)) !important;
+  max-width: none !important;
+  margin: var(--tile-gap) auto !important;
+  padding: 80px 24px 88px !important;
+  background: var(--tile-gray) !important;
+  border-radius: var(--tile-radius) !important;
+}
+/* FAQ-menuknop: landt nog steeds netjes op de titel */
+#faq {
+  scroll-margin-top: 26px !important;
+}
+
+/* What We Believe: titels in burgundy */
+#story .believe-title {
+  color: #5B1E2D !important;
+}
+
+/* Header: duidelijk aanwezig, zodat hij niet wegvalt */
+#header .site-header {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(30, 42, 68, 0.12) !important;
+  box-shadow:
+    0 14px 40px rgba(30, 42, 68, 0.16),
+    0 2px 6px rgba(30, 42, 68, 0.08) !important;
+}
