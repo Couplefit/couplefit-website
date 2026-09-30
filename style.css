@@ -5260,3 +5260,65 @@ body .cf-mobile-nav a:visited {
     margin-top: 0 !important;
   }
 }
+
+/* ===== MOBIEL: Join Us From The Beginning zonder foto, strakker ===== */
+@media (max-width: 768px) {
+  /* Foto weg */
+  #story .story-final-photo {
+    display: none !important;
+  }
+
+  /* De kaart */
+  #story .story-final-cta {
+    padding: 44px 24px 28px !important;
+    text-align: center;
+  }
+
+  /* Klein label boven de titel */
+  #story .story-final-cta h3::before {
+    content: "Founding Couples";
+    display: block;
+    margin-bottom: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #56698A;
+  }
+
+  /* Titel */
+  #story .story-final-cta h3 {
+    font-size: 28px !important;
+    line-height: 1.15 !important;
+    margin: 0 0 12px !important;
+    color: #1E2A44;
+  }
+
+  /* Subtekst */
+  #story .story-final-cta p {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+    max-width: 300px !important;
+    margin: 0 auto !important;
+    color: #3A4560;
+  }
+
+  /* Knop over de volle breedte */
+  #story .story-final-cta .story-cta-btn,
+  #story .story-final-cta .story-cta-btn:visited {
+    display: block !important;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 24px !important;
+    padding: 16px 24px !important;
+    border-radius: 999px;
+    background: #5B1E2D !important;
+    color: #F3EFE6 !important;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(91, 30, 45, 0.18);
+  }
+}
