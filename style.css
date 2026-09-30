@@ -5221,7 +5221,7 @@ body .cf-mobile-nav a:visited {
   #features .cf-features-track .feature-description {
     max-width: none !important;
     width: 100% !important;
-    font-size: 14.5px !important;
+    font-size: 14px !important;
     line-height: 1.5 !important;
   }
   #features .cf-features-track .feature-visual {
@@ -5254,7 +5254,7 @@ body .cf-mobile-nav a:visited {
     padding-bottom: 40px !important;
   }
   #features#features .cf-features-track .feature-copy {
-    width: calc(100vw - 88px) !important;
+    width: calc(100vw - 72px) !important;
   }
   #features .cf-features-dots {
     margin-top: 0 !important;
