@@ -4724,7 +4724,7 @@ body .cf-mobile-nav a:visited {
 /* ===== MOBIEL: "Become a Founding Couple" landt op de titel ===== */
 @media (max-width: 768px) {
   #cta {
-    scroll-margin-top: 35px !important;
+    scroll-margin-top: 120px !important;
   }
 }
 
