@@ -5363,3 +5363,160 @@ body .cf-mobile-nav a:visited {
     scroll-margin-top: -21px;
   }
 }
+
+/* How CoupleFit Was Born: tekst centreren */
+#story#story .story-born,
+#story#story .story-born h3,
+#story#story .story-born p,
+#story#story .story-born a {
+  text-align: center !important;
+}
+#story#story .story-born p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Testimonials: foto bovenaan, tekst eronder, gecentreerd */
+#testimonials#testimonials .tcard {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+#testimonials#testimonials .tcard .tphoto-wrap {
+  order: 0 !important;
+  position: static !important;
+  transform: none !important;
+  margin: 0 0 16px 0 !important;
+}
+#testimonials#testimonials .tcard .tphoto {
+  width: 72px !important;
+  height: 72px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+}
+#testimonials#testimonials .tcard .testimonial-text {
+  order: 1 !important;
+  margin: 0 0 12px 0 !important;
+}
+#testimonials#testimonials .tcard .testimonial-author {
+  order: 2 !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+
+/* Testimonials: burgundy kaart met ivory tekst */
+#testimonials#testimonials .tslide,
+#testimonials#testimonials .ttrack {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#testimonials#testimonials .tcard {
+  background: #5B1E2D !important;
+  border: none !important;
+  border-radius: 28px !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 10px 28px rgba(30, 42, 68, 0.10) !important;
+  padding: 36px 28px !important;
+}
+#testimonials#testimonials .tcard .tphoto-wrap {
+  height: auto !important;
+  margin: 0 0 20px 0 !important;
+}
+#testimonials#testimonials .tcard .tphoto {
+  border: 3px solid #F3EFE6 !important;
+}
+#testimonials#testimonials .tcard .testimonial-text {
+  color: #F3EFE6 !important;
+  font-style: italic;
+}
+#testimonials#testimonials .tcard .testimonial-author {
+  color: #B7C6D6 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+}
+
+/* Testimonials: glaswaas en achtergrondvlekken weghalen */
+#testimonials#testimonials,
+#testimonials#testimonials .container {
+  background: transparent !important;
+  background-image: none !important;
+}
+#testimonials#testimonials::before,
+#testimonials#testimonials::after,
+#testimonials#testimonials .container::before,
+#testimonials#testimonials .container::after,
+#testimonials#testimonials .tcard::before,
+#testimonials#testimonials .tcard::after {
+  display: none !important;
+}
+#testimonials#testimonials .tcard {
+  background: #5B1E2D !important;
+  background-image: none !important;
+  opacity: 1 !important;
+}
+#testimonials#testimonials .tcard .tphoto-wrap {
+  width: 72px !important;
+  height: 72px !important;
+  flex-shrink: 0 !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+}
+#testimonials#testimonials .tcard .tphoto {
+  width: 72px !important;
+  height: 72px !important;
+  max-width: none !important;
+  display: block !important;
+}
+
+  /* Testimonials: alle fades, maskers en overlays uitzetten */
+#testimonials#testimonials,
+#testimonials#testimonials * {
+  filter: none !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  mix-blend-mode: normal !important;
+}
+#testimonials#testimonials .results-container::before,
+#testimonials#testimonials .results-container::after,
+#testimonials#testimonials .results-grid::before,
+#testimonials#testimonials .results-grid::after,
+#testimonials#testimonials .testimonials-grid::before,
+#testimonials#testimonials .testimonials-grid::after,
+#testimonials#testimonials .tcarousel::before,
+#testimonials#testimonials .tcarousel::after {
+  display: none !important;
+}
+#testimonials#testimonials .results-grid,
+#testimonials#testimonials .testimonials-grid {
+  background: transparent !important;
+  background-image: none !important;
+}
+#testimonials#testimonials .tcard .testimonial-text {
+  font-style: normal !important;
+}
+
+/* Testimonials boven de oude achtergrondgloed leggen */
+#testimonials#testimonials {
+  position: relative !important;
+  z-index: 5 !important;
+  isolation: isolate;
+  background: #FAF8F5 !important;
+}
+
+/* Testimonials: altijd volledig zichtbaar, niet half doorzichtig door scroll-animatie */
+#testimonials#testimonials,
+#testimonials#testimonials .results-container,
+#testimonials#testimonials .results-grid,
+#testimonials#testimonials .testimonials-grid,
+#testimonials#testimonials .tcard {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Testimonials: oud goudgloedje rond de foto uitzetten (veroorzaakte de waas) */
+#testimonials#testimonials .tphoto-wrap::before,
+#testimonials#testimonials .tphoto-wrap::after {
+  display: none !important;
+}
