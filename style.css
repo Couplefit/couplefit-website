@@ -5349,3 +5349,17 @@ body .cf-mobile-nav a:visited {
     font-size: 13px;
   }
 }
+
+/* Features-menulink op mobiel iets hoger laten uitkomen */
+@media (max-width: 768px) {
+  #features#features {
+    scroll-margin-top: -32px;
+  }
+}
+
+/* FAQ-menulink alleen op telefoon iets hoger laten uitkomen */
+@media (max-width: 768px) {
+  #faq#faq {
+    scroll-margin-top: -21px;
+  }
+}
