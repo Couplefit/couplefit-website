@@ -5231,14 +5231,32 @@ body .cf-mobile-nav a:visited {
 
 /* ===== MOBIEL: eerste feature (Built for Two) even breed als de rest ===== */
 @media (max-width: 768px) {
-  #features#features .cf-features-track .feature-row-1 .feature-copy,
-  #features#features .cf-features-track .feature-row-1 .feature-description {
+  #features#features .cf-features-track .feature-copy {
+    flex: none !important;
+    width: calc(100vw - 64px) !important;
     max-width: none !important;
-    width: 100% !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
   }
+  #features#features .cf-features-track .feature-copy .feature-description,
+  #features#features .cf-features-track .feature-copy h2 {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* ===== MOBIEL: meer blauwe ruimte onder de feature-telefoons ===== */
+@media (max-width: 768px) {
+  #features#features .cf-features-track .feature-row,
   #features#features .cf-features-track .feature-row-1 {
-    padding: 16px 16px 8px !important;
+    padding-bottom: 40px !important;
+  }
+  #features#features .cf-features-track .feature-copy {
+    width: calc(100vw - 88px) !important;
+  }
+  #features .cf-features-dots {
+    margin-top: 0 !important;
   }
 }
