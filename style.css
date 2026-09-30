@@ -5520,3 +5520,20 @@ body .cf-mobile-nav a:visited {
 #testimonials#testimonials .tphoto-wrap::after {
   display: none !important;
 }
+
+/* MOBIEL: Features-telefoon zachtere schaduw, zodat er geen harde rand ontstaat */
+@media (max-width: 768px) {
+  #features#features .cf-features-track .feature-device,
+  #features#features .cf-features-track .device.phone {
+    box-shadow:
+      0 12px 28px rgba(30, 42, 68, 0.18),
+      0 4px 10px rgba(30, 42, 68, 0.10) !important;
+  }
+}
+
+/* MOBIEL: Features, geen stukjes van de buur-feature zichtbaar aan de zijkant */
+@media (max-width: 768px) {
+  #features#features .cf-features-track .feature-row {
+    clip-path: inset(-120px 0 -120px 0);
+  }
+}
