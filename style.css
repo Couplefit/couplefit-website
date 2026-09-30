@@ -5202,10 +5202,19 @@ body .cf-mobile-nav a:visited {
 /* ===== MOBIEL: alle feature-telefoons op dezelfde hoogte ===== */
 @media (max-width: 768px) {
   #features .cf-features-track .feature-row {
-    gap: 4px !important;
-    justify-content: flex-start;
+    display: grid !important;
+    grid-template-rows: 124px auto !important;
+    justify-items: center;
+    align-content: start !important;
+    row-gap: 8px !important;
   }
   #features .cf-features-track .feature-copy {
-    min-height: 116px;
+    height: 124px !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+  }
+  #features .cf-features-track .feature-visual {
+    margin: 0 !important;
+    align-self: start !important;
   }
 }
