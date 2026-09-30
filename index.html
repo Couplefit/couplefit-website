@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20260929zh" />
+<link rel="stylesheet" href="/style.css?v=20260930p" />
 <!-- GSAP Core -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
 
@@ -820,5 +820,85 @@
   });
   </script>
   <script src="main.js"></script>
+  <script>
+  (function () {
+    if (!window.matchMedia('(max-width: 768px)').matches) return;
+    document.querySelectorAll('#story .story-row .feature-copy, #story .story-born').forEach(function (card) {
+      if (card.querySelectorAll('p.feature-description').length < 2) return;
+      card.classList.add('cf-collapsible');
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'cf-readmore';
+      btn.textContent = 'Read more';
+      btn.addEventListener('click', function () {
+        var open = card.classList.toggle('is-open');
+        btn.textContent = open ? 'Show less' : 'Read more';
+      });
+      card.appendChild(btn);
+    });
+  })();
+</script>
+<script>
+  (function () {
+    if (!window.matchMedia('(max-width: 768px)').matches) return;
+    var section = document.getElementById('features');
+    if (!section) return;
+    var rows = section.querySelectorAll('.feature-row');
+    if (rows.length < 2) return;
+    var track = document.createElement('div');
+    track.className = 'cf-features-track';
+    rows[0].parentNode.insertBefore(track, rows[0]);
+    rows.forEach(function (r) { track.appendChild(r); });
+    var dots = document.createElement('div');
+    dots.className = 'pricing-dots cf-features-dots';
+    rows.forEach(function (r, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Feature ' + (i + 1));
+      b.addEventListener('click', function () {
+        track.scrollTo({ left: r.offsetLeft - rows[0].offsetLeft, behavior: 'smooth' });
+      });
+      dots.appendChild(b);
+    });
+    track.after(dots);
+    var btns = dots.querySelectorAll('button');
+    var update = function () {
+      var step = rows[1].offsetLeft - rows[0].offsetLeft;
+      var i = Math.round(track.scrollLeft / step);
+      btns.forEach(function (b, n) { b.classList.toggle('active', n === i); });
+    };
+    track.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+</script>
+<script>
+  (function () {
+    if (!window.matchMedia('(max-width: 768px)').matches) return;
+    var track = document.querySelector('#testimonials .testimonials-grid');
+    if (!track) return;
+    var cards = track.querySelectorAll('.tcard');
+    if (cards.length < 2) return;
+    var dots = document.createElement('div');
+    dots.className = 'pricing-dots cf-testimonial-dots';
+    cards.forEach(function (c, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Testimonial ' + (i + 1));
+      b.addEventListener('click', function () {
+        track.scrollTo({ left: c.offsetLeft - cards[0].offsetLeft, behavior: 'smooth' });
+      });
+      dots.appendChild(b);
+    });
+    track.after(dots);
+    var btns = dots.querySelectorAll('button');
+    var update = function () {
+      var step = cards[1].offsetLeft - cards[0].offsetLeft;
+      var i = Math.round(track.scrollLeft / step);
+      btns.forEach(function (b, n) { b.classList.toggle('active', n === i); });
+    };
+    track.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+</script>
 </body>
 </html>

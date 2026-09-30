@@ -4707,7 +4707,7 @@ body .site-header {
 /* ===== MOBIEL: Features-link iets hoger laten uitkomen ===== */
 @media (max-width: 768px) {
   #features {
-    scroll-margin-top: -18px !important;
+    scroll-margin-top: 130px !important;
   }
 }
 
@@ -4725,5 +4725,476 @@ body .cf-mobile-nav a:visited {
 @media (max-width: 768px) {
   #cta {
     scroll-margin-top: 35px !important;
+  }
+}
+
+/* ===== MOBIEL: dubbele onderdelen weg voor een rustigere pagina ===== */
+@media (max-width: 768px) {
+  /* Vier kaartjes onder de hero (herhalen de Features) */
+  #value {
+    display: none !important;
+  }
+
+  /* What's included (herhaalt Pricing) */
+  #whats-included {
+    display: none !important;
+  }
+
+  /* App-blokjes in hero en afsluitkaart, regeltje onder pricing */
+  #hero .platform-badges,
+  #cta .platform-badges,
+  .plans-section .android-note {
+    display: none !important;
+  }
+}
+
+/* ===== MOBIEL: Story compacter ===== */
+.cf-readmore {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Gymfoto weg */
+  #story .story-row .feature-visual {
+    display: none !important;
+  }
+
+  /* Ingeklapt: alleen eerste alinea zichtbaar */
+  #story .cf-collapsible:not(.is-open) p.feature-description:not(:first-of-type) {
+    display: none;
+  }
+
+  /* Read more-knopje */
+  .cf-readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .cf-readmore::after {
+    content: "›";
+    font-size: 18px;
+    transition: transform 0.25s ease;
+  }
+  .is-open > .cf-readmore::after {
+    transform: rotate(90deg);
+  }
+  #story .story-row .cf-readmore {
+    color: #B7C6D6;
+  }
+  #story .story-born .cf-readmore {
+    color: #5B1E2D;
+  }
+
+  /* Founders: kleine ronde foto naast de kaart */
+  #story .founder-row {
+    display: grid !important;
+    grid-template-columns: 56px 1fr;
+    gap: 14px;
+    align-items: start;
+    margin-bottom: 14px;
+  }
+  #story .founder-photo-wrap {
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 4px 0 0 !important;
+  }
+  #story .founder-photo {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  #story .founder-text {
+    padding: 18px 20px !important;
+    text-align: left !important;
+  }
+  #story .founder-name {
+    text-align: left !important;
+    margin: 0 0 6px !important;
+    font-size: 17px;
+  }
+  #story .founder-text .feature-description {
+    text-align: left !important;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
+
+/* ===== MOBIEL: Read more altijd gecentreerd ===== */
+@media (max-width: 768px) {
+  #story .cf-readmore {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/* ===== MOBIEL: Features als veegbare kaart ===== */
+@media (max-width: 768px) {
+  #features {
+    background: #E6ECF2 !important;
+    border-radius: var(--tile-radius, 28px) !important;
+    margin-left: var(--tile-gap) !important;
+    margin-right: var(--tile-gap) !important;
+    padding: 36px 0 24px !important;
+    overflow: hidden;
+  }
+  #features .features-intro {
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: auto !important;
+    margin: 0 0 4px !important;
+    padding: 0 20px !important;
+  }
+
+  .cf-features-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cf-features-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  #features .cf-features-track .feature-row {
+    flex: 0 0 100%;
+    width: 100% !important;
+    max-width: none !important;
+    scroll-snap-align: center;
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 16px 24px 8px !important;
+  }
+  #features .cf-features-track .feature-device {
+    width: 52%;
+    max-width: 200px;
+  }
+
+  .cf-features-dots {
+    margin-top: 12px;
+    }
+    }
+
+    /* ===== MOBIEL: Testimonials veegbaar en strakker ===== */
+@media (max-width: 768px) {
+  #testimonials .results-grid {
+    padding: 0 !important;
+  }
+
+  /* Kaarten naast elkaar, horizontaal vegen */
+  #testimonials .testimonials-grid {
+    display: flex !important;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 2px 8px;
+    align-items: stretch;
+  }
+  #testimonials .testimonials-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Kaart: quote boven, foto + namen onder */
+  #testimonials .testimonials-grid .tcard {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    display: grid !important;
+    grid-template-columns: 44px 1fr;
+    grid-template-areas:
+      "quote quote"
+      "photo author";
+    column-gap: 12px;
+    row-gap: 18px;
+    align-items: center;
+    padding: 24px 22px !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  #testimonials .tcard .testimonial-text {
+    grid-area: quote;
+    font-style: normal;
+    font-size: 17px;
+    line-height: 1.55;
+    color: #1E2A44;
+    margin: 0;
+  }
+  #testimonials .tcard .tphoto-wrap {
+    grid-area: photo;
+    width: 44px !important;
+    height: 44px !important;
+    margin: 0 !important;
+  }
+  #testimonials .tcard .tphoto {
+    width: 44px !important;
+    height: 44px !important;
+  }
+  #testimonials .tcard .testimonial-author {
+    grid-area: author;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1E2A44;
+  }
+
+  .cf-testimonial-dots {
+    margin-top: 14px;
+  }
+}
+
+/* ===== MOBIEL: afwerking (titels, knoppen, FAQ) ===== */
+@media (max-width: 768px) {
+  /* --- Titels: overal dezelfde maat --- */
+  #main .section-title-lg,
+  #testimonials h2,
+  #faq .faq-title,
+  #cta h2 {
+    font-size: 30px !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em;
+  }
+  #main .section-title-md {
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+  }
+  #testimonials .subtext,
+  #faq .faq-subtitle,
+  #cta p,
+  .plans-section .pricing-savings {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+
+    /* --- Hero: tweede knop wordt tekstlink --- */
+  #hero .hero-cta-secondary {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #5B1E2D !important;
+    padding: 10px !important;
+    font-weight: 600;
+  }
+
+  /* --- Afsluitkaart: tweede knop wordt tekstlink --- */
+  #cta .cta-actions > a:nth-child(2) {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #5B1E2D !important;
+    padding: 10px !important;
+    font-weight: 600;
+  }
+
+  /* --- FAQ: één witte kaart met lijntjes --- */
+  #faq .faq-grid {
+    display: block !important;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(30, 42, 68, 0.06);
+  }
+  #faq .faq-card {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  #faq .faq-card + .faq-card {
+    border-top: 1px solid rgba(30, 42, 68, 0.10) !important;
+  }
+  #faq .faq-question {
+    padding: 18px 20px !important;
+    font-size: 16px !important;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: left;
+    gap: 16px;
+  }
+}
+
+/* ===== MOBIEL: juiste afstand rond de Features-kaart ===== */
+@media (max-width: 768px) {
+  #features {
+    margin-top: var(--tile-gap) !important;
+    margin-bottom: var(--tile-gap) !important;
+  }
+}
+
+/* ===== MOBIEL: Founders als profielkaarten ===== */
+@media (max-width: 768px) {
+  #story .founder-row {
+    display: grid !important;
+    grid-template-columns: 72px 1fr !important;
+    grid-template-areas:
+      "photo name"
+      "quote quote";
+    column-gap: 16px;
+    row-gap: 16px;
+    align-items: center;
+    background: #EFEAE0;
+    border-radius: var(--tile-radius, 28px);
+    padding: 22px !important;
+    margin: 0 0 var(--tile-gap) !important;
+  }
+  #story .founder-text {
+    display: contents !important;
+  }
+  #story .founder-photo-wrap {
+    grid-area: photo;
+    width: 72px !important;
+    height: 72px !important;
+    margin: 0 !important;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(30, 42, 68, 0.12);
+  }
+  #story .founder-photo {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center top;
+  }
+  #story .founder-name {
+    grid-area: name;
+    margin: 0 !important;
+    font-size: 20px !important;
+    text-align: left !important;
+    color: #1E2A44;
+  }
+  #story .founder-name::after {
+    content: "Co-founder";
+    display: block;
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #56698A;
+  }
+  #story .founder-row .feature-description {
+    grid-area: quote;
+    margin: 0 !important;
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+    text-align: left !important;
+    color: #3A4560;
+  }
+}
+
+/* ===== MOBIEL: gezichten mooi in de ronde founder-foto's ===== */
+@media (max-width: 768px) {
+  /* Max: inzoomen op het gezicht */
+  #story .founder-photo[src*="max"] {
+    object-position: center center !important;
+    transform: scale(1.2);
+    transform-origin: 55% 58%;
+  }
+
+  /* Rachelle: iets inzoomen, zodat jullie even groot in beeld zijn */
+  #story .founder-photo[src*="rachelle"] {
+    object-position: center center !important;
+    transform: scale(1.5);
+    transform-origin: 50% 40%;
+  }
+}
+/* ===== MOBIEL: FAQ strakker en compacter ===== */
+@media (max-width: 768px) {
+  /* Beige tegel: minder ruimte, vooral onderaan */
+  #faq#faq#faq#faq {
+    padding: 40px 12px 12px !important;
+  }
+  #faq .faq-container {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+  #faq .faq-subtitle {
+    margin-bottom: 20px !important;
+  }
+
+  /* Witte kaart over de volle breedte */
+  #faq .faq-grid {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+  #faq .faq-card {
+    padding: 0 !important;
+  }
+
+  /* Vragen: breder, midnight blue */
+  #faq .faq-question {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 16px 16px 20px !important;
+    font-size: 15.5px !important;
+    color: #1E2A44 !important;
+  }
+
+  /* Plusje in een zacht burgundy rondje */
+  #faq .faq-icon {
+    flex: 0 0 28px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(91, 30, 45, 0.08);
+    color: #5B1E2D !important;
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  /* Antwoorden netjes */
+  #faq .faq-answer {
+    padding: 0 20px 18px !important;
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+    color: #3A4560 !important;
+  }
+}
+
+/* ===== MOBIEL: FAQ-rijen mooi gecentreerd ===== */
+@media (max-width: 768px) {
+  #faq .faq-answer {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+  }
+  #faq .faq-answer > * {
+    margin: 0 !important;
+    padding-bottom: 18px;
+  }
+  #faq .faq-question {
+    margin: 0 !important;
+    min-height: 64px;
+  }
+}
+
+/* ===== MOBIEL: FAQ-link landt netjes onder de header ===== */
+@media (max-width: 768px) {
+  #faq {
+    scroll-margin-top: 145px !important;
   }
 }
