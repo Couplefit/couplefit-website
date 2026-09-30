@@ -5360,7 +5360,7 @@ body .cf-mobile-nav a:visited {
 /* FAQ-menulink alleen op telefoon iets hoger laten uitkomen */
 @media (max-width: 768px) {
   #faq#faq {
-    scroll-margin-top: -21px;
+   scroll-margin-top: 118px !important;
   }
 }
 
