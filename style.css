@@ -5202,27 +5202,43 @@ body .cf-mobile-nav a:visited {
 /* ===== MOBIEL: alle feature-telefoons op dezelfde hoogte ===== */
 @media (max-width: 768px) {
   #features .cf-features-track .feature-row {
-    display: grid !important;
-    grid-template-rows: 92px auto !important;
-    justify-items: center;
-    align-content: start !important;
-    row-gap: 24px !important;
-    padding: 16px 20px 8px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 56px !important;
+    padding: 16px 16px 8px !important;
   }
-  /* Tekst breder, zodat alles op twee regels past */
+  /* Tekst over de volle breedte, zodat alles op twee regels past */
   #features .cf-features-track .feature-copy {
-    height: 92px !important;
+    height: auto !important;
     min-height: 0 !important;
     max-width: none !important;
     width: 100% !important;
     margin: 0 !important;
+    padding: 0 !important;
   }
   #features .cf-features-track .feature-description {
-    font-size: 15px !important;
+    max-width: none !important;
+    width: 100% !important;
+    font-size: 14.5px !important;
     line-height: 1.5 !important;
   }
   #features .cf-features-track .feature-visual {
     margin: 0 !important;
-    align-self: start !important;
+  }
+}
+
+/* ===== MOBIEL: eerste feature (Built for Two) even breed als de rest ===== */
+@media (max-width: 768px) {
+  #features#features .cf-features-track .feature-row-1 .feature-copy,
+  #features#features .cf-features-track .feature-row-1 .feature-description {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  #features#features .cf-features-track .feature-row-1 {
+    padding: 16px 16px 8px !important;
   }
 }
