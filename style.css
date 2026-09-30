@@ -5198,3 +5198,14 @@ body .cf-mobile-nav a:visited {
     scroll-margin-top: 145px !important;
   }
 }
+
+/* ===== MOBIEL: alle feature-telefoons op dezelfde hoogte ===== */
+@media (max-width: 768px) {
+  #features .cf-features-track .feature-row {
+    gap: 4px !important;
+    justify-content: flex-start;
+  }
+  #features .cf-features-track .feature-copy {
+    min-height: 116px;
+  }
+}
