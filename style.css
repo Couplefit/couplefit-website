@@ -5322,3 +5322,30 @@ body .cf-mobile-nav a:visited {
     box-shadow: 0 10px 24px rgba(91, 30, 45, 0.18);
   }
 }
+
+/* ===== Scroll-effect: blokken faden zacht in ===== */
+.cf-reveal {
+  opacity: 0 !important;
+  transform: translateY(32px) !important;
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) !important;
+  will-change: opacity, transform;
+}
+.cf-reveal.cf-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ===== MOBIEL: "No card required" in de hero beter leesbaar ===== */
+@media (max-width: 768px) {
+  #hero .hero-reassure {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #1E2A44 !important;
+    font-weight: 600;
+    font-size: 13px;
+  }
+}

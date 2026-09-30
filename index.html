@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20260930y" />
+<link rel="stylesheet" href="/style.css?v=20260930za" />
 <!-- GSAP Core -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
 
@@ -898,6 +898,39 @@
     };
     track.addEventListener('scroll', update, { passive: true });
     update();
+  })();
+</script>
+<script>
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var selectors = [
+      '#features',
+      '#story .story-hero',
+      '#story .story-row',
+      '#story .story-tile',
+      '#story .story-founders',
+      '#story .story-believe',
+      '#story .story-vision',
+      '#story .story-final-cta',
+      '#testimonials',
+      '.plans-section',
+      '#faq',
+      '#cta'
+    ];
+    var els = document.querySelectorAll(selectors.join(','));
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('cf-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -10% 0px' });
+    els.forEach(function (el) {
+      el.classList.add('cf-reveal');
+      io.observe(el);
+    });
   })();
 </script>
 </body>
