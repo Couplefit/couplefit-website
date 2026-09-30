@@ -5203,15 +5203,23 @@ body .cf-mobile-nav a:visited {
 @media (max-width: 768px) {
   #features .cf-features-track .feature-row {
     display: grid !important;
-    grid-template-rows: 124px auto !important;
+    grid-template-rows: 92px auto !important;
     justify-items: center;
     align-content: start !important;
-    row-gap: 8px !important;
+    row-gap: 24px !important;
+    padding: 16px 20px 8px !important;
   }
+  /* Tekst breder, zodat alles op twee regels past */
   #features .cf-features-track .feature-copy {
-    height: 124px !important;
+    height: 92px !important;
     min-height: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
     margin: 0 !important;
+  }
+  #features .cf-features-track .feature-description {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
   }
   #features .cf-features-track .feature-visual {
     margin: 0 !important;
