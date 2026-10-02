@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20261002g" />
+<link rel="stylesheet" href="/style.css?v=20261002h" />
 <!-- GSAP Core -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
 
@@ -196,64 +196,125 @@
 </script>
 
 
-    <!-- VALUE-PROP GRID - Frosted Glass Cards -->
-    <section class="section section--bleed reveal" id="value">
-      <div class="container value-grid">
-        <div class="value-card glass">
-          <div class="icon-bubble">
-            <svg class="value-icon" width="24" height="24" viewBox="0 0 256 256" aria-hidden="true">
-              <path d="M128 224S28 168 28 88a52 52 0 0 1 96-28 52 52 0 0 1 96 28c0 80-100 136-100 136Z" fill="none" stroke="#1D1D1D" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div>
-            <h3>Stay perfectly aligned</h3>
-            <p>Plans that stay aligned, with workouts, meals, and milestones synced for two.</p>
-          </div>
-        </div>
-        <div class="value-card glass">
-          <div class="icon-bubble">
-            <svg class="value-icon" width="24" height="24" viewBox="0 0 256 256" aria-hidden="true">
-              <circle cx="128" cy="128" r="80" fill="none" stroke="#1D1D1D" stroke-width="12"/>
-              <path d="M128 48v160M48 128h160" stroke="#1D1D1D" stroke-width="12" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <h3>AI Meal Tracking</h3>
-            <p>Smart AI analyzes your plate instantly, giving both partners clearer insight into daily nutrition without the hassle.</p>
-          </div>
-        </div>
-        <div class="value-card glass">
-          <div class="icon-bubble">
-            <svg class="value-icon" width="24" height="24" viewBox="0 0 256 256" aria-hidden="true">
-              <path d="M56 168l40-40 40 28 64-80" fill="none" stroke="#1D1D1D" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M40 200h176" stroke="#1D1D1D" stroke-width="12" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <h3>Personalized Workouts</h3>
-            <p>Adaptive programs built for each partner individually, yet synced so you improve at the same pace.</p>
-          </div>
-        </div>
+<section class="cf-bento" id="sync" aria-labelledby="cf-bento-title">
+  <h2 id="cf-bento-title" class="cf-bento__title">One app that keeps the two of you in sync.</h2>
 
-        <div class="value-card glass">
-          <div class="icon-bubble">
-            <svg class="value-icon" width="24" height="24" viewBox="0 0 256 256" aria-hidden="true">
-              <path d="M40 200h176" fill="none" stroke="#1D1D1D" stroke-width="12" stroke-linecap="round"/>
-              <path d="M72 152l36-44 36 32 40-52 32 24" fill="none" stroke="#1D1D1D" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="72" cy="152" r="8" fill="#1D1D1D"/>
-              <circle cx="108" cy="108" r="8" fill="#1D1D1D"/>
-              <circle cx="144" cy="140" r="8" fill="#1D1D1D"/>
-              <circle cx="184" cy="88" r="8" fill="#1D1D1D"/>
-              <circle cx="216" cy="112" r="8" fill="#1D1D1D"/>
-            </svg>
-          </div>
-          <div>
-            <h3>Shared Progress</h3>
-            <p>Track milestones, celebrate wins, and grow together.</p>
-          </div>
+  <div class="cf-bento__grid">
+
+    <!-- A: aligned plans -->
+    <article class="cf-tile cf-tile--align">
+      <div>
+        <h3>Stay perfectly aligned</h3>
+        <p>Training days, rest days and meals that line up for both of you.</p>
+      </div>
+      <div class="cf-ui" aria-label="Weekly plan for Max and Rachelle, with shared rest days on Wednesday and Sunday">
+        <div class="cf-week-grid">
+          <span></span>
+          <span class="cf-day">M</span><span class="cf-day">T</span><span class="cf-day">W</span><span class="cf-day">T</span><span class="cf-day">F</span><span class="cf-day">S</span><span class="cf-day">S</span>
+
+          <div class="cf-av cf-av--m">M</div>
+          <div class="cf-cell cf-cell--m"></div><div class="cf-cell cf-cell--m"></div><div class="cf-cell cf-cell--together"></div><div class="cf-cell cf-cell--m"></div><div class="cf-cell cf-cell--rest"></div><div class="cf-cell cf-cell--m"></div><div class="cf-cell cf-cell--together"></div>
+
+          <div class="cf-av cf-av--r">R</div>
+          <div class="cf-cell cf-cell--r"></div><div class="cf-cell cf-cell--rest"></div><div class="cf-cell cf-cell--together"></div><div class="cf-cell cf-cell--r"></div><div class="cf-cell cf-cell--r"></div><div class="cf-cell cf-cell--r"></div><div class="cf-cell cf-cell--together"></div>
+        </div>
+        <div class="cf-week-note"><i></i>Rest days together, so your evenings stay free</div>
+      </div>
+    </article>
+
+    <!-- B: AI meal tracking -->
+    <article class="cf-tile cf-tile--meal">
+      <div>
+        <h3>AI meal tracking</h3>
+        <p>Snap your plate. CoupleFit recognises the food and logs it for you.</p>
+      </div>
+      <div class="cf-meal-body">
+      <div class="cf-plate">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="92" fill="#E6ECF2" />
+          <circle cx="100" cy="100" r="78" fill="#F3EFE6" />
+          <circle cx="100" cy="100" r="66" fill="none" stroke="rgba(91,30,45,.12)" stroke-width="1.5" />
+          <!-- salmon -->
+          <path d="M70 70c18-12 46-8 54 6 6 11-6 22-26 24-22 2-40-12-28-30z" fill="#E7B9A6" />
+          <path d="M80 76l30 10M84 86l26 6" stroke="#F3EFE6" stroke-width="2" stroke-linecap="round" />
+          <!-- rice -->
+          <ellipse cx="78" cy="128" rx="26" ry="20" fill="#FFFFFF" stroke="rgba(30,42,68,.08)" />
+          <!-- greens -->
+          <circle cx="128" cy="124" r="12" fill="#7A8FAE" />
+          <circle cx="142" cy="110" r="10" fill="#56698A" />
+          <circle cx="138" cy="134" r="9" fill="#B7C6D6" />
+        </svg>
+        <div class="cf-scan"></div>
+      </div>
+      <ul class="cf-macros">
+        <li><span>Salmon</span><span>290 kcal</span></li>
+        <li><span>Rice</span><span>180 kcal</span></li>
+        <li><span>Greens</span><span>70 kcal</span></li>
+        <li class="cf-total"><span>Lunch</span><span>540 kcal, 38 g protein</span></li>
+      </ul>
+      </div>
+    </article>
+
+    <!-- C: personalized workouts -->
+    <article class="cf-tile cf-tile--work">
+      <div>
+        <h3>Personalized workouts</h3>
+        <p>The same session for both of you, tuned to each person's level.</p>
+      </div>
+      <div class="cf-pair">
+        <div class="cf-set">
+          <div class="cf-av cf-av--m">M</div>
+          <div><strong>Back squat</strong><b>4 × 8</b> <span>at 80 kg</span></div>
+        </div>
+        <div class="cf-set">
+          <div class="cf-av cf-av--r">R</div>
+          <div><strong>Back squat</strong><b>4 × 10</b> <span>at 45 kg</span></div>
         </div>
       </div>
-    </section>
+    </article>
+
+    <!-- D: shared progress -->
+    <article class="cf-tile cf-tile--prog">
+      <div>
+        <h3>Shared progress</h3>
+        <p>See how you're both doing and celebrate every milestone.</p>
+      </div>
+      <div class="cf-ui">
+        <svg class="cf-chart" viewBox="0 0 480 122" role="img" aria-label="Progress over eight weeks, both lines going up">
+          <line class="cf-grid" x1="10" y1="20" x2="400" y2="20" />
+          <line class="cf-grid" x1="10" y1="55" x2="400" y2="55" />
+          <line class="cf-grid" x1="10" y1="90" x2="400" y2="90" />
+          <path class="cf-line cf-line--m" pathLength="1" d="M10 88 L66 82 L122 76 L177 70 L233 58 L289 50 L345 36 L400 22" />
+          <path class="cf-line cf-line--r" pathLength="1" d="M10 96 L66 90 L122 80 L177 76 L233 64 L289 54 L345 46 L400 32" />
+          <circle class="cf-dot" cx="400" cy="22" r="4.5" fill="#5B1E2D" />
+          <circle class="cf-dot" cx="400" cy="32" r="4.5" fill="#7A8FAE" />
+          <text class="cf-end cf-dot" x="410" y="22" style="fill:#5B1E2D">Max</text>
+          <text class="cf-end cf-dot" x="410" y="40" style="fill:#56698A">Rachelle</text>
+          <text x="10" y="116">Week 1</text>
+          <text x="360" y="116">Week 8</text>
+        </svg>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  var section = document.querySelector('.cf-bento');
+  if (!section) return;
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    section.classList.add('is-visible');
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { section.classList.add('is-visible'); io.disconnect(); }
+    });
+  }, { threshold: 0.3 });
+  io.observe(section);
+})();
+</script>
 
     <!-- FEATURES - Frosted Glass Cards -->
 <section id="features" class="section features-section">
