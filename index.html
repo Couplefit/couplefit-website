@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20261002n" />
+<link rel="stylesheet" href="/style.css?v=20261002q" />
 <!-- GSAP Core -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
 
@@ -803,77 +803,72 @@
 
  
 
-    <!-- FAQ -->
-    <section id="faq" class="faq-section">
-      <div class="faq-container">
-        <h2 class="faq-title">FAQ</h2>
-        <p class="faq-subtitle">Everything you want to know before you start together.</p>
+ <!-- FAQ -->
+<section class="cf-faq" id="faq" aria-labelledby="cf-faq-title">
+  <div class="cf-faq__intro">
+    <h2 id="cf-faq-title" class="cf-faq__title">FAQ</h2>
+    <p class="cf-faq__lead">Everything you want to know before you start together.</p>
+    <p class="cf-faq__contact">Still have a question?<br /><a href="mailto:hello@couple-fit.com">Send us a message</a></p>
+  </div>
 
-        <div class="faq-grid">
+  <div class="cf-faq__list">
+    <div class="cf-faq__item is-open">
+      <button class="cf-faq__q" type="button" aria-expanded="true">
+        <span>How does CoupleFit keep us consistent together?</span><i aria-hidden="true"></i>
+      </button>
+      <div class="cf-faq__a"><div><p>CoupleFit links your goals, streaks and milestones so progress feels shared. Each partner gets a personalized plan, but your streaks and wins are synced, making it easier to show up for each other.</p></div></div>
+    </div>
 
-          <div class="faq-card">
-            <button class="faq-question" type="button">
-              How does CoupleFit keep us consistent together?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              CoupleFit links your goals, streaks, and milestones so progress feels shared. Each partner gets a personalized plan, but your streaks and wins are synced, making it easier to show up for each other.
-            </div>
-          </div>
+    <div class="cf-faq__item">
+      <button class="cf-faq__q" type="button" aria-expanded="false">
+        <span>Do we need separate accounts?</span><i aria-hidden="true"></i>
+      </button>
+      <div class="cf-faq__a"><div><p>Yes. You both create individual accounts and then connect with a simple invite code. From there, Couple Mode unlocks shared streaks, milestones and insights automatically.</p></div></div>
+    </div>
 
-          <div class="faq-card">
-            <button class="faq-question" type="button">
-              Do we need separate accounts?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              Yes. You both create individual accounts and then connect with a simple invite code. From there, Couple Mode unlocks shared streaks, milestones, and insights automatically.
-            </div>
-          </div>
+    <div class="cf-faq__item">
+      <button class="cf-faq__q" type="button" aria-expanded="false">
+        <span>Can we use it without a gym?</span><i aria-hidden="true"></i>
+      </button>
+      <div class="cf-faq__a"><div><p>Absolutely. CoupleFit includes complete home programs and bodyweight options. The AI adapts to your environment, available time and equipment, together or solo.</p></div></div>
+    </div>
 
-          <div class="faq-card">
-            <button class="faq-question" type="button">
-              Can we use it without a gym?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              Absolutely. CoupleFit includes complete home programs and bodyweight options. The AI adapts to your environment, available time, and equipment, together or solo.
-            </div>
-          </div>
+    <div class="cf-faq__item">
+      <button class="cf-faq__q" type="button" aria-expanded="false">
+        <span>We're beginners. Is it still for us?</span><i aria-hidden="true"></i>
+      </button>
+      <div class="cf-faq__a"><div><p>Yes. The app adjusts to your level and pace. You'll get gentle starts, clear guidance and small wins that build momentum, while your partner gets the right challenge for them.</p></div></div>
+    </div>
 
-          <div class="faq-card">
-            <button class="faq-question" type="button">
-              We're beginners. Is it still for us?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              Yes. The app adjusts to your level and pace. You'll get gentle starts, clear guidance, and small wins that build momentum, while your partner gets the right challenge for them.
-            </div>
-          </div>
+    <div class="cf-faq__item">
+      <button class="cf-faq__q" type="button" aria-expanded="false">
+        <span>What does the AI actually do for a couple?</span><i aria-hidden="true"></i>
+      </button>
+      <div class="cf-faq__a"><div><p>It personalizes workouts and meals for each of you, then keeps them coordinated, aligning rest days, intensity and nutrition so you move forward together.</p></div></div>
+    </div>
 
-          <div class="faq-card">
-            <button class="faq-question" type="button">
-              What does the AI actually do for a couple?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              It personalizes workouts and meals for each of you, then keeps them coordinated, aligning rest days, intensity, and nutrition so you move forward together.
-            </div>
-          </div>
+    <div class="cf-faq__item">
+      <button class="cf-faq__q" type="button" aria-expanded="false">
+        <span>Which platforms are supported?</span><i aria-hidden="true"></i>
+      </button>
+      <div class="cf-faq__a"><div><p>CoupleFit is coming soon to iOS and Android. Wearable integrations will follow after launch.</p></div></div>
+    </div>
+  </div>
+</section>
 
-          <div class="faq-card">
-            <button class="faq-question" type="button">
-              Which platforms are supported?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              CoupleFit is coming soon to iOS and Android. Wearable integrations will follow after launch.
-            </div>
-          </div>
+<script>
+(function () {
+  document.querySelectorAll('.cf-faq__q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.cf-faq__item');
+      var open = !item.classList.contains('is-open');
+      item.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+})();
+</script>
 
-        </div>
-      </div>
-    </section>
 
     <!-- FINAL CTA -->
     <section class="section cta-section section--bleed reveal" id="cta">
