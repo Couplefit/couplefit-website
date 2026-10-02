@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20261002l" />
+<link rel="stylesheet" href="/style.css?v=20261002m" />
 <!-- GSAP Core -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
 
@@ -125,6 +125,53 @@
     </div>
   </div>
 </section>
+
+<!-- Vaste knop onderin op mobiel + menu dat meeleeft met scrollen -->
+<a href="#cta" class="cf-sticky-cta" id="cf-sticky-cta">Become a Founding Couple</a>
+<script>
+(function () {
+  function init() {
+    var header = document.querySelector('.site-header');
+    if (!header) { setTimeout(init, 150); return; }
+
+    var map = [];
+    header.querySelectorAll('.cf-nav a[href^="#"]').forEach(function (a) {
+      var target = document.querySelector(a.getAttribute('href'));
+      var sec = target && (target.closest('section') || target);
+      if (sec) map.push({ link: a, sec: sec });
+    });
+
+    var sticky = document.getElementById('cf-sticky-cta');
+    var hero = document.querySelector('.cf-hero');
+    var cta = document.getElementById('cta');
+
+    function update() {
+      var mid = window.innerHeight * 0.35;
+      var active = null;
+      map.forEach(function (m) {
+        var r = m.sec.getBoundingClientRect();
+        if (r.top <= mid && r.bottom > mid) active = m;
+      });
+      map.forEach(function (m) { m.link.classList.toggle('is-active', m === active); });
+
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+
+      if (sticky) {
+        var pastHero = hero ? hero.getBoundingClientRect().bottom < 0 : window.scrollY > 600;
+        var atCta = cta ? cta.getBoundingClientRect().top < window.innerHeight : false;
+        sticky.classList.toggle('is-visible', pastHero && !atCta);
+      }
+    }
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
 
 <script>
 (function () {
@@ -740,46 +787,7 @@
 
     
 
-    <section id="whats-included" class="included-section">
-      <div class="included-container">
-        <h2 class="included-title">What’s included</h2>
-        <p class="included-subtitle">All the essentials you and your partner need to stay consistent together.</p>
-
-        <div class="included-grid">
-
-          <div class="included-item">
-            <span class="included-icon">✓</span>
-            <p>Full workout library</p>
-          </div>
-
-          <div class="included-item">
-            <span class="included-icon">✓</span>
-            <p>AI-powered workout suggestions</p>
-          </div>
-
-          <div class="included-item">
-            <span class="included-icon">✓</span>
-            <p>Adaptive difficulty for both partners</p>
-          </div>
-
-          <div class="included-item">
-            <span class="included-icon">✓</span>
-            <p>AI meal tracking via photo analysis</p>
-          </div>
-
-          <div class="included-item">
-            <span class="included-icon">✓</span>
-            <p>Synced streaks for couples</p>
-          </div>
-
-          <div class="included-item">
-            <span class="included-icon">✓</span>
-            <p>Shared progress dashboard</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
+ 
 
     <!-- FAQ -->
     <section id="faq" class="faq-section">

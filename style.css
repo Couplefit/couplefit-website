@@ -6102,3 +6102,50 @@ body .cf-mobile-nav a:visited {
 }
 #main .cf-price .cf-plan--pop .cf-plan__cta:hover { background: var(--cf-burgundy-hover); }
 #main .cf-price .cf-plan--pop .cf-tag { background: var(--cf-burgundy); color: var(--cf-ivory); }
+
+/* ===== Header: actieve sectie in het menu + compacter bij scrollen ===== */
+body .site-header { transition: background .25s ease, box-shadow .25s ease, padding .25s ease; }
+body .site-header .cf-nav a {
+  position: relative;
+  color: var(--cf-ink);
+  transition: opacity .2s ease, color .2s ease;
+}
+body .site-header .cf-nav a::after {
+  content: "";
+  position: absolute; left: 50%; bottom: -8px;
+  width: 18px; height: 3px; border-radius: 3px;
+  background: var(--cf-burgundy);
+  transform: translateX(-50%) scaleX(0);
+  transition: transform .3s cubic-bezier(.22,1,.36,1);
+}
+body .site-header .cf-nav a.is-active { opacity: 1; color: var(--cf-burgundy); }
+body .site-header .cf-nav a.is-active::after { transform: translateX(-50%) scaleX(1); }
+body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
+
+@media (min-width: 769px) {
+  body .site-header.is-scrolled { padding: 6px 6px 6px 24px !important; }
+  body .site-header.is-scrolled .cf-cta { padding: 9px 18px; }
+}
+
+/* ===== Vaste knop onderin op mobiel ===== */
+.cf-sticky-cta { display: none; }
+@media (max-width: 768px) {
+  .cf-sticky-cta {
+    display: flex; align-items: center; justify-content: center;
+    position: fixed; left: 12px; right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    z-index: 90;
+    padding: 16px 24px; border-radius: 999px;
+    background: var(--cf-burgundy);
+    color: var(--cf-ivory) !important;
+    text-decoration: none;
+    font: 600 16px var(--cf-body);
+    box-shadow: 0 10px 28px -8px rgba(91,30,45,.5);
+    transform: translateY(140%);
+    transition: transform .35s cubic-bezier(.22,1,.36,1);
+  }
+  .cf-sticky-cta.is-visible { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body .site-header, .cf-sticky-cta, body .site-header .cf-nav a::after { transition: none; }
+}
