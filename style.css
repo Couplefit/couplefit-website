@@ -5537,3 +5537,225 @@ body .cf-mobile-nav a:visited {
     clip-path: inset(-120px 0 -120px 0);
   }
 }
+
+/* =========================================
+   NIEUWE HERO MET LEVENDE TELEFOON (cf-hero)
+   ========================================= */
+:root {
+  --cf-bg: #FAF8F5;
+  --cf-ink: #1E2A44;
+  --cf-text: #3A4560;
+  --cf-label: #56698A;
+  --cf-burgundy: #5B1E2D;
+  --cf-burgundy-hover: #7C2C3A;
+  --cf-powder: #B7C6D6;
+  --cf-dusty: #7A8FAE;
+  --cf-softblue: #E6ECF2;
+  --cf-ivory: #F3EFE6;
+  --cf-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --cf-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.cf-hero, .cf-hero * { box-sizing: border-box; }
+
+.cf-hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  min-height: 100svh;
+  color: var(--cf-text);
+  font-family: var(--cf-body);
+}
+.cf-hero__title {
+  font-family: var(--cf-display);
+  font-weight: 600;
+  font-size: clamp(40px, 5.4vw, 68px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: var(--cf-ink);
+  margin: 0 0 24px;
+  max-width: 11ch;
+  text-align: left;
+}
+.cf-hero__lead { font-size: 19px; line-height: 1.55; max-width: 44ch; margin: 0 0 36px; color: var(--cf-text); text-align: left; }
+.cf-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.cf-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 16px 26px; border-radius: 999px;
+  font: 600 16px/1 var(--cf-body); text-decoration: none; cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color .2s, border-color .2s, transform .2s;
+}
+.cf-btn--primary { background: var(--cf-burgundy); color: var(--cf-ivory); box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 8px 20px -8px rgba(91,30,45,.55); }
+.cf-btn--primary:hover { background: var(--cf-burgundy-hover); color: var(--cf-ivory); }
+.cf-btn--ghost { color: var(--cf-ink); border-color: rgba(30,42,68,.18); background: rgba(255,255,255,.6); }
+.cf-btn--ghost:hover { border-color: rgba(30,42,68,.4); color: var(--cf-ink); }
+.cf-btn:active { transform: scale(.98); }
+.cf-btn:focus-visible, .cf-mark:focus-visible { outline: 3px solid var(--cf-dusty); outline-offset: 3px; }
+.cf-hero__note { font-size: 14px; color: var(--cf-label); margin: 0; text-align: left; }
+
+/* blauw vlak achter de telefoon */
+.cf-stage {
+  position: relative; background: var(--cf-softblue); border-radius: 28px;
+  padding: 56px 24px; display: flex; justify-content: center; align-items: center;
+  perspective: 1200px; isolation: isolate;
+}
+.cf-stage::before, .cf-stage::after {
+  content: ""; position: absolute; z-index: -1;
+  width: 62%; aspect-ratio: 1; border-radius: 50%;
+  top: 50%; transform: translateY(-50%);
+}
+.cf-stage::before { left: 4%; border: 1.5px solid rgba(91,30,45,.16); }
+.cf-stage::after  { right: 4%; border: 1.5px solid rgba(122,143,174,.35); }
+
+/* telefoon */
+.cf-phone {
+  width: 300px; background: var(--cf-ink); border-radius: 50px; padding: 10px;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 2px 4px rgba(30,42,68,.15), 0 24px 48px -16px rgba(30,42,68,.35), 0 48px 80px -40px rgba(91,30,45,.35);
+  transition: transform .3s ease-out; transform-style: preserve-3d;
+}
+.cf-screen {
+  position: relative; height: 610px; background: var(--cf-bg); border-radius: 40px;
+  overflow: hidden; padding: 14px 14px 72px;
+  display: flex; flex-direction: column; gap: 10px; font-size: 13px; text-align: left;
+}
+.cf-island { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 92px; height: 26px; background: var(--cf-ink); border-radius: 20px; }
+.cf-status { display: flex; justify-content: space-between; align-items: center; padding: 2px 14px 6px; font-weight: 600; color: var(--cf-ink); font-size: 13px; }
+.cf-status__bars { display: flex; gap: 2px; align-items: flex-end; }
+.cf-status__bars i { display: block; width: 3px; background: var(--cf-ink); border-radius: 1px; }
+.cf-greet small { color: var(--cf-label); font-size: 12px; }
+.cf-greet h2 { font-family: var(--cf-display); font-weight: 600; font-size: 20px; line-height: 1.2; letter-spacing: -0.02em; color: var(--cf-ink); margin: 2px 0 0; text-align: left; }
+.cf-card { background: #fff; border-radius: 20px; padding: 12px 14px; box-shadow: 0 1px 0 rgba(30,42,68,.04), 0 4px 14px -6px rgba(30,42,68,.12); }
+.cf-card__head { display: flex; justify-content: space-between; color: var(--cf-label); font-size: 12px; margin-bottom: 4px; }
+
+/* ringen */
+.cf-rings { display: block; width: 100%; height: auto; }
+.cf-ring-track { fill: none; stroke: var(--cf-softblue); stroke-width: 9; }
+.cf-ring {
+  fill: none; stroke-width: 9; stroke-linecap: round;
+  stroke-dasharray: 100; stroke-dashoffset: 100;
+  transform: rotate(-90deg); transform-box: fill-box; transform-origin: center;
+  transition: stroke-dashoffset 1.4s cubic-bezier(.22,1,.36,1);
+  mix-blend-mode: multiply;
+}
+.cf-ring--max { stroke: var(--cf-burgundy); }
+.cf-ring--rach { stroke: var(--cf-dusty); }
+.cf-ring-pct { font: 700 15px var(--cf-display); fill: var(--cf-ink); text-anchor: middle; }
+.cf-ring-name { font: 500 9.5px var(--cf-body); fill: var(--cf-label); text-anchor: middle; }
+
+/* streak */
+.cf-streak { background: var(--cf-burgundy); color: var(--cf-ivory); border-radius: 20px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; box-shadow: inset 0 1px 0 rgba(255,255,255,.15); }
+.cf-streak__num { font: 700 30px/1 var(--cf-display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.cf-streak__label { font-size: 12px; opacity: .85; margin-top: 2px; }
+.cf-week { display: flex; gap: 5px; }
+.cf-week i { width: 10px; height: 10px; border-radius: 50%; background: var(--cf-powder); display: block; transition: background-color .4s, box-shadow .4s; }
+.cf-week i.is-today { background: transparent; box-shadow: inset 0 0 0 1.5px var(--cf-powder); }
+.cf-week i.is-today.is-done { background: var(--cf-powder); }
+
+/* vandaag */
+.cf-today h3 { font: 600 14px var(--cf-display); color: var(--cf-ink); margin: 0; text-align: left; }
+.cf-today p { margin: 2px 0 8px; color: var(--cf-label); font-size: 12px; text-align: left; }
+.cf-person { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
+.cf-person + .cf-person { border-top: 1px solid var(--cf-softblue); }
+.cf-avatar { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font: 700 12px var(--cf-display); color: #fff; flex: none; }
+.cf-avatar--r { background: var(--cf-dusty); }
+.cf-avatar--m { background: var(--cf-burgundy); }
+.cf-person span { flex: 1; color: var(--cf-ink); font-weight: 500; }
+.cf-done { color: var(--cf-burgundy); font-weight: 600; font-size: 12px; display: inline-flex; align-items: center; gap: 4px; }
+.cf-mark {
+  border: 0; background: var(--cf-burgundy); color: var(--cf-ivory);
+  font: 600 12px var(--cf-body); padding: 7px 12px; border-radius: 999px; cursor: pointer;
+  animation: cf-pulse 2.4s ease-in-out 2.2s infinite;
+}
+.cf-mark:hover { background: var(--cf-burgundy-hover); }
+@keyframes cf-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(91,30,45,.35); } 50% { box-shadow: 0 0 0 6px rgba(91,30,45,0); } }
+
+/* tabbalk */
+.cf-tabs { position: absolute; left: 0; right: 0; bottom: 0; height: 64px; background: rgba(255,255,255,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid rgba(30,42,68,.06); display: flex; justify-content: space-around; align-items: flex-start; padding-top: 12px; }
+.cf-tabs svg { width: 22px; height: 22px; stroke: var(--cf-label); fill: none; stroke-width: 1.8; }
+.cf-tabs .is-active svg { stroke: var(--cf-burgundy); }
+
+/* zwevende meldingen */
+.cf-float {
+  position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.9); border-radius: 18px; padding: 10px 14px 10px 10px;
+  box-shadow: 0 12px 32px -12px rgba(30,42,68,.3);
+  font-size: 13px; line-height: 1.3; color: var(--cf-text); max-width: 230px; text-align: left;
+  opacity: 0; transform: translateY(10px) scale(.97);
+  transition: opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1);
+}
+.cf-float.is-in { opacity: 1; transform: none; }
+.cf-float strong { display: block; color: var(--cf-ink); font-weight: 600; }
+.cf-float__icon { width: 34px; height: 34px; border-radius: 11px; display: grid; place-items: center; flex: none; color: #fff; font-size: 16px; }
+.cf-float--a, .cf-float--c { top: 12%; left: 2%; }
+.cf-float--b { bottom: 14%; right: 2%; }
+
+/* mobiel */
+@media (max-width: 900px) {
+  .cf-hero { grid-template-columns: 1fr; padding-top: 104px; gap: 40px; min-height: 0; }
+  .cf-hero__title { max-width: 13ch; }
+}
+@media (max-width: 520px) {
+  .cf-hero { padding: 96px 16px 56px; }
+  .cf-hero__lead { font-size: 17px; }
+  .cf-btn { width: 100%; }
+  .cf-stage { padding: 72px 8px 64px; }
+  .cf-phone { width: 272px; }
+  .cf-screen { height: 560px; }
+  .cf-float { max-width: 200px; font-size: 12px; }
+  .cf-float--a, .cf-float--c { top: 14px; left: 10px; }
+  .cf-float--b { bottom: 14px; right: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cf-ring, .cf-float, .cf-phone, .cf-week i { transition: none; }
+  .cf-mark { animation: none; }
+}
+
+/* cf-hero reparaties: knopkleuren en positie meldingen */
+#main .cf-hero .cf-btn--primary,
+#main .cf-hero .cf-btn--primary:hover { color: var(--cf-ivory); }
+#main .cf-hero .cf-btn--ghost,
+#main .cf-hero .cf-btn--ghost:hover { color: var(--cf-ink); }
+
+@media (min-width: 521px) {
+  .cf-float--a, .cf-float--c { top: 4%; left: -28px; }
+  .cf-float--b { right: -28px; }
+}
+
+/* cf-hero als grote witte kaart */
+#main .cf-hero {
+  width: min(1200px, calc(100% - 48px));
+  max-width: none;
+  margin: 88px auto 0;
+  padding: 56px;
+  background: #fff;
+  border-radius: 32px;
+  border: 1px solid rgba(30,42,68,.06);
+  box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 10px 28px rgba(30,42,68,.10);
+  min-height: calc(100svh - 112px);
+}
+
+@media (max-width: 900px) {
+  #main .cf-hero { min-height: 0; padding: 40px 32px; margin-top: 88px; }
+}
+@media (max-width: 520px) {
+  #main .cf-hero { width: calc(100% - 24px); padding: 28px 16px 16px; margin-top: 80px; border-radius: 28px; }
+  #main .cf-hero .cf-stage { border-radius: 22px; }
+}
+
+/* cf-hero kaart: wit en ruimte bovenaan forceren */
+#main section.cf-hero.cf-hero {
+  background: #fff !important;
+  margin-top: 124px !important;
+  box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 10px 28px rgba(30,42,68,.10) !important;
+}
+@media (max-width: 900px) {
+  #main section.cf-hero.cf-hero { margin-top: 92px !important; }
+}
+@media (max-width: 520px) {
+    #main section.cf-hero.cf-hero { margin-top: 84px !important; }
+}

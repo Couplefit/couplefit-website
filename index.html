@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20260930zp" />
+<link rel="stylesheet" href="/style.css?v=20261002e" />
 <!-- GSAP Core -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
 
@@ -36,40 +36,164 @@
 
   <main id="main">
 <!-- ===== HERO ===== -->
-<section class="hero" id="hero">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-overlay-left" aria-hidden="true"></div>
-  <div class="hero-overlay-center" aria-hidden="true"></div>
-  <div class="hero-vignette" aria-hidden="true"></div>
+<section class="cf-hero" id="home" aria-labelledby="cf-hero-title">
+  <div class="cf-hero__copy">
+    <h1 id="cf-hero-title" class="cf-hero__title">Build a stronger life, together.</h1>
+    <p class="cf-hero__lead">Workouts, meals and habits for two. Each of you gets your own plan, and your progress lives in one shared space, so you keep each other going.</p>
+    <div class="cf-hero__actions">
+      <a class="cf-btn cf-btn--primary" href="#cta">Become a Founding Couple</a>
+      <a class="cf-btn cf-btn--ghost" href="#features">See how it works</a>
+    </div>
+    <p class="cf-hero__note">Coming soon to iOS and Android. No card required.</p>
+  </div>
 
-  <div class="hero-overlay-card">
-    <div class="hero-inner">
-      <h1 class="hero-title">Build a stronger life, together.</h1>
-      <p class="hero-subtitle">
-      Fitness, wellness, habits and accountability in one app designed for couples. One subscription for two.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#plans" class="hero-cta hero-cta-primary">Start free, invite your partner</a>
-        <a href="#features" class="hero-cta hero-cta-secondary">See How It Works</a>
+  <div class="cf-stage" id="cf-stage" aria-label="Preview of the CoupleFit app">
+    <div class="cf-float cf-float--a" id="cf-float-a">
+      <div class="cf-float__icon" style="background:var(--cf-dusty)">✓</div>
+      <div><strong>Rachelle finished Leg day</strong>Your turn, Max</div>
+    </div>
+    <div class="cf-float cf-float--b" id="cf-float-b">
+      <div class="cf-float__icon" style="background:var(--cf-burgundy)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg>
       </div>
+      <div><strong>Lunch logged from a photo</strong>540 kcal, 38 g protein</div>
+    </div>
+    <div class="cf-float cf-float--c" id="cf-float-c" aria-live="polite">
+      <div class="cf-float__icon" style="background:var(--cf-burgundy)">♥</div>
+      <div><strong>You're both done today</strong>Streak is now 24 days</div>
+    </div>
 
-      <p class="hero-reassure">No card required • Cancel anytime</p>
-
-      <div class="platform-badges">
-        <div class="platform-badge ios">
-          <span class="platform-icon"></span>
-          <span class="platform-text">iOS app coming early 2026</span>
+    <div class="cf-phone" id="cf-phone">
+      <div class="cf-screen">
+        <div class="cf-island"></div>
+        <div class="cf-status">
+          <span>9:41</span>
+          <span class="cf-status__bars" aria-hidden="true"><i style="height:4px"></i><i style="height:6px"></i><i style="height:8px"></i><i style="height:10px"></i></span>
         </div>
 
-        <div class="platform-badge android">
-          <span class="platform-icon">▶︎</span>
-          <span class="platform-text">Android app coming early 2026</span>
+        <div class="cf-greet">
+          <small>Saturday</small>
+          <h2>Morning, Max &amp; Rachelle</h2>
         </div>
+
+        <div class="cf-card">
+          <div class="cf-card__head"><span>Weekly goal</span><span>5 of 6 sessions</span></div>
+          <svg class="cf-rings" viewBox="0 0 220 104" role="img" aria-label="Weekly goal: Max 72 percent, Rachelle 86 percent">
+            <circle class="cf-ring-track" cx="80" cy="52" r="40" />
+            <circle class="cf-ring-track" cx="140" cy="52" r="40" />
+            <circle class="cf-ring cf-ring--max" id="cf-ring-max" cx="80" cy="52" r="40" pathLength="100" />
+            <circle class="cf-ring cf-ring--rach" id="cf-ring-rach" cx="140" cy="52" r="40" pathLength="100" />
+            <text class="cf-ring-pct" x="66" y="54" id="cf-pct-max">0%</text>
+            <text class="cf-ring-name" x="66" y="67">Max</text>
+            <text class="cf-ring-pct" x="154" y="54" id="cf-pct-rach">0%</text>
+            <text class="cf-ring-name" x="154" y="67">Rachelle</text>
+          </svg>
+        </div>
+
+        <div class="cf-streak">
+          <div>
+            <div class="cf-streak__num" id="cf-streak">0</div>
+            <div class="cf-streak__label">days in a row, together</div>
+          </div>
+          <div class="cf-week" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i class="is-today" id="cf-today-dot"></i>
+          </div>
+        </div>
+
+        <div class="cf-card cf-today">
+          <h3>Today: Leg day</h3>
+          <p>45 min, home or gym</p>
+          <div class="cf-person">
+            <div class="cf-avatar cf-avatar--r">R</div>
+            <span>Rachelle</span>
+            <span class="cf-done">✓ Done</span>
+          </div>
+          <div class="cf-person" id="cf-max-row">
+            <div class="cf-avatar cf-avatar--m">M</div>
+            <span>Max</span>
+            <button class="cf-mark" id="cf-mark" type="button">Mark done</button>
+          </div>
+        </div>
+
+        <nav class="cf-tabs" aria-hidden="true">
+          <span class="is-active"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span>
+          <span><svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg></span>
+          <span><svg viewBox="0 0 24 24"><path d="M7 3v8a3 3 0 0 0 3 3v7M7 3v5M10 3v5M17 21V3c-2 0-4 2-4 6v4h4"/></svg></span>
+          <span><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><circle cx="16" cy="9" r="3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.5c3 0 6 2 6 5.5"/></svg></span>
+        </nav>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ringMax = document.getElementById('cf-ring-max');
+  var ringRach = document.getElementById('cf-ring-rach');
+  var pctMax = document.getElementById('cf-pct-max');
+  var pctRach = document.getElementById('cf-pct-rach');
+  var streak = document.getElementById('cf-streak');
+
+  function setRing(ring, pct) { ring.style.strokeDashoffset = 100 - pct; }
+
+  function countUp(el, from, to, ms, suffix) {
+    suffix = suffix || '';
+    if (reduce) { el.textContent = to + suffix; return; }
+    var start = null;
+    function step(t) {
+      if (!start) start = t;
+      var p = Math.min((t - start) / ms, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(from + (to - from) * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function show(id, delay) {
+    setTimeout(function () { document.getElementById(id).classList.add('is-in'); }, reduce ? 0 : delay);
+  }
+  function hide(id) { document.getElementById(id).classList.remove('is-in'); }
+
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      setRing(ringMax, 72);
+      setRing(ringRach, 86);
+      countUp(pctMax, 0, 72, 1400, '%');
+      countUp(pctRach, 0, 86, 1400, '%');
+      countUp(streak, 0, 23, 1200);
+      show('cf-float-a', 1300);
+      show('cf-float-b', 1800);
+    });
+  });
+
+  document.getElementById('cf-mark').addEventListener('click', function () {
+    var done = document.createElement('span');
+    done.className = 'cf-done';
+    done.textContent = '✓ Done';
+    this.replaceWith(done);
+    setRing(ringMax, 86);
+    countUp(pctMax, 72, 86, 900, '%');
+    document.getElementById('cf-today-dot').classList.add('is-done');
+    countUp(streak, 23, 24, 600);
+    hide('cf-float-a');
+    show('cf-float-c', 350);
+  });
+
+  var stage = document.getElementById('cf-stage');
+  var phone = document.getElementById('cf-phone');
+  if (!reduce && window.matchMedia('(pointer: fine)').matches) {
+    stage.addEventListener('pointermove', function (e) {
+      var r = stage.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      phone.style.transform = 'rotateY(' + (x * 8) + 'deg) rotateX(' + (-y * 8) + 'deg)';
+    });
+    stage.addEventListener('pointerleave', function () { phone.style.transform = ''; });
+  }
+})();
+</script>
 
 
     <!-- VALUE-PROP GRID - Frosted Glass Cards -->
