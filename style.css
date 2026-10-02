@@ -5898,3 +5898,207 @@ body .cf-mobile-nav a:visited {
     .cf-scan { display: none; }
     .cf-macros li, .cf-chart .cf-line, .cf-chart .cf-dot { transition: none; }
   }
+
+
+  /* ================= PRICING ================= */
+.cf-price, .cf-price * { box-sizing: border-box; }
+.cf-price {
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+  color: var(--cf-text);
+  font-family: var(--cf-body);
+  text-align: center;
+}
+.cf-price__title {
+  font-family: var(--cf-display); font-weight: 600;
+  font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; letter-spacing: -0.025em;
+  color: var(--cf-ink); margin: 0 0 10px;
+}
+.cf-price__lead { font-size: 17px; line-height: 1.5; margin: 0 auto 28px; max-width: 52ch; }
+
+/* schakelaar */
+.cf-toggle {
+  position: relative; display: inline-grid; grid-template-columns: 1fr 1fr;
+  background: var(--cf-softblue); border-radius: 999px; padding: 4px;
+  margin-bottom: 40px;
+}
+.cf-toggle__thumb {
+  position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px);
+  background: #fff; border-radius: 999px;
+  box-shadow: 0 1px 2px rgba(30,42,68,.08), 0 4px 12px -4px rgba(30,42,68,.2);
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
+}
+.cf-toggle[data-period="yearly"] .cf-toggle__thumb { transform: translateX(100%); }
+.cf-toggle button {
+  position: relative; z-index: 1; border: 0; background: transparent; cursor: pointer;
+  font: 600 15px var(--cf-body); color: var(--cf-label);
+  padding: 11px 22px; border-radius: 999px; min-width: 150px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  transition: color .25s;
+}
+.cf-toggle button[aria-pressed="true"] { color: var(--cf-ink); }
+.cf-toggle button:focus-visible { outline: 3px solid var(--cf-dusty); outline-offset: 2px; }
+.cf-save { font-size: 12px; font-weight: 600; color: var(--cf-burgundy); background: rgba(91,30,45,.1); padding: 3px 8px; border-radius: 999px; }
+
+/* kaarten */
+.cf-plans { display: grid; grid-template-columns: 1fr 1.08fr 1fr; gap: 20px; align-items: stretch; text-align: left; padding: 16px 0; }
+.cf-plan {
+  background: #fff; border-radius: 28px; padding: 32px 28px;
+  box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 10px 28px rgba(30,42,68,.08);
+  display: flex; flex-direction: column; gap: 22px;
+}
+.cf-plan h3 { font-family: var(--cf-display); font-weight: 600; font-size: 22px; letter-spacing: -0.02em; color: var(--cf-ink); margin: 0; }
+.cf-plan__sub { font-size: 14px; color: var(--cf-label); margin: 4px 0 0; }
+
+.cf-plan--pop {
+  background: var(--cf-burgundy); color: var(--cf-ivory);
+  padding: 40px 32px;
+  box-shadow: 0 2px 4px rgba(30,42,68,.08), 0 24px 48px -16px rgba(91,30,45,.45);
+  position: relative;
+  margin: -16px 0;
+}
+.cf-plan--pop h3 { color: var(--cf-ivory); }
+.cf-plan--pop .cf-plan__sub { color: rgba(243,239,230,.75); }
+.cf-tag {
+  position: absolute; top: -14px; left: 32px;
+  background: var(--cf-ivory); color: var(--cf-burgundy);
+  font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px;
+  box-shadow: 0 4px 12px -4px rgba(30,42,68,.25);
+}
+
+/* prijsblok */
+.cf-amount { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.cf-amount__num { font: 700 46px/1 var(--cf-display); letter-spacing: -0.03em; color: var(--cf-ink); font-variant-numeric: tabular-nums; }
+.cf-plan--pop .cf-amount__num { color: #fff; }
+.cf-amount__per { font-size: 15px; color: var(--cf-label); }
+.cf-plan--pop .cf-amount__per { color: rgba(243,239,230,.75); }
+.cf-amount__old { font-size: 16px; color: var(--cf-label); text-decoration: line-through; opacity: 0; transition: opacity .3s; }
+.cf-plan--pop .cf-amount__old { color: rgba(243,239,230,.6); }
+.cf-price[data-period="yearly"] .cf-amount__old { opacity: 1; }
+.cf-person {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 12px;
+  font-size: 14px; font-weight: 600; color: var(--cf-ink);
+  background: var(--cf-softblue); padding: 6px 12px 6px 6px; border-radius: 999px;
+}
+.cf-person__dots { display: flex; }
+.cf-person__dots i { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #fff; display: block; }
+.cf-person__dots i:first-child { background: var(--cf-burgundy); }
+.cf-person__dots i:last-child { background: var(--cf-dusty); margin-left: -6px; }
+.cf-plan--pop .cf-person { background: rgba(243,239,230,.14); color: var(--cf-ivory); }
+.cf-plan--pop .cf-person__dots i { border-color: var(--cf-burgundy); }
+.cf-plan--pop .cf-person__dots i:first-child { background: var(--cf-ivory); }
+.cf-plan--pop .cf-person__dots i:last-child { background: var(--cf-powder); }
+.cf-billing { font-size: 13px; color: var(--cf-label); margin: 10px 0 0; min-height: 1.4em; }
+.cf-plan--pop .cf-billing { color: rgba(243,239,230,.75); }
+
+/* lijst */
+.cf-list { flex: 1; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.4; }
+.cf-list li { display: flex; gap: 10px; align-items: flex-start; }
+.cf-list li::before {
+  content: "✓"; flex: none; width: 20px; height: 20px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 11px; font-weight: 700;
+  background: var(--cf-softblue); color: var(--cf-burgundy); margin-top: 1px;
+}
+.cf-plan--pop .cf-list li::before { background: rgba(243,239,230,.16); color: var(--cf-ivory); }
+
+/* knoppen */
+.cf-plan__cta {
+  display: flex; align-items: center; justify-content: center;
+  padding: 15px 20px; border-radius: 999px; text-decoration: none;
+  font: 600 15px var(--cf-body);
+  background: var(--cf-burgundy); color: var(--cf-ivory);
+  transition: background-color .2s, transform .2s;
+}
+.cf-plan__cta:hover { background: var(--cf-burgundy-hover); color: var(--cf-ivory); }
+.cf-plan--pop .cf-plan__cta { background: var(--cf-ivory); color: var(--cf-burgundy); }
+.cf-plan--pop .cf-plan__cta:hover { background: #fff; color: var(--cf-burgundy); }
+.cf-plan__cta:active { transform: scale(.98); }
+.cf-plan__cta:focus-visible { outline: 3px solid var(--cf-dusty); outline-offset: 3px; }
+.cf-plan__note { font-size: 13px; color: var(--cf-label); text-align: center; margin: -10px 0 0; }
+.cf-plan--pop .cf-plan__note { color: rgba(243,239,230,.7); }
+
+@media (max-width: 960px) {
+  .cf-plans { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+  .cf-plan--pop { order: -1; margin: 14px 0 0; }
+  .cf-plans { padding: 0; }
+}
+@media (max-width: 520px) {
+  .cf-price { width: calc(100% - 24px); }
+  .cf-toggle button { min-width: 0; padding: 10px 16px; font-size: 14px; }
+  .cf-plan { padding: 28px 22px; }
+  .cf-plan--pop { padding: 34px 22px; }
+  .cf-tag { left: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cf-toggle__thumb, .cf-amount__old { transition: none; }
+}
+
+/* cf-pricing reparaties: knoppen gelijk + label per persoon */
+#main .cf-price .cf-plan__cta,
+#main .cf-price .cf-plan__cta:hover { color: var(--cf-ivory); }
+#main .cf-price .cf-plan--pop .cf-plan__cta {
+  background: var(--cf-burgundy-hover);
+  color: var(--cf-ivory);
+  box-shadow: inset 0 0 0 1.5px rgba(243,239,230,.45);
+}
+#main .cf-price .cf-plan--pop .cf-plan__cta:hover { background: #8E3445; color: var(--cf-ivory); }
+#main .cf-price .cf-person span:not(.cf-person__dots) {
+  display: inline; color: inherit; background: none;
+  padding: 0; margin: 0; width: auto; min-width: 0;
+  text-align: left; white-space: nowrap;
+  font-size: 14px; font-weight: 600; line-height: 1.3; opacity: 1;
+}
+
+/* cf-pricing: premium knop wit + label per persoon netjes in het vlak */
+#main .cf-price .cf-plan--pop .cf-plan__cta,
+#main .cf-price .cf-plan--pop .cf-plan__cta:hover {
+  background: #fff;
+  color: var(--cf-burgundy);
+  box-shadow: 0 6px 16px -8px rgba(30,42,68,.35);
+}
+#main .cf-price .cf-person {
+  display: inline-flex !important;
+  width: max-content !important;
+  max-width: 100%;
+}
+#main .cf-price .cf-person span:not(.cf-person__dots) {
+  position: static !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-indent: 0 !important;
+  float: none !important;
+  width: auto !important;
+}
+
+/* cf-pricing: label per persoon */
+#main .cf-price .cf-person__text { font-weight: 600; color: inherit; white-space: nowrap; }
+
+/* cf-pricing: premium wit met burgundy rand */
+#main .cf-price .cf-plan--pop {
+  background: #fff;
+  color: var(--cf-text);
+  box-shadow: inset 0 0 0 2px var(--cf-burgundy), 0 24px 48px -20px rgba(91,30,45,.35);
+}
+#main .cf-price .cf-plan--pop h3,
+#main .cf-price .cf-plan--pop .cf-amount__num { color: var(--cf-ink); }
+#main .cf-price .cf-plan--pop .cf-plan__sub,
+#main .cf-price .cf-plan--pop .cf-amount__per,
+#main .cf-price .cf-plan--pop .cf-amount__old,
+#main .cf-price .cf-plan--pop .cf-billing,
+#main .cf-price .cf-plan--pop .cf-plan__note { color: var(--cf-label); }
+#main .cf-price .cf-plan--pop .cf-person { background: var(--cf-softblue); color: var(--cf-ink); }
+#main .cf-price .cf-plan--pop .cf-person__dots i { border-color: #fff; }
+#main .cf-price .cf-plan--pop .cf-person__dots i:first-child { background: var(--cf-burgundy); }
+#main .cf-price .cf-plan--pop .cf-person__dots i:last-child { background: var(--cf-dusty); }
+#main .cf-price .cf-plan--pop .cf-list li::before { background: var(--cf-softblue); color: var(--cf-burgundy); }
+#main .cf-price .cf-plan--pop .cf-plan__cta,
+#main .cf-price .cf-plan--pop .cf-plan__cta:hover {
+  background: var(--cf-burgundy);
+  color: var(--cf-ivory);
+  box-shadow: none;
+}
+#main .cf-price .cf-plan--pop .cf-plan__cta:hover { background: var(--cf-burgundy-hover); }
+#main .cf-price .cf-plan--pop .cf-tag { background: var(--cf-burgundy); color: var(--cf-ivory); }

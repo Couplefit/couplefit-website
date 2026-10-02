@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20261002h" />
+<link rel="stylesheet" href="/style.css?v=20261002l" />
 <!-- GSAP Core -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
 
@@ -612,144 +612,133 @@
 </section>
 
 
-    <!-- PRICING - Frosted Glass Cards -->
-    <section class="section plans-section">
-      <div class="container container-center-1100">
-        <div class="pricing-header">
-          <h2 id="plans" class="section-title-lg">Simple pricing for two</h2>
-<p class="pricing-savings prose">One subscription. Two people. Unlimited progress.</p>
+<section class="cf-price" id="cf-pricing" data-period="yearly" aria-labelledby="plans">
+  <h2 id="plans" class="cf-price__title">Simple pricing for two</h2>
+  <p class="cf-price__lead">One subscription covers both of you. Two accounts, linked from day one.</p>
+
+  <div class="cf-toggle" data-period="yearly" role="group" aria-label="Billing period">
+    <span class="cf-toggle__thumb" aria-hidden="true"></span>
+    <button type="button" data-set="monthly" aria-pressed="false">Monthly</button>
+    <button type="button" data-set="yearly" aria-pressed="true">Yearly <span class="cf-save">Save 10%</span></button>
+  </div>
+
+  <div class="cf-plans">
+
+    <!-- BASIC -->
+    <article class="cf-plan">
+      <div>
+        <h3>Basic</h3>
+        <p class="cf-plan__sub">Get started together</p>
       </div>
-
-      <div class="billing-toggle" role="tablist" aria-label="Billing period">
-        <button type="button" class="billing-toggle-btn active" data-billing="monthly">Monthly</button>
-        <button type="button" class="billing-toggle-btn" data-billing="yearly">Yearly <span class="save-badge">Save 10%</span></button>
+      <div>
+        <div class="cf-amount"><span class="cf-amount__num">$0</span><span class="cf-amount__per">per month</span></div>
+        <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span>Free for both of you</div>
+        <p class="cf-billing">No card required, free forever</p>
       </div>
+      <ul class="cf-list">
+        <li>Two linked accounts</li>
+        <li>Basic workouts and nutrition</li>
+        <li>Simple progress tracking</li>
+      </ul>
+      <a class="cf-plan__cta" href="#cta">Start free, invite your partner</a>
+    </article>
 
-      <div class="pricing-grid">
-          <!-- BASIC -->
-          <div class="plan glass">
-            <h3 class="plan-title">Basic</h3>
-            <div class="plan-price-wrapper">
-              <div class="plan-price plan-price-free">$0</div>
-              <div class="plan-price-note">per month</div>
-            </div>
-            <ul class="muted plan-list">
-              <li>Connect with your partner</li>
-              <li>Basic workouts & nutrition</li>
-              <li>Simple progress tracking</li>
-            </ul>
-            <a href="#cta" class="btn primary w-100">Start free, invite your partner</a>
-            <div class="mini-reassure mt-8">No card required. Free forever.</div>
-          </div>
-
-          <!-- PREMIUM (Most Popular) -->
-          <div class="plan glass popular">
-            <div class="ribbon">Most Couples Choose This</div>
-            <h3 class="plan-title plan-title-pop">Premium</h3>
-<div class="plan-price-wrapper">
-              <div class="price-monthly">
-                <div class="plan-price plan-price-premium">$24.99</div>
-                <div class="plan-price-note">per month for two people</div>
-              </div>
-              <div class="price-yearly" hidden>
-                <div class="plan-price-row">
-                  <span class="plan-price plan-price-premium">$22.49</span>
-                  <span class="plan-price-old">$24.99</span>
-                </div>
-                <div class="plan-price-note">per month for two people</div>
-              </div>
-            </div>
-            <ul class="plan-list-strong">
-              <li>Everything in Basic</li>
-              <li>Couple mode (shared streaks + milestones)</li>
-              <li>Full workout & recipe library</li>
-              <li>Habit tracking + AI suggestions</li>
-            </ul>
-            <a href="#cta" class="btn primary w-100">Start 7‑day free trial</a>
-            <div class="mini-reassure mt-8">7-day free trial. Cancel anytime.</div>
-          </div>
-
-          <!-- ELITE -->
-          <div class="plan glass elite">
-            <h3 class="plan-title">Elite</h3>
-<div class="plan-price-wrapper">
-              <div class="price-monthly">
-                <div class="plan-price plan-price-elite">$34.99</div>
-                <div class="plan-price-note">per month</div>
-              </div>
-              <div class="price-yearly" hidden>
-                <div class="plan-price-row">
-                  <span class="plan-price plan-price-elite">$31.49</span>
-                  <span class="plan-price-old">$34.99</span>
-                </div>
-                <div class="plan-price-note">per month</div>
-              </div>
-            </div>
-            <ul class="plan-list-strong">
-              <li>Everything in Premium</li>
-              <li>Complete AI fitness program for both partners</li>
-              <li>Deep analytics & insights</li>
-              <li>Monthly couple performance reports</li>
-              <li>Wearable sync</li>
-            </ul>            
-            <a href="#cta" class="btn primary w-100">Go Elite</a>
-            <div class="mini-reassure mt-8">Cancel anytime. No commitment.</div>
-          </div>
-
-
+    <!-- PREMIUM -->
+    <article class="cf-plan cf-plan--pop">
+      <span class="cf-tag">Most couples choose this</span>
+      <div>
+        <h3>Premium</h3>
+        <p class="cf-plan__sub">Everything you need to grow together</p>
+      </div>
+      <div>
+        <div class="cf-amount">
+          <span class="cf-amount__num" data-monthly="24.99" data-yearly="22.49">$22.49</span>
+          <span class="cf-amount__per">per month</span>
+          <span class="cf-amount__old">$24.99</span>
         </div>
-
-        
-                <div class="pricing-dots" aria-label="Kies een abonnement">
-          <button type="button" aria-label="Basic"></button>
-          <button type="button" aria-label="Premium"></button>
-          <button type="button" aria-label="Elite"></button>
-        </div>
-        <script>
-          (function () {
-            const grid = document.querySelector('.plans-section .pricing-grid');
-            const dots = document.querySelectorAll('.pricing-dots button');
-            if (!grid || !dots.length) return;
-            const cards = grid.querySelectorAll('.plan');
-            const step = () => cards[1].offsetLeft - cards[0].offsetLeft;
-            const setActive = (i) => dots.forEach((d, n) => d.classList.toggle('active', n === i));
-            const goTo = (i, smooth) => {
-              grid.scrollTo({ left: step() * i, behavior: smooth ? 'smooth' : 'auto' });
-              setActive(i);
-            };
-            dots.forEach((d, i) => d.addEventListener('click', () => goTo(i, true)));
-            grid.addEventListener('scroll', () => {
-              setActive(Math.round(grid.scrollLeft / step()));
-            }, { passive: true });
-            const start = () => {
-              if (window.matchMedia('(max-width: 768px)').matches) goTo(1, false);
-            };
-            if (document.readyState === 'complete') start();
-            else window.addEventListener('load', start);
-          })();
-        </script>
-        <p class="android-note">iOS and Android versions coming soon.</p>
+        <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span><strong class="cf-person__text" data-monthly="That's $12.50 per person" data-yearly="That's $11.25 per person">That's $11.25 per person</strong></div>
+        <p class="cf-billing" data-monthly="Billed monthly, cancel anytime" data-yearly="Billed $269.88 a year, you save $30">Billed $269.88 a year, you save $30</p>
       </div>
-    </section>
+      <ul class="cf-list">
+        <li>Everything in Basic</li>
+        <li>Couple mode with shared streaks and milestones</li>
+        <li>Full workout and recipe library</li>
+        <li>Habit tracking with AI suggestions</li>
+      </ul>
+      <a class="cf-plan__cta" href="#cta">Start 7-day free trial</a>
+      <p class="cf-plan__note">7 days free, then your plan starts. Cancel anytime.</p>
+    </article>
 
-    <script>
-      (function () {
-        const buttons = document.querySelectorAll('.billing-toggle-btn');
-        buttons.forEach((btn) => {
-          btn.addEventListener('click', () => {
-            buttons.forEach((b) => b.classList.remove('active'));
-            btn.classList.add('active');
-            const billing = btn.dataset.billing;
-            document.querySelectorAll('.price-monthly').forEach((el) => {
-              el.hidden = billing === 'yearly';
-            });
-            document.querySelectorAll('.price-yearly').forEach((el) => {
-              el.hidden = billing === 'monthly';
-            });
-          });
-        });
-      })();
-    </script>
+    <!-- ELITE -->
+    <article class="cf-plan">
+      <div>
+        <h3>Elite</h3>
+        <p class="cf-plan__sub">The complete program for two</p>
+      </div>
+      <div>
+        <div class="cf-amount">
+          <span class="cf-amount__num" data-monthly="34.99" data-yearly="31.49">$31.49</span>
+          <span class="cf-amount__per">per month</span>
+          <span class="cf-amount__old">$34.99</span>
+        </div>
+        <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span><strong class="cf-person__text" data-monthly="That's $17.50 per person" data-yearly="That's $15.75 per person">That's $15.75 per person</strong></div>
+        <p class="cf-billing" data-monthly="Billed monthly, cancel anytime" data-yearly="Billed $377.88 a year, you save $42">Billed $377.88 a year, you save $42</p>
+      </div>
+      <ul class="cf-list">
+        <li>Everything in Premium</li>
+        <li>Complete AI fitness program for both of you</li>
+        <li>Deep analytics and insights</li>
+        <li>Monthly couple performance reports</li>
+        <li>Wearable sync</li>
+      </ul>
+      <a class="cf-plan__cta" href="#cta">Go Elite</a>
+    </article>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  var root = document.querySelector('.cf-price');
+  if (!root) return;
+  var toggle = root.querySelector('.cf-toggle');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function tween(el, to) {
+    var from = parseFloat(el.textContent.replace('$', '')) || 0;
+    if (reduce || from === to) { el.textContent = '$' + to.toFixed(2); return; }
+    var start = null;
+    function step(t) {
+      if (!start) start = t;
+      var p = Math.min((t - start) / 450, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = '$' + (from + (to - from) * e).toFixed(2);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function setPeriod(period) {
+    root.setAttribute('data-period', period);
+    toggle.setAttribute('data-period', period);
+    toggle.querySelectorAll('button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-set') === period ? 'true' : 'false');
+    });
+    root.querySelectorAll('.cf-amount__num[data-' + period + ']').forEach(function (el) {
+      tween(el, parseFloat(el.getAttribute('data-' + period)));
+    });
+    root.querySelectorAll('.cf-person [data-' + period + '], .cf-billing[data-' + period + ']').forEach(function (el) {
+      el.textContent = el.getAttribute('data-' + period);
+    });
+  }
+
+  toggle.querySelectorAll('button').forEach(function (b) {
+    b.addEventListener('click', function () { setPeriod(b.getAttribute('data-set')); });
+  });
+})();
+</script>
+
+    
 
     <section id="whats-included" class="included-section">
       <div class="included-container">
