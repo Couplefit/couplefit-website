@@ -6555,3 +6555,21 @@ body footer.cf-footer.cf-footer a:focus-visible { outline: 2px solid var(--cf-po
   body footer.cf-footer.cf-footer .cf-footer__top { gap: 28px; }
   body footer.cf-footer.cf-footer .cf-footer__bottom { flex-direction: column; gap: 6px; }
 }
+
+/* Story: selfie links, tekst rechts (alleen laptop/desktop) */
+@media (min-width: 901px) {
+  #main#main #story#story#story .cf-story__intro > div { order: 2; }
+  #main#main #story#story#story .cf-story__intro > .cf-story__photo--hero { order: 1; }
+}
+
+/* ===== Reveal bij scrollen (nieuwe secties) ===== */
+.cf-rv { opacity: 0; }
+.cf-rv.is-in {
+  opacity: 1;
+  animation: cf-rise .7s cubic-bezier(.22,1,.36,1) backwards;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+@keyframes cf-rise {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}

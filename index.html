@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20261003b" />
+<link rel="stylesheet" href="/style.css?v=20261003d" />
 
 
 </head>
@@ -888,6 +888,34 @@
 
   
   <script src="main.js?v=5"></script>
+    <!-- Reveal bij scrollen voor de nieuwe secties -->
+  <script>
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var groups = [
+      '.cf-bento__title', '.cf-tile',
+      '.cf-story__intro', '.cf-moment', '.cf-story__photo--side', '.cf-story__subtitle', '.cf-founder', '.cf-belief', '.cf-vision',
+      '.cf-tst__head', '.cf-quote',
+      '.cf-price__title', '.cf-price__lead', '.cf-toggle', '.cf-plan',
+      '.cf-faq__intro', '.cf-faq__item',
+      '.cf-signup__inner'
+    ];
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    groups.forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (el) {
+        var siblings = Array.prototype.filter.call(el.parentNode.children, function (c) { return c.matches(sel); });
+        el.style.setProperty('--i', Math.min(siblings.indexOf(el), 5));
+        el.classList.add('cf-rv');
+        io.observe(el);
+      });
+    });
+  })();
+  </script>
   
 <script>
   (function () {
