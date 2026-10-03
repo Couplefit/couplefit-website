@@ -6456,3 +6456,59 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
   #main#main #cta#cta#cta .cf-signup__form { padding: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { #main#main #cta#cta#cta .cf-signup__check { animation: none; } }
+
+/* ================= TESTIMONIALS ================= */
+#main#main #testimonials#testimonials#testimonials, #main#main #testimonials#testimonials#testimonials * { box-sizing: border-box; }
+#main#main #testimonials#testimonials#testimonials.cf-tst {
+  width: min(1200px, calc(100% - 48px)) !important; max-width: none !important;
+  margin-left: auto !important; margin-right: auto !important;
+  padding: 56px !important; background: var(--cf-softblue) !important;
+  border-radius: 32px !important; border: 0 !important; box-shadow: none !important;
+  text-align: left !important; color: var(--cf-text); font-family: var(--cf-body);
+}
+#main#main #testimonials#testimonials#testimonials::before, #main#main #testimonials#testimonials#testimonials::after { display: none !important; }
+#main#main #testimonials#testimonials#testimonials .cf-tst__head { margin-bottom: 32px; }
+#main#main #testimonials#testimonials#testimonials .cf-tst__title {
+  font-family: var(--cf-display); font-weight: 600; font-size: clamp(30px, 3.6vw, 44px);
+  line-height: 1.1; letter-spacing: -0.025em; color: var(--cf-ink); margin: 0 0 10px; text-align: left;
+}
+#main#main #testimonials#testimonials#testimonials .cf-tst__lead { font-size: 17px; line-height: 1.55; margin: 0; max-width: 52ch; color: var(--cf-text); text-align: left; }
+#main#main #testimonials#testimonials#testimonials .cf-tst__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+#main#main #testimonials#testimonials#testimonials .cf-quote {
+  margin: 0; background: #fff; border-radius: 24px; padding: 28px;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
+  box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 10px 28px rgba(30,42,68,.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+#main#main #testimonials#testimonials#testimonials .cf-quote:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(30,42,68,.05), 0 18px 36px rgba(30,42,68,.12); }
+#main#main #testimonials#testimonials#testimonials .cf-quote blockquote {
+  position: relative; margin: 0; padding-top: 30px;
+  font-family: var(--cf-display); font-weight: 600; font-size: 18px; line-height: 1.45; letter-spacing: -0.01em;
+  color: var(--cf-ink); quotes: none; text-align: left;
+}
+#main#main #testimonials#testimonials#testimonials .cf-quote blockquote::before {
+  content: "\201C"; position: absolute; top: -10px; left: -2px;
+  font-family: Georgia, serif; font-size: 56px; line-height: 1; color: var(--cf-burgundy);
+}
+#main#main #testimonials#testimonials#testimonials .cf-quote figcaption { display: flex; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid var(--cf-softblue); }
+#main#main #testimonials#testimonials#testimonials .cf-quote figcaption img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; background: var(--cf-softblue); flex: none; margin: 0; }
+#main#main #testimonials#testimonials#testimonials .cf-quote figcaption span { font-size: 15px; font-weight: 600; color: var(--cf-ink); }
+
+/* tablet: twee kolommen, mobiel: swipen zoals in een app */
+@media (max-width: 1000px) { #main#main #testimonials#testimonials#testimonials .cf-tst__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px) {
+  #main#main #testimonials#testimonials#testimonials.cf-tst { padding: 36px 0 36px 20px !important; }
+  #main#main #testimonials#testimonials#testimonials .cf-tst__head { padding-right: 20px; }
+  #main#main #testimonials#testimonials#testimonials .cf-tst__grid {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px;
+    padding: 4px 20px 16px 0; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  #main#main #testimonials#testimonials#testimonials .cf-tst__grid::-webkit-scrollbar { display: none; }
+  #main#main #testimonials#testimonials#testimonials .cf-quote { flex: 0 0 82%; scroll-snap-align: start; }
+  #main#main #testimonials#testimonials#testimonials .cf-quote:hover { transform: none; }
+}
+@media (max-width: 520px) { #main#main #testimonials#testimonials#testimonials.cf-tst { width: calc(100% - 24px) !important; border-radius: 28px !important; } }
+@media (prefers-reduced-motion: reduce) { #main#main #testimonials#testimonials#testimonials .cf-quote { transition: none; } }
+
+/* Testimonials: ruimte boven de kaart */
+#main#main #testimonials#testimonials#testimonials.cf-tst { margin-top: 20px !important; }
