@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20261002q" />
+<link rel="stylesheet" href="/style.css?v=20261002m" />
 <!-- GSAP Core -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
 
@@ -439,109 +439,106 @@
   </div>
 </section>
 
- <section id="story" class="section story-section">
+ <section id="story" class="cf-story" aria-labelledby="cf-story-title">
 
-  <!-- Our Story -->
-  <div class="container container-center-1100 story-hero">
-    <h2 class="section-title-lg">Our Story</h2>
-    <p class="feature-description story-subtitle">CoupleFit started with two people who believed that life becomes better when you grow together.</p>
-    <figure class="story-hero-photo">
-      <img src="/images/story/hero-couple.jpg" alt="Max and Rachelle, founders of CoupleFit">
-    </figure>
-  </div>
-
-  <!-- Why We Started -->
-  <div class="container feature-row story-row">
-    <div class="feature-copy">
-      <h3 class="section-title-md mb-12">Why We Started</h3>
-      <p class="feature-description">Our story started long before CoupleFit existed. We first met in the Netherlands through a course, but it wasn't until we both found ourselves in Melbourne, Australia, that our friendship turned into something more.</p>
-      <p class="feature-description">What brought us together wasn't just attraction. It was understanding. For the first time, we both felt truly seen, heard and understood.</p>
-      <p class="feature-description">Our relationship began with distance, uncertainty and the challenges that come with building a life while travelling the world. Those experiences taught us something we still believe today: the strongest relationships are built when two people choose to grow together.</p>
+  <!-- Intro + tijdlijn -->
+  <div class="cf-story__card">
+    <div class="cf-story__intro">
+      <div>
+        <h2 id="cf-story-title" class="cf-story__title">Our Story</h2>
+        <p class="cf-story__lead">CoupleFit started with two people who believed that life becomes better when you grow together.</p>
+      </div>
+      <figure class="cf-story__photo cf-story__photo--hero">
+        <img src="/images/story/hero-couple.jpg" alt="Max and Rachelle, founders of CoupleFit" onerror="this.style.opacity=0">
+      </figure>
     </div>
-    <div class="feature-visual">
-      <figure class="story-lifestyle-photo">
-        <img src="/images/story/lifestyle-travel.jpg" alt="Max and Rachelle training together at the gym">
+
+    <ol class="cf-timeline">    <div class="cf-story__body">
+      <ol class="cf-timeline">
+        <li class="cf-moment">
+          <span class="cf-moment__label">The Netherlands</span>
+          <h3>Where we first met</h3>
+          <p>We first met in the Netherlands, through a course we were both following.</p>
+        </li>
+        <li class="cf-moment">
+          <span class="cf-moment__label">Melbourne, Australia</span>
+          <h3>From friends to partners</h3>
+          <p>It wasn't until we both found ourselves in Melbourne that our friendship turned into something more. What brought us together wasn't just attraction. It was understanding: for the first time, we both felt truly seen, heard and understood.</p>
+        </li>
+        <li class="cf-moment">
+          <span class="cf-moment__label">On the road</span>
+          <h3>Growing through distance</h3>
+          <p>Our relationship began with distance, uncertainty and the challenges of building a life while travelling the world. It taught us that the strongest relationships are built when two people choose to grow together.</p>
+        </li>
+        <li class="cf-moment">
+          <span class="cf-moment__label">Everyday life</span>
+          <h3>Stuck in unhealthy routines</h3>
+          <p>Long hospitality shifts, irregular schedules, stress and little structure slowly drained our energy. When we started training together, eating better and building healthier habits, our lives began to change.</p>
+        </li>
+        <li class="cf-moment">
+          <span class="cf-moment__label">The idea</span>
+          <h3>Nothing existed for couples</h3>
+          <p>Every fitness app was designed for individuals. There was no place to share goals, build routines together or stay accountable as a team. That realization became the foundation of CoupleFit.</p>
+        </li>
+        <li class="cf-moment cf-moment--now">
+          <span class="cf-moment__label">Today</span>
+          <h3>Building CoupleFit together</h3>
+          <p>We're building the app we wished we had, and we're inviting our first couples to help shape it.</p>
+        </li>
+      </ol>
+
+      <figure class="cf-story__photo cf-story__photo--side">
+        <img src="/images/story/lifestyle-travel.jpg" alt="Max and Rachelle training together at the gym" onerror="this.style.opacity=0">
       </figure>
     </div>
   </div>
-  <div class="story-tile">
-  <!-- How CoupleFit Was Born -->
-  <div class="container container-center-1100 story-born">
-    <h3 class="section-title-md mb-12">How CoupleFit Was Born</h3>
-    <p class="feature-description">Like many people, we found ourselves stuck in unhealthy routines. Long hospitality shifts, irregular schedules, stress and little structure slowly drained our energy. We knew we wanted something different.</p>
-    <p class="feature-description">As we focused on training together, eating better and creating healthier habits, our lives began to change.</p>
-    <p class="feature-description">At the same time, we noticed something surprising: every fitness app was designed for individuals. Nothing existed for couples. No place to share goals, build routines together or stay accountable as a team.</p>
-    <p class="feature-description">That realization became the foundation of CoupleFit.</p>
-  </div>
-  </div>
-  
-  <!-- Meet The Founders -->
-  <div class="container container-center-1100 story-founders">
-    <h3 class="section-title-md mb-12" style="text-align:center;">Meet The Founders</h3>
 
-    <div class="founder-row">
-      <div class="founder-photo-wrap">
-        <img class="founder-photo" src="/images/story/max-founder.jpg" alt="Max, co-founder of CoupleFit">
-      </div>
-      <div class="founder-text">
-        <h4 class="founder-name">Max</h4>
-        <p class="feature-description">"I've always been passionate about growth, discipline and becoming the best version of myself. CoupleFit combines the things I care most about: health, personal development and helping people build stronger relationships."</p>
-      </div>
-    </div>
-
-    <div class="founder-row">
-      <div class="founder-photo-wrap">
-        <img class="founder-photo" src="/images/story/rachelle-founder.jpg" alt="Rachelle, co-founder of CoupleFit">
-      </div>
-      <div class="founder-text">
-        <h4 class="founder-name">Rachelle</h4>
-        <p class="feature-description">"I'm passionate about wellness, balance and creating a healthier way of living. Through CoupleFit, I hope to help couples build habits that strengthen both their health and their connection."</p>
-      </div>
+  <!-- Oprichters -->
+  <div class="cf-founders">
+    <h3 class="cf-story__subtitle">Meet the founders</h3>
+    <div class="cf-founders__grid">
+      <article class="cf-founder">
+        <figure class="cf-story__photo cf-story__photo--founder">
+          <img src="/images/story/max-founder.jpg" alt="Max, co-founder of CoupleFit" onerror="this.style.opacity=0">
+        </figure>
+        <div>
+          <h4>Max</h4>
+          <p>"I've always been passionate about growth, discipline and becoming the best version of myself. CoupleFit combines the things I care most about: health, personal development and helping people build stronger relationships."</p>
+        </div>
+      </article>
+      <article class="cf-founder">
+        <figure class="cf-story__photo cf-story__photo--founder">
+          <img src="/images/story/rachelle-founder.jpg" alt="Rachelle, co-founder of CoupleFit" onerror="this.style.opacity=0">
+        </figure>
+        <div>
+          <h4>Rachelle</h4>
+          <p>"I'm passionate about wellness, balance and creating a healthier way of living. Through CoupleFit, I hope to help couples build habits that strengthen both their health and their connection."</p>
+        </div>
+      </article>
     </div>
   </div>
 
-  <!-- What We Believe -->
-  <div class="container container-center-1100 story-believe">
-    <h3 class="section-title-md mb-12" style="text-align:center;">What We Believe</h3>
-
-    <div class="believe-stack">
-      <div class="glass-card believe-bar">
-        <h4 class="believe-title">Connection</h4>
-        <p class="feature-description">Real growth starts when people feel seen, heard and understood.</p>
-      </div>
-      <div class="glass-card believe-bar">
-        <h4 class="believe-title">Growth</h4>
-        <p class="feature-description">The strongest couples never stop evolving together.</p>
-      </div>
-      <div class="glass-card believe-bar">
-       <h4 class="believe-title">Wellness</h4>
-        <p class="feature-description">A healthier life creates the foundation for a stronger relationship.</p>
-      </div>
-      <div class="glass-card believe-bar">
-        <h4 class="believe-title">Accountability</h4>
-        <p class="feature-description">Everything becomes easier when someone is walking the same path beside you.</p>
-      </div>
+  <!-- Waar we in geloven -->
+  <div class="cf-beliefs">
+    <h3 class="cf-story__subtitle">What we believe</h3>
+    <div class="cf-beliefs__grid">
+      <div class="cf-belief"><h4>Connection</h4><p>Real growth starts when people feel seen, heard and understood.</p></div>
+      <div class="cf-belief"><h4>Growth</h4><p>The strongest couples never stop evolving together.</p></div>
+      <div class="cf-belief"><h4>Wellness</h4><p>A healthier life creates the foundation for a stronger relationship.</p></div>
+      <div class="cf-belief"><h4>Accountability</h4><p>Everything becomes easier when someone is walking the same path beside you.</p></div>
     </div>
   </div>
 
-  <!-- Our Vision -->
-  <div class="container container-center-1100 story-vision">
-    <h3 class="section-title-md mb-12">In a world of distraction, we choose <span class="accent-word">connection</span></h3>
-    <p class="feature-description">We believe modern life has made people more connected online and more disconnected in real life. CoupleFit exists to help couples reconnect through health, communication, shared goals and intentional living.</p>
-    <p class="feature-description">Our vision is to build a community of couples who choose growth, ambition and connection every day.</p>
-  </div>
-
-  <!-- Final CTA -->
-  <div class="container container-center-1100 story-final-cta">
-    <h3 class="section-title-lg">Join Us From The Beginning</h3>
-    <figure class="story-final-photo">
-      <img src="/images/story/final-cta.jpg" alt="Max and Rachelle together">
-    </figure>
-    <p class="feature-description">Become one of our founding couples and help shape the future of CoupleFit.</p>
-    <a href="/#cta" class="cf-cta story-cta-btn">Become a Founding Couple</a>
+  <!-- Visie + oproep -->
+  <div class="cf-vision">
+    <h3>In a world of distraction, we choose <span>connection</span></h3>
+    <p>We believe modern life has made people more connected online and more disconnected in real life. CoupleFit exists to help couples reconnect through health, communication, shared goals and intentional living.</p>
+    <p>Our vision is to build a community of couples who choose growth, ambition and connection every day.</p>
+    <a class="cf-vision__cta" href="#cta">Become a Founding Couple</a>
   </div>
 
 </section>
+
 <section class="section reveal" id="testimonials">
   <div class="container results-container">
     <h2>What early couples are saying</h2>

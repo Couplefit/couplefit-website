@@ -6254,3 +6254,128 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
 #main#main #faq#faq#faq .cf-faq__intro::after {
   display: none !important;
 }
+
+/* ================= STORY (tijdlijn) ================= */
+#main#main #story#story#story, #main#main #story#story#story * { box-sizing: border-box; }
+#main#main #story#story#story.cf-story {
+  width: min(1200px, calc(100% - 48px)) !important;
+  max-width: none !important;
+  margin-left: auto !important; margin-right: auto !important;
+  padding: 0 !important;
+  background: none !important;
+  display: flex !important; flex-direction: column !important; gap: 20px !important;
+  text-align: left !important;
+  color: var(--cf-text); font-family: var(--cf-body);
+}
+#main#main #story#story#story::before, #main#main #story#story#story::after { display: none !important; }
+
+/* kaart met intro + tijdlijn */
+#main#main #story#story#story .cf-story__card {
+  background: #fff; border-radius: 32px; padding: 56px;
+  border: 1px solid rgba(30,42,68,.06);
+  box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 10px 28px rgba(30,42,68,.10);
+}
+#main#main #story#story#story .cf-story__intro { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 64px; }
+#main#main #story#story#story .cf-story__title {
+  font-family: var(--cf-display); font-weight: 600;
+  font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; letter-spacing: -0.025em;
+  color: var(--cf-ink); margin: 0 0 14px; text-align: left;
+}
+#main#main #story#story#story .cf-story__lead { font-size: 19px; line-height: 1.55; margin: 0; max-width: 40ch; color: var(--cf-text); text-align: left; }
+
+/* foto's (met zacht blauw vlak zolang er nog geen foto is) */
+#main#main #story#story#story .cf-story__photo { margin: 0; border-radius: 24px; overflow: hidden; background: var(--cf-softblue); }
+#main#main #story#story#story .cf-story__photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+#main#main #story#story#story .cf-story__photo--hero { aspect-ratio: 4 / 3; }
+#main#main #story#story#story .cf-story__photo--moment { aspect-ratio: 16 / 9; margin-top: 18px; max-width: 520px; }
+#main#main #story#story#story .cf-story__photo--founder { aspect-ratio: 1; width: 112px; flex: none; border-radius: 50%; background: #fff; }
+
+/* tijdlijn */
+#main#main #story#story#story .cf-timeline { list-style: none; margin: 0 auto; padding: 0; max-width: 760px; position: relative; }
+#main#main #story#story#story .cf-timeline::before {
+  content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px;
+  background: linear-gradient(var(--cf-powder), var(--cf-burgundy));
+  border-radius: 2px;
+}
+#main#main #story#story#story .cf-moment { position: relative; padding: 0 0 40px 48px; margin: 0; }
+#main#main #story#story#story .cf-moment:last-child { padding-bottom: 0; }
+#main#main #story#story#story .cf-moment::before {
+  content: ""; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%;
+  background: #fff; box-shadow: inset 0 0 0 3px var(--cf-dusty);
+}
+#main#main #story#story#story .cf-moment--now::before { background: var(--cf-burgundy); box-shadow: 0 0 0 6px rgba(91,30,45,.15); }
+#main#main #story#story#story .cf-moment__label { display: block; font-size: 14px; font-weight: 600; color: var(--cf-burgundy); margin-bottom: 4px; }
+#main#main #story#story#story .cf-moment h3 {
+  font-family: var(--cf-display); font-weight: 600; font-size: 24px; letter-spacing: -0.02em; line-height: 1.2;
+  color: var(--cf-ink); margin: 0 0 8px; text-align: left;
+}
+#main#main #story#story#story .cf-moment p { font-size: 16px; line-height: 1.65; margin: 0; max-width: 60ch; color: var(--cf-text); text-align: left; }
+
+/* tussenkopjes */
+#main#main #story#story#story .cf-story__subtitle {
+  font-family: var(--cf-display); font-weight: 600; font-size: 28px; letter-spacing: -0.02em;
+  color: var(--cf-ink); margin: 28px 0 16px; text-align: left;
+}
+
+/* oprichters */
+#main#main #story#story#story .cf-founders__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+#main#main #story#story#story .cf-founder { background: var(--cf-softblue); border-radius: 28px; padding: 28px; display: flex; gap: 24px; align-items: flex-start; }
+#main#main #story#story#story .cf-founder h4 { font-family: var(--cf-display); font-weight: 600; font-size: 22px; color: var(--cf-ink); margin: 4px 0 8px; text-align: left; }
+#main#main #story#story#story .cf-founder p { font-size: 16px; line-height: 1.6; margin: 0; color: var(--cf-text); text-align: left; }
+
+/* waarden */
+#main#main #story#story#story .cf-beliefs__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+#main#main #story#story#story .cf-belief {
+  background: #fff; border-radius: 24px; padding: 24px;
+  box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 10px 28px rgba(30,42,68,.08);
+}
+#main#main #story#story#story .cf-belief h4 { font-family: var(--cf-display); font-weight: 600; font-size: 19px; color: var(--cf-burgundy); margin: 0 0 8px; text-align: left; }
+#main#main #story#story#story .cf-belief p { font-size: 15px; line-height: 1.55; margin: 0; color: var(--cf-text); text-align: left; }
+
+/* visie + oproep */
+#main#main #story#story#story .cf-vision {
+  margin-top: 8px; background: var(--cf-burgundy); color: var(--cf-ivory); border-radius: 32px; padding: 56px;
+    box-shadow: 0 10px 28px rgba(30,42,68,.10); text-align: left;
+}
+#main#main #story#story#story .cf-vision h3 {
+  font-family: var(--cf-display); font-weight: 600; font-size: clamp(26px, 3vw, 38px); line-height: 1.15; letter-spacing: -0.02em;
+  color: var(--cf-ivory); margin: 0 0 18px; max-width: 22ch; text-align: left;
+}
+#main#main #story#story#story .cf-vision h3 span { color: var(--cf-powder); }
+#main#main #story#story#story .cf-vision p { font-size: 17px; line-height: 1.6; margin: 0 0 12px; max-width: 62ch; color: rgba(243,239,230,.88); text-align: left; }
+#main#main #story#story#story .cf-vision__cta {
+  display: inline-flex; margin-top: 16px; padding: 15px 26px; border-radius: 999px;
+  background: var(--cf-ivory); color: var(--cf-burgundy) !important; text-decoration: none;
+  font: 600 16px var(--cf-body); transition: background-color .2s, transform .2s;
+}
+#main#main #story#story#story .cf-vision__cta:hover { background: #fff; }
+#main#main #story#story#story .cf-vision__cta:active { transform: scale(.98); }
+
+/* tablet en mobiel */
+@media (max-width: 900px) {
+  #main#main #story#story#story .cf-story__card, #main#main #story#story#story .cf-vision { padding: 36px 24px; }
+  #main#main #story#story#story .cf-story__intro { grid-template-columns: 1fr; gap: 28px; margin-bottom: 44px; }
+  #main#main #story#story#story .cf-founders__grid { grid-template-columns: 1fr; }
+  #main#main #story#story#story .cf-beliefs__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px) {
+  #main#main #story#story#story.cf-story { width: calc(100% - 24px) !important; }
+  #main#main #story#story#story .cf-story__card, #main#main #story#story#story .cf-vision { border-radius: 28px; }
+  #main#main #story#story#story .cf-founder { flex-direction: column; }
+  #main#main #story#story#story .cf-beliefs__grid { grid-template-columns: 1fr; }
+  #main#main #story#story#story .cf-moment { padding-left: 40px; }
+}
+
+/* Story: gymfoto rechts naast de tijdlijn */
+#main#main #story#story#story .cf-story__body {
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: start;
+}
+#main#main #story#story#story .cf-story__body .cf-timeline { max-width: none; margin: 0; }
+#main#main #story#story#story .cf-story__photo--side {
+  position: sticky; top: 120px; aspect-ratio: 4 / 5;
+}
+#main#main #story#story#story .cf-story__photo--side img { object-position: center; }
+@media (max-width: 900px) {
+  #main#main #story#story#story .cf-story__body { grid-template-columns: 1fr; gap: 36px; }
+  #main#main #story#story#story .cf-story__photo--side { position: static; aspect-ratio: 4 / 3; }
+}
