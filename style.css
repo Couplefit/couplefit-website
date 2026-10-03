@@ -6737,3 +6737,13 @@ body footer.cf-footer.cf-footer a:focus-visible { outline: 2px solid var(--cf-po
 
 /* Menu-link FAQ: kaart met wat meer lucht onder de header */
 #main#main #faq#faq#faq { scroll-margin-top: 112px !important; }
+
+/* Visie-kaart (burgundy) gecentreerd */
+#main#main #story#story#story .cf-vision { text-align: center; }
+#main#main #story#story#story .cf-vision h3,
+#main#main #story#story#story .cf-vision p { margin-left: auto; margin-right: auto; text-align: center; }
+
+/* Testimonials: titel en intro gecentreerd */
+#main#main #testimonials#testimonials#testimonials .cf-tst__head { text-align: center; }
+#main#main #testimonials#testimonials#testimonials .cf-tst__title,
+#main#main #testimonials#testimonials#testimonials .cf-tst__lead { margin-left: auto; margin-right: auto; text-align: center; }
