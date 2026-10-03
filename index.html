@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20261003l" />
+<link rel="stylesheet" href="/style.css?v=20261003n" />
 
 
 </head>
@@ -972,6 +972,66 @@
 
   
   <script src="main.js?v=5"></script>
+    <!-- Features: telefoons komen zacht binnen, glans over het scherm, lichte diepte -->
+  <script>
+  (function () {
+    var rows = document.querySelectorAll('#features .feature-row');
+    if (!rows.length || !('IntersectionObserver' in window)) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var desktop = window.matchMedia('(min-width: 769px)').matches;
+    var items = [];
+
+    function play(sheen) {
+      if (reduce) return;
+      sheen.classList.remove('is-on'); void sheen.offsetWidth; sheen.classList.add('is-on');
+    }
+
+    rows.forEach(function (row) {
+      var wrap = row.querySelector('.mockup-wrapper');
+      var dev = row.querySelector('.feature-device');
+      if (!wrap || !dev) return;
+      if (getComputedStyle(dev).position === 'static') dev.style.position = 'relative';
+      var sheen = document.createElement('span');
+      sheen.className = 'cf-sheen';
+      sheen.setAttribute('aria-hidden', 'true');
+      dev.appendChild(sheen);
+      if (!reduce && desktop) wrap.classList.add('cf-dev');
+      dev.addEventListener('mouseenter', function () { play(sheen); });
+      items.push({ row: row, wrap: wrap, sheen: sheen });
+    });
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        items.forEach(function (it) {
+          if (it.row !== e.target) return;
+          it.wrap.classList.add('is-in');
+          setTimeout(function () { play(it.sheen); }, reduce ? 0 : 650);
+        });
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.35 });
+    items.forEach(function (it) { io.observe(it.row); });
+
+    if (reduce || !desktop) return;
+    var ticking = false;
+    function depth() {
+      ticking = false;
+      var vh = window.innerHeight;
+      items.forEach(function (it) {
+        var r = it.wrap.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) return;
+        var p = ((r.top + r.height / 2) - vh / 2) / vh;
+        var y = Math.max(-20, Math.min(20, p * 30));
+        it.wrap.style.translate = '0 ' + y.toFixed(1) + 'px';
+      });
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(depth); }
+    }, { passive: true });
+    depth();
+  })();
+  </script>
     <!-- Menu-links: zelf de juiste plek bepalen (negeert oude scroll-margin-regels) -->
   <script>
   (function () {
