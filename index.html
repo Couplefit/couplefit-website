@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20261003r" />
+<link rel="stylesheet" href="/style.css?v=20261003t" />
 
 
 </head>
@@ -826,8 +826,8 @@
   </div>
 
   <div class="cf-faq__list">
-    <div class="cf-faq__item is-open">
-      <button class="cf-faq__q" type="button" aria-expanded="true">
+    <div class="cf-faq__item">
+      <button class="cf-faq__q" type="button" aria-expanded="false">
         <span>How does CoupleFit keep us consistent together?</span><i aria-hidden="true"></i>
       </button>
       <div class="cf-faq__a"><div><p>CoupleFit links your goals, streaks and milestones so progress feels shared. Each partner gets a personalized plan, but your streaks and wins are synced, making it easier to show up for each other.</p></div></div>
@@ -1078,7 +1078,7 @@
   <script>
   (function () {
     // Ruimte boven elke sectie in pixels. Hoger getal = sectie komt lager uit.
-    var OFFSET = { features: 25, story: 80, plans: 88, faq: 112, cta: 80 };
+    var OFFSET = { features: -15, story: 80, plans: 88, faq: 88, cta: 80 };
 
     // Echte plek op de pagina, zonder tijdelijke verschuivingen door invaad-effecten
     function pageTop(el) {

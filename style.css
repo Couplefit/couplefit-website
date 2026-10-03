@@ -6927,3 +6927,25 @@ body footer.cf-footer.cf-footer a:focus-visible { outline: 2px solid var(--cf-po
   #main#main #cta#cta#cta .cf-spots__label i { animation: none; }
   #main#main #cta#cta#cta .cf-spots__bar i { transition: none; }
 }
+
+/* Bento-titel gecentreerd */
+#main #sync .cf-bento__title { text-align: center; margin-left: auto; margin-right: auto; }
+
+/* ===== Meer ruimte tussen alle kaarten en secties ===== */
+/* tussen de secties */
+#main#main #sync#sync,
+#main#main #features#features,
+#main#main #testimonials#testimonials#testimonials,
+#main#main #cf-pricing#cf-pricing,
+#main#main #story#story#story,
+#main#main #faq#faq#faq,
+#main#main #cta#cta#cta { margin-top: 40px !important; }
+body footer.cf-footer.cf-footer { margin-top: 40px !important; }
+
+/* binnen de secties */
+#main #sync .cf-bento__grid { gap: 26px; }
+#main #cf-pricing .cf-plans { gap: 26px; }
+#main#main #testimonials#testimonials#testimonials .cf-tst__grid { gap: 26px; }
+#main#main #story#story#story.cf-story { gap: 26px !important; }
+#main#main #story#story#story .cf-founders__grid,
+#main#main #story#story#story .cf-beliefs__grid { gap: 26px; }
