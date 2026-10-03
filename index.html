@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20261002m" />
+<link rel="stylesheet" href="/style.css?v=20261002n" />
 <!-- GSAP Core -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
 
@@ -867,31 +867,84 @@
 </script>
 
 
-    <!-- FINAL CTA -->
-    <section class="section cta-section section--bleed reveal" id="cta">
-      <div class="container text-center container-center-760">
-        <h2 class="section-title-xl mb-12">Ready to build healthier habits together?</h2>
-        <p class="muted prose mb-36">Become one of our founding couples and help shape CoupleFit from day one.</p>
+     <section class="cf-signup" id="cta" aria-labelledby="cf-signup-title">
+      <div class="cf-signup__inner">
+        <span class="cf-signup__pair" aria-hidden="true"><i></i><i></i></span>
+        <h2 id="cf-signup-title" class="cf-signup__title">Ready to build healthier habits together?</h2>
+        <p class="cf-signup__lead">Become one of our founding couples and help shape CoupleFit from day one.</p>
 
-        <div class="cta-actions">
-          <a href="#plans" class="btn primary">Start free, invite your partner</a>
-          <a href="#plans" class="btn secondary">See plans</a>
+        <form class="cf-signup__form" id="cf-signup-form" novalidate>
+          <div class="cf-signup__fields">
+            <label class="cf-field">
+              <span>Your email</span>
+              <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+            </label>
+            <label class="cf-field">
+              <span>Your partner's email <em>(optional)</em></span>
+              <input type="email" name="partner_email" autocomplete="off" placeholder="partner@example.com">
+            </label>
+            <button type="submit" class="cf-signup__btn">Join as a founding couple</button>
+          </div>
+          <p class="cf-signup__msg" id="cf-signup-msg" role="status" aria-live="polite"></p>
+          <p class="cf-signup__note">No card required. We'll only email you about CoupleFit.</p>
+        </form>
+
+        <div class="cf-signup__done" id="cf-signup-done" hidden>
+          <span class="cf-signup__check" aria-hidden="true">✓</span>
+          <h3>You're on the list</h3>
+          <p>We've saved a spot for you both. We'll be in touch soon.</p>
         </div>
 
-        <div class="platform-badges">
-          <div class="platform-badge ios">
-            <span class="platform-icon"></span>
-            <span class="platform-text">iOS app coming soon</span>
-          </div>
-
-          <div class="platform-badge android">
-            <span class="platform-icon">▶︎</span>
-            <span class="platform-text">Android app coming soon</span>
-          </div>
-        </div>
-        <div class="cta-reassure">Takes 30 seconds • No card required • Cancel anytime</div>
+        <p class="cf-signup__platforms">Coming soon to iOS and Android</p>
       </div>
     </section>
+
+    <script>
+    (function () {
+      // Later invullen met de link van Brevo of Formspree:
+      var CF_SIGNUP_ENDPOINT = '';
+
+      var form = document.getElementById('cf-signup-form');
+      if (!form) return;
+      var msg = document.getElementById('cf-signup-msg');
+      var done = document.getElementById('cf-signup-done');
+      var btn = form.querySelector('.cf-signup__btn');
+      var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+      var valid = function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
+
+      function say(text) { msg.textContent = text; }
+      function finish() { form.hidden = true; done.hidden = false; }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = form.email.value.trim();
+        var partner = form.partner_email.value.trim();
+        form.email.classList.remove('is-error');
+        form.partner_email.classList.remove('is-error');
+
+        if (!valid(email)) { form.email.classList.add('is-error'); say('Please enter a valid email address.'); form.email.focus(); return; }
+        if (partner && !valid(partner)) { form.partner_email.classList.add('is-error'); say("Please check your partner's email address."); form.partner_email.focus(); return; }
+        if (partner && partner.toLowerCase() === email.toLowerCase()) { form.partner_email.classList.add('is-error'); say("Your partner's email should be different from yours."); return; }
+
+        if (!CF_SIGNUP_ENDPOINT) {
+          if (isLocal) { finish(); } else { say('Sign-ups open very soon. Please check back shortly.'); }
+          return;
+        }
+
+        btn.disabled = true; say('Sending…');
+        fetch(CF_SIGNUP_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email: email, partner_email: partner })
+        }).then(function (r) {
+          if (!r.ok) throw new Error();
+          finish();
+        }).catch(function () {
+          btn.disabled = false; say('Something went wrong. Please try again in a moment.');
+        });
+      });
+    })();
+    </script>
   </main>
 
   <div id="footer"></div>
