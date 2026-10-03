@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20261003e" />
+<link rel="stylesheet" href="/style.css?v=20261003k" />
 
 
 </head>
@@ -58,22 +58,24 @@
   </div>
 
   <div class="cf-stage" id="cf-stage" aria-label="Preview of the CoupleFit app">
-    <div class="cf-float cf-float--a" id="cf-float-a">
+    <svg class="cf-links" id="cf-links" aria-hidden="true"><path id="cf-link-path" pathLength="1" /><circle id="cf-link-start" r="3.5" /><circle id="cf-link-end" r="5" /></svg>
+
+    <div class="cf-float cf-float--a" id="cf-float-a" data-target="cf-mark" role="button" tabindex="0" aria-label="Show Max's workout">
       <div class="cf-float__icon" style="background:var(--cf-dusty)">✓</div>
       <div><strong>Rachelle finished Leg day</strong>Your turn, Max</div>
     </div>
-    <div class="cf-float cf-float--b" id="cf-float-b">
+    <div class="cf-float cf-float--b" id="cf-float-b" data-target="cf-tab-meal" role="button" tabindex="0" aria-label="Show lunch details">
       <div class="cf-float__icon" style="background:var(--cf-burgundy)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg>
       </div>
       <div><strong>Lunch logged from a photo</strong>540 kcal, 38 g protein</div>
     </div>
-    <div class="cf-float cf-float--c" id="cf-float-c" aria-live="polite">
+    <div class="cf-float cf-float--c" id="cf-float-c" data-target="cf-streak-card" role="button" tabindex="0" aria-live="polite" aria-label="Show your streak">
       <div class="cf-float__icon" style="background:var(--cf-burgundy)">♥</div>
       <div><strong>You're both done today</strong>Streak is now 24 days</div>
     </div>
 
-    <div class="cf-phone" id="cf-phone">
+        <div class="cf-phone" id="cf-phone">
       <div class="cf-screen">
         <div class="cf-island"></div>
         <div class="cf-status">
@@ -100,7 +102,7 @@
           </svg>
         </div>
 
-        <div class="cf-streak">
+        <div class="cf-streak" id="cf-streak-card">
           <div>
             <div class="cf-streak__num" id="cf-streak">0</div>
             <div class="cf-streak__label">days in a row, together</div>
@@ -125,12 +127,27 @@
           </div>
         </div>
 
-        <nav class="cf-tabs" aria-hidden="true">
-          <span class="is-active"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span>
-          <span><svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg></span>
-          <span><svg viewBox="0 0 24 24"><path d="M7 3v8a3 3 0 0 0 3 3v7M7 3v5M10 3v5M17 21V3c-2 0-4 2-4 6v4h4"/></svg></span>
-          <span><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><circle cx="16" cy="9" r="3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.5c3 0 6 2 6 5.5"/></svg></span>
+        <nav class="cf-tabs">
+          <span class="is-active" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span>
+          <span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg></span>
+          <button type="button" class="cf-tab" id="cf-tab-meal" aria-label="Open today's lunch"><svg viewBox="0 0 24 24"><path d="M7 3v8a3 3 0 0 0 3 3v7M7 3v5M10 3v5M17 21V3c-2 0-4 2-4 6v4h4"/></svg></button>
+          <span aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><circle cx="16" cy="9" r="3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.5c3 0 6 2 6 5.5"/></svg></span>
         </nav>
+
+        <!-- Uitschuifpaneel met de lunch -->
+        <div class="cf-sheet-dim" id="cf-sheet-dim"></div>
+        <div class="cf-sheet" id="cf-sheet" aria-hidden="true">
+          <i class="cf-sheet__handle"></i>
+          <div class="cf-sheet__head">
+            <div><small>Lunch, logged from a photo</small><strong>Salmon rice bowl</strong></div>
+            <button type="button" class="cf-sheet__close" id="cf-sheet-close" aria-label="Close">✕</button>
+          </div>
+          <div class="cf-sheet__kcal"><b id="cf-kcal">0</b> kcal</div>
+          <div class="cf-macro"><span>Protein</span><div class="cf-macro__bar"><i style="--w:76%"></i></div><em>38 g</em></div>
+          <div class="cf-macro"><span>Carbs</span><div class="cf-macro__bar"><i style="--w:58%"></i></div><em>52 g</em></div>
+          <div class="cf-macro"><span>Fat</span><div class="cf-macro__bar"><i style="--w:40%"></i></div><em>18 g</em></div>
+          <p class="cf-sheet__split">Rachelle had the same bowl: <b>420 kcal</b></p>
+        </div>
       </div>
     </div>
   </div>
@@ -186,14 +203,11 @@
 <script>
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var ringMax = document.getElementById('cf-ring-max');
-  var ringRach = document.getElementById('cf-ring-rach');
-  var pctMax = document.getElementById('cf-pct-max');
-  var pctRach = document.getElementById('cf-pct-rach');
-  var streak = document.getElementById('cf-streak');
+  var $ = function (id) { return document.getElementById(id); };
+  var ringMax = $('cf-ring-max'), ringRach = $('cf-ring-rach');
+  var pctMax = $('cf-pct-max'), pctRach = $('cf-pct-rach'), streak = $('cf-streak');
 
   function setRing(ring, pct) { ring.style.strokeDashoffset = 100 - pct; }
-
   function countUp(el, from, to, ms, suffix) {
     suffix = suffix || '';
     if (reduce) { el.textContent = to + suffix; return; }
@@ -201,54 +215,124 @@
     function step(t) {
       if (!start) start = t;
       var p = Math.min((t - start) / ms, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(from + (to - from) * eased) + suffix;
+      el.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3))) + suffix;
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
+  function show(id, delay) { setTimeout(function () { $(id).classList.add('is-in'); }, reduce ? 0 : delay); }
+  function hide(id) { $(id).classList.remove('is-in'); }
 
-  function show(id, delay) {
-    setTimeout(function () { document.getElementById(id).classList.add('is-in'); }, reduce ? 0 : delay);
-  }
-  function hide(id) { document.getElementById(id).classList.remove('is-in'); }
+  requestAnimationFrame(function () { requestAnimationFrame(function () {
+    setRing(ringMax, 72); setRing(ringRach, 86);
+    countUp(pctMax, 0, 72, 1400, '%'); countUp(pctRach, 0, 86, 1400, '%');
+    countUp(streak, 0, 23, 1200);
+    show('cf-float-a', 1300); show('cf-float-b', 1800);
+  }); });
 
-  requestAnimationFrame(function () {
-    requestAnimationFrame(function () {
-      setRing(ringMax, 72);
-      setRing(ringRach, 86);
-      countUp(pctMax, 0, 72, 1400, '%');
-      countUp(pctRach, 0, 86, 1400, '%');
-      countUp(streak, 0, 23, 1200);
-      show('cf-float-a', 1300);
-      show('cf-float-b', 1800);
-    });
-  });
-
-  document.getElementById('cf-mark').addEventListener('click', function () {
+  /* ---------- Max markeert zijn workout ---------- */
+  var maxDone = false;
+  function markMax() {
+    if (maxDone) return;
+    maxDone = true;
+    var btn = $('cf-mark');
     var done = document.createElement('span');
     done.className = 'cf-done';
+    done.id = 'cf-max-done';
     done.textContent = '✓ Done';
-    this.replaceWith(done);
-    setRing(ringMax, 86);
-    countUp(pctMax, 72, 86, 900, '%');
-    document.getElementById('cf-today-dot').classList.add('is-done');
+    btn.replaceWith(done);
+    setRing(ringMax, 86); countUp(pctMax, 72, 86, 900, '%');
+    $('cf-today-dot').classList.add('is-done');
     countUp(streak, 23, 24, 600);
-    hide('cf-float-a');
-    show('cf-float-c', 350);
+    $('cf-streak-card').classList.add('cf-pop');
+    hideLink(); hide('cf-float-a'); show('cf-float-c', 350);
+  }
+  $('cf-mark').addEventListener('click', markMax);
+
+  /* ---------- Lunch-paneel ---------- */
+  var sheet = $('cf-sheet'), dim = $('cf-sheet-dim');
+  function openSheet() {
+    sheet.classList.add('is-open'); dim.classList.add('is-open'); sheet.setAttribute('aria-hidden', 'false');
+    countUp($('cf-kcal'), 0, 540, 800);
+    hideLink();
+  }
+  function closeSheet() { sheet.classList.remove('is-open'); dim.classList.remove('is-open'); sheet.setAttribute('aria-hidden', 'true'); }
+  $('cf-tab-meal').addEventListener('click', openSheet);
+  $('cf-sheet-close').addEventListener('click', closeSheet);
+  dim.addEventListener('click', closeSheet);
+
+    /* ---------- Dunne lijn van melding naar knop ---------- */
+  var stage = $('cf-stage'), path = $('cf-link-path'), dotA = $('cf-link-start'), dotB = $('cf-link-end');
+  var links = $('cf-links'), active = null, hideTimer = null;
+
+  function targetOf(card) {
+    var id = card.getAttribute('data-target');
+    if (id === 'cf-mark' && maxDone) return $('cf-max-done');
+    return $(id);
+  }
+  function draw() {
+    if (!active) return;
+    var target = targetOf(active);
+    if (!target) return;
+    var s = stage.getBoundingClientRect(), c = active.getBoundingClientRect(), t = target.getBoundingClientRect();
+    var tx = t.left + t.width / 2 - s.left, ty = t.top + t.height / 2 - s.top;
+    var cx = c.left + c.width / 2 - s.left, cy = c.top + c.height / 2 - s.top;
+    var sx, sy;
+    if (tx > c.right - s.left) { sx = c.right - s.left; sy = cy; }
+    else if (tx < c.left - s.left) { sx = c.left - s.left; sy = cy; }
+    else { sx = cx; sy = ty > cy ? c.bottom - s.top : c.top - s.top; }
+    var dx = (tx - sx) * 0.5;
+    path.setAttribute('d', 'M' + sx + ' ' + sy + ' C ' + (sx + dx) + ' ' + sy + ', ' + (tx - dx) + ' ' + ty + ', ' + tx + ' ' + ty);
+    dotA.setAttribute('cx', sx); dotA.setAttribute('cy', sy);
+    dotB.setAttribute('cx', tx); dotB.setAttribute('cy', ty);
+  }
+  function showLink(card) {
+    clearTimeout(hideTimer);
+    document.querySelectorAll('.cf-hot').forEach(function (el) { el.classList.remove('cf-hot'); });
+    active = card;
+    draw();
+    links.classList.remove('is-on'); void links.getBoundingClientRect(); links.classList.add('is-on');
+    var target = targetOf(card);
+    if (target) target.classList.add('cf-hot');
+  }
+  function hideLink() {
+    links.classList.remove('is-on');
+    document.querySelectorAll('.cf-hot').forEach(function (el) { el.classList.remove('cf-hot'); });
+    active = null;
+  }
+  function hideSoon() { clearTimeout(hideTimer); hideTimer = setTimeout(hideLink, 1600); }
+
+  ['cf-float-a', 'cf-float-b', 'cf-float-c'].forEach(function (id) {
+    var card = $(id);
+    card.addEventListener('pointerenter', function () { showLink(card); });
+    card.addEventListener('pointerleave', hideSoon);
+    card.addEventListener('focus', function () { showLink(card); });
+    card.addEventListener('blur', hideSoon);
+    card.addEventListener('click', function () {
+      if (id === 'cf-float-a') markMax();
+      else if (id === 'cf-float-b') openSheet();
+      else { showLink(card); $('cf-streak-card').classList.remove('cf-pop'); void card.offsetWidth; $('cf-streak-card').classList.add('cf-pop'); hideSoon(); }
+    });
+    card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); } });
+  });
+  ['cf-mark', 'cf-tab-meal'].forEach(function (id) {
+    var el = $(id);
+    el.addEventListener('pointerenter', function () { clearTimeout(hideTimer); });
+    el.addEventListener('pointerleave', hideSoon);
   });
 
-  var stage = document.getElementById('cf-stage');
-  var phone = document.getElementById('cf-phone');
+  /* ---------- Licht kantelen met de muis ---------- */
+  var phone = $('cf-phone');
   if (!reduce && window.matchMedia('(pointer: fine)').matches) {
     stage.addEventListener('pointermove', function (e) {
       var r = stage.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width - 0.5;
-      var y = (e.clientY - r.top) / r.height - 0.5;
-      phone.style.transform = 'rotateY(' + (x * 8) + 'deg) rotateX(' + (-y * 8) + 'deg)';
+      var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      phone.style.transform = 'rotateY(' + (x * 6) + 'deg) rotateX(' + (-y * 6) + 'deg)';
+      draw();
     });
-    stage.addEventListener('pointerleave', function () { phone.style.transform = ''; });
+    stage.addEventListener('pointerleave', function () { phone.style.transform = ''; setTimeout(draw, 320); });
   }
+  window.addEventListener('resize', draw);
 })();
 </script>
 
@@ -888,6 +972,47 @@
 
   
   <script src="main.js?v=5"></script>
+    <!-- Menu-links: zelf de juiste plek bepalen (negeert oude scroll-margin-regels) -->
+  <script>
+  (function () {
+    // Ruimte boven elke sectie in pixels. Hoger getal = sectie komt lager uit.
+    var OFFSET = { features: 25, story: 80, plans: 88, faq: 112, cta: 80 };
+
+    // Echte plek op de pagina, zonder tijdelijke verschuivingen door invaad-effecten
+    function pageTop(el) {
+      var y = 0;
+      while (el) { y += el.offsetTop; el = el.offsetParent; }
+      return y;
+    }
+    function targetY(id) {
+      var el = document.getElementById(id);
+      if (!el) return null;
+      var off = (id in OFFSET) ? OFFSET[id] : 80;
+      return pageTop(el) - off;
+    }
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href*="#"]');
+      if (!a) return;
+      var href = a.getAttribute('href');
+      var i = href.indexOf('#');
+      var path = href.slice(0, i), id = href.slice(i + 1);
+      if (path && path !== '/' && path !== location.pathname) return;
+      var y = targetY(id);
+      if (y === null) return;
+      e.preventDefault();
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      history.replaceState(null, '', '#' + id);
+      // Alleen bijsturen als er onderweg echt iets is verschoven
+      setTimeout(function () {
+        var y2 = targetY(id);
+        if (y2 !== null && Math.abs(y2 - window.pageYOffset) > 6) {
+          window.scrollTo({ top: y2, behavior: 'smooth' });
+        }
+      }, 900);
+    });
+  })();
+  </script>
     <!-- Reveal bij scrollen voor de nieuwe secties -->
   <script>
   (function () {

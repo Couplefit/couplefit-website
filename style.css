@@ -6637,3 +6637,103 @@ body footer.cf-footer.cf-footer a:focus-visible { outline: 2px solid var(--cf-po
 @media (prefers-reduced-motion: reduce) {
   #main #sync .cf-tile, #main #sync .cf-ui, #main #sync .cf-pair, #main #sync .cf-meal-body { transition: none; }
 }
+
+/* ===== Hero: meldingen verder van de telefoon ===== */
+@media (min-width: 521px) {
+  #main .cf-hero .cf-float--a, #main .cf-hero .cf-float--c { top: -18px; left: -56px; right: auto; bottom: auto; }
+  #main .cf-hero .cf-float--b { bottom: -18px; right: -56px; top: auto; left: auto; }
+}
+#main .cf-hero .cf-float { cursor: pointer; max-width: 240px; z-index: 4; }
+#main .cf-hero .cf-float:not(.is-in) { pointer-events: none; }
+#main .cf-hero .cf-float.is-in:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -14px rgba(30,42,68,.4); }
+#main .cf-hero .cf-float:focus-visible { outline: 3px solid var(--cf-dusty); outline-offset: 3px; }
+
+/* ===== Hero: dunne verbindingslijn ===== */
+#main .cf-hero .cf-links { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 3; }
+#main .cf-hero .cf-links path {
+  fill: none; stroke: var(--cf-burgundy); stroke-width: 1.5; stroke-linecap: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0;
+  transition: opacity .2s ease;
+}
+#main .cf-hero .cf-links circle { fill: var(--cf-burgundy); opacity: 0; transition: opacity .2s ease; }
+#main .cf-hero .cf-links.is-on path { opacity: .75; animation: cf-draw .55s cubic-bezier(.22,1,.36,1) forwards; }
+#main .cf-hero .cf-links.is-on circle { opacity: 1; }
+#main .cf-hero .cf-links.is-on #cf-link-end { animation: cf-dot .55s ease .45s backwards; }
+@keyframes cf-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes cf-dot { from { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
+
+/* doel in de telefoon licht op */
+#main .cf-hero .cf-hot { position: relative; animation: cf-hot 1.4s ease-in-out infinite; }
+@keyframes cf-hot { 0%,100% { box-shadow: 0 0 0 0 rgba(91,30,45,.35); } 50% { box-shadow: 0 0 0 7px rgba(91,30,45,0); } }
+#main .cf-hero .cf-streak.cf-pop { animation: cf-pop-card .5s cubic-bezier(.22,1,.36,1); }
+@keyframes cf-pop-card { 0% { transform: scale(1); } 40% { transform: scale(1.04); } 100% { transform: scale(1); } }
+
+/* knop in de tabbalk */
+#main .cf-hero .cf-tab { border: 0; background: none; padding: 0; margin: -6px; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; cursor: pointer; }
+#main .cf-hero .cf-tab svg { width: 22px; height: 22px; stroke: var(--cf-burgundy); fill: none; stroke-width: 1.8; }
+#main .cf-hero .cf-tab:hover { background: var(--cf-softblue); }
+#main .cf-hero .cf-tab:focus-visible { outline: 3px solid var(--cf-dusty); outline-offset: 2px; }
+
+/* ===== Uitschuifpaneel met lunch ===== */
+#main .cf-hero .cf-sheet-dim { position: absolute; inset: 0; background: rgba(30,42,68,.25); opacity: 0; pointer-events: none; transition: opacity .3s ease; z-index: 5; }
+#main .cf-hero .cf-sheet-dim.is-open { opacity: 1; pointer-events: auto; }
+#main .cf-hero .cf-sheet {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 6;
+  background: #fff; border-radius: 26px 26px 0 0; padding: 10px 18px 26px;
+  box-shadow: 0 -10px 30px -10px rgba(30,42,68,.3);
+  transform: translateY(105%); transition: transform .45s cubic-bezier(.22,1,.36,1);
+  text-align: left;
+}
+#main .cf-hero .cf-sheet.is-open { transform: none; }
+#main .cf-hero .cf-sheet__handle { display: block; width: 38px; height: 5px; border-radius: 5px; background: var(--cf-powder); margin: 0 auto 12px; }
+#main .cf-hero .cf-sheet__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+#main .cf-hero .cf-sheet__head small { display: block; font-size: 11px; color: var(--cf-label); }
+#main .cf-hero .cf-sheet__head strong { display: block; font: 600 17px var(--cf-display); color: var(--cf-ink); letter-spacing: -0.01em; }
+#main .cf-hero .cf-sheet__close { border: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--cf-softblue); color: var(--cf-ink); cursor: pointer; font-size: 12px; flex: none; }
+#main .cf-hero .cf-sheet__kcal { margin: 12px 0 10px; font-size: 13px; color: var(--cf-label); }
+#main .cf-hero .cf-sheet__kcal b { font: 700 30px var(--cf-display); color: var(--cf-ink); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; margin-right: 2px; }
+#main .cf-hero .cf-macro { display: grid; grid-template-columns: 52px 1fr 40px; align-items: center; gap: 8px; font-size: 12px; margin-top: 8px; }
+#main .cf-hero .cf-macro span { color: var(--cf-ink); font-weight: 500; }
+#main .cf-hero .cf-macro em { font-style: normal; color: var(--cf-label); text-align: right; font-variant-numeric: tabular-nums; }
+#main .cf-hero .cf-macro__bar { height: 7px; border-radius: 7px; background: var(--cf-softblue); overflow: hidden; }
+#main .cf-hero .cf-macro__bar i { display: block; height: 100%; width: 0; border-radius: 7px; background: var(--cf-burgundy); transition: width .8s cubic-bezier(.22,1,.36,1) .2s; }
+#main .cf-hero .cf-macro:nth-of-type(4) .cf-macro__bar i { background: var(--cf-dusty); }
+#main .cf-hero .cf-macro:nth-of-type(5) .cf-macro__bar i { background: var(--cf-powder); }
+#main .cf-hero .cf-sheet.is-open .cf-macro__bar i { width: var(--w); }
+#main .cf-hero .cf-sheet__split { margin: 14px 0 0; padding: 10px 12px; border-radius: 12px; background: var(--cf-bg); font-size: 12px; color: var(--cf-text); }
+#main .cf-hero .cf-sheet__split b { color: var(--cf-ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  #main .cf-hero .cf-links.is-on path { animation: none; stroke-dashoffset: 0; }
+  #main .cf-hero .cf-hot, #main .cf-hero .cf-streak.cf-pop { animation: none; }
+  #main .cf-hero .cf-sheet, #main .cf-hero .cf-macro__bar i { transition: none; }
+}
+
+/* Menu-link Features: titel netjes onder de header */
+#main#main #features#features { scroll-margin-top: 25px !important; }
+
+/* Menu-links: elke sectie komt netjes onder de header uit */
+#main#main #story#story#story { scroll-margin-top: 80px !important; }
+#main#main #plans#plans { scroll-margin-top: 110px !important; }
+#main#main #faq#faq#faq { scroll-margin-top: 80px !important; }
+#main#main #cta#cta#cta { scroll-margin-top: 80px !important; }
+
+/* Pricing: compacter, zodat alles in één oogopslag past */
+#main#main #plans#plans { scroll-margin-top: 88px !important; }
+#main #cf-pricing .cf-price__title { margin-bottom: 6px; }
+#main #cf-pricing .cf-price__lead { max-width: 60ch; margin-bottom: 20px; }
+#main #cf-pricing .cf-toggle { margin-bottom: 28px; }
+#main #cf-pricing .cf-plans { padding: 12px 0; }
+#main #cf-pricing .cf-plan { padding: 26px 26px; gap: 18px; }
+#main #cf-pricing .cf-plan--pop { padding: 32px 30px; margin: -12px 0; }
+#main #cf-pricing .cf-amount__num { font-size: 42px; }
+#main #cf-pricing .cf-person { margin-top: 10px; }
+#main #cf-pricing .cf-billing { margin-top: 8px; }
+#main #cf-pricing .cf-list { gap: 8px; }
+#main #cf-pricing .cf-plan__note { margin-top: -8px; }
+@media (max-width: 960px) {
+  #main #cf-pricing .cf-plan--pop { margin: 14px 0 0; }
+}
+
+/* Menu-link FAQ: kaart met wat meer lucht onder de header */
+#main#main #faq#faq#faq { scroll-margin-top: 112px !important; }
