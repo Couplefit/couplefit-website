@@ -62,9 +62,7 @@
   function prepare(track) {
     if (prepared) return;
     prepared = true;
-    track.style.scrollBehavior = 'smooth';
     track.querySelectorAll('.feature-copy, .feature-visual').forEach(el => {
-      el.style.transition = 'transform 0.25s ease-out, opacity 0.25s ease-out';
       el.style.willChange = 'transform, opacity';
     });
   }
@@ -75,8 +73,7 @@
     if (!track) return;
     const rows = Array.from(track.querySelectorAll('.feature-row'));
 
-    if (!mobile.matches) {
-      rows.forEach(row => {
+    if (true) {      rows.forEach(row => {
         row.querySelectorAll('.feature-copy, .feature-visual').forEach(el => {
           el.style.removeProperty('transform');
           el.style.removeProperty('opacity');
