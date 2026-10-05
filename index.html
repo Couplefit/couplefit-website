@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20261005k" />
+<link rel="stylesheet" href="/style.css?v=20261005l" />
 
 
 </head>
@@ -1180,6 +1180,13 @@
       var plans = document.querySelector('#cf-pricing .cf-plans');
       var cards = plans ? plans.querySelectorAll('.cf-plan') : [];
       if (cards.length > 1) addDots(plans, cards, 'Plan');
+    }
+
+    // Testimonials: swipe-rij op telefoon (zelfde grens als de CSS: 700px)
+    if (window.matchMedia('(max-width: 700px)').matches) {
+      var tst = document.querySelector('#testimonials .cf-tst__grid');
+      var quotes = tst ? tst.querySelectorAll('.cf-quote') : [];
+      if (quotes.length > 1) addDots(tst, quotes, 'Review');
     }
   })();
 </script>
