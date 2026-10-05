@@ -1862,14 +1862,24 @@ body .cf-mobile-nav a:visited {
 }
 @media (max-width: 520px) {
   .cf-hero { padding: 96px 16px 56px; }
-  .cf-hero__lead { font-size: 17px; }
+  .cf-hero__lead { font-size: 17px; text-align: center; }
+  .cf-hero__title, .cf-hero__note { text-align: center; }
+  .cf-hero__title, .cf-hero__lead { margin-left: auto; margin-right: auto; }
+  .cf-stores { justify-content: center; }
+  .cf-store { text-align: left; }
   .cf-btn { width: 100%; }
-  .cf-stage { padding: 72px 8px 64px; }
-  .cf-phone { width: 272px; }
+  .cf-stage { padding: 56px 8px 48px; }
+  .cf-phone { width: 272px; zoom: .9; }
   .cf-screen { height: 560px; }
   .cf-float { max-width: 200px; font-size: 12px; }
   .cf-float--a, .cf-float--c { top: 14px; left: 10px; }
   .cf-float--b { bottom: 14px; right: 10px; }
+}
+@media (max-width: 520px) and (max-height: 900px) {
+  .cf-phone { zoom: .8; }
+}
+@media (max-width: 520px) and (max-height: 700px) {
+  .cf-phone { zoom: .66; }
 }
 @media (prefers-reduced-motion: reduce) {
   .cf-ring, .cf-float, .cf-phone, .cf-week i { transition: none; }
@@ -2185,9 +2195,42 @@ body .cf-mobile-nav a:visited {
 @media (max-width: 520px) {
   .cf-price { width: calc(100% - 24px); }
   .cf-toggle button { min-width: 0; padding: 10px 16px; font-size: 14px; }
-  .cf-plan { padding: 28px 22px; }
-  .cf-plan--pop { padding: 34px 22px; }
   .cf-tag { left: 22px; }
+
+  /* Prijskaarten: één kaart per scherm, swipen van links naar rechts */
+  #main #cf-pricing .cf-plans.cf-plans {
+    display: flex;
+    gap: 16px;
+    padding: 26px 0 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  #main #cf-pricing .cf-plans.cf-plans::-webkit-scrollbar { display: none; }
+  #main #cf-pricing .cf-plan.cf-plan {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    order: 0;
+    margin: 0;
+    padding: 22px 20px;
+    gap: 10px;
+  }
+
+   /* Compact: titel, aanbieding, toggle en kaart in één oogopslag */
+  #main #cf-pricing .cf-price__title.cf-price__title { font-size: 24px; margin-bottom: 2px; }
+  #main #cf-pricing .cf-price__lead.cf-price__lead { font-size: 14px; margin-bottom: 10px; }
+  #main #cf-pricing .cf-founding.cf-founding { margin-bottom: 10px; padding: 6px 12px 6px 8px; }
+  #main #cf-pricing .cf-founding.cf-founding p { font-size: 12px; line-height: 1.4; }
+  #main #cf-pricing .cf-toggle.cf-toggle { margin-bottom: 4px; }
+  #main #cf-pricing .cf-plan.cf-plan h3 { font-size: 18px; }
+  #main #cf-pricing .cf-plan__sub.cf-plan__sub { font-size: 12px; }
+  #main #cf-pricing .cf-amount__num.cf-amount__num { font-size: 30px; }
+  #main #cf-pricing .cf-person.cf-person { margin-top: 4px; font-size: 12px; }
+  #main #cf-pricing .cf-billing.cf-billing { margin-top: 2px; font-size: 12px; }
+  #main #cf-pricing .cf-list.cf-list { gap: 2px; font-size: 13px; }
+  #main #cf-pricing .cf-plan__cta.cf-plan__cta { padding: 11px 18px; font-size: 14px; }
+  #main #cf-pricing .cf-plan__note.cf-plan__note { font-size: 11px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .cf-toggle__thumb, .cf-amount__old { transition: none; }
@@ -2690,9 +2733,30 @@ body footer.cf-footer.cf-footer a:focus-visible { outline: 2px solid var(--cf-po
   body footer.cf-footer.cf-footer .cf-footer__brand { grid-column: 1 / -1; }
 }
 @media (max-width: 520px) {
-  body footer.cf-footer.cf-footer { width: calc(100% - 24px) !important; padding: 36px 24px 24px !important; border-radius: 28px !important; margin-bottom: 96px !important; }
-  body footer.cf-footer.cf-footer .cf-footer__top { gap: 28px; }
-  body footer.cf-footer.cf-footer .cf-footer__bottom { flex-direction: column; gap: 6px; }
+  body footer.cf-footer.cf-footer { width: calc(100% - 24px) !important; padding: 32px 22px 22px !important; border-radius: 28px !important; margin-bottom: 96px !important; }
+
+  /* Alles onder elkaar en gecentreerd */
+  body footer.cf-footer.cf-footer .cf-footer__top { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+  body footer.cf-footer.cf-footer .cf-footer__brand { display: flex; flex-direction: column; align-items: center; }
+  body footer.cf-footer.cf-footer .cf-footer__brand p { text-align: center; margin-bottom: 18px; }
+
+  /* Rustiger: geen kopjes, de links spreken voor zich */
+  body footer.cf-footer.cf-footer h4 { display: none; }
+
+  /* Links naast elkaar */
+  body footer.cf-footer.cf-footer ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 6px 20px; }
+  body footer.cf-footer.cf-footer li { text-align: center; }
+
+  /* Support: alleen het e-mailadres (de Founding-knop staat al onderin beeld) */
+  body footer.cf-footer.cf-footer .cf-footer__col[aria-label="Support"] { order: 1; }
+  body footer.cf-footer.cf-footer .cf-footer__col[aria-label="Support"] li + li { display: none; }
+
+  /* Legal en copyright samen onderaan: klein, lichter, één lijntje erboven */
+  body footer.cf-footer.cf-footer .cf-footer__col[aria-label="Legal"] { order: 2; width: 100%; margin-top: 4px; padding-top: 20px; border-top: 1px solid rgba(243,239,230,.12); }
+  body footer.cf-footer.cf-footer .cf-footer__col[aria-label="Legal"] ul { gap: 4px 14px; }
+  body footer.cf-footer.cf-footer .cf-footer__col[aria-label="Legal"] a { font-size: 12px; color: rgba(243,239,230,.5) !important; }
+  body footer.cf-footer.cf-footer .cf-footer__bottom { flex-direction: column; align-items: center; gap: 2px; text-align: center; margin-top: 14px; padding-top: 0; border-top: 0; }
+  body footer.cf-footer.cf-footer .cf-footer__bottom p { font-size: 12px; }
 }
 
 /* Story: selfie links, tekst rechts (alleen laptop/desktop) */
