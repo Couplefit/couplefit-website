@@ -2242,6 +2242,7 @@ body .cf-mobile-nav a:visited {
     margin: 0;
     padding: 22px 20px;
     gap: 10px;
+    box-shadow: none;
   }
 
    /* Compact: titel, aanbieding, toggle en kaart in één oogopslag */
@@ -2865,6 +2866,14 @@ body footer.cf-footer.cf-footer a:focus-visible { outline: 2px solid var(--cf-po
 
 @media (prefers-reduced-motion: reduce) {
   #main #sync .cf-tile, #main #sync .cf-ui, #main #sync .cf-pair, #main #sync .cf-meal-body { transition: none; }
+}
+/* Mobiel: workout-kaartjes netjes onder elkaar opgebouwd (oefening, sets, gewicht) */
+@media (max-width: 520px) {
+  #main #sync .cf-set { align-items: flex-start; }
+  #main #sync .cf-set .cf-av { margin-top: 2px; }
+  #main #sync .cf-set b,
+  #main #sync .cf-set span { display: block; }
+  #main #sync .cf-set b { line-height: 1.2; margin: 2px 0 1px; }
 }
 
 /* ===== Hero: meldingen verder van de telefoon ===== */
