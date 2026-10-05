@@ -2217,8 +2217,7 @@ body .cf-mobile-nav a:visited {
   .cf-plans { padding: 0; }
 }
 @media (max-width: 520px) {
-  .cf-price { width: calc(100% - 24px); }
-  .cf-toggle { padding: 3px; }
+  #main #cf-pricing.cf-price { width: calc(100% - 24px); margin-left: auto; margin-right: auto; background: #E6ECF2 !important; border-radius: 28px !important; padding: 28px 16px 20px !important; }  .cf-toggle { padding: 3px; background: rgba(30,42,68,.08); }
   .cf-toggle__thumb { top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px); }
   .cf-toggle button { min-width: 0; padding: 5px 14px; font-size: 12px; }
   .cf-save { display: none; }
@@ -2242,14 +2241,16 @@ body .cf-mobile-nav a:visited {
     margin: 0;
     padding: 22px 20px;
     gap: 10px;
-    box-shadow: none;
+    box-shadow: inset 0 0 0 1px rgba(30,42,68,.14);
+  }
+  #main #cf-pricing .cf-plan--pop.cf-plan--pop {
+    box-shadow: inset 0 0 0 2px var(--cf-burgundy);
   }
 
    /* Compact: titel, aanbieding, toggle en kaart in één oogopslag */
   #main #cf-pricing .cf-price__title.cf-price__title { font-size: 24px; margin-bottom: 2px; }
   #main #cf-pricing .cf-price__lead.cf-price__lead { font-size: 14px; margin-bottom: 10px; }
-  #main #cf-pricing .cf-founding.cf-founding { display: block; margin: 0 auto 12px; padding: 8px 14px; background: rgba(91,30,45,.06); border: 0; border-radius: 14px; box-shadow: none; text-align: center; }
-  #main #cf-pricing .cf-founding.cf-founding p { font-size: 11.5px; line-height: 1.45; }
+  #main #cf-pricing .cf-founding.cf-founding { display: block; margin: 0 auto 12px; padding: 8px 14px; background: #fff; border: 0; border-radius: 14px; box-shadow: none; text-align: center; }  #main #cf-pricing .cf-founding.cf-founding p { font-size: 11.5px; line-height: 1.45; }
   #main #cf-pricing .cf-founding__pair.cf-founding__pair { display: none; }
   #main #cf-pricing .cf-toggle.cf-toggle { margin-bottom: 4px; }
   #main #cf-pricing .cf-plan.cf-plan h3 { font-size: 18px; }
@@ -2700,6 +2701,11 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
   #main#main #testimonials#testimonials#testimonials .cf-quote:hover { transform: none; }
 }
 @media (max-width: 520px) { #main#main #testimonials#testimonials#testimonials.cf-tst { width: calc(100% - 24px) !important; border-radius: 28px !important; } }
+/* Mobiel: testimonials omgedraaid, grote kaart wit en kleine kaartjes blauw */
+@media (max-width: 700px) {
+  #main#main #testimonials#testimonials#testimonials.cf-tst { background: #fff !important; }
+  #main#main #testimonials#testimonials#testimonials .cf-quote { background: #E6ECF2 !important; box-shadow: none !important; }
+}
 @media (prefers-reduced-motion: reduce) { #main#main #testimonials#testimonials#testimonials .cf-quote { transition: none; } }
 
 /* Testimonials: ruimte boven de kaart */
