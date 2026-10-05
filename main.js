@@ -53,7 +53,7 @@
   });
 })();
 
-/* ===== MOBIEL: Features diepte-effect tijdens vegen ===== */
+/* ===== MOBIEL: Features diepte-effect tijdens vegen (licht, zonder haperen) ===== */
 (function () {
   const mobile = window.matchMedia('(max-width: 768px)');
   let ticking = false;
@@ -73,7 +73,8 @@
     if (!track) return;
     const rows = Array.from(track.querySelectorAll('.feature-row'));
 
-    if (true) {      rows.forEach(row => {
+    if (!mobile.matches) {
+      rows.forEach(row => {
         row.querySelectorAll('.feature-copy, .feature-visual').forEach(el => {
           el.style.removeProperty('transform');
           el.style.removeProperty('opacity');
@@ -92,16 +93,12 @@
       const visual = row.querySelector('.feature-visual');
 
       if (copy) {
-        copy.style.setProperty('transform', 'translateX(' + (d * 60) + 'px)', 'important');
-        copy.style.setProperty('opacity', String(1 - 0.85 * a), 'important');
+        copy.style.setProperty('transform', 'translate3d(' + (d * 40) + 'px, 0, 0)', 'important');
+        copy.style.setProperty('opacity', String(1 - 0.7 * a), 'important');
       }
       if (visual) {
-        visual.style.setProperty(
-          'transform',
-          'perspective(900px) translateX(' + (d * 90) + 'px) rotateY(' + (d * -18) + 'deg) scale(' + (1 - 0.14 * a) + ')',
-          'important'
-        );
-        visual.style.setProperty('opacity', String(1 - 0.45 * a), 'important');
+        visual.style.setProperty('transform', 'translate3d(' + (d * 70) + 'px, 0, 0) scale(' + (1 - 0.1 * a) + ')', 'important');
+        visual.style.setProperty('opacity', String(1 - 0.4 * a), 'important');
       }
     });
   }
