@@ -53,67 +53,7 @@
   });
 })();
 
-/* ===== MOBIEL: Features diepte-effect tijdens vegen (licht, zonder haperen) ===== */
-(function () {
-  const mobile = window.matchMedia('(max-width: 768px)');
-  let ticking = false;
-  let prepared = false;
 
-  function prepare(track) {
-    if (prepared) return;
-    prepared = true;
-    track.querySelectorAll('.feature-copy, .feature-visual').forEach(el => {
-      el.style.willChange = 'transform, opacity';
-    });
-  }
-
-  function update() {
-    ticking = false;
-    const track = document.querySelector('#features .cf-features-track');
-    if (!track) return;
-    const rows = Array.from(track.querySelectorAll('.feature-row'));
-
-    if (!mobile.matches) {
-      rows.forEach(row => {
-        row.querySelectorAll('.feature-copy, .feature-visual').forEach(el => {
-          el.style.removeProperty('transform');
-          el.style.removeProperty('opacity');
-        });
-      });
-      return;
-    }
-
-    prepare(track);
-    const progress = track.scrollLeft / (track.clientWidth || 1);
-
-    rows.forEach((row, k) => {
-      const d = Math.max(-1, Math.min(1, progress - k));
-      const a = Math.abs(d);
-      const copy = row.querySelector('.feature-copy');
-      const visual = row.querySelector('.feature-visual');
-
-      if (copy) {
-        copy.style.setProperty('transform', 'translate3d(' + (d * 40) + 'px, 0, 0)', 'important');
-        copy.style.setProperty('opacity', String(1 - 0.7 * a), 'important');
-      }
-      if (visual) {
-        visual.style.setProperty('transform', 'translate3d(' + (d * 70) + 'px, 0, 0) scale(' + (1 - 0.1 * a) + ')', 'important');
-        visual.style.setProperty('opacity', String(1 - 0.4 * a), 'important');
-      }
-    });
-  }
-
-  document.addEventListener('scroll', function (e) {
-    if (e.target && e.target.classList && e.target.classList.contains('cf-features-track') && !ticking) {
-      ticking = true;
-      requestAnimationFrame(update);
-    }
-  }, true);
-
-  window.addEventListener('resize', update);
-  window.addEventListener('load', update);
-  setTimeout(update, 800);
-})();
 
 // Prijskaarten op mobiel: openen op Premium (de middelste kaart)
 window.addEventListener('load', function () {

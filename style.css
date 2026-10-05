@@ -1469,6 +1469,27 @@ body .cf-mobile-nav a:visited {
   #features#features {
     background: linear-gradient(180deg, #E6ECF2 0%, #FFFFFF 55%, var(--tile-gray) 100%) !important;
   }
+    /* Diepte-effect tijdens swipen: de browser rekent het zelf uit, dus geen haperen */
+  @supports (animation-timeline: view()) {
+    #features .cf-features-track .feature-copy {
+      animation: cf-swipe-copy linear both;
+      animation-timeline: view(inline);
+    }
+    #features .cf-features-track .feature-visual {
+      animation: cf-swipe-visual linear both;
+      animation-timeline: view(inline);
+    }
+  }
+  @keyframes cf-swipe-copy {
+    0%   { transform: translate3d(-40px, 0, 0); opacity: .3; }
+    50%  { transform: none; opacity: 1; }
+    100% { transform: translate3d(40px, 0, 0); opacity: .3; }
+  }
+  @keyframes cf-swipe-visual {
+    0%   { transform: translate3d(-70px, 0, 0) scale(.9); opacity: .6; }
+    50%  { transform: none; opacity: 1; }
+    100% { transform: translate3d(70px, 0, 0) scale(.9); opacity: .6; }
+  }
   #features .cf-features-track .feature-device {
     width: 52%;
     max-width: 200px;
