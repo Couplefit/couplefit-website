@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20261005c" />
+<link rel="stylesheet" href="/style.css?v=20261005g" />
 
 
 </head>
@@ -1077,8 +1077,8 @@
   <script>
   (function () {
     // Ruimte boven elke sectie in pixels. Hoger getal = sectie komt lager uit.
-    var OFFSET = { features: -15, story: 80, plans: 88, faq: 88, cta: 80 };
-
+    var MOBIEL = window.matchMedia('(max-width: 520px)').matches;
+    var OFFSET = { features: MOBIEL ? 90 : -15, story: 80, plans: 88, faq: 88, cta: 80 };
     // Echte plek op de pagina, zonder tijdelijke verschuivingen door invaad-effecten
     function pageTop(el) {
       var y = 0;
@@ -1145,35 +1145,49 @@
   
 <script>
   (function () {
-    if (!window.matchMedia('(max-width: 768px)').matches) return;
-    var section = document.getElementById('features');
-    if (!section) return;
-    var rows = section.querySelectorAll('.feature-row');
-    if (rows.length < 2) return;
-    var track = document.createElement('div');
-    track.className = 'cf-features-track';
-    rows[0].parentNode.insertBefore(track, rows[0]);
-    rows.forEach(function (r) { track.appendChild(r); });
-    var dots = document.createElement('div');
-    dots.className = 'pricing-dots cf-features-dots';
-    rows.forEach(function (r, i) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('aria-label', 'Feature ' + (i + 1));
-      b.addEventListener('click', function () {
-        track.scrollTo({ left: r.offsetLeft - rows[0].offsetLeft, behavior: 'smooth' });
+    // Bolletjes onder een swipe-rij: hoeveel kaarten er zijn en waar je bent
+    function addDots(track, items, label) {
+      var dots = document.createElement('div');
+      dots.className = 'pricing-dots cf-features-dots';
+      items.forEach(function (item, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', label + ' ' + (i + 1));
+        b.addEventListener('click', function () {
+          track.scrollTo({ left: item.offsetLeft - items[0].offsetLeft, behavior: 'smooth' });
+        });
+        dots.appendChild(b);
       });
-      dots.appendChild(b);
-    });
-    track.after(dots);
-    var btns = dots.querySelectorAll('button');
-    var update = function () {
-      var step = rows[1].offsetLeft - rows[0].offsetLeft;
-      var i = Math.round(track.scrollLeft / step);
-      btns.forEach(function (b, n) { b.classList.toggle('active', n === i); });
-    };
-    track.addEventListener('scroll', update, { passive: true });
-    update();
+      track.after(dots);
+      var btns = dots.querySelectorAll('button');
+      var update = function () {
+        var step = items[1].offsetLeft - items[0].offsetLeft;
+        var i = Math.round(track.scrollLeft / step);
+        btns.forEach(function (b, n) { b.classList.toggle('active', n === i); });
+      };
+      track.addEventListener('scroll', update, { passive: true });
+      update();
+    }
+
+    // Features: swipe-rij op telefoon en tablet
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      var section = document.getElementById('features');
+      var rows = section ? section.querySelectorAll('.feature-row') : [];
+      if (rows.length > 1) {
+        var track = document.createElement('div');
+        track.className = 'cf-features-track';
+        rows[0].parentNode.insertBefore(track, rows[0]);
+        rows.forEach(function (r) { track.appendChild(r); });
+        addDots(track, rows, 'Feature');
+      }
+    }
+
+    // Prijskaarten: swipe-rij alleen op telefoon (zelfde grens als de CSS)
+    if (window.matchMedia('(max-width: 520px)').matches) {
+      var plans = document.querySelector('#cf-pricing .cf-plans');
+      var cards = plans ? plans.querySelectorAll('.cf-plan') : [];
+      if (cards.length > 1) addDots(plans, cards, 'Plan');
+    }
   })();
 </script>
 

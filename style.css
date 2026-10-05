@@ -2194,7 +2194,10 @@ body .cf-mobile-nav a:visited {
 }
 @media (max-width: 520px) {
   .cf-price { width: calc(100% - 24px); }
-  .cf-toggle button { min-width: 0; padding: 10px 16px; font-size: 14px; }
+  .cf-toggle { padding: 3px; }
+  .cf-toggle__thumb { top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px); }
+  .cf-toggle button { min-width: 0; padding: 5px 14px; font-size: 12px; }
+  .cf-save { display: none; }
   .cf-tag { left: 22px; }
 
   /* Prijskaarten: één kaart per scherm, swipen van links naar rechts */
@@ -2220,8 +2223,9 @@ body .cf-mobile-nav a:visited {
    /* Compact: titel, aanbieding, toggle en kaart in één oogopslag */
   #main #cf-pricing .cf-price__title.cf-price__title { font-size: 24px; margin-bottom: 2px; }
   #main #cf-pricing .cf-price__lead.cf-price__lead { font-size: 14px; margin-bottom: 10px; }
-  #main #cf-pricing .cf-founding.cf-founding { margin-bottom: 10px; padding: 6px 12px 6px 8px; }
-  #main #cf-pricing .cf-founding.cf-founding p { font-size: 12px; line-height: 1.4; }
+  #main #cf-pricing .cf-founding.cf-founding { display: block; margin: 0 auto 12px; padding: 8px 14px; background: rgba(91,30,45,.06); border: 0; border-radius: 14px; box-shadow: none; text-align: center; }
+  #main #cf-pricing .cf-founding.cf-founding p { font-size: 11.5px; line-height: 1.45; }
+  #main #cf-pricing .cf-founding__pair.cf-founding__pair { display: none; }
   #main #cf-pricing .cf-toggle.cf-toggle { margin-bottom: 4px; }
   #main #cf-pricing .cf-plan.cf-plan h3 { font-size: 18px; }
   #main #cf-pricing .cf-plan__sub.cf-plan__sub { font-size: 12px; }
@@ -3058,9 +3062,7 @@ body footer.cf-footer.cf-footer a:focus-visible { outline: 2px solid var(--cf-po
 /* oude prijs altijd doorgestreept zichtbaar */
 #main #cf-pricing .cf-amount__old { opacity: 1 !important; }
 
-@media (max-width: 520px) {
-  #main #cf-pricing .cf-founding { border-radius: 20px; align-items: flex-start; }
-}
+
 
 /* Pricing met founding-prijs: alles weer in één oogopslag */
 #main #cf-pricing .cf-price__title { font-size: clamp(28px, 3.2vw, 40px); margin-bottom: 4px; }
