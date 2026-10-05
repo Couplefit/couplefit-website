@@ -1124,8 +1124,9 @@
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    groups.forEach(function (sel) {
+    }, window.matchMedia('(max-width: 768px)').matches
+      ? { threshold: 0, rootMargin: '0px' }
+      : { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });    groups.forEach(function (sel) {
       document.querySelectorAll(sel).forEach(function (el) {
         var siblings = Array.prototype.filter.call(el.parentNode.children, function (c) { return c.matches(sel); });
         el.style.setProperty('--i', Math.min(siblings.indexOf(el), 5));
@@ -1217,8 +1218,9 @@
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -10% 0px' });
-    els.forEach(function (el) {
+    }, window.matchMedia('(max-width: 768px)').matches
+      ? { threshold: 0, rootMargin: '0px' }
+      : { threshold: 0.08, rootMargin: '0px 0px -10% 0px' });    els.forEach(function (el) {
       el.classList.add('cf-reveal');
       io.observe(el);
     });
