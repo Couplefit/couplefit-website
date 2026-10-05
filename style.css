@@ -2786,20 +2786,20 @@ body footer.cf-footer.cf-footer a:focus-visible { outline: 2px solid var(--cf-po
   to   { opacity: 1; transform: none; }
 }
 
-/* Reveal op telefoon: sneller en subtieler, past bij sneller scrollen */
+/* Reveal op telefoon: iets sneller dan desktop, maar rustig uitlopend */
 @media (max-width: 768px) {
   .cf-reveal {
-    transform: translateY(16px) !important;
-    transition: opacity .4s ease, transform .45s cubic-bezier(0.2, 0.7, 0.2, 1) !important;
+    transform: translateY(20px) !important;
+    transition: opacity .6s ease-out, transform .6s cubic-bezier(.22, 1, .36, 1) !important;
   }
   .cf-rv.is-in {
     animation-name: cf-rise-sm;
-    animation-duration: .45s;
-    animation-delay: calc(var(--i, 0) * 50ms);
+    animation-duration: .6s;
+    animation-delay: calc(var(--i, 0) * 70ms);
   }
 }
 @keyframes cf-rise-sm {
-  from { opacity: 0; transform: translateY(14px); }
+  from { opacity: 0; transform: translateY(20px); }
 }
 
 /* ===== Bento: meer diepte en SaaS-uitstraling ===== */
