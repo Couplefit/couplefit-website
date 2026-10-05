@@ -2756,7 +2756,7 @@ body footer.cf-footer.cf-footer a:focus-visible { outline: 2px solid var(--cf-po
   body footer.cf-footer.cf-footer ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 6px 20px; }
   body footer.cf-footer.cf-footer li { text-align: center; }
 
-  /* Support: alleen het e-mailadres (de Founding-knop staat al onderin beeld) */
+    /* Support: alleen het e-mailadres (de Founding-knop staat al op meerdere plekken) */
   body footer.cf-footer.cf-footer .cf-footer__col[aria-label="Support"] { order: 1; }
   body footer.cf-footer.cf-footer .cf-footer__col[aria-label="Support"] li + li { display: none; }
 
@@ -2784,6 +2784,22 @@ body footer.cf-footer.cf-footer a:focus-visible { outline: 2px solid var(--cf-po
 @keyframes cf-rise {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: none; }
+}
+
+/* Reveal op telefoon: sneller en subtieler, past bij sneller scrollen */
+@media (max-width: 768px) {
+  .cf-reveal {
+    transform: translateY(16px) !important;
+    transition: opacity .4s ease, transform .45s cubic-bezier(0.2, 0.7, 0.2, 1) !important;
+  }
+  .cf-rv.is-in {
+    animation-name: cf-rise-sm;
+    animation-duration: .45s;
+    animation-delay: calc(var(--i, 0) * 50ms);
+  }
+}
+@keyframes cf-rise-sm {
+  from { opacity: 0; transform: translateY(14px); }
 }
 
 /* ===== Bento: meer diepte en SaaS-uitstraling ===== */
