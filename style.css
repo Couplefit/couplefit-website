@@ -1459,10 +1459,15 @@ body .cf-mobile-nav a:visited {
     width: 100% !important;
     max-width: none !important;
     scroll-snap-align: center;
+    background: transparent !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     margin: 0 !important;
     padding: 16px 24px 8px !important;
+  }
+  /* Eén doorlopend kleurverloop achter de hele Features-kaart (Mac-kleuren) */
+  #features#features {
+    background: linear-gradient(180deg, #E6ECF2 0%, #FFFFFF 55%, var(--tile-gray) 100%) !important;
   }
   #features .cf-features-track .feature-device {
     width: 52%;
