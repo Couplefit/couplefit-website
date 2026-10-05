@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20261005g" />
+<link rel="stylesheet" href="/style.css?v=20261005i" />
 
 
 </head>
@@ -163,8 +163,7 @@
   </div>
 </section>
 
-<!-- Vaste knop onderin op mobiel + menu dat meeleeft met scrollen -->
-<a href="#cta" class="cf-sticky-cta" id="cf-sticky-cta">Become a Founding Couple</a>
+<!-- Menu dat meeleeft met scrollen -->
 <script>
 (function () {
   function init() {
@@ -178,9 +177,7 @@
       if (sec) map.push({ link: a, sec: sec });
     });
 
-    var sticky = document.getElementById('cf-sticky-cta');
-    var hero = document.querySelector('.cf-hero');
-    var cta = document.getElementById('cta');
+
 
     function update() {
       var mid = window.innerHeight * 0.35;
@@ -193,11 +190,7 @@
 
       header.classList.toggle('is-scrolled', window.scrollY > 8);
 
-      if (sticky) {
-        var pastHero = hero ? hero.getBoundingClientRect().bottom < 0 : window.scrollY > 600;
-        var atCta = cta ? cta.getBoundingClientRect().top < window.innerHeight : false;
-        sticky.classList.toggle('is-visible', pastHero && !atCta);
-      }
+
     }
 
     update();
@@ -1012,7 +1005,7 @@
   </script>
 
   
-  <script src="main.js?v=6"></script>
+  <script src="main.js?v=7"></script>
     <!-- Features: telefoons komen zacht binnen, glans over het scherm, lichte diepte -->
   <script>
   (function () {

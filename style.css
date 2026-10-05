@@ -1459,7 +1459,6 @@ body .cf-mobile-nav a:visited {
     width: 100% !important;
     max-width: none !important;
     scroll-snap-align: center;
-    background: transparent !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     margin: 0 !important;
@@ -2317,28 +2316,9 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
   body .site-header.is-scrolled .cf-cta { padding: 9px 18px; }
 }
 
-/* ===== Vaste knop onderin op mobiel ===== */
-.cf-sticky-cta { display: none; }
-@media (max-width: 768px) {
-  .cf-sticky-cta {
-    display: flex; align-items: center; justify-content: center;
-    position: fixed; left: 12px; right: 12px;
-    bottom: calc(12px + env(safe-area-inset-bottom));
-    z-index: 90;
-    padding: 16px 24px; border-radius: 999px;
-    background: var(--cf-burgundy);
-    color: var(--cf-ivory) !important;
-    text-decoration: none;
-    font: 600 16px var(--cf-body);
-    box-shadow: 0 10px 28px -8px rgba(91,30,45,.5);
-    transform: translateY(140%);
-    transition: transform .35s cubic-bezier(.22,1,.36,1);
-  }
-  .cf-sticky-cta.is-visible { transform: none; }
-}
+
 @media (prefers-reduced-motion: reduce) {
-  body .site-header, .cf-sticky-cta, body .site-header .cf-nav a::after { transition: none; }
-}
+  body .site-header, body .site-header .cf-nav a::after { transition: none; }}
 
 /* ================= FAQ (twee kolommen) ================= */
 .cf-faq, .cf-faq * { box-sizing: border-box; }
