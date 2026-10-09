@@ -1,97 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Shared <head> partial -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CoupleFit – Train Together, Win Together</title>
-<meta name="description" content="CoupleFit is the fitness & nutrition app for two. One subscription, two users. AI‑guided workouts, shared goals, and progress that sticks." />
+<title>Subscriptions – CoupleFit</title>
+<meta name="description" content="CoupleFit plans for couples. One subscription covers both of you: Basic, Premium and Elite. Founding couples get 30% off for life while they stay subscribed." />
 
-<!-- Favicons (map: /favicon) -->
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico?v=4" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=4">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
+<link rel="manifest" href="/site.webmanifest?v=4">
+<meta name="theme-color" content="#FAF8F5">
 
-<!-- PNG favicons in /favicon -->
-<link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-
-<!-- ICO in /favicon -->
-<link rel="shortcut icon" href="/favicon/favicon.ico">
-
-<!-- Root fallbacks (sommige browsers vallen hierop terug). 
-     Zet desnoods ook kopieën van de bestanden in de webroot. -->
-<link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-
-<!-- Manifest & pinned tab (optioneel, zodra je bestanden hebt)
-<link rel="manifest" href="/favicon/site.webmanifest">
-<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#48C9B0">
--->
-<meta name="theme-color" content="#ffffff">
-
-<link rel="stylesheet" href="/style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/style.css?v=20261005" />
 </head>
 <body class="legal-page">
-  <div id="header"></div>
-  <script src="/header-loader.js?v=1"></script>
+  <header id="header"></header>
+  <script src="/header-loader.js?v=2" defer></script>
 
-  <main class="section legal">
-    <div class="container">
-      <h1>Subscriptions</h1>
-      <p class="lead">One subscription. Two people. Unlimited progress.</p>
+  <main id="main">
 
-      <div class="pricing-grid" style="margin-top:24px;">
-        <div class="plan">
-          <h3>Basic · Free (Forever)</h3>
-          <ul>
-            <li>Connect with your partner</li>
-            <li>Basic workouts & nutrition</li>
-            <li>Simple progress tracking</li>
-          </ul>
+<section class="cf-price" id="cf-pricing" data-period="yearly" aria-labelledby="plans">
+  <h1 id="plans" class="cf-price__title">Subscriptions</h1>
+  <p class="cf-price__lead">One subscription covers both of you. Two accounts, linked from day one.</p>
+
+  <div class="cf-founding" role="note">
+    <span class="cf-founding__pair" aria-hidden="true"><i></i><i></i></span>
+    <p><strong>Founding couple offer:</strong> 30% off Premium and Elite, for life, as long as your subscription stays active. Only for our first 500 couples. If you cancel and sign up again later, the founding discount no longer applies.</p>
+  </div>
+
+  <div class="cf-toggle" data-period="yearly" role="group" aria-label="Billing period">
+    <span class="cf-toggle__thumb" aria-hidden="true"></span>
+    <button type="button" data-set="monthly" aria-pressed="false">Monthly</button>
+    <button type="button" data-set="yearly" aria-pressed="true">Yearly <span class="cf-save">Save 10%</span></button>
+  </div>
+
+  <div class="cf-plans">
+
+    <!-- BASIC -->
+    <article class="cf-plan">
+      <div>
+        <h3>Basic</h3>
+        <p class="cf-plan__sub">Get started together</p>
+      </div>
+      <div>
+        <div class="cf-amount"><span class="cf-amount__num">$0</span><span class="cf-amount__per">per month</span></div>
+        <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span>Free for both of you</div>
+        <p class="cf-billing">No card required, free forever</p>
+      </div>
+      <ul class="cf-list">
+        <li>Two linked accounts</li>
+        <li>Basic workouts and nutrition</li>
+        <li>Simple progress tracking</li>
+      </ul>
+      <a class="cf-plan__cta" href="/#cta">Join for free</a>
+    </article>
+
+    <!-- PREMIUM -->
+    <article class="cf-plan cf-plan--pop">
+      <span class="cf-tag">Most couples choose this</span>
+      <div>
+        <h3>Premium</h3>
+        <p class="cf-plan__sub">Everything you need to grow together</p>
+      </div>
+      <div>
+        <span class="cf-flabel">Founding price</span>
+        <div class="cf-amount">
+          <span class="cf-amount__num" data-monthly="17.49" data-yearly="15.74">$15.74</span>
+          <span class="cf-amount__per">per month</span>
+          <span class="cf-amount__old" data-monthly="$24.99" data-yearly="$22.49">$22.49</span>
         </div>
+        <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span><strong class="cf-person__text" data-monthly="That's $8.75 per person" data-yearly="That's $7.87 per person">That's $7.87 per person</strong></div>
+        <p class="cf-billing" data-monthly="Billed monthly. You save $7.50 a month" data-yearly="Billed $188.88 a year. You save $81">Billed $188.88 a year. You save $81</p>
+      </div>
+      <ul class="cf-list">
+        <li>Everything in Basic</li>
+        <li>Couple mode with shared streaks and milestones</li>
+        <li>Full workout and recipe library</li>
+        <li>Habit tracking with AI suggestions</li>
+      </ul>
+      <a class="cf-plan__cta" href="/#cta">Reserve Premium</a>
+      <p class="cf-plan__note">No payment today. Price locked in at launch.</p>
+    </article>
 
-        <div class="plan popular">
-          <div class="ribbon">MOST POPULAR</div>
-          <h3>Premium · $24.99 / month</h3>
-          <ul>
-            <li>Everything in Basic</li>
-            <li>Couple mode (shared streaks + milestones)</li>
-            <li>Full workout & recipe library</li>
-            <li>Habit tracking + AI suggestions</li>
-          </ul>
+    <!-- ELITE -->
+    <article class="cf-plan">
+      <div>
+        <h3>Elite</h3>
+        <p class="cf-plan__sub">The complete program for two</p>
+      </div>
+      <div>
+        <span class="cf-flabel">Founding price</span>
+        <div class="cf-amount">
+          <span class="cf-amount__num" data-monthly="24.49" data-yearly="22.04">$22.04</span>
+          <span class="cf-amount__per">per month</span>
+          <span class="cf-amount__old" data-monthly="$34.99" data-yearly="$31.49">$31.49</span>
         </div>
+        <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span><strong class="cf-person__text" data-monthly="That's $12.25 per person" data-yearly="That's $11.02 per person">That's $11.02 per person</strong></div>
+        <p class="cf-billing" data-monthly="Billed monthly. You save $10.50 a month" data-yearly="Billed $264.48 a year. You save $113.40">Billed $264.48 a year. You save $113.40</p>
+      </div>
+      <ul class="cf-list">
+        <li>Everything in Premium</li>
+        <li>Complete AI fitness program for both of you</li>
+        <li>Deep analytics and insights</li>
+        <li>Monthly couple performance reports</li>
+        <li>Wearable sync</li>
+      </ul>
+      <a class="cf-plan__cta" href="/#cta">Reserve Elite</a>
+      <p class="cf-plan__note">No payment today. Price locked in at launch.</p>
+    </article>
 
-        <div class="plan">
-          <h3>Elite · $34.99 / month</h3>
+  </div>
+</section>
+
+    <section class="section legal">
+      <div class="container">
+        <div class="feature-card">
+          <h3>Billing & Cancellations</h3>
           <ul>
-            <li>Everything in Premium</li>
-            <li>Complete AI fitness program for both partners</li>
-            <li>Deep analytics & insights</li>
-            <li>Monthly couple performance reports</li>
-            <li>Wearable sync</li>
+            <li>Subscriptions auto‑renew until canceled.</li>
+            <li>Manage or cancel via your App Store account (Apple or Google).</li>
+            <li>Deleting your CoupleFit account does <strong>not</strong> cancel your subscription.</li>
+            <li>Refunds are handled by Apple/Google; CoupleFit cannot issue refunds.</li>
+            <li>The founding couple discount applies for as long as your subscription stays active. If you cancel and subscribe again later, regular prices apply.</li>
           </ul>
+          <p><strong>Availability:</strong> CoupleFit is coming soon to iPhone and Android. Paid subscriptions will be available at launch.</p>
+          <p>Support: <a href="mailto:support@couplefit.app">support@couplefit.app</a></p>
         </div>
       </div>
+    </section>
 
-      <div class="feature-card" style="margin-top:22px;">
-        <h3>Billing & Cancellations</h3>
-        <ul>
-          <li>Subscriptions auto‑renew until canceled.</li>
-          <li>Manage or cancel via your App Store account (Apple or Google).</li>
-          <li>Deleting your CoupleFit account does <strong>not</strong> cancel your subscription.</li>
-          <li>Refunds are handled by Apple/Google; CoupleFit cannot issue refunds.</li>
-        </ul>
-        <p><strong>Android notice:</strong> Paid subscriptions will be available from late January 2026.</p>
-        <p>Support: <a href="mailto:support@couplefit.app">support@couplefit.app</a></p>
-      </div>
-    </div>
   </main>
 
   <div id="footer"></div>
   <script src="/footer-loader.js"></script>
 
+<!-- Monthly / Yearly schakelaar -->
+<script>
+(function () {
+  var root = document.querySelector('.cf-price');
+  if (!root) return;
+  var toggle = root.querySelector('.cf-toggle');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  function tween(el, to) {
+    var from = parseFloat(el.textContent.replace('$', '')) || 0;
+    if (reduce || from === to) { el.textContent = '$' + to.toFixed(2); return; }
+    var start = null;
+    function step(t) {
+      if (!start) start = t;
+      var p = Math.min((t - start) / 450, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = '$' + (from + (to - from) * e).toFixed(2);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
 
+  function setPeriod(period) {
+    root.setAttribute('data-period', period);
+    toggle.setAttribute('data-period', period);
+    toggle.querySelectorAll('button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-set') === period ? 'true' : 'false');
+    });
+    root.querySelectorAll('.cf-amount__num[data-' + period + ']').forEach(function (el) {
+      tween(el, parseFloat(el.getAttribute('data-' + period)));
+    });
+    root.querySelectorAll('.cf-person [data-' + period + '], .cf-billing[data-' + period + '], .cf-amount__old[data-' + period + ']').forEach(function (el) {
+      el.textContent = el.getAttribute('data-' + period);
+    });
+  }
 
+  toggle.querySelectorAll('button').forEach(function (b) {
+    b.addEventListener('click', function () { setPeriod(b.getAttribute('data-set')); });
+  });
+})();
+</script>
+
+<!-- Prijskaarten op telefoon: swipe-rij met bolletjes -->
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 520px)').matches) return;
+  var track = document.querySelector('#cf-pricing .cf-plans');
+  var items = track ? track.querySelectorAll('.cf-plan') : [];
+  if (items.length < 2) return;
+  var dots = document.createElement('div');
+  dots.className = 'pricing-dots cf-features-dots';
+  items.forEach(function (item, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Plan ' + (i + 1));
+    b.addEventListener('click', function () {
+      track.scrollTo({ left: item.offsetLeft - items[0].offsetLeft, behavior: 'smooth' });
+    });
+    dots.appendChild(b);
+  });
+  track.after(dots);
+  var btns = dots.querySelectorAll('button');
+  function update() {
+    var step = items[1].offsetLeft - items[0].offsetLeft;
+    var i = Math.round(track.scrollLeft / step);
+    btns.forEach(function (b, n) { b.classList.toggle('active', n === i); });
+  }
+  track.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+
+  <script src="/main.js?v=11"></script>
 </body>
 </html>
+ 
