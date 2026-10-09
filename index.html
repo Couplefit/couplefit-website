@@ -5,8 +5,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CoupleFit – The fitness app for couples</title>
-<meta name="description" content="The fitness app built for couples. Workouts, meals and habits for two, with one subscription and two linked accounts. Join as a founding couple and get 30% off for life." />
-
+   <meta name="description" content="The fitness app built for couples. Workouts, meals and habits for two, with one subscription and two linked accounts. Join as a founding couple and get 30% off for life while you stay subscribed." />
 <!-- Favicons -->
 <link rel="icon" href="/favicon.ico?v=4" sizes="48x48">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4">
@@ -32,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=20261005u" />
+<link rel="stylesheet" href="/style.css?v=20261005" />
 
 
 </head>
@@ -581,8 +580,7 @@
 
   <div class="cf-founding" role="note">
     <span class="cf-founding__pair" aria-hidden="true"><i></i><i></i></span>
-    <p><strong>Founding couple offer:</strong> 30% off Premium and Elite, for life. Only for our first 500 couples.</p>
-  </div>
+       <p><strong>Founding couple offer:</strong> 30% off Premium and Elite, for life, as long as your subscription stays active. Only for our first 500 couples. If you cancel and sign up again later, the founding discount no longer applies.</p>  </div>
 
   <div class="cf-toggle" data-period="yearly" role="group" aria-label="Billing period">
     <span class="cf-toggle__thumb" aria-hidden="true"></span>
@@ -881,7 +879,7 @@
         <span class="cf-signup__pair" aria-hidden="true"><i></i><i></i></span>
         <h2 id="cf-signup-title" class="cf-signup__title">Ready to build healthier habits together?</h2>
         <p class="cf-signup__lead">Become one of our founding couples and help shape CoupleFit from day one.</p>
-                <div class="cf-spots" id="cf-spots" data-joined="37" data-total="500" data-min="25">
+                <div class="cf-spots" id="cf-spots" data-joined="0" data-total="500" data-min="25">
           <div class="cf-spots__top">
             <span class="cf-spots__label"><i aria-hidden="true"></i><span id="cf-spots-label">Be one of our first 500 founding couples</span></span>
             <span class="cf-spots__left" id="cf-spots-left">30% off for life</span>
@@ -937,7 +935,7 @@
     <script>
     (function () {
       // Later invullen met de link van Brevo of Formspree:
-      var CF_SIGNUP_ENDPOINT = '';
+      var CF_SIGNUP_ENDPOINT = 'https://8a1af095.sibforms.com/serve/MUIFAMBH2bl3qv-L1UtlBswDqMVsV25HAzbsKQQhQKOoK0nBVDkp2q0pG2FLP240hhoueNSG4jGlqJ5Z7ovhlreMHIHOzeX-kMtFze2pKGNBhBANN7TZcjW5kEjwZCQ-C_xBtJ3Dqz3IohC0yzmqEkUs6KZH2ZNhi_XzutprictrhBjewniJ67VybKiNkUzLnuLkhfwjkHjmYXJdHg==?isAjax=1';
 
       var form = document.getElementById('cf-signup-form');
       if (!form) return;
@@ -966,17 +964,21 @@
           return;
         }
 
-        btn.disabled = true; say('Sending…');
-        fetch(CF_SIGNUP_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ email: email, partner_email: partner })
-        }).then(function (r) {
-          if (!r.ok) throw new Error();
-          finish();
-        }).catch(function () {
-          btn.disabled = false; say('Something went wrong. Please try again in a moment.');
-        });
+           btn.disabled = true; say('Sending…');
+           var data = new FormData();
+           data.append('EMAIL', email);
+           if (partner) data.append('PARTNER_EMAIL', partner);
+           data.append('email_address_check', '');
+           data.append('locale', 'en');
+           fetch(CF_SIGNUP_ENDPOINT, {
+             method: 'POST',
+             mode: 'no-cors',
+             body: data
+           }).then(function () {
+             finish();
+           }).catch(function () {
+             btn.disabled = false; say('Something went wrong. Please try again in a moment.');
+           });
       });
     })();
     </script>
