@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're confirmed – CoupleFit</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF8F5;
+    --ink: #1E2A44;
+    --text: #3A4560;
+    --muted: #56698A;
+    --burgundy: #5B1E2D;
+    --burgundy-hover: #7C2C3A;
+    --powder: #B7C6D6;
+    --soft-blue: #E6ECF2;
+    --ivory: #F3EFE6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100svh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 32px;
+    text-decoration: none;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .logo svg { display: block; }
+  .card {
+    width: 100%;
+    max-width: 560px;
+    background: var(--soft-blue);
+    border-radius: 28px;
+    padding: 48px 40px;
+    text-align: center;
+  }
+  .check {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: var(--burgundy);
+    color: var(--ivory);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+  }
+  h1 {
+    margin: 0 0 16px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  p {
+    margin: 0 0 12px;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .small {
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .btn {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: var(--burgundy);
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn:hover { background: var(--burgundy-hover); }
+  @media (max-width: 480px) {
+    .card { padding: 40px 24px; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+  <a class="logo" href="/">
+    <svg width="40" height="24" viewBox="0 0 40 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="11" fill="#5B1E2D"/>
+      <circle cx="28" cy="12" r="11" fill="#B7C6D6"/>
+      <path d="M20 4.2a11 11 0 0 1 0 15.6a11 11 0 0 1 0-15.6z" fill="#1E2A44"/>
+    </svg>
+    CoupleFit
+  </a>
+
+  <main class="card">
+    <div class="check" aria-hidden="true">✓</div>
+    <h1>You're confirmed</h1>
+    <p>Welcome to the CoupleFit founding couples. Your spot is saved.</p>
+    <p class="small">We've just sent you a welcome email with everything you need to know.</p>
+    <a class="btn" href="/">Back to CoupleFit</a>
+  </main>
+
+</body>
+</html>
