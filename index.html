@@ -583,7 +583,7 @@
 
   <div class="cf-founding" role="note">
     <span class="cf-founding__pair" aria-hidden="true"><i></i><i></i></span>
-       <p><strong>Founding couple offer:</strong> 30% off Premium and Elite, for life, as long as your subscription stays active. Only for our first 500 couples. Upgrade from Premium to Elite later and your founding discount comes with you. If you cancel and sign up again later, the founding discount no longer applies.</p>  </div>
+       <p><strong>Founding couple offer:</strong> 30% off Premium and Elite, for life, as long as your subscription stays active. Only for our first 500 couples. Upgrade from Premium to Elite later and your founding discount comes with you. If you cancel and sign up again later, the founding discount no longer applies. All prices are in euros and include VAT.</p>  </div>
 
   <div class="cf-toggle" data-period="yearly" role="group" aria-label="Billing period">
     <span class="cf-toggle__thumb" aria-hidden="true"></span>
@@ -600,7 +600,7 @@
         <p class="cf-plan__sub">Get started together</p>
       </div>
       <div>
-        <div class="cf-amount"><span class="cf-amount__num">$0</span><span class="cf-amount__per">per month</span></div>
+        <div class="cf-amount"><span class="cf-amount__num">€0</span><span class="cf-amount__per">per month</span></div>
         <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span>Free for both of you</div>
         <p class="cf-billing">No card required, free forever</p>
       </div>
@@ -621,12 +621,12 @@
       <div>
         <span class="cf-flabel">Founding price</span>
         <div class="cf-amount">
-          <span class="cf-amount__num" data-monthly="17.49" data-yearly="15.74">$15.74</span>
+          <span class="cf-amount__num" data-monthly="17.49" data-yearly="15.74">€15.74</span>
           <span class="cf-amount__per">per month</span>
-          <span class="cf-amount__old" data-monthly="$24.99" data-yearly="$22.49">$22.49</span>
+          <span class="cf-amount__old" data-monthly="€24.99" data-yearly="€22.49">€22.49</span>
         </div>
-        <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span><strong class="cf-person__text" data-monthly="That's $8.75 per person" data-yearly="That's $7.87 per person">That's $7.87 per person</strong></div>
-        <p class="cf-billing" data-monthly="Billed monthly. You save $7.50 a month" data-yearly="Billed $188.88 a year. You save $81 a year">Billed $188.88 a year. You save $81 a year</p>
+        <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span><strong class="cf-person__text" data-monthly="That's €8.75 per person" data-yearly="That's €7.87 per person">That's €7.87 per person</strong></div>
+        <p class="cf-billing" data-monthly="Billed monthly. You save €7.50 a month" data-yearly="Billed €188.88 a year. You save €81 a year">Billed €188.88 a year. You save €81 a year</p>
       </div>
       <ul class="cf-list">
         <li>Everything in Basic</li>
@@ -647,12 +647,12 @@
       <div>
         <span class="cf-flabel">Founding price</span>
         <div class="cf-amount">
-          <span class="cf-amount__num" data-monthly="24.49" data-yearly="22.04">$22.04</span>
+          <span class="cf-amount__num" data-monthly="24.49" data-yearly="22.04">€22.04</span>
           <span class="cf-amount__per">per month</span>
-          <span class="cf-amount__old" data-monthly="$34.99" data-yearly="$31.49">$31.49</span>
+          <span class="cf-amount__old" data-monthly="€34.99" data-yearly="€31.49">€31.49</span>
         </div>
-        <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span><strong class="cf-person__text" data-monthly="That's $12.25 per person" data-yearly="That's $11.02 per person">That's $11.02 per person</strong></div>
-        <p class="cf-billing" data-monthly="Billed monthly. You save $10.50 a month" data-yearly="Billed $264.48 a year. You save $113.40 a year">Billed $264.48 a year. You save $113.40 a year</p>
+        <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span><strong class="cf-person__text" data-monthly="That's €12.25 per person" data-yearly="That's €11.02 per person">That's €11.02 per person</strong></div>
+        <p class="cf-billing" data-monthly="Billed monthly. You save €10.50 a month" data-yearly="Billed €264.48 a year. You save €113.40 a year">Billed €264.48 a year. You save €113.40 a year</p>
       </div>
       <ul class="cf-list">
         <li>Everything in Premium</li>
@@ -675,14 +675,14 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function tween(el, to) {
-    var from = parseFloat(el.textContent.replace('$', '')) || 0;
-    if (reduce || from === to) { el.textContent = '$' + to.toFixed(2); return; }
+    var from = parseFloat(el.textContent.replace('€', '')) || 0;
+    if (reduce || from === to) { el.textContent = '€' + to.toFixed(2); return; }
     var start = null;
     function step(t) {
       if (!start) start = t;
       var p = Math.min((t - start) / 450, 1);
       var e = 1 - Math.pow(1 - p, 3);
-      el.textContent = '$' + (from + (to - from) * e).toFixed(2);
+      el.textContent = '€' + (from + (to - from) * e).toFixed(2);
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
