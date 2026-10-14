@@ -2675,13 +2675,16 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
 }
 #main#main #testimonials#testimonials#testimonials .cf-quote:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(30,42,68,.05), 0 18px 36px rgba(30,42,68,.12); }
 #main#main #testimonials#testimonials#testimonials .cf-quote blockquote {
-  position: relative; margin: 0; padding-top: 30px;
+  position: relative; margin: 0; padding-top: 0;
   font-family: var(--cf-display); font-weight: 600; font-size: 18px; line-height: 1.45; letter-spacing: -0.01em;
   color: var(--cf-ink); quotes: none; text-align: left;
 }
+/* Label i.p.v. aanhalingsteken: dit zijn voorbeeldsituaties, geen echte reviews */
 #main#main #testimonials#testimonials#testimonials .cf-quote blockquote::before {
-  content: "\201C"; position: absolute; top: -10px; left: -2px;
-  font-family: Georgia, serif; font-size: 56px; line-height: 1; color: var(--cf-burgundy);
+  content: "Example situation"; display: block; width: fit-content; position: static; margin: 0 0 14px;
+  padding: 4px 10px; border-radius: 999px; background: rgba(91,30,45,.08);
+  font-family: var(--cf-body); font-size: 12px; font-weight: 600; letter-spacing: .02em; line-height: 1.4;
+  color: var(--cf-burgundy);
 }
 #main#main #testimonials#testimonials#testimonials .cf-quote figcaption { display: flex; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid var(--cf-softblue); }
 #main#main #testimonials#testimonials#testimonials .cf-quote figcaption img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; background: var(--cf-softblue); flex: none; margin: 0; }
