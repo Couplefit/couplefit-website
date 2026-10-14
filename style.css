@@ -3222,3 +3222,31 @@ body.legal-page main.legal .lead { margin-bottom: 20px; color: var(--cf-muted, #
   body.legal-page main.legal h1 { font-size: 28px; }
   body.legal-page main.legal h2 { font-size: 20px; margin-top: 26px; }
 }
+
+/* FAQ: vragen per onderwerp in tabs, zodat het geen lange rij wordt */
+#main #faq .cf-faq__tabs {
+  display: flex; gap: 6px; padding: 5px; margin: 0 0 18px; width: fit-content; max-width: 100%;
+  background: var(--cf-softblue); border-radius: 999px; overflow-x: auto; scrollbar-width: none;
+}
+#main #faq .cf-faq__tabs::-webkit-scrollbar { display: none; }
+#main #faq .cf-faq__tab {
+  flex: none; border: 0; margin: 0; cursor: pointer; white-space: nowrap;
+  padding: 10px 18px; border-radius: 999px; background: transparent;
+  font: 600 15px/1.2 var(--cf-display); color: var(--cf-label);
+  transition: background-color .2s, color .2s, box-shadow .2s;
+}
+#main #faq .cf-faq__tab:hover { color: var(--cf-ink); }
+#main #faq .cf-faq__tab.is-active { background: #fff; color: var(--cf-burgundy); box-shadow: 0 1px 2px rgba(30,42,68,.08), 0 4px 12px rgba(30,42,68,.08); }
+#main #faq .cf-faq__tab:focus-visible { outline: 3px solid var(--cf-dusty); outline-offset: 2px; }
+#main #faq .cf-faq__group[hidden] { display: none; }
+#main #faq .cf-faq__group.is-active { animation: cfFaqIn .35s cubic-bezier(.22,1,.36,1); }
+@keyframes cfFaqIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+#main #faq .cf-faq__group .cf-faq__item:first-child { border-top: 0; }
+#main #faq .cf-faq__a a { color: var(--cf-burgundy); font-weight: 600; text-decoration: none; border-bottom: 1.5px solid rgba(91,30,45,.25); white-space: nowrap; }
+#main #faq .cf-faq__a a:hover { border-color: var(--cf-burgundy); }
+#main #faq .cf-faq__list, #main #faq .cf-faq__intro { min-width: 0; }
+@media (max-width: 700px) {
+  #main #faq .cf-faq__tabs { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; border-radius: 18px; }
+  #main #faq .cf-faq__tab { white-space: normal; text-align: center; padding: 9px 6px; font-size: 13px; line-height: 1.25; border-radius: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { #main #faq .cf-faq__group.is-active { animation: none; } }

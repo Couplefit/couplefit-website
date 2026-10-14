@@ -33,7 +33,7 @@
 
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261014e" />
+<link rel="stylesheet" href="/style.css?v=20261014f" />
 
 
 </head>
@@ -817,46 +817,97 @@
   </div>
 
   <div class="cf-faq__list">
-    <div class="cf-faq__item">
-      <button class="cf-faq__q" type="button" aria-expanded="false">
-        <span>How does CoupleFit keep us consistent together?</span><i aria-hidden="true"></i>
-      </button>
-      <div class="cf-faq__a"><div><p>CoupleFit links your goals, streaks and milestones so progress feels shared. Each partner gets a personalized plan, but your streaks and wins are synced, making it easier to show up for each other.</p></div></div>
+    <!-- Categorieën: klik op een tab om de vragen van dat onderwerp te zien -->
+    <div class="cf-faq__tabs" role="tablist" aria-label="FAQ topics">
+      <button class="cf-faq__tab is-active" type="button" role="tab" id="cf-faq-tab-app" aria-controls="cf-faq-app" aria-selected="true">Using CoupleFit</button>
+      <button class="cf-faq__tab" type="button" role="tab" id="cf-faq-tab-plans" aria-controls="cf-faq-plans" aria-selected="false" tabindex="-1">Plans &amp; launch</button>
+      <button class="cf-faq__tab" type="button" role="tab" id="cf-faq-tab-privacy" aria-controls="cf-faq-privacy" aria-selected="false" tabindex="-1">Accounts &amp; privacy</button>
     </div>
 
-    <div class="cf-faq__item">
-      <button class="cf-faq__q" type="button" aria-expanded="false">
-        <span>Do we need separate accounts?</span><i aria-hidden="true"></i>
-      </button>
-      <div class="cf-faq__a"><div><p>Yes. You both create individual accounts and then connect with a simple invite code. From there, Couple Mode unlocks shared streaks, milestones and insights automatically.</p></div></div>
+    <!-- Using CoupleFit -->
+    <div class="cf-faq__group is-active" id="cf-faq-app" role="tabpanel" aria-labelledby="cf-faq-tab-app">
+      <div class="cf-faq__item">
+        <button class="cf-faq__q" type="button" aria-expanded="false">
+          <span>How does CoupleFit keep us consistent together?</span><i aria-hidden="true"></i>
+        </button>
+        <div class="cf-faq__a"><div><p>CoupleFit links your goals, streaks and milestones so progress feels shared. Each partner gets a personalized plan, but your streaks and wins are synced, making it easier to show up for each other.</p></div></div>
+      </div>
+
+      <div class="cf-faq__item">
+        <button class="cf-faq__q" type="button" aria-expanded="false">
+          <span>Can we use it without a gym?</span><i aria-hidden="true"></i>
+        </button>
+        <div class="cf-faq__a"><div><p>Absolutely. CoupleFit includes complete home programs and bodyweight options. The AI adapts to your environment, available time and equipment, together or solo.</p></div></div>
+      </div>
+
+      <div class="cf-faq__item">
+        <button class="cf-faq__q" type="button" aria-expanded="false">
+          <span>We're beginners. Is it still for us?</span><i aria-hidden="true"></i>
+        </button>
+        <div class="cf-faq__a"><div><p>Yes. The app adjusts to your level and pace. You'll get gentle starts, clear guidance and small wins that build momentum, while your partner gets the right challenge for them.</p></div></div>
+      </div>
+
+      <div class="cf-faq__item">
+        <button class="cf-faq__q" type="button" aria-expanded="false">
+          <span>What does the AI actually do for a couple?</span><i aria-hidden="true"></i>
+        </button>
+        <div class="cf-faq__a"><div><p>It personalizes workouts and meals for each of you, then keeps them coordinated, aligning rest days, intensity and nutrition so you move forward together.</p></div></div>
+      </div>
     </div>
 
-    <div class="cf-faq__item">
-      <button class="cf-faq__q" type="button" aria-expanded="false">
-        <span>Can we use it without a gym?</span><i aria-hidden="true"></i>
-      </button>
-      <div class="cf-faq__a"><div><p>Absolutely. CoupleFit includes complete home programs and bodyweight options. The AI adapts to your environment, available time and equipment, together or solo.</p></div></div>
+    <!-- Plans & launch -->
+    <div class="cf-faq__group" id="cf-faq-plans" role="tabpanel" aria-labelledby="cf-faq-tab-plans" hidden>
+      <div class="cf-faq__item">
+        <button class="cf-faq__q" type="button" aria-expanded="false">
+          <span>When does CoupleFit launch?</span><i aria-hidden="true"></i>
+        </button>
+        <div class="cf-faq__a"><div><p>We're in the final stages of building CoupleFit for iPhone and Android. We don't have a fixed launch date yet, but founding couples are the first to hear when it's ready. Join the waitlist and we'll email you the moment you can download it.</p></div></div>
+      </div>
+
+      <div class="cf-faq__item">
+        <button class="cf-faq__q" type="button" aria-expanded="false">
+          <span>What do we get as a founding couple?</span><i aria-hidden="true"></i>
+        </button>
+        <div class="cf-faq__a"><div><p>As one of our first 500 couples, you get 30% off Premium and Elite for life, for as long as your subscription stays active. Upgrade from Premium to Elite later and your discount comes with you. You also get to help shape CoupleFit with your feedback from day one. Joining the waitlist is free and there's no payment today.</p></div></div>
+      </div>
+
+      <div class="cf-faq__item">
+        <button class="cf-faq__q" type="button" aria-expanded="false">
+          <span>Can we cancel or switch plans?</span><i aria-hidden="true"></i>
+        </button>
+        <div class="cf-faq__a"><div><p>Yes. Subscriptions run through the App Store or Google Play, so you can cancel anytime in your phone's settings and keep access until the end of your billing period. You can also switch between Premium and Elite. Good to know: if you cancel and come back later, the founding discount no longer applies. <a href="/subscriptions.html">More about subscriptions</a></p></div></div>
+      </div>
+
+      <div class="cf-faq__item">
+        <button class="cf-faq__q" type="button" aria-expanded="false">
+          <span>Which platforms are supported?</span><i aria-hidden="true"></i>
+        </button>
+        <div class="cf-faq__a"><div><p>CoupleFit is coming soon to iOS and Android. Wearable integrations will follow after launch.</p></div></div>
+      </div>
     </div>
 
-    <div class="cf-faq__item">
-      <button class="cf-faq__q" type="button" aria-expanded="false">
-        <span>We're beginners. Is it still for us?</span><i aria-hidden="true"></i>
-      </button>
-      <div class="cf-faq__a"><div><p>Yes. The app adjusts to your level and pace. You'll get gentle starts, clear guidance and small wins that build momentum, while your partner gets the right challenge for them.</p></div></div>
-    </div>
+    <!-- Accounts & privacy -->
+    <div class="cf-faq__group" id="cf-faq-privacy" role="tabpanel" aria-labelledby="cf-faq-tab-privacy" hidden>
+      <div class="cf-faq__item">
+        <button class="cf-faq__q" type="button" aria-expanded="false">
+          <span>Do we need separate accounts?</span><i aria-hidden="true"></i>
+        </button>
+        <div class="cf-faq__a"><div><p>Yes. You both create individual accounts and then connect with a simple invite code. From there, Couple Mode unlocks shared streaks, milestones and insights automatically.</p></div></div>
+      </div>
 
-    <div class="cf-faq__item">
-      <button class="cf-faq__q" type="button" aria-expanded="false">
-        <span>What does the AI actually do for a couple?</span><i aria-hidden="true"></i>
-      </button>
-      <div class="cf-faq__a"><div><p>It personalizes workouts and meals for each of you, then keeps them coordinated, aligning rest days, intensity and nutrition so you move forward together.</p></div></div>
-    </div>
+      <div class="cf-faq__item">
+        <button class="cf-faq__q" type="button" aria-expanded="false">
+          <span>What happens if we break up?</span><i aria-hidden="true"></i>
+        </button>
+        <div class="cf-faq__a"><div><p>Life happens, and that's okay. You each always have your own account, so either of you can disconnect from your partner at any time in the app. Your own workouts, meals and progress stay with you; only the shared streaks and couple stats stop. The subscription stays with the person who started it, and the other partner can continue on the free plan or start their own.</p></div></div>
+      </div>
 
-    <div class="cf-faq__item">
-      <button class="cf-faq__q" type="button" aria-expanded="false">
-        <span>Which platforms are supported?</span><i aria-hidden="true"></i>
-      </button>
-      <div class="cf-faq__a"><div><p>CoupleFit is coming soon to iOS and Android. Wearable integrations will follow after launch.</p></div></div>
+      <div class="cf-faq__item">
+        <button class="cf-faq__q" type="button" aria-expanded="false">
+          <span>What happens to our health data?</span><i aria-hidden="true"></i>
+        </button>
+        <div class="cf-faq__a"><div><p>Your data is yours. We only use it to run the app and personalize your plans, and we never sell it. Your partner only sees what's shared in Couple Mode, like streaks, workouts and milestones. You can ask us to delete your data at any time. <a href="/privacy.html">Read our privacy policy</a></p></div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -869,6 +920,35 @@
       var open = !item.classList.contains('is-open');
       item.classList.toggle('is-open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+})();
+
+// FAQ-tabs: per onderwerp een groep vragen tonen
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.cf-faq__tab'));
+  if (!tabs.length) return;
+  function show(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      panel.hidden = !on;
+      panel.classList.toggle('is-active', on);
+      if (on) panel.querySelectorAll('.cf-faq__item').forEach(function (i) { i.classList.add('is-in'); });
+    });
+    if (focus) tab.focus();
+    try { if (window.umami) umami.track('FAQ topic', { topic: tab.textContent.trim() }); } catch (e) {}
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { show(t, false); });
+    t.addEventListener('keydown', function (e) {
+      var n = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!n) return;
+      e.preventDefault();
+      show(tabs[(i + n + tabs.length) % tabs.length], true);
     });
   });
 })();
