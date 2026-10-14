@@ -3250,3 +3250,12 @@ body.legal-page main.legal .lead { margin-bottom: 20px; color: var(--cf-muted, #
   #main #faq .cf-faq__tab { white-space: normal; text-align: center; padding: 9px 6px; font-size: 13px; line-height: 1.25; border-radius: 14px; }
 }
 @media (prefers-reduced-motion: reduce) { #main #faq .cf-faq__group.is-active { animation: none; } }
+
+/* Hero: lanceringslabel boven de titel */
+.cf-hero__launch {
+  display: inline-flex; align-items: center; gap: 8px; margin: 0 0 18px; padding: 6px 14px 6px 10px;
+  border-radius: 999px; background: rgba(91,30,45,.07); color: var(--cf-burgundy);
+  font: 600 14px/1.3 var(--cf-display); letter-spacing: -0.005em;
+}
+.cf-hero__launch i { width: 8px; height: 8px; border-radius: 50%; background: var(--cf-burgundy); box-shadow: 0 0 0 4px rgba(91,30,45,.12); }
+@media (max-width: 520px) { .cf-hero__launch { display: flex; width: fit-content; margin-left: auto; margin-right: auto; } }
