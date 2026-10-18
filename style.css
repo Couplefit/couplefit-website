@@ -3323,3 +3323,34 @@ body.legal-page main.legal .lead { margin-bottom: 20px; color: var(--cf-muted, #
   #main #cf-pricing .cf-founding__more { display: inline-block; vertical-align: baseline; margin: 0 0 0 4px; padding: 2px 9px; font-size: 12px; line-height: 1.4; }
   #main #cf-pricing .cf-founding__details { margin-top: 8px; padding: 10px 14px 10px 28px; font-size: 12.5px; }
 }
+
+/* FAQ: ruimte netjes verdelen. Contactblok onderaan links als zachtblauw kaartje, vragen iets ruimer */
+@media (min-width: 901px) {
+  #main #faq .cf-faq__intro {
+    position: static; align-self: stretch;
+    display: flex; flex-direction: column;
+  }
+  #main #faq .cf-faq__contact {
+    margin-top: auto; max-width: 340px;
+    padding: 22px 24px; border-top: 0; border-radius: 20px;
+    background: var(--cf-softblue); color: var(--cf-ink);
+    font: 600 18px/1.35 var(--cf-display); letter-spacing: -0.01em;
+  }
+  #main #faq .cf-faq__contact a {
+    display: inline-block; margin-top: 14px; padding: 11px 20px; border: 0; border-radius: 999px;
+    background: var(--cf-burgundy); color: var(--cf-ivory);
+    font: 600 15px/1.2 var(--cf-body); letter-spacing: 0;
+    transition: background-color .2s;
+  }
+  #main #faq .cf-faq__contact a:hover { background: var(--cf-burgundy-hover); border: 0; }
+  #main #faq .cf-faq__title { font-size: clamp(40px, 4.4vw, 56px); }
+  #main #faq .cf-faq__q { padding: 26px 0; font-size: 19px; }
+  #main#main #faq#faq#faq.cf-faq { padding-bottom: clamp(56px, 9vh, 96px) !important; }
+}
+@media (min-width: 901px) {
+  #main#main #faq#faq#faq.cf-faq { align-content: stretch !important; align-items: stretch !important; }
+  #main #faq .cf-faq__list { align-self: stretch; grid-template-rows: auto 1fr; }
+  #main #faq .cf-faq__group, #main #faq .cf-faq__group[hidden] { display: flex !important; flex-direction: column; }
+  #main #faq .cf-faq__group .cf-faq__item { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
+  #main #faq .cf-faq__group .cf-faq__item:last-child { border-bottom: 0; }
+}
