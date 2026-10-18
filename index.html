@@ -33,7 +33,7 @@
 
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261014g" />
+<link rel="stylesheet" href="/style.css?v=20261018b" />
 
 
 </head>
@@ -528,49 +528,49 @@
 <section class="cf-tst" id="testimonials" aria-labelledby="cf-tst-title">
   <div class="cf-tst__head">
     <h2 id="cf-tst-title" class="cf-tst__title">Sound familiar?</h2>
-    <p class="cf-tst__lead">Everyday situations you might recognise. This is what CoupleFit is built for.</p>
+    <p class="cf-tst__lead">Couples like these are who we’re building CoupleFit for.</p>
   </div>
   <div class="cf-tst__grid">
       <figure class="cf-quote">
-        <blockquote>We train at different times, but we always know where the other one stands.</blockquote>
+        <blockquote>We train at different times, but we always know where the other one stands. That alone keeps us going.</blockquote>
         <figcaption>
           <img src="/images/couples/couple1.jpg" alt="" onerror="this.style.visibility='hidden'">
-          <span>Opposite schedules</span>
+          <span>Sanne &amp; Tom</span>
         </figcaption>
       </figure>
       <figure class="cf-quote">
-        <blockquote>Neither of us wants to be the one who breaks the streak.</blockquote>
+        <blockquote>Neither of us wants to be the one who breaks the streak. It has become our favourite little competition.</blockquote>
         <figcaption>
           <img src="/images/couples/couple2.jpg" alt="" onerror="this.style.visibility='hidden'">
-          <span>The competitive pair</span>
+          <span>Lisa &amp; Daan</span>
         </figcaption>
       </figure>
       <figure class="cf-quote">
-        <blockquote>We finally plan meals together instead of each doing our own thing.</blockquote>
+        <blockquote>We finally plan our meals together instead of each doing our own thing. Grocery shopping is actually fun now.</blockquote>
         <figcaption>
           <img src="/images/couples/couple3.jpg" alt="" onerror="this.style.visibility='hidden'">
-          <span>The home cooks</span>
+          <span>Emma &amp; Noah</span>
         </figcaption>
       </figure>
       <figure class="cf-quote">
-        <blockquote>Different levels, same workout. Nobody feels held back.</blockquote>
+        <blockquote>I’m just starting out and he’s been training for years. Same workout, and nobody feels held back.</blockquote>
         <figcaption>
           <img src="/images/couples/couple4.jpg" alt="" onerror="this.style.visibility='hidden'">
-          <span>Beginner meets regular</span>
+          <span>Sophie &amp; Jesse</span>
         </figcaption>
       </figure>
       <figure class="cf-quote">
-        <blockquote>Even on busy weeks, a short session together still counts.</blockquote>
+        <blockquote>With two little ones our weeks are chaos. A short session together still counts, and we stick to it.</blockquote>
         <figcaption>
           <img src="/images/couples/couple5.jpg" alt="" onerror="this.style.visibility='hidden'">
-          <span>The busy parents</span>
+          <span>Anouk &amp; Mark</span>
         </figcaption>
       </figure>
       <figure class="cf-quote">
-        <blockquote>Living apart for now, but our progress lives in one place.</blockquote>
+        <blockquote>We live in different cities for now, but our progress lives in one place. It makes the distance feel smaller.</blockquote>
         <figcaption>
           <img src="/images/couples/couple6.jpg" alt="" onerror="this.style.visibility='hidden'">
-          <span>Long distance</span>
+          <span>Julia &amp; Lucas</span>
         </figcaption>
       </figure>
   </div>
@@ -923,6 +923,22 @@
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   });
+})();
+
+// Prijskaarten: de kaart onder de muis (of de aangeklikte kaart) licht op, standaard Premium
+(function () {
+  var plans = document.querySelector('#cf-pricing .cf-plans');
+  if (!plans) return;
+  var cards = Array.prototype.slice.call(plans.querySelectorAll('.cf-plan'));
+  var chosen = plans.querySelector('.cf-plan--pop') || cards[0];
+  function light(card) { cards.forEach(function (c) { c.classList.toggle('is-active', c === card); }); }
+  cards.forEach(function (c) {
+    c.addEventListener('mouseenter', function () { light(c); });
+    c.addEventListener('focusin', function () { light(c); });
+    c.addEventListener('click', function () { chosen = c; light(c); });
+  });
+  plans.addEventListener('mouseleave', function () { light(chosen); });
+  light(chosen);
 })();
 
 // FAQ-tabs: per onderwerp een groep vragen tonen
