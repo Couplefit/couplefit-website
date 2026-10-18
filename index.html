@@ -33,7 +33,7 @@
 
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261018f" />
+<link rel="stylesheet" href="/style.css?v=20261018h" />
 
 
 </head>
@@ -723,16 +723,29 @@
   <!-- Intro + tijdlijn -->
   <div class="cf-story__card">
     <div class="cf-story__intro">
-      <div>
-        <h2 id="cf-story-title" class="cf-story__title">Our Story</h2>
+      <div class="cf-story__introtext">
+        <span class="cf-story__eyebrow">Our story</span>
+        <h2 id="cf-story-title" class="cf-story__title">Built by a couple, for&nbsp;couples.</h2>
         <p class="cf-story__lead">CoupleFit started with two people who believed that life becomes better when you grow together.</p>
+        <div class="cf-story__sign">
+          <span class="cf-story__avatars" aria-hidden="true">
+            <img src="/images/story/max-founder.jpg" alt="" width="40" height="40" onerror="this.style.visibility='hidden'">
+            <img src="/images/story/rachelle-founder.jpg" alt="" width="40" height="40" onerror="this.style.visibility='hidden'">
+          </span>
+          <span class="cf-story__names"><strong>Max &amp; Rachelle</strong><span>Founders of CoupleFit</span></span>
+        </div>
+        <ol class="cf-story__route" aria-label="Our journey">
+          <li>Netherlands</li><li>Melbourne</li><li>Nepal</li><li>Brisbane</li><li>Vietnam</li><li>Lisbon</li>
+        </ol>
+        <a class="cf-story__more" href="#cf-story-timeline">Read our story <span aria-hidden="true">&darr;</span></a>
       </div>
       <figure class="cf-story__photo cf-story__photo--hero">
         <img src="/images/story/hero-couple.jpg" alt="Max and Rachelle, founders of CoupleFit" onerror="this.style.opacity=0">
       </figure>
     </div>
 
-    <div class="cf-story__body">      <ol class="cf-timeline">
+    <div class="cf-story__body">
+      <ol class="cf-timeline" id="cf-story-timeline">
         <li class="cf-moment">
           <span class="cf-moment__label">The Netherlands</span>
           <h3>Where we first met</h3>
@@ -744,22 +757,22 @@
           <p>It wasn't until we both found ourselves in Melbourne that our friendship turned into something more. What brought us together wasn't just attraction. It was understanding: for the first time, we both felt truly seen, heard and understood.</p>
         </li>
         <li class="cf-moment">
-          <span class="cf-moment__label">On the road</span>
+          <span class="cf-moment__label">The Netherlands &amp; Nepal</span>
           <h3>Growing through distance</h3>
           <p>Our relationship began with distance, uncertainty and the challenges of building a life while travelling the world. It taught us that the strongest relationships are built when two people choose to grow together.</p>
         </li>
         <li class="cf-moment">
-          <span class="cf-moment__label">Everyday life</span>
+          <span class="cf-moment__label">Cairns &amp; Brisbane, Australia</span>
           <h3>Stuck in unhealthy routines</h3>
           <p>Long hospitality shifts, irregular schedules, stress and little structure slowly drained our energy. When we started training together, eating better and building healthier habits, our lives began to change.</p>
         </li>
         <li class="cf-moment">
-          <span class="cf-moment__label">The idea</span>
+          <span class="cf-moment__label">Da Nang, Vietnam</span>
           <h3>Nothing existed for couples</h3>
           <p>Every fitness app was designed for individuals. There was no place to share goals, build routines together or stay accountable as a team. That realization became the foundation of CoupleFit.</p>
         </li>
         <li class="cf-moment cf-moment--now">
-          <span class="cf-moment__label">Today</span>
+          <span class="cf-moment__label">Lisbon, Portugal</span>
           <h3>Building CoupleFit together</h3>
           <p>We're building the app we wished we had, and we're inviting our first couples to help shape it.</p>
         </li>
