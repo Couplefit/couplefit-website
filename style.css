@@ -3288,3 +3288,12 @@ body.legal-page main.legal .lead { margin-bottom: 20px; color: var(--cf-muted, #
 
 /* Sound familiar?: geen "Example situation"-label meer, namen van koppels onder de tekst */
 #main#main #testimonials#testimonials#testimonials .cf-quote blockquote::before { content: none; display: none; }
+
+/* FAQ: kaart vult precies één scherm onder de header, zodat je hem via het menu in één oogopslag ziet */
+@media (min-width: 901px) {
+  #main#main #faq#faq#faq.cf-faq {
+    min-height: calc(100svh - 136px) !important;
+    align-content: start !important;
+    padding-top: clamp(56px, 9vh, 96px) !important;
+  }
+}
