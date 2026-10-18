@@ -3380,9 +3380,9 @@ body.legal-page main.legal .lead { margin-bottom: 20px; color: var(--cf-muted, #
 #main#main #story#story#story .cf-story__names span { font-size: 14px; color: var(--cf-label); }
 #main#main #story#story#story .cf-story__route {
   list-style: none; margin: 24px 0 0; padding: 18px 0 0; border-top: 1px solid var(--cf-softblue);
-  display: flex; flex-wrap: wrap; gap: 6px 10px; font-size: 14px; font-weight: 600; color: var(--cf-label);
+  display: flex; flex-wrap: wrap; gap: 6px 8px; font-size: 14px; font-weight: 600; color: var(--cf-label);
 }
-#main#main #story#story#story .cf-story__route li:not(:last-child)::after { content: "\2192"; margin-left: 10px; color: var(--cf-dusty); font-weight: 400; }
+#main#main #story#story#story .cf-story__route li:not(:last-child)::after { content: "\2192"; margin-left: 8px; color: var(--cf-dusty); font-weight: 400; }
 #main#main #story#story#story .cf-story__route li:last-child { color: var(--cf-burgundy); }
 #main#main #story#story#story .cf-story__more {
   display: inline-flex; align-items: center; gap: 8px; margin-top: 30px; padding: 12px 22px;
