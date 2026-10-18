@@ -33,7 +33,7 @@
 
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261018c" />
+<link rel="stylesheet" href="/style.css?v=20261018d" />
 
 
 </head>
@@ -581,9 +581,18 @@
   <h2 id="plans" class="cf-price__title">Simple pricing for two</h2>
   <p class="cf-price__lead">One subscription covers both of you. Two accounts, linked from day one.</p>
 
-  <div class="cf-founding" role="note">
-    <span class="cf-founding__pair" aria-hidden="true"><i></i><i></i></span>
-       <p><strong>Founding couple offer:</strong> 30% off Premium and Elite, for life, as long as your subscription stays active. Only for our first 500 couples. Upgrade from Premium to Elite later and your founding discount comes with you. If you cancel and sign up again later, the founding discount no longer applies. All prices are in euros and include VAT.</p>  </div>
+  <div class="cf-founding-wrap">
+    <div class="cf-founding" role="note">
+      <span class="cf-founding__pair" aria-hidden="true"><i></i><i></i></span>
+      <p><strong>Founding couple offer:</strong> 30% off Premium and Elite for life, as long as you stay subscribed. First 500 couples only.</p>
+      <button type="button" class="cf-founding__more" aria-expanded="false" aria-controls="cf-founding-details">Details</button>
+    </div>
+    <ul class="cf-founding__details" id="cf-founding-details" hidden>
+      <li>Upgrade from Premium to Elite later and your founding discount comes with you.</li>
+      <li>If you cancel and sign up again later, the founding discount no longer applies.</li>
+      <li>All prices are in euros and include VAT.</li>
+    </ul>
+  </div>
 
   <div class="cf-toggle" data-period="yearly" role="group" aria-label="Billing period">
     <span class="cf-toggle__thumb" aria-hidden="true"></span>
@@ -939,6 +948,19 @@
   });
   plans.addEventListener('mouseleave', function () { light(chosen); });
   light(chosen);
+})();
+
+// Founding-aanbod: details open- en dichtklappen
+(function () {
+  var btn = document.querySelector('.cf-founding__more');
+  var list = document.getElementById('cf-founding-details');
+  if (!btn || !list) return;
+  btn.addEventListener('click', function () {
+    var open = list.hidden;
+    list.hidden = !open;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.textContent = open ? 'Hide details' : 'Details';
+  });
 })();
 
 // FAQ-tabs: per onderwerp een groep vragen tonen

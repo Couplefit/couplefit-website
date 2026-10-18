@@ -3297,3 +3297,29 @@ body.legal-page main.legal .lead { margin-bottom: 20px; color: var(--cf-muted, #
     padding-top: clamp(56px, 9vh, 96px) !important;
   }
 }
+
+/* Pricing: founding-aanbod kort, met uitklapbare details */
+#main #cf-pricing .cf-founding-wrap { text-align: center; margin: 0 0 22px; }
+#main #cf-pricing .cf-founding-wrap .cf-founding { margin-bottom: 0; }
+#main #cf-pricing .cf-founding__more {
+  flex: none; margin: 0; padding: 4px 10px; border: 0; border-radius: 999px; cursor: pointer;
+  background: rgba(91,30,45,.08); color: var(--cf-burgundy);
+  font: 600 13px/1.3 var(--cf-body); white-space: nowrap; transition: background-color .2s;
+}
+#main #cf-pricing .cf-founding__more:hover { background: rgba(91,30,45,.14); }
+#main #cf-pricing .cf-founding__more:focus-visible { outline: 3px solid var(--cf-dusty); outline-offset: 2px; }
+#main #cf-pricing .cf-founding__details {
+  max-width: 560px; margin: 10px auto 0; padding: 14px 18px 14px 34px; list-style: disc;
+  background: #fff; border-radius: 18px; text-align: left;
+  font-size: 14px; line-height: 1.5; color: var(--cf-text);
+  box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 8px 20px -12px rgba(30,42,68,.2);
+}
+#main #cf-pricing .cf-founding__details li + li { margin-top: 4px; }
+#main #cf-pricing .cf-founding__details li::marker { color: var(--cf-burgundy); }
+@media (max-width: 520px) {
+  #main #cf-pricing .cf-founding-wrap { margin-bottom: 12px; }
+  #main #cf-pricing .cf-founding.cf-founding { font-size: 12.5px; line-height: 1.45; }
+  #main #cf-pricing .cf-founding.cf-founding p { display: inline; font-size: 12.5px; line-height: 1.45; }
+  #main #cf-pricing .cf-founding__more { display: inline-block; vertical-align: baseline; margin: 0 0 0 4px; padding: 2px 9px; font-size: 12px; line-height: 1.4; }
+  #main #cf-pricing .cf-founding__details { margin-top: 8px; padding: 10px 14px 10px 28px; font-size: 12.5px; }
+}
