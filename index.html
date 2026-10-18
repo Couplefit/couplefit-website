@@ -1206,10 +1206,20 @@
       e.preventDefault();
       window.scrollTo({ top: y, behavior: 'smooth' });
       history.replaceState(null, '', '#' + id);
-      // Alleen bijsturen als er onderweg echt iets is verschoven
+      // Alleen bijsturen als de sectie zelf onderweg is verschoven,
+      // en nooit als de bezoeker intussen zelf scrolt (anders schiet de pagina terug)
+      var zelf = false;
+      function stop() { zelf = true; }
+      ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (t) {
+        window.addEventListener(t, stop, { once: true, passive: true });
+      });
       setTimeout(function () {
+        ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (t) {
+          window.removeEventListener(t, stop);
+        });
+        if (zelf) return;
         var y2 = targetY(id);
-        if (y2 !== null && Math.abs(y2 - window.pageYOffset) > 6) {
+        if (y2 !== null && Math.abs(y2 - y) > 6) {
           window.scrollTo({ top: y2, behavior: 'smooth' });
         }
       }, 900);
