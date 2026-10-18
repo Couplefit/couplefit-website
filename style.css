@@ -3354,3 +3354,8 @@ body.legal-page main.legal .lead { margin-bottom: 20px; color: var(--cf-muted, #
   #main #faq .cf-faq__group .cf-faq__item { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
   #main #faq .cf-faq__group .cf-faq__item:last-child { border-bottom: 0; }
 }
+
+/* FAQ: contactkaartje direct onder titel en subtekst in plaats van onderaan */
+@media (min-width: 901px) {
+  #main #faq .cf-faq__contact { margin-top: 8px; }
+}
