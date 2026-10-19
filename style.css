@@ -1,15 +1,11 @@
 /* ===== CoupleFit Official Brand Styles ===== */
 
-
 /* Brand Palette */
 :root {
-  --bg-1: #F6F6F7;   /* main background */
   --bg-2: #F3F3F5;   /* secondary background */
   --bg-3: #EDEDF0;   /* subtle section background */
   --surface: #FBF8F2;
   --border: #E3DED3;
-  --ink: #1E2A44;
-  --muted-ink: rgba(30, 42, 68, 0.82);
   --navy: #5B1E2D;
   --sand: #B7C6D6;
   --shadow: 0px 10px 22px rgba(0,0,0,0.1);
@@ -38,9 +34,6 @@
   --hero-gradient: var(--bg-3);
   --card-bg-light: var(--card-bg);
   --card-border: var(--border);
-  --text-heading: var(--ink);
-  --text-paragraph: rgba(30, 42, 68, 0.85);
-  --text-muted: rgba(30, 42, 68, 0.7);
 
   /* Spacing scale - Consistent 16, 24, 32, 48, 64, 96, 128px */
   --space-xs: 8px;
@@ -53,7 +46,6 @@
   --space-4xl: 136px;
 
   /* Typography - Inter */
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
@@ -62,7 +54,6 @@
   /* Border radius */
   --radius-sm: 10px;
   --radius-md: 14px;
-  --radius-lg: 20px;
   --radius-xl: 24px;
   --radius-full: 999px;
 
@@ -93,8 +84,6 @@ html {
 }
 
 body {
-  font-family: var(--font-family);
-  color: rgba(20, 20, 20, 0.9);
   background: var(--bg-1);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -112,16 +101,11 @@ h1,
 h2,
 h3,
 h4 {
-  color: var(--ink);
-  font-weight: var(--font-weight-bold);
   line-height: 1.2;
   margin: 0;
-  letter-spacing: -0.3px;
 }
 
-h1 { font-size: clamp(42px, 6vw, 56px); font-weight: var(--font-weight-bold); }
-h2 { font-size: clamp(32px, 5vw, 42px); font-weight: var(--font-weight-bold); }
-h3 { font-size: clamp(24px, 3vw, 28px); font-weight: var(--font-weight-bold); }
+h3 { font-size: clamp(24px, 3vw, 28px); }
 
 p {
   margin: 0;
@@ -165,13 +149,10 @@ a:focus {
   padding: 0 24px;
 }
 
-.container-center-1100 { max-width: 1100px; }
-
 /* Section spacing */
 .section {
   padding: 80px 0;
   position: relative;
-  background: var(--bg-1);
 }
 
 /* Skip link */
@@ -235,17 +216,12 @@ a:focus {
 
 .section-title-md {
   font-size: clamp(32px, 5vw, 42px);
-  font-weight: var(--font-weight-bold);
   line-height: 1.2;
-  color: var(--text-heading);
-  margin-bottom: var(--space-lg);
-  letter-spacing: -0.3px;
 }
 
 .feature-description {
   font-size: 18px;
   line-height: 1.7;
-  color: var(--text-paragraph);
   max-width: 520px;
   font-weight: var(--font-weight-normal);
 }
@@ -279,81 +255,13 @@ a:focus {
 
 .section-title-lg {
   font-size: clamp(36px, 6vw, 48px);
-  font-weight: var(--font-weight-bold);
-  line-height: 1.2;
-  color: var(--text-heading);
   text-align: center;
-  letter-spacing: -0.3px;
-}
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
-  margin: 0 auto;
-  align-items: stretch;
-  width: 100%;
-}
-
-.plan,
-.plan * {
-  box-sizing: border-box;
-}
-
-.plan {
-  position: relative;
-  width: 100%;
-  padding: 40px 32px;
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 0;
-  height: 100%;
-  transition: all 0.25s ease;
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
-  background: var(--surface);
-  color: var(--ink);
 }
 
 .plan:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   border: 1.5px solid #5B1E2D;
-}
-
-.plan.popular {
-  border: 1px solid #E3DED3;
-  box-shadow: none;
-}
-.plan.popular:hover {
-  border: 1.5px solid #5B1E2D;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
-}
-
-.plan.popular::before,
-.plan.popular::after {
-  content: none;
-}
-
-.ribbon {
-  position: absolute;
-  top: -18px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--sand);
-  color: var(--ink);
-  padding: 8px 18px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 700;
-  box-shadow: none;
-  white-space: nowrap;
-  z-index: 10;
-  letter-spacing: 0.2px;
-  pointer-events: none;
 }
 
 /* Pricing card normalization aliases */
@@ -397,9 +305,6 @@ header {
 /* Store badges removed in favor of platform badges */
 
 /* Anchor offset for pricing section */
-#plans {
-  scroll-margin-top: -250px;   /* offset raised to place pricing higher on jump */
-}
 
 /* Reveal animations */
 
@@ -423,11 +328,8 @@ header {
 /* Safety: prevent global flex/grid leaks from footer into cards */
 
 /* === Palette Overrides === */
-html, body { background-color: var(--bg-1); }
 
 .section { background: var(--bg-1); }
-
-.pricing-grid { color: var(--ink); }
 
 /* Utility classes */
 
@@ -473,13 +375,6 @@ html, body { background-color: var(--bg-1); }
 /* Responsive */
 @media (max-width: 1024px) {
 
-  
-
-  
-
-  
-
-  
   .feature-row,
   .feature-row.reverse {
     grid-template-columns: 1fr;
@@ -491,50 +386,13 @@ html, body { background-color: var(--bg-1); }
     order: initial;
   }
 
-  .pricing-grid {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  
-
 }
 
 @media (max-width: 768px) {
 
-  
-
-  .brand svg {
-    height: 144px; /* 80px * 1.8 */
-  }
-
-  
-
   .section {
     padding: var(--space-2xl) 0;
   }
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 }
 
@@ -543,20 +401,6 @@ html, body { background-color: var(--bg-1); }
     padding: 0 var(--space-sm);
   }
 
-  
-
-  .section-title-md {
-    font-size: 28px;
-  }
-
-  .plan {
-    padding: 24px !important;
-    min-height: auto !important;
-  }
-
-  
-
-  
 }
 /* Legal pages typography fix */
 .legal-page h1 {
@@ -566,7 +410,6 @@ html, body { background-color: var(--bg-1); }
 
 .legal-page h2 {
   font-size: 24px;
-  margin-top: 24px;
 }
 
 .legal-page h3 {
@@ -584,27 +427,14 @@ html, body { background-color: var(--bg-1); }
 
 /* --- Final testimonial avatar override (global) --- */
 
-  
-
-  
   /* Logo */
 
-  
   /* Navigation */
 
-  
-
-  
-
-  
   /* CTA Button */
 
-  
-
-  
   /* Mobile */
 
-  
   /* Prevent Cumulative Layout Shift (CLS) */
 
 /* === COUPLEFIT PREMIUM HEADER (Global) === */
@@ -628,11 +458,9 @@ html, body { background-color: var(--bg-1); }
 
 .cf-nav a {
   font-size: 17px;
-  color: #1E2A44;
   opacity: 0.85;
   font-weight: 500;
   text-decoration: none;
-  transition: opacity 0.2s;
 }
 .cf-nav a:hover {
   opacity: 1;
@@ -703,21 +531,8 @@ main {
 
 /* FAQ card compact styling */
 
-@media (max-width: 480px) {
-  #plans,
-  #faq {
-    scroll-margin-top: 80px;
-  }
-}
-
-#faq {
-  margin-top: 40px;
-  scroll-margin-top: -390px;
-}
-
 #faq::before {
   content: "";
-  display: block;
   width: 100%;
   max-width: 900px;
   height: 1px;
@@ -812,17 +627,11 @@ main {
 /* Tekst in deze kaarten prettig leesbaar houden */
 
 /* Klik op "Story" in het menu: iets verder doorscrollen */
-#story {
-  scroll-margin-top: -15px;
-}
+
 /* Klik op "Pricing" in het menu: titel onder de menubalk laten uitkomen */
-#plans {
-  scroll-margin-top: 80px;
-}
+
 /* Klik op "FAQ" in het menu: titel netjes onder de menubalk */
-#faq {
-  scroll-margin-top: 70px;
-}
+
 /* =========================================
    PRICING: compacter, alles in één oogopslag
    ========================================= */
@@ -902,16 +711,7 @@ h1, h2, h3, h4,
   --bg-1: #f5f5f7;
 }
 
-html,
-body {
-  background: #f5f5f7;
-}
-
 /* Witte secties voor afwisseling */
-#features,
-#testimonials {
-  background: #ffffff;
-}
 
 /* What's included: grijze tegel op wit */
 
@@ -930,14 +730,9 @@ body {
 }
 
 /* Witte achtergrond, zodat de strookjes tussen de tegels wit zijn */
-#features,
-#story {
-  background: #ffffff;
-}
 
 /* Gedeelde tegelvorm: bijna schermbreed, inhoud blijft netjes in het midden */
 #features .feature-row {
-  box-sizing: border-box;
   width: calc(100% - 2 * var(--tile-gap));
   max-width: none;
   margin: 0 auto var(--tile-gap);
@@ -975,15 +770,7 @@ body {
 /* Visie-kaart: meer witruimte boven, los van de blauwe tegel */
 
 /* Geen extra witruimte tussen Features en Story: tegels sluiten op elkaar aan */
-#features {
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
 
-#story {
-  padding-top: 0;
-  margin-top: 0;
-}
 /* Join Us From The Beginning: lichtblauwe tegel, zelfde als Built for Two */
 
 /* Pricing: blauwe tegel, zelfde als What We Believe */
@@ -1034,9 +821,6 @@ h1, h2 {
 }
 
 /* Witte ruimte boven de Features-tegel weghalen */
-.features-section {
-  padding-top: 0;
-}
 
 /* Features: vloeiend kleurverloop tussen de tegels */
 #features .feature-row {
@@ -1110,7 +894,6 @@ footer {
 #story {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-  margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
 
@@ -1129,14 +912,6 @@ section:not(.plans-section):not(.hero):not(#features):not(#story) {
 }
 
 /* Menu-links: overal op dezelfde manier landen */
-#features,
-#story,
-#plans {
-  scroll-margin-top: 100px !important;
-}
-#faq {
-  scroll-margin-top: 10px !important;
-}
 
 /* Mobiel: iets compacter */
 @media (max-width: 768px) {
@@ -1151,19 +926,10 @@ section:not(.plans-section):not(.hero):not(#features):not(#story) {
 /* Afsluitende oproep: blauwe kaart, net als Pricing */
 
 /* Features-link: titel direct onder de header */
-#features {
-  scroll-margin-top: 5px !important;
-}
 
 /* Story-link: titel direct onder de header */
-#story {
-  scroll-margin-top: -15px !important;
-}
 
 /* Pricing-link: titel direct onder de header */
-#plans {
-  scroll-margin-top: 80px !important;
-}
 
 /* Hero: precies één schermhoogte, zodat alles in één oogopslag te zien is */
 
@@ -1176,14 +942,8 @@ section:not(.plans-section):not(.hero):not(#features):not(#story) {
 /* Founders: beide tekstkaarten even hoog, tekst in het midden */
 
 /* "Become a Founding Couple"-knop: hele afsluitkaart in beeld */
-#cta {
-  scroll-margin-top: 185px !important;
-}
 
 /* Meer ruimte tussen de blauwe afsluitkaart en de footer */
-body footer {
-  margin-top: 64px !important;
-}
 
 /* Footer: drie gelijke kolommen, alles gecentreerd */
 
@@ -1204,17 +964,11 @@ body footer {
 /* FAQ als eigen beige kaart, even breed als de andere kaarten */
 #faq#faq#faq {
   box-sizing: border-box;
-  width: calc(100% - 2 * var(--tile-gap)) !important;
-  max-width: none !important;
   margin: var(--tile-gap) auto !important;
-  padding: 80px 24px 88px !important;
   background: var(--tile-gray) !important;
   border-radius: var(--tile-radius) !important;
 }
 /* FAQ-menuknop: landt nog steeds netjes op de titel */
-#faq {
-  scroll-margin-top: 26px !important;
-}
 
 /* What We Believe: titels in burgundy */
 
@@ -1263,11 +1017,6 @@ body .site-header {
     text-align: center;
     max-width: 34ch;
     margin: 0 auto;
-  }
-
-  #features .feature-copy .section-title-md {
-    font-size: clamp(26px, 7.5vw, 32px);
-    line-height: 1.15;
   }
 
   #features .feature-description {
@@ -1322,15 +1071,9 @@ body .site-header {
 
   /* Why We Started en Meet The Founders: geen witte tegel eromheen */
 
-  
-
   /* Gekleurde tegels: smallere rand rond de kaarten erin */
 
   /* De kaarten zelf: minder ruimte rond de tekst */
-
-  
-
-  
 
   /* What We Believe-kaartjes compacter */
 
@@ -1347,11 +1090,6 @@ body .site-header {
 /* ===== MOBIEL: Why We Started gecentreerd ===== */
 
 /* ===== MOBIEL: Story-link landt netjes onder de header ===== */
-@media (max-width: 768px) {
-  #story {
-    scroll-margin-top: 90px !important;
-  }
-}
 
 /* ===== MOBIEL: Pricing als veegbare kaarten ===== */
 
@@ -1362,8 +1100,6 @@ body .site-header {
 
 @media (max-width: 768px) {
   /* Geen halve kaarten meer: elke kaart volle breedte */
-
-  
 
   /* Volgorde weer normaal: Basic, Premium, Elite */
 
@@ -1393,11 +1129,6 @@ body .site-header {
 }
 
 /* ===== MOBIEL: Features-link iets hoger laten uitkomen ===== */
-@media (max-width: 768px) {
-  #features {
-    scroll-margin-top: 130px !important;
-  }
-}
 
 /* ===== Mobiel menu: tekst altijd zichtbaar, ook bij bezochte links ===== */
 body .cf-mobile-cta,
@@ -1410,11 +1141,6 @@ body .cf-mobile-nav a:visited {
 }
 
 /* ===== MOBIEL: "Become a Founding Couple" landt op de titel ===== */
-@media (max-width: 768px) {
-  #cta {
-    scroll-margin-top: 120px !important;
-  }
-}
 
 /* ===== MOBIEL: dubbele onderdelen weg voor een rustigere pagina ===== */
 
@@ -1498,7 +1224,6 @@ body .cf-mobile-nav a:visited {
     }
     }
 
-
 /* ===== MOBIEL: afwerking (titels, knoppen, FAQ) ===== */
 @media (max-width: 768px) {
   /* --- Titels: overal dezelfde maat --- */
@@ -1524,15 +1249,11 @@ body .cf-mobile-nav a:visited {
 
   /* --- FAQ: één witte kaart met lijntjes --- */
 
-  
-
-  
 }
 
 /* ===== MOBIEL: juiste afstand rond de Features-kaart ===== */
 @media (max-width: 768px) {
   #features {
-    margin-top: var(--tile-gap) !important;
     margin-bottom: var(--tile-gap) !important;
   }
 }
@@ -1542,34 +1263,10 @@ body .cf-mobile-nav a:visited {
 /* ===== MOBIEL: gezichten mooi in de ronde founder-foto's ===== */
 
 /* ===== MOBIEL: FAQ strakker en compacter ===== */
-@media (max-width: 768px) {
-  /* Beige tegel: minder ruimte, vooral onderaan */
-  #faq#faq#faq#faq {
-    padding: 40px 12px 12px !important;
-  }
-
-  
-
-  /* Witte kaart over de volle breedte */
-
-  
-
-  /* Vragen: breder, midnight blue */
-
-  /* Plusje in een zacht burgundy rondje */
-
-  /* Antwoorden netjes */
-
-}
 
 /* ===== MOBIEL: FAQ-rijen mooi gecentreerd ===== */
 
 /* ===== MOBIEL: FAQ-link landt netjes onder de header ===== */
-@media (max-width: 768px) {
-  #faq {
-    scroll-margin-top: 145px !important;
-  }
-}
 
 /* ===== MOBIEL: alle feature-telefoons op dezelfde hoogte ===== */
 @media (max-width: 768px) {
@@ -1650,18 +1347,8 @@ body .cf-mobile-nav a:visited {
 /* ===== MOBIEL: "No card required" in de hero beter leesbaar ===== */
 
 /* Features-menulink op mobiel iets hoger laten uitkomen */
-@media (max-width: 768px) {
-  #features#features {
-    scroll-margin-top: -32px;
-  }
-}
 
 /* FAQ-menulink alleen op telefoon iets hoger laten uitkomen */
-@media (max-width: 768px) {
-  #faq#faq {
-   scroll-margin-top: 118px !important;
-  }
-}
 
 /* How CoupleFit Was Born: tekst centreren */
 
@@ -1670,14 +1357,6 @@ body .cf-mobile-nav a:visited {
 /* Testimonials: burgundy kaart met ivory tekst */
 
 /* Testimonials: glaswaas en achtergrondvlekken weghalen */
-#testimonials#testimonials {
-  background: transparent !important;
-  background-image: none !important;
-}
-#testimonials#testimonials::before,
-#testimonials#testimonials::after {
-  display: none !important;
-}
 
   /* Testimonials: alle fades, maskers en overlays uitzetten */
 #testimonials#testimonials,
@@ -1741,14 +1420,10 @@ body .cf-mobile-nav a:visited {
 .cf-hero, .cf-hero * { box-sizing: border-box; }
 
 .cf-hero {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 120px 24px 80px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 56px;
   align-items: center;
-  min-height: 100svh;
   color: var(--cf-text);
   font-family: var(--cf-body);
 }
@@ -1841,8 +1516,7 @@ body .cf-mobile-nav a:visited {
 /* vandaag */
 .cf-today h3 { font: 600 14px var(--cf-display); color: var(--cf-ink); margin: 0; text-align: left; }
 .cf-today p { margin: 2px 0 8px; color: var(--cf-label); font-size: 12px; text-align: left; }
-.cf-person { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
-.cf-person + .cf-person { border-top: 1px solid var(--cf-softblue); }
+
 .cf-avatar { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font: 700 12px var(--cf-display); color: #fff; flex: none; }
 .cf-avatar--r { background: var(--cf-dusty); }
 .cf-avatar--m { background: var(--cf-burgundy); }
@@ -1863,27 +1537,25 @@ body .cf-mobile-nav a:visited {
 
 /* zwevende meldingen */
 .cf-float {
-  position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px;
+  position: absolute; display: flex; align-items: center; gap: 10px;
   background: rgba(255,255,255,.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255,255,255,.9); border-radius: 18px; padding: 10px 14px 10px 10px;
   box-shadow: 0 12px 32px -12px rgba(30,42,68,.3);
-  font-size: 13px; line-height: 1.3; color: var(--cf-text); max-width: 230px; text-align: left;
+  font-size: 13px; line-height: 1.3; color: var(--cf-text); text-align: left;
   opacity: 0; transform: translateY(10px) scale(.97);
   transition: opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1);
 }
 .cf-float.is-in { opacity: 1; transform: none; }
 .cf-float strong { display: block; color: var(--cf-ink); font-weight: 600; }
 .cf-float__icon { width: 34px; height: 34px; border-radius: 11px; display: grid; place-items: center; flex: none; color: #fff; font-size: 16px; }
-.cf-float--a, .cf-float--c { top: 12%; left: 2%; }
-.cf-float--b { bottom: 14%; right: 2%; }
 
 /* mobiel */
 @media (max-width: 900px) {
-  .cf-hero { grid-template-columns: 1fr; padding-top: 104px; gap: 40px; min-height: 0; }
+  .cf-hero { grid-template-columns: 1fr; gap: 40px; }
   .cf-hero__title { max-width: 13ch; }
 }
 @media (max-width: 520px) {
-  .cf-hero { padding: 96px 16px 56px; }
+
   .cf-hero__lead { font-size: 17px; text-align: center; }
   .cf-hero__title, .cf-hero__note { text-align: center; }
   .cf-hero__title, .cf-hero__lead { margin-left: auto; margin-right: auto; }
@@ -1891,9 +1563,9 @@ body .cf-mobile-nav a:visited {
   .cf-store { text-align: left; }
   .cf-btn { width: 100%; }
   .cf-stage { padding: 56px 8px 48px; }
-  .cf-phone { width: 272px; zoom: .9; }
+  .cf-phone { width: 272px; }
   .cf-screen { height: 560px; }
-  .cf-float { max-width: 200px; font-size: 12px; }
+  .cf-float { font-size: 12px; }
   .cf-float--a, .cf-float--c { top: 14px; left: 10px; }
   .cf-float--b { bottom: 14px; right: 10px; }
 }
@@ -1914,49 +1586,32 @@ body .cf-mobile-nav a:visited {
 #main .cf-hero .cf-btn--ghost,
 #main .cf-hero .cf-btn--ghost:hover { color: var(--cf-ink); }
 
-@media (min-width: 521px) {
-  .cf-float--a, .cf-float--c { top: 4%; left: -28px; }
-  .cf-float--b { right: -28px; }
-}
-
 /* cf-hero als grote witte kaart */
 #main .cf-hero {
   width: min(1200px, calc(100% - 48px));
   max-width: none;
   margin: 88px auto 0;
-  padding: 56px;
-  background: #fff;
   border-radius: 32px;
   border: 1px solid rgba(30,42,68,.06);
-  box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 10px 28px rgba(30,42,68,.10);
-  min-height: calc(100svh - 112px);
 }
 
 @media (max-width: 900px) {
-  #main .cf-hero { min-height: 0; padding: 40px 32px; margin-top: 88px; }
+  #main .cf-hero { min-height: 0; padding: 40px 32px; }
 }
 @media (max-width: 520px) {
-  #main .cf-hero { width: calc(100% - 24px); padding: 28px 16px 16px; margin-top: 80px; border-radius: 28px; }
+  #main .cf-hero { width: calc(100% - 24px); padding: 28px 16px 16px; border-radius: 28px; }
   #main .cf-hero .cf-stage { border-radius: 22px; }
 }
 
 /* cf-hero kaart: wit en ruimte bovenaan forceren */
 #main section.cf-hero.cf-hero {
   background: #fff !important;
-  margin-top: 124px !important;
   box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 10px 28px rgba(30,42,68,.10) !important;
-}
-@media (max-width: 900px) {
-  #main section.cf-hero.cf-hero { margin-top: 92px !important; }
-}
-@media (max-width: 520px) {
-    #main section.cf-hero.cf-hero { margin-top: 84px !important; }
 }
 
 /* cf-hero: in één oogopslag zichtbaar op laptop/desktop */
 @media (min-width: 901px) {
   #main section.cf-hero.cf-hero {
-    margin-top: 124px !important;
     padding: 32px 48px !important;
     min-height: 0 !important;
   }
@@ -1986,7 +1641,7 @@ body .cf-mobile-nav a:visited {
   .cf-bento__title {
     font-family: var(--cf-display); font-weight: 600;
     font-size: clamp(26px, 2.8vw, 36px); line-height: 1.15; letter-spacing: -0.025em;
-    color: var(--cf-ink); margin: 0 0 20px; text-align: left;
+    color: var(--cf-ink); margin: 0 0 20px;
   }
   .cf-bento__grid {
     display: grid;
@@ -1994,7 +1649,6 @@ body .cf-mobile-nav a:visited {
     grid-template-areas:
       "align meal"
       "work  prog";
-    gap: 20px;
   }
   .cf-tile {
     border-radius: 28px; padding: 24px;
@@ -2006,13 +1660,13 @@ body .cf-mobile-nav a:visited {
 
   .cf-tile--align { grid-area: align; background: var(--cf-softblue); }
   /* twee kleuren, diagonaal: blauw (linksboven + rechtsonder), wit (rechtsboven + linksonder) */
-  .cf-tile--meal, .cf-tile--work { background: #fff; box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 10px 28px rgba(30,42,68,.08); }
+
   .cf-tile--meal  { grid-area: meal; }
   .cf-tile--work  { grid-area: work; }
   .cf-tile--prog  { grid-area: prog; background: var(--cf-softblue); }
 
   /* --- mini UI shared --- */
-  .cf-ui { background: #fff; border-radius: 18px; padding: 14px 16px; box-shadow: 0 1px 0 rgba(30,42,68,.04), 0 6px 18px -8px rgba(30,42,68,.18); font-size: 13px; color: var(--cf-ink); }
+  .cf-ui { background: #fff; border-radius: 18px; padding: 14px 16px; font-size: 13px; color: var(--cf-ink); }
   .cf-av { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font: 700 11px var(--cf-display); color: #fff; flex: none; }
   .cf-av--m { background: var(--cf-burgundy); }
   .cf-av--r { background: var(--cf-dusty); }
@@ -2103,16 +1757,15 @@ body .cf-mobile-nav a:visited {
 }
 .cf-price__title {
   font-family: var(--cf-display); font-weight: 600;
-  font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; letter-spacing: -0.025em;
+ line-height: 1.1; letter-spacing: -0.025em;
   color: var(--cf-ink); margin: 0 0 10px;
 }
-.cf-price__lead { font-size: 17px; line-height: 1.5; margin: 0 auto 28px; max-width: 52ch; }
+.cf-price__lead { font-size: 17px; line-height: 1.5; margin: 0 auto 28px; }
 
 /* schakelaar */
 .cf-toggle {
   position: relative; display: inline-grid; grid-template-columns: 1fr 1fr;
   background: var(--cf-softblue); border-radius: 999px; padding: 4px;
-  margin-bottom: 40px;
 }
 .cf-toggle__thumb {
   position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px);
@@ -2133,27 +1786,24 @@ body .cf-mobile-nav a:visited {
 .cf-save { font-size: 12px; font-weight: 600; color: var(--cf-burgundy); background: rgba(91,30,45,.1); padding: 3px 8px; border-radius: 999px; }
 
 /* kaarten */
-.cf-plans { display: grid; grid-template-columns: 1fr 1.08fr 1fr; gap: 20px; align-items: stretch; text-align: left; padding: 16px 0; }
+.cf-plans { display: grid; grid-template-columns: 1fr 1.08fr 1fr; align-items: stretch; text-align: left; }
 .cf-plan {
-  background: #fff; border-radius: 28px; padding: 32px 28px;
+  background: #fff; border-radius: 28px;
   box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 10px 28px rgba(30,42,68,.08);
-  display: flex; flex-direction: column; gap: 22px;
+  display: flex; flex-direction: column;
 }
-.cf-plan h3 { font-family: var(--cf-display); font-weight: 600; font-size: 22px; letter-spacing: -0.02em; color: var(--cf-ink); margin: 0; }
-.cf-plan__sub { font-size: 14px; color: var(--cf-label); margin: 4px 0 0; }
+.cf-plan h3 { font-family: var(--cf-display); font-weight: 600; letter-spacing: -0.02em; color: var(--cf-ink); margin: 0; }
+.cf-plan__sub { color: var(--cf-label); margin: 4px 0 0; }
 
 .cf-plan--pop {
-  background: var(--cf-burgundy); color: var(--cf-ivory);
-  padding: 40px 32px;
+  background: var(--cf-burgundy);
   box-shadow: 0 2px 4px rgba(30,42,68,.08), 0 24px 48px -16px rgba(91,30,45,.45);
   position: relative;
-  margin: -16px 0;
 }
-.cf-plan--pop h3 { color: var(--cf-ivory); }
-.cf-plan--pop .cf-plan__sub { color: rgba(243,239,230,.75); }
+
 .cf-tag {
   position: absolute; top: -14px; left: 32px;
-  background: var(--cf-ivory); color: var(--cf-burgundy);
+
   font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px;
   box-shadow: 0 4px 12px -4px rgba(30,42,68,.25);
 }
@@ -2161,42 +1811,40 @@ body .cf-mobile-nav a:visited {
 /* prijsblok */
 .cf-amount { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
 .cf-amount__num { font: 700 46px/1 var(--cf-display); letter-spacing: -0.03em; color: var(--cf-ink); font-variant-numeric: tabular-nums; }
-.cf-plan--pop .cf-amount__num { color: #fff; }
-.cf-amount__per { font-size: 15px; color: var(--cf-label); }
-.cf-plan--pop .cf-amount__per { color: rgba(243,239,230,.75); }
-.cf-amount__old { font-size: 16px; color: var(--cf-label); text-decoration: line-through; opacity: 0; transition: opacity .3s; }
-.cf-plan--pop .cf-amount__old { color: rgba(243,239,230,.6); }
+
+.cf-amount__per { color: var(--cf-label); }
+
+.cf-amount__old { color: var(--cf-label); text-decoration: line-through; transition: opacity .3s; }
+
 .cf-price[data-period="yearly"] .cf-amount__old { opacity: 1; }
 .cf-person {
-  display: inline-flex; align-items: center; gap: 8px; margin-top: 12px;
-  font-size: 14px; font-weight: 600; color: var(--cf-ink);
-  background: var(--cf-softblue); padding: 6px 12px 6px 6px; border-radius: 999px;
+ align-items: center; gap: 8px;
+ font-weight: 600; color: var(--cf-ink);
+  background: var(--cf-softblue); border-radius: 999px;
 }
 .cf-person__dots { display: flex; }
 .cf-person__dots i { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #fff; display: block; }
 .cf-person__dots i:first-child { background: var(--cf-burgundy); }
 .cf-person__dots i:last-child { background: var(--cf-dusty); margin-left: -6px; }
-.cf-plan--pop .cf-person { background: rgba(243,239,230,.14); color: var(--cf-ivory); }
+.cf-plan--pop .cf-person { background: rgba(243,239,230,.14); }
 .cf-plan--pop .cf-person__dots i { border-color: var(--cf-burgundy); }
-.cf-plan--pop .cf-person__dots i:first-child { background: var(--cf-ivory); }
-.cf-plan--pop .cf-person__dots i:last-child { background: var(--cf-powder); }
-.cf-billing { font-size: 13px; color: var(--cf-label); margin: 10px 0 0; min-height: 1.4em; }
-.cf-plan--pop .cf-billing { color: rgba(243,239,230,.75); }
+
+.cf-billing { color: var(--cf-label); margin: 10px 0 0; min-height: 1.4em; }
 
 /* lijst */
-.cf-list { flex: 1; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.4; }
+.cf-list { flex: 1; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; line-height: 1.4; }
 .cf-list li { display: flex; gap: 10px; align-items: flex-start; }
 .cf-list li::before {
   content: "✓"; flex: none; width: 20px; height: 20px; border-radius: 50%;
   display: grid; place-items: center; font-size: 11px; font-weight: 700;
   background: var(--cf-softblue); color: var(--cf-burgundy); margin-top: 1px;
 }
-.cf-plan--pop .cf-list li::before { background: rgba(243,239,230,.16); color: var(--cf-ivory); }
+.cf-plan--pop .cf-list li::before { background: rgba(243,239,230,.16); }
 
 /* knoppen */
 .cf-plan__cta {
   display: flex; align-items: center; justify-content: center;
-  padding: 15px 20px; border-radius: 999px; text-decoration: none;
+ border-radius: 999px; text-decoration: none;
   font: 600 15px var(--cf-body);
   background: var(--cf-burgundy); color: var(--cf-ivory);
   transition: background-color .2s, transform .2s;
@@ -2206,13 +1854,12 @@ body .cf-mobile-nav a:visited {
 .cf-plan--pop .cf-plan__cta:hover { background: #fff; color: var(--cf-burgundy); }
 .cf-plan__cta:active { transform: scale(.98); }
 .cf-plan__cta:focus-visible { outline: 3px solid var(--cf-dusty); outline-offset: 3px; }
-.cf-plan__note { font-size: 13px; color: var(--cf-label); text-align: center; margin: -10px 0 0; }
-.cf-plan--pop .cf-plan__note { color: rgba(243,239,230,.7); }
+.cf-plan__note { color: var(--cf-label); text-align: center; margin: -10px 0 0; }
 
 @media (max-width: 960px) {
   .cf-plans { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
-  .cf-plan--pop { order: -1; margin: 14px 0 0; }
-  .cf-plans { padding: 0; }
+  .cf-plan--pop { order: -1; }
+
 }
 @media (max-width: 520px) {
   #main #cf-pricing.cf-price { width: calc(100% - 24px); margin-left: auto; margin-right: auto; background: #E6ECF2 !important; border-radius: 28px !important; padding: 28px 16px 20px !important; }  .cf-toggle { padding: 3px; background: rgba(30,42,68,.08); }
@@ -2248,7 +1895,7 @@ body .cf-mobile-nav a:visited {
    /* Compact: titel, aanbieding, toggle en kaart in één oogopslag */
   #main #cf-pricing .cf-price__title.cf-price__title { font-size: 24px; margin-bottom: 2px; }
   #main #cf-pricing .cf-price__lead.cf-price__lead { font-size: 14px; margin-bottom: 10px; }
-  #main #cf-pricing .cf-founding.cf-founding { display: block; margin: 0 auto 12px; padding: 8px 14px; background: #fff; border: 0; border-radius: 14px; box-shadow: none; text-align: center; }  #main #cf-pricing .cf-founding.cf-founding p { font-size: 11.5px; line-height: 1.45; }
+  #main #cf-pricing .cf-founding.cf-founding { display: block; margin: 0 auto 12px; padding: 8px 14px; background: #fff; border: 0; border-radius: 14px; box-shadow: none; text-align: center; }  
   #main #cf-pricing .cf-founding__pair.cf-founding__pair { display: none; }
   #main #cf-pricing .cf-toggle.cf-toggle { margin-bottom: 4px; }
   #main #cf-pricing .cf-plan.cf-plan h3 { font-size: 18px; }
@@ -2341,29 +1988,20 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
   body .site-header.is-scrolled .cf-cta { padding: 9px 18px; }
 }
 
-
 @media (prefers-reduced-motion: reduce) {
   body .site-header, body .site-header .cf-nav a::after { transition: none; }}
 
 /* ================= FAQ (twee kolommen) ================= */
 .cf-faq, .cf-faq * { box-sizing: border-box; }
 #main section.cf-faq.cf-faq {
-  width: min(1200px, calc(100% - 48px));
-  margin-left: auto; margin-right: auto;
-  background: #fff;
-  border-radius: 32px;
-  border: 1px solid rgba(30,42,68,.06);
-  box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 10px 28px rgba(30,42,68,.10);
-  padding: 56px;
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+
   gap: 56px;
   align-items: start;
   text-align: left;
   color: var(--cf-text);
   font-family: var(--cf-body);
 }
-.cf-faq__intro { position: sticky; top: 120px; }
+.cf-faq__intro { top: 120px; }
 .cf-faq__title {
   font-family: var(--cf-display); font-weight: 600;
   font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; letter-spacing: -0.025em;
@@ -2375,7 +2013,7 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
 #main .cf-faq__contact a:hover { border-color: var(--cf-burgundy); }
 
 .cf-faq__item { border-bottom: 1px solid var(--cf-softblue); }
-.cf-faq__item:first-child { border-top: 1px solid var(--cf-softblue); }
+
 #main .cf-faq__q {
   width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px;
   background: none; border: 0; padding: 22px 0; margin: 0; cursor: pointer; text-align: left;
@@ -2402,11 +2040,11 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
 .cf-faq__item.is-open .cf-faq__a { grid-template-rows: 1fr; }
 
 @media (max-width: 900px) {
-  #main section.cf-faq.cf-faq { grid-template-columns: 1fr; gap: 28px; padding: 36px 24px; }
+  #main section.cf-faq.cf-faq { gap: 28px; }
   .cf-faq__intro { position: static; }
 }
 @media (max-width: 520px) {
-  #main section.cf-faq.cf-faq { width: calc(100% - 24px); border-radius: 28px; }
+
   #main .cf-faq__q { font-size: 16px; padding: 18px 0; }
   .cf-faq__a p { padding-right: 0; }
 }
@@ -2456,11 +2094,10 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
   margin-left: auto !important; margin-right: auto !important;
   padding: 0 !important;
   background: none !important;
-  display: flex !important; flex-direction: column !important; gap: 20px !important;
+  display: flex !important; flex-direction: column !important;
   text-align: left !important;
   color: var(--cf-text); font-family: var(--cf-body);
 }
-#main#main #story#story#story::before, #main#main #story#story#story::after { display: none !important; }
 
 /* kaart met intro + tijdlijn */
 #main#main #story#story#story .cf-story__card {
@@ -2468,23 +2105,22 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
   border: 1px solid rgba(30,42,68,.06);
   box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 10px 28px rgba(30,42,68,.10);
 }
-#main#main #story#story#story .cf-story__intro { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 64px; }
+#main#main #story#story#story .cf-story__intro { display: grid; align-items: center; }
 #main#main #story#story#story .cf-story__title {
   font-family: var(--cf-display); font-weight: 600;
-  font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; letter-spacing: -0.025em;
+ letter-spacing: -0.025em;
   color: var(--cf-ink); margin: 0 0 14px; text-align: left;
 }
-#main#main #story#story#story .cf-story__lead { font-size: 19px; line-height: 1.55; margin: 0; max-width: 40ch; color: var(--cf-text); text-align: left; }
+#main#main #story#story#story .cf-story__lead { line-height: 1.55; margin: 0; color: var(--cf-text); text-align: left; }
 
 /* foto's (met zacht blauw vlak zolang er nog geen foto is) */
 #main#main #story#story#story .cf-story__photo { margin: 0; border-radius: 24px; overflow: hidden; background: var(--cf-softblue); }
 #main#main #story#story#story .cf-story__photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
-#main#main #story#story#story .cf-story__photo--hero { aspect-ratio: 4 / 3; }
 
 #main#main #story#story#story .cf-story__photo--founder { aspect-ratio: 1; width: 112px; flex: none; border-radius: 50%; background: #fff; }
 
 /* tijdlijn */
-#main#main #story#story#story .cf-timeline { list-style: none; margin: 0 auto; padding: 0; max-width: 760px; position: relative; }
+#main#main #story#story#story .cf-timeline { list-style: none; padding: 0; position: relative; }
 #main#main #story#story#story .cf-timeline::before {
   content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px;
   background: linear-gradient(var(--cf-powder), var(--cf-burgundy));
@@ -2511,13 +2147,13 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
 }
 
 /* oprichters */
-#main#main #story#story#story .cf-founders__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+#main#main #story#story#story .cf-founders__grid { display: grid; grid-template-columns: 1fr 1fr; }
 #main#main #story#story#story .cf-founder { background: var(--cf-softblue); border-radius: 28px; padding: 28px; display: flex; gap: 24px; align-items: flex-start; }
 #main#main #story#story#story .cf-founder h4 { font-family: var(--cf-display); font-weight: 600; font-size: 22px; color: var(--cf-ink); margin: 4px 0 8px; text-align: left; }
 #main#main #story#story#story .cf-founder p { font-size: 16px; line-height: 1.6; margin: 0; color: var(--cf-text); text-align: left; }
 
 /* waarden */
-#main#main #story#story#story .cf-beliefs__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+#main#main #story#story#story .cf-beliefs__grid { display: grid; grid-template-columns: repeat(4, 1fr); }
 #main#main #story#story#story .cf-belief {
   background: #fff; border-radius: 24px; padding: 24px;
   box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 10px 28px rgba(30,42,68,.08);
@@ -2528,14 +2164,14 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
 /* visie + oproep */
 #main#main #story#story#story .cf-vision {
   margin-top: 8px; background: var(--cf-burgundy); color: var(--cf-ivory); border-radius: 32px; padding: 56px;
-    box-shadow: 0 10px 28px rgba(30,42,68,.10); text-align: left;
+    box-shadow: 0 10px 28px rgba(30,42,68,.10);
 }
 #main#main #story#story#story .cf-vision h3 {
   font-family: var(--cf-display); font-weight: 600; font-size: clamp(26px, 3vw, 38px); line-height: 1.15; letter-spacing: -0.02em;
-  color: var(--cf-ivory); margin: 0 0 18px; max-width: 22ch; text-align: left;
+  color: var(--cf-ivory); margin: 0 0 18px; max-width: 22ch;
 }
 #main#main #story#story#story .cf-vision h3 span { color: var(--cf-powder); }
-#main#main #story#story#story .cf-vision p { font-size: 17px; line-height: 1.6; margin: 0 0 12px; max-width: 62ch; color: rgba(243,239,230,.88); text-align: left; }
+#main#main #story#story#story .cf-vision p { font-size: 17px; line-height: 1.6; margin: 0 0 12px; max-width: 62ch; color: rgba(243,239,230,.88); }
 #main#main #story#story#story .cf-vision__cta {
   display: inline-flex; margin-top: 16px; padding: 15px 26px; border-radius: 999px;
   background: var(--cf-ivory); color: var(--cf-burgundy) !important; text-decoration: none;
@@ -2661,10 +2297,10 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
 #main#main #testimonials#testimonials#testimonials .cf-tst__head { margin-bottom: 32px; }
 #main#main #testimonials#testimonials#testimonials .cf-tst__title {
   font-family: var(--cf-display); font-weight: 600; font-size: clamp(30px, 3.6vw, 44px);
-  line-height: 1.1; letter-spacing: -0.025em; color: var(--cf-ink); margin: 0 0 10px; text-align: left;
+  line-height: 1.1; letter-spacing: -0.025em; color: var(--cf-ink); margin: 0 0 10px;
 }
-#main#main #testimonials#testimonials#testimonials .cf-tst__lead { font-size: 17px; line-height: 1.55; margin: 0; max-width: 52ch; color: var(--cf-text); text-align: left; }
-#main#main #testimonials#testimonials#testimonials .cf-tst__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+#main#main #testimonials#testimonials#testimonials .cf-tst__lead { font-size: 17px; line-height: 1.55; margin: 0; max-width: 52ch; color: var(--cf-text); }
+#main#main #testimonials#testimonials#testimonials .cf-tst__grid { display: grid; grid-template-columns: repeat(3, 1fr); }
 #main#main #testimonials#testimonials#testimonials .cf-quote {
   margin: 0; background: #fff; border-radius: 24px; padding: 28px;
   display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
@@ -2679,7 +2315,7 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
 }
 /* Label i.p.v. aanhalingsteken: dit zijn voorbeeldsituaties, geen echte reviews */
 #main#main #testimonials#testimonials#testimonials .cf-quote blockquote::before {
-  content: "Example situation"; display: block; width: fit-content; position: static; margin: 0 0 14px;
+ width: fit-content; position: static; margin: 0 0 14px;
   padding: 4px 10px; border-radius: 999px; background: rgba(91,30,45,.08);
   font-family: var(--cf-body); font-size: 12px; font-weight: 600; letter-spacing: .02em; line-height: 1.4;
   color: var(--cf-burgundy);
@@ -2694,7 +2330,7 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
   #main#main #testimonials#testimonials#testimonials.cf-tst { padding: 36px 0 36px 20px !important; }
   #main#main #testimonials#testimonials#testimonials .cf-tst__head { padding-right: 20px; }
   #main#main #testimonials#testimonials#testimonials .cf-tst__grid {
-    display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px;
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
     padding: 4px 20px 16px 0; scrollbar-width: none; -webkit-overflow-scrolling: touch;
   }
   #main#main #testimonials#testimonials#testimonials .cf-tst__grid::-webkit-scrollbar { display: none; }
@@ -2959,26 +2595,11 @@ body footer.cf-footer.cf-footer a:focus-visible { outline: 2px solid var(--cf-po
 
 /* Menu-links: elke sectie komt netjes onder de header uit */
 #main#main #story#story#story { scroll-margin-top: 80px !important; }
-#main#main #plans#plans { scroll-margin-top: 110px !important; }
-#main#main #faq#faq#faq { scroll-margin-top: 80px !important; }
-#main#main #cta#cta#cta { scroll-margin-top: 80px !important; }
 
 /* Pricing: compacter, zodat alles in één oogopslag past */
 #main#main #plans#plans { scroll-margin-top: 88px !important; }
-#main #cf-pricing .cf-price__title { margin-bottom: 6px; }
-#main #cf-pricing .cf-price__lead { max-width: 60ch; margin-bottom: 20px; }
-#main #cf-pricing .cf-toggle { margin-bottom: 28px; }
-#main #cf-pricing .cf-plans { padding: 12px 0; }
-#main #cf-pricing .cf-plan { padding: 26px 26px; gap: 18px; }
-#main #cf-pricing .cf-plan--pop { padding: 32px 30px; margin: -12px 0; }
-#main #cf-pricing .cf-amount__num { font-size: 42px; }
-#main #cf-pricing .cf-person { margin-top: 10px; }
-#main #cf-pricing .cf-billing { margin-top: 8px; }
-#main #cf-pricing .cf-list { gap: 8px; }
-#main #cf-pricing .cf-plan__note { margin-top: -8px; }
-@media (max-width: 960px) {
-  #main #cf-pricing .cf-plan--pop { margin: 14px 0 0; }
-}
+
+#main #cf-pricing .cf-price__lead { max-width: 60ch; }
 
 /* Menu-link FAQ: kaart met wat meer lucht onder de header */
 #main#main #faq#faq#faq { scroll-margin-top: 112px !important; }
@@ -3078,12 +2699,12 @@ body footer.cf-footer.cf-footer a:focus-visible { outline: 2px solid var(--cf-po
 /* ===== Pricing: founding-aanbod ===== */
 #main #cf-pricing .cf-founding {
   display: inline-flex; align-items: center; gap: 12px;
-  margin: 0 auto 22px; padding: 10px 18px 10px 12px;
+  margin: 0 auto 22px;
   background: #fff; border: 1px solid rgba(91,30,45,.18); border-radius: 999px;
   box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 8px 20px -10px rgba(91,30,45,.25);
   text-align: left;
 }
-#main #cf-pricing .cf-founding p { margin: 0; font-size: 15px; line-height: 1.4; color: var(--cf-text); }
+#main #cf-pricing .cf-founding p { margin: 0; line-height: 1.4; color: var(--cf-text); }
 #main #cf-pricing .cf-founding strong { color: var(--cf-burgundy); font-weight: 600; }
 #main #cf-pricing .cf-founding__pair { display: inline-flex; flex: none; }
 #main #cf-pricing .cf-founding__pair i { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #fff; display: block; }
@@ -3092,15 +2713,13 @@ body footer.cf-footer.cf-footer a:focus-visible { outline: 2px solid var(--cf-po
 
 /* label "Founding price" boven de prijs */
 #main #cf-pricing .cf-flabel {
-  display: inline-block; margin-bottom: 8px; padding: 4px 10px; border-radius: 999px;
+  display: inline-block; border-radius: 999px;
   background: rgba(91,30,45,.08); color: var(--cf-burgundy);
-  font-size: 12px; font-weight: 600; letter-spacing: .01em;
+ font-weight: 600; letter-spacing: .01em;
 }
 
 /* oude prijs altijd doorgestreept zichtbaar */
 #main #cf-pricing .cf-amount__old { opacity: 1 !important; }
-
-
 
 /* Pricing met founding-prijs: alles weer in één oogopslag */
 #main #cf-pricing .cf-price__title { font-size: clamp(28px, 3.2vw, 40px); margin-bottom: 4px; }
@@ -3293,7 +2912,6 @@ body.legal-page main.legal .lead { margin-bottom: 20px; color: var(--cf-muted, #
 @media (min-width: 901px) {
   #main#main #faq#faq#faq.cf-faq {
     min-height: calc(100svh - 136px) !important;
-    align-content: start !important;
     padding-top: clamp(56px, 9vh, 96px) !important;
   }
 }
@@ -3331,7 +2949,7 @@ body.legal-page main.legal .lead { margin-bottom: 20px; color: var(--cf-muted, #
     display: flex; flex-direction: column;
   }
   #main #faq .cf-faq__contact {
-    margin-top: auto; max-width: 340px;
+ max-width: 340px;
     padding: 22px 24px; border-top: 0; border-radius: 20px;
     background: var(--cf-softblue); color: var(--cf-ink);
     font: 600 18px/1.35 var(--cf-display); letter-spacing: -0.01em;

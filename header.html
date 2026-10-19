@@ -324,16 +324,3 @@
   </nav>
   <a href="/#cta" class="cf-mobile-cta" onclick="document.getElementById('cf-menu-toggle').checked=false">Become a Founding Couple</a>
 </div>
-
-<script>
-  (function () {
-    const h = document.querySelector('.site-header');
-    if (!h) return;
-    const onScroll = () => {
-      if (window.scrollY > 8) h.classList.add('is-scrolled');
-      else h.classList.remove('is-scrolled');
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-  })();
-</script>

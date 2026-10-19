@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261018h" />
+<link rel="stylesheet" href="/style.css?v=20261018i" />
 
 
 </head>
@@ -1175,12 +1175,12 @@
       });
     },{threshold:0.1, rootMargin:"0px 0px -10% 0px"});
 
-    document.querySelectorAll('.reveal, .stagger, .slide-in').forEach(el=> revealObs.observe(el));
+    document.querySelectorAll('.slide-in').forEach(el=> revealObs.observe(el));
   })();
   </script>
 
   
-  <script src="main.js?v=11"></script>
+  <script src="main.js?v=12"></script>
     <!-- Features: telefoons komen zacht binnen, glans over het scherm, lichte diepte -->
   <script>
   (function () {
@@ -1383,15 +1383,7 @@
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var selectors = [
       '#features',
-      '#story .story-hero',
-      '#story .story-row',
-      '#story .story-tile',
-      '#story .story-founders',
-      '#story .story-believe',
-      '#story .story-vision',
-      '#story .story-final-cta',
       '#testimonials',
-      '.plans-section',
       '#faq',
       '#cta'
     ];
