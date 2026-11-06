@@ -2262,6 +2262,23 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
 #main#main #cta#cta#cta .cf-signup__msg:empty { display: none; }
 #main#main #cta#cta#cta .cf-signup__note { margin: 12px 4px 0; font-size: 13px; color: var(--cf-label); text-align: left; }
 
+/* samen-vinkje */
+#main#main #cta#cta#cta .cf-together { grid-column: 1 / -1; justify-self: start; display: inline-flex; align-items: center; gap: 10px; margin: 2px 4px 0; cursor: pointer; font-size: 15px; color: var(--cf-ink); }
+#main#main #cta#cta#cta .cf-together input { width: 20px; height: 20px; margin: 0; accent-color: var(--cf-burgundy); cursor: pointer; }
+
+/* delen na inschrijving */
+#main#main #cta#cta#cta .cf-share { margin-top: 26px; padding-top: 24px; border-top: 1px solid var(--cf-bg); }
+#main#main #cta#cta#cta .cf-share[hidden] { display: none; }
+#main#main #cta#cta#cta .cf-share .cf-share__title { font-family: var(--cf-display); font-weight: 600; font-size: 19px; color: var(--cf-ink); margin: 0 0 6px; }
+#main#main #cta#cta#cta .cf-share .cf-share__lead { font-size: 15px; color: var(--cf-text); margin: 0 auto 16px; max-width: 40ch; }
+#main#main #cta#cta#cta .cf-share__btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+#main#main #cta#cta#cta .cf-share__btn { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 22px; border-radius: 14px;
+  border: 0; cursor: pointer; text-decoration: none; background: var(--cf-burgundy); color: var(--cf-ivory); font: 600 15px var(--cf-body); transition: background-color .2s; }
+#main#main #cta#cta#cta .cf-share__btn:hover { background: var(--cf-burgundy-hover); }
+#main#main #cta#cta#cta .cf-share__btn--ghost { background: var(--cf-bg); color: var(--cf-ink); }
+#main#main #cta#cta#cta .cf-share__btn--ghost:hover { background: #EFEAE0; }
+@media (max-width: 520px) { #main#main #cta#cta#cta .cf-share__btn { width: 100%; } }
+
 /* bevestiging */
 #main#main #cta#cta#cta .cf-signup__done { background: #fff; border-radius: 24px; padding: 36px 24px;
   box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 16px 40px -16px rgba(30,42,68,.22); }
@@ -2276,7 +2293,7 @@ body .site-header .cf-cta:hover { box-shadow: 0 6px 16px rgba(91,30,45,.3); }
 @media (max-width: 760px) {
   #main#main #cta#cta#cta.cf-signup { padding: 44px 20px !important; }
   #main#main #cta#cta#cta .cf-signup__fields { grid-template-columns: 1fr; }
-  #main#main #cta#cta#cta .cf-signup__btn { width: 100%; }
+  #main#main #cta#cta#cta .cf-signup__btn { width: 100%; order: 2; }
 }
 @media (max-width: 520px) {
   #main#main #cta#cta#cta.cf-signup { width: calc(100% - 24px) !important; border-radius: 28px !important; }

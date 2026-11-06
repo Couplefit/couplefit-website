@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261018i" />
+<link rel="stylesheet" href="/style.css?v=20261106a" />
 
 
 </head>
@@ -1082,10 +1082,14 @@
               <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required>
             </label>
             <label class="cf-field">
-              <span>Your partner's email <em>(optional)</em></span>
-              <input type="email" name="partner_email" autocomplete="off" placeholder="partner@example.com">
+              <span>Your partner's first name <em>(optional)</em></span>
+              <input type="text" name="partner_name" autocomplete="off" maxlength="40" placeholder="e.g. Rachelle">
             </label>
             <button type="submit" class="cf-signup__btn">Join as a founding couple</button>
+            <label class="cf-together">
+              <input type="checkbox" name="together">
+              <span>We're signing up together</span>
+            </label>
           </div>
           <p class="cf-signup__msg" id="cf-signup-msg" role="status" aria-live="polite"></p>
           <p class="cf-signup__note">No card required. We'll only email you about CoupleFit.</p>
@@ -1095,6 +1099,14 @@
           <span class="cf-signup__check" aria-hidden="true">✓</span>
            <h3>Check your inbox</h3>
           <p>We've sent you an email. Click the button in it to confirm your spot. Can't find it? Check your spam folder.</p>
+          <div class="cf-share" id="cf-share" hidden>
+            <p class="cf-share__title">Bring your partner along</p>
+            <p class="cf-share__lead">CoupleFit is built for two. Send them your link so you can join as a Founding Couple together.</p>
+            <div class="cf-share__btns">
+              <a class="cf-share__btn" id="cf-share-wa" href="#" target="_blank" rel="noopener">Send via WhatsApp</a>
+              <button type="button" class="cf-share__btn cf-share__btn--ghost" id="cf-share-copy">Copy link</button>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -1112,46 +1124,81 @@
       var btn = form.querySelector('.cf-signup__btn');
       var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
       var valid = function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
+      var CODE_RE = /^[a-z0-9]{6}$/;
+
+      // Referral: wie via couple-fit.com/?ref=xxxxxx binnenkomt, onthouden we voor deze sessie
+      var referredBy = '';
+      try {
+        var r = (new URLSearchParams(location.search).get('ref') || '').toLowerCase();
+        if (CODE_RE.test(r)) { referredBy = r; sessionStorage.setItem('cf_ref', r); }
+        else { var saved = sessionStorage.getItem('cf_ref') || ''; if (CODE_RE.test(saved)) referredBy = saved; }
+      } catch (e) {}
+
+      function makeCode() {
+        var chars = 'abcdefghjkmnpqrstuvwxyz23456789', out = '';
+        var arr = new Uint8Array(6);
+        (window.crypto || window.msCrypto).getRandomValues(arr);
+        for (var i = 0; i < 6; i++) out += chars[arr[i] % chars.length];
+        return out;
+      }
+
+      var together = false, myCode = '';
 
       function say(text) { msg.textContent = text; }
+      function showShare() {
+        var link = 'https://couple-fit.com/?ref=' + myCode;
+        var text = 'I just joined the CoupleFit waitlist, a fitness app for couples. Join me so we become a Founding Couple together: ' + link;
+        var wa = document.getElementById('cf-share-wa');
+        var copy = document.getElementById('cf-share-copy');
+        wa.href = 'https://wa.me/?text=' + encodeURIComponent(text);
+        wa.addEventListener('click', function () { try { if (window.umami) umami.track('Share link', { channel: 'whatsapp' }); } catch (e) {} });
+        copy.addEventListener('click', function () {
+          var ok = function () { copy.textContent = 'Link copied'; setTimeout(function () { copy.textContent = 'Copy link'; }, 2000); };
+          try { if (window.umami) umami.track('Share link', { channel: 'copy' }); } catch (e) {}
+          if (navigator.clipboard) { navigator.clipboard.writeText(link).then(ok, function () { window.prompt('Copy your link:', link); }); }
+          else { window.prompt('Copy your link:', link); }
+        });
+        document.getElementById('cf-share').hidden = false;
+      }
       function finish() {
         form.hidden = true; done.hidden = false;
-        try { if (window.umami) umami.track('Waitlist signup', { partner: partner_given ? 'yes' : 'no' }); } catch (e) {}
+        showShare();
+        try { if (window.umami) umami.track('Waitlist signup', { partner: together ? 'yes' : 'no', referred: referredBy ? 'yes' : 'no' }); } catch (e) {}
       }
-      var partner_given = false;
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var email = form.email.value.trim();
-        var partner = form.partner_email.value.trim();
+        var partnerName = form.partner_name.value.trim().slice(0, 40);
         form.email.classList.remove('is-error');
-        form.partner_email.classList.remove('is-error');
 
         if (!valid(email)) { form.email.classList.add('is-error'); say('Please enter a valid email address.'); form.email.focus(); return; }
-        if (partner && !valid(partner)) { form.partner_email.classList.add('is-error'); say("Please check your partner's email address."); form.partner_email.focus(); return; }
-        partner_given = !!partner;
-        if (partner && partner.toLowerCase() === email.toLowerCase()) { form.partner_email.classList.add('is-error'); say("Your partner's email should be different from yours."); return; }
+        together = form.together.checked || !!partnerName;
+        myCode = makeCode();
 
         if (!CF_SIGNUP_ENDPOINT) {
           if (isLocal) { finish(); } else { say('Sign-ups open very soon. Please check back shortly.'); }
           return;
         }
 
-           btn.disabled = true; say('Sending…');
-           var data = new FormData();
-           data.append('EMAIL', email);
-           if (partner) data.append('PARTNER_EMAIL', partner);
-           data.append('email_address_check', '');
-           data.append('locale', 'en');
-           fetch(CF_SIGNUP_ENDPOINT, {
-             method: 'POST',
-             mode: 'no-cors',
-             body: data
-           }).then(function () {
-             finish();
-           }).catch(function () {
-             btn.disabled = false; say('Something went wrong. Please try again in a moment.');
-           });
+        btn.disabled = true; say('Sending…');
+        var data = new FormData();
+        data.append('EMAIL', email);
+        if (together) data.append('SIGNED_UP_TOGETHER', '1');
+        if (partnerName) data.append('PARTNER_NAME', partnerName);
+        data.append('REFERRAL_CODE', myCode);
+        if (referredBy) data.append('REFERRED_BY', referredBy);
+        data.append('email_address_check', '');
+        data.append('locale', 'en');
+        fetch(CF_SIGNUP_ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: data
+        }).then(function () {
+          say(''); finish();
+        }).catch(function () {
+          btn.disabled = false; say('Something went wrong. Please try again in a moment.');
+        });
       });
     })();
     </script>
