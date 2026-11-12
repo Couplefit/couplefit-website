@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261112o" />
+<link rel="stylesheet" href="/style.css?v=20261112q" />
 
 
 </head>
@@ -502,6 +502,93 @@
     var abToday = (new Date().getDay() + 6) % 7;
     if (abDays[abToday]) abDays[abToday].classList.add('is-today');
   } catch (e) {}
+  /* ---------- Sync-tegels: uitleg per dag en weekcijfers in de grafiek ---------- */
+  try {
+    function makeTip(host) {
+      var t = document.createElement('div');
+      t.className = 'ab-tip'; t.setAttribute('role', 'tooltip');
+      host.appendChild(t);
+      return t;
+    }
+    function place(tip, host, x, yTop, text) {
+      tip.textContent = text;
+      tip.classList.add('is-on');
+      var w = tip.offsetWidth, h = tip.offsetHeight, hw = host.clientWidth;
+      var left = Math.max(6, Math.min(x - w / 2, hw - w - 6));
+      tip.style.left = left + 'px';
+      tip.style.top = Math.max(4, yTop - h - 10) + 'px';
+    }
+
+    /* 1. weekoverzicht */
+    var plan = document.querySelector('#sync .ab-plan');
+    var days = plan ? plan.querySelectorAll('.ab-day') : [];
+    if (plan && days.length === 7) {
+      var NAMES = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+      var INFO = [
+        'Max trains alone: Push, 45 min.',
+        'Together: Legs at 19:00.',
+        'Rachelle trains alone: Pilates, 40 min.',
+        'Together: Upper body at 18:00.',
+        'Rest day for both of you.',
+        'Together: Full body at 10:00.',
+        'Rest day for both of you.'
+      ];
+      var todayIdx = (new Date().getDay() + 6) % 7;
+      var dayTip = makeTip(plan), dayTimer = null;
+      days.forEach(function (d, i) {
+        d.tabIndex = 0;
+        d.setAttribute('aria-label', NAMES[i] + ': ' + INFO[i]);
+        function show() {
+          clearTimeout(dayTimer);
+          days.forEach(function (x) { x.classList.remove('is-picked'); });
+          d.classList.add('is-picked');
+          var hr = plan.getBoundingClientRect(), r = d.querySelector('span').getBoundingClientRect();
+          place(dayTip, plan, r.left + r.width / 2 - hr.left, r.top - hr.top, (i === todayIdx ? 'Today' : NAMES[i]) + ': ' + INFO[i]);
+        }
+        function hide() { d.classList.remove('is-picked'); dayTip.classList.remove('is-on'); }
+        d.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'touch') show(); });
+        d.addEventListener('pointerleave', function (e) { if (e.pointerType !== 'touch') hide(); });
+        d.addEventListener('focus', show);
+        d.addEventListener('blur', hide);
+        d.addEventListener('click', function () { show(); dayTimer = setTimeout(hide, 2600); });
+      });
+    }
+
+    /* 2. grafiek */
+    var prog = document.querySelector('#sync .ab-prog');
+    var svg = prog ? prog.querySelector('.cf-chart') : null;
+    if (svg) {
+      var NS = 'http://www.w3.org/2000/svg';
+      var X = [10, 66, 122, 177, 233, 289, 345, 400];
+      var YM = [88, 82, 76, 70, 58, 50, 36, 22], YR = [96, 90, 80, 76, 64, 54, 46, 32];
+      var MAX = [2, 2, 2, 3, 3, 3, 4, 4], RACH = [1, 2, 2, 2, 3, 3, 3, 4];
+      function el(name, attrs) { var e = document.createElementNS(NS, name); for (var k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+      var guide = el('line', { 'class': 'ab-guide', x1: 0, x2: 0, y1: 14, y2: 98 });
+      var pm = el('circle', { 'class': 'ab-pt ab-pt--m', r: 5 });
+      var pr = el('circle', { 'class': 'ab-pt ab-pt--r', r: 5 });
+      var chartTip = makeTip(prog), chartTimer = null;
+      function showWeek(i) {
+        clearTimeout(chartTimer);
+        guide.setAttribute('x1', X[i]); guide.setAttribute('x2', X[i]);
+        pm.setAttribute('cx', X[i]); pm.setAttribute('cy', YM[i]);
+        pr.setAttribute('cx', X[i]); pr.setAttribute('cy', YR[i]);
+        svg.classList.add('is-hover');
+        var hr = prog.getBoundingClientRect(), r = pm.getBoundingClientRect();
+        place(chartTip, prog, r.left + r.width / 2 - hr.left, r.top - hr.top,
+          'Week ' + (i + 1) + ' · Max ' + MAX[i] + ' · Rachelle ' + RACH[i]);
+      }
+      function hideWeek() { svg.classList.remove('is-hover'); chartTip.classList.remove('is-on'); }
+      X.forEach(function (x, i) {
+        var left = i === 0 ? 0 : (X[i - 1] + x) / 2;
+        var right = i === X.length - 1 ? 410 : (x + X[i + 1]) / 2;
+        var hit = el('rect', { 'class': 'ab-hit', x: left, y: 0, width: right - left, height: 104 });
+        hit.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'touch') showWeek(i); });
+        hit.addEventListener('click', function () { showWeek(i); chartTimer = setTimeout(hideWeek, 2600); });
+      });
+      svg.addEventListener('pointerleave', function (e) { if (e.pointerType !== 'touch') hideWeek(); });
+    }
+  } catch (e) {}
+
   var section = document.querySelector('.cf-bento');
   if (!section) return;
   if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

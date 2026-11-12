@@ -3416,3 +3416,29 @@ body.legal-page main.legal .lead { margin-bottom: 20px; color: var(--cf-muted, #
     0 30px 60px -24px rgba(30,42,68,.40),
     0 60px 100px -50px rgba(91,30,45,.30);
 }
+
+/* ===== Sync-tegels: kleine interacties (12 nov 2026) ===== */
+#main #sync .ab-plan, #main #sync .ab-prog { position: relative; }
+#main #sync .ab-tip {
+  position: absolute; left: 0; top: 0; z-index: 6; max-width: 240px;
+  padding: 8px 11px; border-radius: 12px; background: var(--cf-ink); color: var(--cf-ivory);
+  font: 500 12.5px/1.4 var(--cf-body); text-align: left; white-space: normal;
+  box-shadow: 0 10px 24px -10px rgba(30,42,68,.5);
+  pointer-events: none; opacity: 0; transform: translateY(4px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+#main #sync .ab-tip.is-on { opacity: 1; transform: none; }
+#main #sync .ab-day { cursor: pointer; border-radius: 12px; outline: none; }
+#main #sync .ab-day span { transition: transform .18s ease, box-shadow .18s ease; }
+#main #sync .ab-day.is-picked span { transform: translateY(-3px); box-shadow: 0 8px 16px -8px rgba(30,42,68,.45); }
+#main #sync .ab-day.is-today.is-picked span { box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--cf-burgundy), 0 8px 16px -8px rgba(30,42,68,.45); }
+#main #sync .ab-day:focus-visible span { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--cf-dusty); }
+#main #sync .cf-chart { overflow: visible; }
+#main #sync .cf-chart .ab-hit { fill: transparent; cursor: crosshair; }
+#main #sync .cf-chart .ab-guide { stroke: rgba(30,42,68,.22); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0; pointer-events: none; }
+#main #sync .cf-chart .ab-pt { stroke: #fff; stroke-width: 2.5; opacity: 0; pointer-events: none; transition: opacity .15s ease; }
+#main #sync .cf-chart .ab-pt--m { fill: var(--cf-burgundy); }
+#main #sync .cf-chart .ab-pt--r { fill: var(--cf-dusty); }
+#main #sync .cf-chart.is-hover .ab-guide, #main #sync .cf-chart.is-hover .ab-pt { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { #main #sync .ab-tip, #main #sync .ab-day span { transition: none; } }
+#main #sync .ab-prog .ab-tip { white-space: nowrap; }
