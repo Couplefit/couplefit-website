@@ -3513,3 +3513,10 @@ body.legal-page main.legal .lead { margin-bottom: 20px; color: var(--cf-muted, #
 #main .cf-price .cf-regular { margin: 4px 0 10px; font-size: 12.5px; line-height: 1.4; color: var(--cf-label, #56698A); }
 #main .cf-price .cf-plan--pop .cf-regular { color: inherit; opacity: .8; }
 #main .cf-price .cf-regular { min-height: 2.8em; }
+
+/* Footer: medische disclaimer op een eigen regel */
+body footer.cf-footer.cf-footer .cf-footer__bottom { flex-wrap: wrap; }
+body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex-basis: 100%; order: 3; margin-top: 10px; font-size: 12px; line-height: 1.5; color: rgba(243,239,230,.45); }
+@media (max-width: 760px) {
+  body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { margin-top: 8px; max-width: 34ch; }
+}
