@@ -6,7 +6,14 @@
       "**/.*",
       "**/.*/**",
       "**/node_modules/**",
-      "**/*.md"
+      "**/*.md",
+      "functions-challenge/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/api/challenge/**",
+        "function": { "functionId": "challengeApi", "region": "europe-west1" }
+      }
     ],
     "headers": [
       {
@@ -17,6 +24,13 @@
           { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
           { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
           { "key": "Strict-Transport-Security", "value": "max-age=31536000" }
+        ]
+      },
+      {
+        "source": "/challenge/**",
+        "headers": [
+          { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+          { "key": "Referrer-Policy", "value": "no-referrer" }
         ]
       },
       {
@@ -32,5 +46,13 @@
         "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
       }
     ]
-  }
+  },
+  "functions": [
+    {
+      "source": "functions-challenge",
+      "codebase": "challenge",
+      "runtime": "nodejs22",
+      "ignore": ["node_modules", ".git", "firebase-debug.log", "firebase-debug.*.log", "*.local"]
+    }
+  ]
 }

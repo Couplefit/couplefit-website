@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Our First 4 Weeks Together – CoupleFit</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#FAF8F5">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
+<!-- Umami: data-exclude-search zorgt dat de geheime ?k=... code NIET naar Umami gaat -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="a832ddb4-f262-4aff-8cc5-19853eda3e3d" data-domains="couple-fit.com" data-exclude-search="true"></script>
+<link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+  :root {
+    --bg: #FAF8F5; --ink: #1E2A44; --text: #3A4560; --muted: #56698A;
+    --burgundy: #5B1E2D; --burgundy-hover: #7C2C3A; --powder: #B7C6D6;
+    --soft-blue: #E6ECF2; --ivory: #F3EFE6; --beige: #EFEAE0; --line: #D9DFE8;
+    --radius: 28px; --radius-sm: 18px;
+    --head: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+  button, input, textarea { font: inherit; color: inherit; }
+  .wrap { max-width: 560px; margin: 0 auto; padding: 0 16px calc(48px + env(safe-area-inset-bottom)); }
+  h1, h2, h3 { font-family: var(--head); color: var(--ink); letter-spacing: -0.02em; margin: 0; }
+  .kicker { font-family: var(--head); font-weight: 600; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+  /* top bar */
+  .top { position: sticky; top: 0; z-index: 10; background: rgba(250,248,245,0.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .top__row { max-width: 560px; margin: 0 auto; padding: 14px 16px 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; font-family: var(--head); font-weight: 700; font-size: 18px; color: var(--ink); letter-spacing: -0.02em; }
+  .save { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; min-height: 20px; }
+  .save__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--powder); }
+  .save[data-state="saving"] .save__dot { background: var(--burgundy-hover); }
+  .save[data-state="error"] { color: var(--burgundy); }
+  .save[data-state="error"] .save__dot { background: var(--burgundy); }
+  .tabs { max-width: 560px; margin: 0 auto; display: flex; gap: 8px; overflow-x: auto; padding: 4px 16px 12px; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { flex: 0 0 auto; border: 0; border-radius: 999px; padding: 9px 16px; background: var(--soft-blue); color: var(--ink); font-family: var(--head); font-weight: 600; font-size: 14px; cursor: pointer; }
+  .tab[aria-selected="true"] { background: var(--burgundy); color: #fff; }
+
+  /* cards */
+  .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 20px; margin-top: 14px; }
+  .card--beige { background: var(--beige); border-color: transparent; }
+  .card--blue { background: var(--soft-blue); border-color: transparent; }
+  .card--powder { background: var(--powder); border-color: transparent; }
+  .card--burgundy { background: var(--burgundy); border-color: transparent; color: var(--ivory); }
+  .card--burgundy h1, .card--burgundy h2 { color: var(--ivory); }
+  .card--burgundy .kicker { color: var(--powder); }
+  .hero { padding: 28px 22px 26px; }
+  .hero h1 { font-size: 30px; line-height: 1.15; margin: 8px 0 10px; font-weight: 700; }
+  .hero p { margin: 0; font-size: 16px; }
+  .hero__num { float: right; font-family: var(--head); font-weight: 700; font-size: 56px; line-height: 0.9; opacity: 0.55; margin-left: 12px; }
+  h2 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+  .muted { color: var(--muted); font-size: 14px; }
+  p { margin: 0 0 10px; }
+
+  /* who am I */
+  .who { display: flex; gap: 10px; margin-top: 12px; }
+  .who button { flex: 1; border: 1.5px solid var(--line); background: #fff; border-radius: 999px; padding: 11px 12px; font-family: var(--head); font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 0; }
+  .who button span.n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .who button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: #fff; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; flex: 0 0 auto; }
+  .dot--a { background: var(--burgundy); } .dot--b { background: var(--muted); }
+
+  /* fields */
+  label.f { display: block; margin-top: 14px; }
+  label.f > span { display: block; font-family: var(--head); font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 6px; }
+  input[type=text], textarea { width: 100%; border: 1px solid var(--line); background: #fff; border-radius: 14px; padding: 12px 14px; font-size: 16px; outline: none; transition: border-color .15s; }
+  textarea { min-height: 84px; resize: vertical; line-height: 1.45; }
+  input[type=text]:focus, textarea:focus { border-color: var(--burgundy); }
+  .card--beige input[type=text], .card--beige textarea, .card--blue input[type=text], .card--blue textarea { border-color: transparent; }
+  .cols { display: grid; gap: 10px; }
+
+  /* menu items */
+  .item { display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-top: 1px solid var(--line); }
+  .item:first-of-type { border-top: 0; padding-top: 6px; }
+  .item__txt { flex: 1; min-width: 0; }
+  .item__t { font-family: var(--head); font-weight: 600; color: var(--ink); font-size: 16px; line-height: 1.3; }
+  .item__d { font-size: 14px; color: var(--text); margin-top: 3px; }
+  .ticks { display: flex; gap: 6px; flex: 0 0 auto; }
+  .tick { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--burgundy); background: #fff; cursor: pointer; display: grid; place-items: center; font-family: var(--head); font-weight: 700; font-size: 13px; color: var(--burgundy); padding: 0; transition: background .15s, color .15s; }
+  .tick--b { border-color: var(--muted); color: var(--muted); }
+  .tick[aria-pressed="true"] { background: var(--burgundy); color: #fff; }
+  .tick--b[aria-pressed="true"] { background: var(--muted); color: #fff; }
+  .extra { margin-top: 6px; border-radius: var(--radius-sm); background: var(--soft-blue); padding: 16px; font-size: 14px; }
+  .extra b { font-family: var(--head); color: var(--burgundy); display: block; margin-bottom: 4px; }
+
+  /* tracker */
+  .grid { display: grid; grid-template-columns: 52px repeat(7, 1fr); gap: 4px 2px; align-items: center; margin-top: 10px; }
+  .grid .h { text-align: center; font-size: 11px; color: var(--muted); font-family: var(--head); font-weight: 600; }
+  .grid .wk { font-family: var(--head); font-weight: 600; font-size: 12px; color: var(--ink); line-height: 1.2; }
+  .cell { border: 0; background: none; padding: 4px 0; cursor: pointer; display: grid; place-items: center; }
+  .cell svg { width: 100%; max-width: 46px; height: auto; display: block; }
+  .cell .ca { fill: transparent; stroke: none; }
+  .cell .cb { fill: none; stroke: var(--muted); }
+  .cell .ov { fill: transparent; }
+  .cell.a .ca { fill: var(--burgundy); }
+  .cell.b .cbf { fill: var(--powder); }
+  .cell.a.b .ov { fill: var(--ink); }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .stat { background: var(--soft-blue); border-radius: var(--radius-sm); padding: 14px 16px; }
+  .stat b { display: block; font-family: var(--head); font-size: 28px; color: var(--ink); line-height: 1.1; }
+  .stat span { font-size: 13px; color: var(--muted); }
+
+  /* buttons + misc */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; background: var(--burgundy); color: #fff; font-family: var(--head); font-weight: 600; font-size: 15px; padding: 13px 22px; cursor: pointer; text-decoration: none; }
+  .btn:hover { background: var(--burgundy-hover); }
+  .btn--ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+  .btn--ghost:hover { background: rgba(30,42,68,0.06); }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .note { margin-top: 26px; border-left: 3px solid var(--burgundy); padding: 2px 0 2px 14px; font-size: 13px; color: var(--muted); }
+  .next { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+  .center { text-align: center; }
+  .locked { padding-top: 12vh; }
+  .locked .card { text-align: center; padding: 40px 24px; }
+  .locked h1 { font-size: 26px; margin: 18px 0 10px; }
+  .toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom)); transform: translateX(-50%) translateY(20px); background: var(--ink); color: #fff; padding: 11px 18px; border-radius: 999px; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; max-width: calc(100% - 32px); }
+  .toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+  [hidden] { display: none !important; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  :focus-visible { outline: 2px solid var(--burgundy); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs><symbol id="logo" viewBox="0 0 40 24"><circle cx="12" cy="12" r="11" fill="#5B1E2D"/><circle cx="28" cy="12" r="11" fill="#B7C6D6"/><path d="M20 4.2a11 11 0 0 1 0 15.6a11 11 0 0 1 0-15.6z" fill="#1E2A44"/></symbol></defs>
+</svg>
+
+<header class="top" id="top" hidden>
+  <div class="top__row">
+    <a class="logo" href="/" aria-label="CoupleFit home"><svg width="34" height="20"><use href="#logo"/></svg>CoupleFit</a>
+    <div class="save" id="save" data-state="idle" aria-live="polite"><span class="save__dot"></span><span id="saveTxt">Saved</span></div>
+  </div>
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Challenge sections"></nav>
+</header>
+
+<main class="wrap" id="app" aria-live="polite">
+  <p class="center muted" style="padding-top:30vh">Loading your challenge…</p>
+</main>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function () {
+  'use strict';
+  var API = '/api/challenge';
+  var KEY = new URLSearchParams(location.search).get('k') || '';
+  var DISCLAIMER = "This challenge offers general wellness ideas, not medical advice. Move at your own pace, stop if something hurts, and check with a healthcare professional before starting a new exercise routine, especially if you're pregnant, injured or managing a health condition.";
+
+  var WEEKS = [
+    { n: 1, value: 'Connection', title: 'Move together', tone: 'burgundy',
+      intro: 'Pick three moments to move this week. Short is fine. Together is the point.',
+      items: [['A walk after dinner', 'Twenty minutes, phones in pockets. Talk about your day.'],
+              ["'You go, I go' at home", 'Fifteen minutes. One moves, the other rests, then swap.'],
+              ['Stretch before bed', 'Ten slow minutes side by side. No goals, just easing in.'],
+              ['Moving at different times?', "Send each other a photo when you're done. It counts."]],
+      extra: ["Your 15-minute 'You go, I go'", "Squats (easier: stand up from a chair) · Wall push-ups · Glute bridges · Plank (easier: on your knees) · Marching on the spot. 40 seconds each while your partner rests, then swap. Two or three rounds."] },
+    { n: 2, value: 'Wellness', title: 'Eat together', tone: 'powder',
+      intro: 'Food is one of the easiest ways to spend time together. Pick what fits your week.',
+      items: [['Cook together twice', 'Two evenings. One chops, one stirs, music on.'],
+              ['Try something new', 'One new vegetable or recipe. One of you picks, both cook.'],
+              ['Plan groceries on Sunday', "Ten minutes, one list, fewer 'what's for dinner?' moments."],
+              ['One meal without phones', 'Just the two of you and the table.']] },
+    { n: 3, value: 'Accountability', title: 'Keep each other going', tone: 'beige',
+      intro: 'This week is about cheering, not checking. Small nudges, no pressure.',
+      items: [['A daily check-in', "'Have you moved today?' A short message is enough."],
+              ['A tiny bet', 'Whoever misses a moment picks the next date.'],
+              ['One shared rest day', 'Rest together, on purpose.'],
+              ['Say what you admired', 'Once this week, tell each other what you noticed.']] },
+    { n: 4, value: 'Growth', title: 'Grow together', tone: 'burgundy',
+      intro: "Try something new together, and look back on what you've built.",
+      items: [['Try something new and active', 'A climbing gym, a dance class or a new walking route.'],
+              ['Pick one goal for summer', 'Something to do together by the time the app arrives.'],
+              ['Look back together', 'What do we want to keep doing after these four weeks?'],
+              ['Celebrate your four weeks', 'However you like. You did this together.']] }
+  ];
+  var START_Q = ['What would make our weeks feel better?', "One thing I'd love us to do more together", 'What usually gets in our way?'];
+
+  // ---------- state ----------
+  var data = {};            // flat map: path -> value
+  var pending = {};         // unsaved patch
+  var saveTimer = null, saving = false, pollTimer = null;
+  var tab = store('cf_tab') || 'start';
+  var me = store('cf_me');  // 'a' | 'b' | null
+
+  function store(k, v) {
+    try {
+      if (v === undefined) return localStorage.getItem(k);
+      if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v);
+    } catch (e) { return null; }
+  }
+  function track(name, d) { try { if (window.umami) umami.track(name, d); } catch (e) {} }
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function nameOf(p) { return (data['names.' + p] || '').trim() || (p === 'a' ? 'Partner A' : 'Partner B'); }
+  function initial(p) { return nameOf(p).charAt(0).toUpperCase(); }
+
+  // server stores nested maps; flatten to dotted paths
+  function flatten(obj, pre, out) {
+    out = out || {};
+    Object.keys(obj || {}).forEach(function (k) {
+      var v = obj[k], p = pre ? pre + '.' + k : k;
+      if (v && typeof v === 'object' && !Array.isArray(v)) flatten(v, p, out); else out[p] = v;
+    });
+    return out;
+  }
+
+  // ---------- network ----------
+  function api(path, opts) {
+    return fetch(API + path, Object.assign({ headers: { 'Content-Type': 'application/json' }, credentials: 'omit', cache: 'no-store' }, opts || {}))
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { j._status = r.status; return j; }); });
+  }
+  function load(first) {
+    return api('/state?k=' + encodeURIComponent(KEY)).then(function (j) {
+      if (j._status !== 200) { if (first) locked(); return false; }
+      var remote = flatten(j.data || {});
+      Object.keys(pending).forEach(function (p) { remote[p] = pending[p]; }); // keep unsaved local edits
+      var changed = JSON.stringify(remote) !== JSON.stringify(data);
+      data = remote;
+      if (first) { setupShell(); render(); track('Challenge open'); }
+      else if (changed) refresh();
+      return true;
+    }).catch(function () { if (first) offline(); return false; });
+  }
+  function set(path, value) {
+    if (data[path] === value) return;
+    data[path] = value; pending[path] = value;
+    setSave('saving', 'Saving…');
+    clearTimeout(saveTimer); saveTimer = setTimeout(flush, 700);
+  }
+  function flush() {
+    if (saving || !Object.keys(pending).length) return;
+    var patch = pending; pending = {}; saving = true;
+    api('/save', { method: 'POST', body: JSON.stringify({ k: KEY, patch: patch }) }).then(function (j) {
+      saving = false;
+      if (j._status !== 200) throw new Error(j.error || 'save');
+      if (Object.keys(pending).length) flush(); else setSave('idle', 'Saved');
+    }).catch(function () {
+      saving = false;
+      Object.keys(patch).forEach(function (p) { if (!(p in pending)) pending[p] = patch[p]; });
+      setSave('error', 'Not saved, retrying…');
+      clearTimeout(saveTimer); saveTimer = setTimeout(flush, 5000);
+    });
+  }
+  function setSave(state, txt) { var s = $('#save'); if (!s) return; s.dataset.state = state; $('#saveTxt').textContent = txt; }
+  function startPolling() {
+    clearInterval(pollTimer);
+    pollTimer = setInterval(function () {
+      if (document.visibilityState === 'visible' && !saving && !Object.keys(pending).length) load(false);
+    }, 20000);
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') flush();
+    else if (KEY && !saving && !Object.keys(pending).length && $('#top') && !$('#top').hidden) load(false);
+  });
+  window.addEventListener('pagehide', function () {
+    if (!Object.keys(pending).length) return;
+    try { navigator.sendBeacon(API + '/save', new Blob([JSON.stringify({ k: KEY, patch: pending })], { type: 'application/json' })); } catch (e) {}
+  });
+
+  // ---------- shell ----------
+  var TABS = [['start', 'Start'], ['w1', 'Week 1'], ['w2', 'Week 2'], ['w3', 'Week 3'], ['w4', 'Week 4'], ['tracker', 'Tracker']];
+  function setupShell() {
+    $('#top').hidden = false;
+    var nav = $('#tabs');
+    nav.innerHTML = TABS.map(function (t) { return '<button class="tab" role="tab" data-tab="' + t[0] + '">' + t[1] + '</button>'; }).join('');
+    nav.addEventListener('click', function (e) { var b = e.target.closest('[data-tab]'); if (b) go(b.dataset.tab); });
+    startPolling();
+  }
+  function go(t) {
+    tab = t; store('cf_tab', t); render(); window.scrollTo(0, 0);
+    track('Challenge tab', { tab: t });
+  }
+
+  // ---------- views ----------
+  function whoBlock() {
+    return '<div class="card card--blue"><h2>Who’s holding this phone?</h2>' +
+      '<p class="muted">So your ticks land in your own circle. You can switch any time.</p>' +
+      '<div class="who">' + ['a', 'b'].map(function (p) {
+        return '<button type="button" data-me="' + p + '" aria-pressed="' + (me === p) + '"><span class="dot dot--' + p + '"></span><span class="n" data-name="' + p + '"></span></button>';
+      }).join('') + '</div></div>';
+  }
+  function field(path, label, multi, max) {
+    var id = 'f_' + path.replace(/\./g, '_');
+    return '<label class="f" for="' + id + '"><span>' + label + '</span>' +
+      (multi ? '<textarea id="' + id + '" data-path="' + path + '" maxlength="' + (max || 1000) + '"></textarea>'
+             : '<input type="text" id="' + id + '" data-path="' + path + '" maxlength="' + (max || 200) + '" autocomplete="off">') + '</label>';
+  }
+
+  function viewStart() {
+    var h = '<section class="card card--burgundy hero"><div class="kicker">A gentle couples challenge</div>' +
+      '<h1>Our First 4 Weeks Together</h1><p>Four weeks of small moments, made for two. From Max &amp; Rachelle.</p></section>';
+    h += '<section class="card"><div class="kicker">How this works</div><h2 style="margin-top:6px">Pick. Plan. Tick.</h2>' +
+      '<p><b>Pick</b> what fits your life from each week’s short menu. <b>Plan</b> it together on Sunday. <b>Tick</b> your own circle when you’ve done it. Both ticked? The overlap fills in, just like our logo.</p>' +
+      '<p class="muted" style="margin:0">Missed a day? No catching up needed. Easy is always good enough.</p></section>';
+    h += '<section class="card card--beige"><h2>Your names</h2><p class="muted">Fill these in once. Your partner sees the same page.</p>' +
+      '<div class="cols">' + field('names.a', '<span class="dot dot--a" style="display:inline-block;margin-right:6px"></span>Partner A', false, 40) +
+      field('names.b', '<span class="dot dot--b" style="display:inline-block;margin-right:6px"></span>Partner B', false, 40) + '</div></section>';
+    h += whoBlock();
+    ['a', 'b'].forEach(function (p) {
+      h += '<section class="card"><div class="kicker" style="display:flex;align-items:center;gap:8px"><span class="dot dot--' + p + '"></span><span data-name="' + p + '"></span></div>' +
+        '<h2 style="margin-top:6px">Our starting point</h2><p class="muted">Answer on your own first, then read each other’s.</p>' +
+        START_Q.map(function (q, i) { return field('start.' + p + '_q' + i, q, true); }).join('') + '</section>';
+    });
+    h += '<section class="card card--blue"><h2>Now compare</h2>' + field('start.compare', 'What surprised you?', true) + '</section>';
+    h += invite();
+    h += '<div class="next"><span></span><button class="btn" data-go="w1">Start week 1 →</button></div>';
+    h += '<p class="note">' + DISCLAIMER + '</p>';
+    return h;
+  }
+
+  function viewWeek(n) {
+    var w = WEEKS[n - 1], h = '';
+    h += '<section class="card card--' + w.tone + ' hero"><span class="hero__num">' + w.n + '</span><div class="kicker">Week ' + w.n + ' · ' + w.value + '</div>' +
+      '<h1>' + w.title + '</h1><p>' + w.intro + '</p></section>';
+    h += '<section class="card"><h2>The menu</h2><p class="muted">Tap your own circle when you’ve done it.</p>';
+    w.items.forEach(function (it, i) {
+      h += '<div class="item"><div class="item__txt"><div class="item__t">' + it[0] + '</div><div class="item__d">' + it[1] + '</div></div><div class="ticks">' +
+        ['a', 'b'].map(function (p) {
+          var path = 'w' + n + '.i' + i + '_' + p;
+          return '<button type="button" class="tick tick--' + p + '" data-toggle="' + path + '" data-init="' + p + '"></button>';
+        }).join('') + '</div></div>';
+    });
+    if (w.extra) h += '<div class="extra"><b>' + w.extra[0] + '</b>' + w.extra[1] + '</div>';
+    h += '</section>';
+    h += '<section class="card card--' + (w.tone === 'beige' ? 'blue' : 'beige') + '"><h2>Plan it</h2><p class="muted">On Sunday, together.</p>' +
+      field('w' + n + '.plan_when', 'When') + field('w' + n + '.plan_where', 'Where') + field('w' + n + '.plan_what', 'What') + '</section>';
+    h += '<section class="card"><h2>Sunday sync</h2><p class="muted">Ten minutes at the end of the week.</p>' +
+      field('w' + n + '.sync0', 'Our favourite moment this week', true) + field('w' + n + '.sync1', 'What would help us next week', true) + '</section>';
+    var prev = n === 1 ? 'start' : 'w' + (n - 1), nxt = n === 4 ? 'tracker' : 'w' + (n + 1);
+    h += '<div class="next"><button class="btn btn--ghost" data-go="' + prev + '">← Back</button><button class="btn" data-go="' + nxt + '">' + (n === 4 ? 'Our tracker →' : 'Week ' + (n + 1) + ' →') + '</button></div>';
+    return h;
+  }
+
+  function cellSvg() {
+    return '<svg viewBox="0 0 46 30" aria-hidden="true">' +
+      '<circle class="cbf" cx="27.5" cy="15" r="11.5" fill="#fff"/>' +
+      '<circle class="ca" cx="18.5" cy="15" r="11.5" stroke-width="2"/>' +
+      '<path class="ov" d="M23 4.4a11.5 11.5 0 0 1 0 21.2a11.5 11.5 0 0 1 0-21.2z"/>' +
+      '<circle class="cb" cx="27.5" cy="15" r="11.5" stroke-width="2"/>' +
+      '<circle cx="18.5" cy="15" r="11.5" fill="none" stroke="#5B1E2D" stroke-width="2"/></svg>';
+  }
+  function viewTracker() {
+    var h = '<section class="card card--powder hero"><div class="kicker" style="color:var(--ink)">28 days, side by side</div><h1>Our tracker</h1>' +
+      '<p>Each day, tap the day when you did something from that week’s menu. Your circle fills in. When you’ve both ticked, the middle fills in too.</p></section>';
+    if (!me) h += whoBlock();
+    h += '<section class="card"><div style="display:flex;gap:16px;flex-wrap:wrap" class="muted">' +
+      '<span style="display:flex;align-items:center;gap:6px"><span class="dot dot--a"></span><span data-name="a"></span></span>' +
+      '<span style="display:flex;align-items:center;gap:6px"><span class="dot" style="background:var(--powder);border:2px solid var(--muted)"></span><span data-name="b"></span></span>' +
+      '<span style="display:flex;align-items:center;gap:6px"><span class="dot" style="background:var(--ink)"></span>Both</span></div>';
+    h += '<div class="grid"><span></span>';
+    for (var d = 1; d <= 7; d++) h += '<span class="h">D' + d + '</span>';
+    for (var w = 0; w < 4; w++) {
+      h += '<span class="wk">Week ' + (w + 1) + '</span>';
+      for (d = 0; d < 7; d++) h += '<button type="button" class="cell" data-cell="w' + w + 'd' + d + '" aria-label="Week ' + (w + 1) + ', day ' + (d + 1) + '">' + cellSvg() + '</button>';
+    }
+    h += '</div><p class="muted" style="margin:12px 0 0">Ticking for the other one? Switch who’s holding the phone on the Start tab.</p></section>';
+    h += '<div class="stats"><div class="stat"><b id="stBoth">0</b><span>days we both ticked</span></div><div class="stat"><b id="stStreak">0</b><span>longest together streak</span></div></div>';
+    h += '<section class="card card--burgundy" style="margin-top:14px"><div class="kicker">What’s next</div><h2 style="margin-top:6px">This is just the beginning.</h2>' +
+      '<p style="margin:0">In early summer 2027 this challenge moves into the CoupleFit app: a shared dashboard, your progress side by side, and new challenges made for two.</p></section>';
+    h += invite();
+    h += '<div class="next"><button class="btn btn--ghost" data-go="w4">← Week 4</button><span></span></div>';
+    h += '<p class="note">' + DISCLAIMER + '</p>';
+    return h;
+  }
+
+  function invite() {
+    return '<section class="card card--blue"><div class="kicker" style="color:var(--burgundy)">Made for two</div><h2 style="margin-top:6px">Doing this together?</h2>' +
+      '<p>Send this page to your partner. You’ll both see the same challenge and each other’s ticks. Only share it with your partner: anyone with the link can open it.</p>' +
+      '<div class="row"><button type="button" class="btn" data-share>Send to my partner</button><button type="button" class="btn btn--ghost" data-copy>Copy link</button></div></section>';
+  }
+
+  // ---------- render ----------
+  function render() {
+    $$('#tabs .tab').forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.tab === tab)); });
+    var sel = $('#tabs [aria-selected="true"]'); if (sel && sel.scrollIntoView) sel.scrollIntoView({ block: 'nearest', inline: 'center' });
+    var app = $('#app');
+    app.innerHTML = tab === 'start' ? viewStart() : tab === 'tracker' ? viewTracker() : viewWeek(+tab.slice(1));
+    fill();
+  }
+  function fill() {
+    $$('[data-path]').forEach(function (el) { if (document.activeElement !== el) el.value = data[el.dataset.path] || ''; });
+    $$('[data-name]').forEach(function (el) { el.textContent = nameOf(el.dataset.name); });
+    $$('[data-me]').forEach(function (b) { b.setAttribute('aria-pressed', String(me === b.dataset.me)); });
+    $$('[data-toggle]').forEach(function (b) {
+      var on = !!data[b.dataset.toggle];
+      b.setAttribute('aria-pressed', String(on));
+      b.textContent = initial(b.dataset.init);
+      b.setAttribute('aria-label', nameOf(b.dataset.init) + (on ? ': done' : ': not done yet'));
+    });
+    var both = 0, streak = 0, best = 0;
+    $$('[data-cell]').forEach(function (c) {
+      var id = c.dataset.cell, a = !!data['t.' + id + 'a'], b = !!data['t.' + id + 'b'];
+      c.classList.toggle('a', a); c.classList.toggle('b', b);
+    });
+    for (var w = 0; w < 4; w++) for (var d = 0; d < 7; d++) {
+      var ok = data['t.w' + w + 'd' + d + 'a'] && data['t.w' + w + 'd' + d + 'b'];
+      if (ok) { both++; streak++; best = Math.max(best, streak); } else streak = 0;
+    }
+    if ($('#stBoth')) { $('#stBoth').textContent = both; $('#stStreak').textContent = best + (best === 1 ? ' day' : ' days'); }
+  }
+  function refresh() { fill(); }
+
+  // ---------- events ----------
+  document.addEventListener('input', function (e) {
+    var el = e.target; if (!el.dataset || !el.dataset.path) return;
+    set(el.dataset.path, el.value.slice(0, +el.maxLength > 0 ? +el.maxLength : 1000));
+    if (el.dataset.path.indexOf('names.') === 0) $$('[data-name]').forEach(function (n) { n.textContent = nameOf(n.dataset.name); });
+  });
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('button, a'); if (!t) return;
+    if (t.dataset.go) return go(t.dataset.go);
+    if (t.dataset.me) { me = t.dataset.me; store('cf_me', me); fill(); toast('Got it. Hi ' + nameOf(me) + '!'); if (tab === 'tracker') render(); return; }
+    if (t.dataset.toggle) { set(t.dataset.toggle, !data[t.dataset.toggle]); fill(); if (data[t.dataset.toggle]) track('Challenge tick', { week: t.dataset.toggle.charAt(1) }); return; }
+    if (t.dataset.cell) {
+      if (!me) { toast('First pick who’s holding the phone'); return; }
+      var p = 't.' + t.dataset.cell + me; set(p, !data[p]); fill(); return;
+    }
+    if (t.hasAttribute('data-share')) return share();
+    if (t.hasAttribute('data-copy')) return copy();
+  });
+  function link() { return location.origin + '/challenge/?k=' + encodeURIComponent(KEY); }
+  function share() {
+    var text = 'Our CoupleFit 4-week challenge, made for two. Open it here:';
+    track('Challenge share');
+    if (navigator.share) { navigator.share({ title: 'Our First 4 Weeks Together', text: text, url: link() }).catch(function () {}); return; }
+    window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + link()), '_blank', 'noopener');
+  }
+  function copy() {
+    var done = function () { toast('Link copied'); };
+    if (navigator.clipboard) navigator.clipboard.writeText(link()).then(done, function () { prompt('Copy this link:', link()); });
+    else prompt('Copy this link:', link());
+  }
+  var toastTimer;
+  function toast(msg) { var t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove('on'); }, 2200); }
+
+  // ---------- locked / offline ----------
+  function locked() {
+    $('#app').className = 'wrap locked';
+    $('#app').innerHTML = '<div class="card card--blue"><svg width="56" height="34"><use href="#logo"/></svg>' +
+      '<h1>This challenge is for Founding Couples</h1>' +
+      '<p>Join the CoupleFit waitlist and confirm your email. You’ll get your own personal link to the 4-week challenge in your welcome email.</p>' +
+      '<div class="row" style="justify-content:center"><a class="btn" href="/#cta">Join the waitlist</a></div>' +
+      '<p class="muted" style="margin-top:22px">Already signed up? Use the button in your welcome email.<br>Lost it? <a href="mailto:support@couple-fit.com?subject=My%20challenge%20link" style="color:var(--burgundy)">Ask us for your link</a>.</p></div>';
+  }
+  function offline() {
+    $('#app').innerHTML = '<div class="card center" style="margin-top:20vh"><h2>We couldn’t load your challenge</h2><p class="muted">Check your connection and try again.</p>' +
+      '<div class="row" style="justify-content:center"><button class="btn" onclick="location.reload()">Try again</button></div></div>';
+  }
+
+  if (!/^[A-Za-z0-9_-]{32}$/.test(KEY)) locked(); else load(true);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "couplefit-challenge-functions",
+  "private": true,
+  "description": "Backend voor de CoupleFit 4-week challenge (eigen codebase: challenge)",
+  "main": "index.js",
+  "engines": {
+    "node": "22"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.0.0",
+    "firebase-functions": "^6.1.0"
+  }
+}
