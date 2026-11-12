@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261106a" />
+<link rel="stylesheet" href="/style.css?v=20261112k" />
 
 
 </head>
@@ -102,21 +102,7 @@
 
   <div class="cf-stage" id="cf-stage" aria-label="Preview of the CoupleFit app">
     <svg class="cf-links" id="cf-links" aria-hidden="true"><path id="cf-link-path" pathLength="1" /><circle id="cf-link-start" r="3.5" /><circle id="cf-link-end" r="5" /></svg>
-
-    <div class="cf-float cf-float--a" id="cf-float-a" data-target="cf-mark" role="button" tabindex="0" aria-label="Show Max's workout">
-      <div class="cf-float__icon" style="background:var(--cf-dusty)">✓</div>
-      <div><strong>Rachelle finished Leg day</strong>Your turn, Max</div>
-    </div>
-    <div class="cf-float cf-float--b" id="cf-float-b" data-target="cf-tab-meal" role="button" tabindex="0" aria-label="Show lunch details">
-      <div class="cf-float__icon" style="background:var(--cf-burgundy)">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg>
-      </div>
-      <div><strong>Lunch logged from a photo</strong>540 kcal, 38 g protein</div>
-    </div>
-    <div class="cf-float cf-float--c" id="cf-float-c" data-target="cf-streak-card" role="button" tabindex="0" aria-live="polite" aria-label="Show your streak">
-      <div class="cf-float__icon" style="background:var(--cf-burgundy)">♥</div>
-      <div><strong>You're both done today</strong>Streak is now 24 days</div>
-    </div>
+    <div class="cf-tip" id="cf-tip" role="tooltip"></div>
 
         <div class="cf-phone" id="cf-phone">
       <div class="cf-screen">
@@ -126,55 +112,68 @@
           <span class="cf-status__bars" aria-hidden="true"><i style="height:4px"></i><i style="height:6px"></i><i style="height:8px"></i><i style="height:10px"></i></span>
         </div>
 
-        <div class="cf-greet">
-          <small>Saturday</small>
-          <h2>Morning, Max &amp; Rachelle</h2>
-        </div>
-
-        <div class="cf-card">
-          <div class="cf-card__head"><span>Weekly goal</span><span>This week</span></div>
-          <svg class="cf-rings" viewBox="0 0 220 104" role="img" aria-label="Weekly goal: Max 72 percent, Rachelle 86 percent">
-            <circle class="cf-ring-track" cx="66" cy="52" r="40" />
-            <circle class="cf-ring-track" cx="154" cy="52" r="40" />
-            <circle class="cf-ring cf-ring--max" id="cf-ring-max" cx="66" cy="52" r="40" pathLength="100" />
-            <circle class="cf-ring cf-ring--rach" id="cf-ring-rach" cx="154" cy="52" r="40" pathLength="100" />
-            <text class="cf-ring-pct" x="66" y="54" text-anchor="middle" id="cf-pct-max">0%</text>
-            <text class="cf-ring-name" x="66" y="67" text-anchor="middle">Max</text>
-            <text class="cf-ring-pct" x="154" y="54" text-anchor="middle" id="cf-pct-rach">0%</text>
-            <text class="cf-ring-name" x="154" y="67" text-anchor="middle">Rachelle</text>
-          </svg>
-        </div>
-
-        <div class="cf-streak" id="cf-streak-card">
-          <div>
-            <div class="cf-streak__num" id="cf-streak">0</div>
-            <div class="cf-streak__label">days in a row, together</div>
+        <div class="cf-scroll" id="cf-scroll">
+        <div class="cf-app-top">
+          <div class="cf-greet">
+            <small id="cf-date">Mon 2 Nov</small>
+            <h2>Hi Max</h2>
           </div>
-          <div class="cf-week" aria-hidden="true">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i class="is-today" id="cf-today-dot"></i>
+          <div class="cf-app-icons">
+            <div class="cf-pill" id="cf-streak-card" tabindex="0" data-tip="Your streak: days in a row you've both trained. The snowflake is a streak freeze, so one missed day doesn't break it.">
+              <svg class="cf-flame" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1.2 3.2 5 5.4 5 10a5 5 0 0 1-10 0c0-2.4 1.2-3.8 2.4-5 .1 2.2 1 3.4 2.3 3.6C11 7.8 11.6 4.6 12 2z"/></svg>
+              <b id="cf-streak">0</b>
+              <svg class="cf-snow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"/></svg>
+              <b>1</b>
+            </div>
+            <span class="cf-gear" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
           </div>
         </div>
 
-        <div class="cf-card cf-today">
-          <h3>Today: Leg day</h3>
-          <p>45 min, home or gym</p>
-          <div class="cf-person">
+        <div class="cf-plan">
+          <div class="cf-plan__top"><span class="cf-plan__label">Today</span><span class="cf-plan__pill" tabindex="0" data-tip="Where you are in your training plan. Rest days line up for both of you.">Week 4 · Day 2</span></div>
+          <h3>Leg day</h3>
+          <p class="cf-plan__sub">6 exercises · about 45 min</p>
+          <div class="cf-plan__row" tabindex="0" data-tip="Your partner's status for today. It updates the moment Rachelle finishes.">
             <div class="cf-avatar cf-avatar--r">R</div>
             <span>Rachelle</span>
-            <span class="cf-done">✓ Done</span>
+            <em>Done</em>
+            <i class="cf-check is-done"></i>
           </div>
-          <div class="cf-person" id="cf-max-row">
+          <div class="cf-plan__row" id="cf-max-row">
             <div class="cf-avatar cf-avatar--m">M</div>
-            <span>Max</span>
-            <button class="cf-mark" id="cf-mark" type="button">Mark done</button>
+            <span>You</span>
+            <em id="cf-max-status">Not started</em>
+            <i class="cf-check" id="cf-max-check"></i>
+          </div>
+          <span class="cf-plan__start" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Start workout</span>
+          <button class="cf-mark" id="cf-mark" type="button" data-tip="Trained somewhere else? Tap this. Rachelle gets a notification and your streak grows.">✓ Done for today</button>
+        </div>
+
+        <div class="cf-card cf-weekcard" id="cf-weekcard" tabindex="0" data-tip="Workouts you both finished this week. The bars show your own progress next to each other.">
+          <div class="cf-card__head"><span>This week</span><span>Mon – Sun</span></div>
+          <div class="cf-weekcard__big"><b id="cf-together">2</b><span>/4</span></div>
+          <p>sessions together</p>
+          <div class="cf-weekcard__split">
+            <div><span>You</span><em id="cf-you-count">2/4</em><i class="cf-bar"><i id="cf-you-bar" style="--w:50%"></i></i></div>
+            <div><span>Rachelle</span><em>3/4</em><i class="cf-bar cf-bar--r"><i style="--w:75%"></i></i></div>
           </div>
         </div>
 
+        <div class="cf-stats">
+          <div class="cf-stat" tabindex="0" data-tip="Protein eaten today, against your daily goal."><b>96<small> / 140 g</small></b><span>Protein</span><i class="cf-bar"><i style="--w:69%"></i></i></div>
+          <div class="cf-stat" tabindex="0" data-tip="Calories eaten today, against your daily goal."><b>1,480<small> / 2,100</small></b><span>Calories</span><i class="cf-bar"><i style="--w:70%"></i></i></div>
+          <div class="cf-stat" tabindex="0" data-tip="Your latest weigh-in."><b>78.4<small> kg</small></b><span>Weight</span><i class="cf-bar cf-bar--r"><i style="--w:100%"></i></i></div>
+        </div>
+        </div>
+
+        <span class="cf-fab" tabindex="0" data-tip="Quick add: log a meal, a workout or your weight.">+</span>
+
         <nav class="cf-tabs">
+          <button type="button" class="cf-tab" id="cf-tab-meal" aria-label="Open today's lunch" data-tip="Nutrition: meals, macros and photo logging. Tap to see today's lunch."><svg viewBox="0 0 24 24"><path d="M7 3v8a3 3 0 0 0 3 3v7M7 3v5M10 3v5M17 21V3c-2 0-4 2-4 6v4h4"/></svg></button>
+          <span tabindex="0" data-tip="Workouts: your plan and exercise library."><svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg></span>
           <span class="is-active" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span>
-          <span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg></span>
-          <button type="button" class="cf-tab" id="cf-tab-meal" aria-label="Open today's lunch"><svg viewBox="0 0 24 24"><path d="M7 3v8a3 3 0 0 0 3 3v7M7 3v5M10 3v5M17 21V3c-2 0-4 2-4 6v4h4"/></svg></button>
-          <span aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><circle cx="16" cy="9" r="3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.5c3 0 6 2 6 5.5"/></svg></span>
+          <span tabindex="0" data-tip="Progress: weight, steps, sleep and strength over time."><svg viewBox="0 0 24 24"><path d="M5 20v-4M10 20v-9M15 20V7M20 20V4"/></svg></span>
+          <span tabindex="0" data-tip="Couple: your partner's day, shared challenges and badges."><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span>
         </nav>
 
         <!-- Uitschuifpaneel met de lunch -->
@@ -240,10 +239,12 @@
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var $ = function (id) { return document.getElementById(id); };
-  var ringMax = $('cf-ring-max'), ringRach = $('cf-ring-rach');
-  var pctMax = $('cf-pct-max'), pctRach = $('cf-pct-rach'), streak = $('cf-streak');
+  var streak = $('cf-streak');
 
-  function setRing(ring, pct) { ring.style.strokeDashoffset = 100 - pct; }
+  /* datum van vandaag bovenin de telefoon */
+  try {
+    $('cf-date').textContent = new Date().toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' }).replace(',', '');
+  } catch (e) {}
   function countUp(el, from, to, ms, suffix) {
     suffix = suffix || '';
     if (reduce) { el.textContent = to + suffix; return; }
@@ -260,10 +261,8 @@
   function hide(id) { $(id).classList.remove('is-in'); }
 
   requestAnimationFrame(function () { requestAnimationFrame(function () {
-    setRing(ringMax, 72); setRing(ringRach, 86);
-    countUp(pctMax, 0, 72, 1400, '%'); countUp(pctRach, 0, 86, 1400, '%');
+    $('cf-weekcard').classList.add('is-in');
     countUp(streak, 0, 23, 1200);
-    show('cf-float-a', 1300); show('cf-float-b', 1800);
   }); });
 
   /* ---------- Max markeert zijn workout ---------- */
@@ -272,16 +271,17 @@
     if (maxDone) return;
     maxDone = true;
     var btn = $('cf-mark');
-    var done = document.createElement('span');
-    done.className = 'cf-done';
-    done.id = 'cf-max-done';
-    done.textContent = '✓ Done';
-    btn.replaceWith(done);
-    setRing(ringMax, 86); countUp(pctMax, 72, 86, 900, '%');
-    $('cf-today-dot').classList.add('is-done');
+    btn.classList.add('is-done');
+    btn.textContent = '✓ You both trained today';
+    btn.setAttribute('aria-pressed', 'true');
+    $('cf-max-status').textContent = 'Done';
+    $('cf-max-check').classList.add('is-done');
+    countUp($('cf-together'), 2, 3, 600);
+    $('cf-you-count').textContent = '3/4';
+    $('cf-you-bar').style.setProperty('--w', '75%');
     countUp(streak, 23, 24, 600);
     $('cf-streak-card').classList.add('cf-pop');
-    hideLink(); hide('cf-float-a'); show('cf-float-c', 350);
+    hideLink();
   }
   $('cf-mark').addEventListener('click', markMax);
 
@@ -303,7 +303,6 @@
 
   function targetOf(card) {
     var id = card.getAttribute('data-target');
-    if (id === 'cf-mark' && maxDone) return $('cf-max-done');
     return $(id);
   }
   function draw() {
@@ -338,19 +337,6 @@
   }
   function hideSoon() { clearTimeout(hideTimer); hideTimer = setTimeout(hideLink, 1600); }
 
-  ['cf-float-a', 'cf-float-b', 'cf-float-c'].forEach(function (id) {
-    var card = $(id);
-    card.addEventListener('pointerenter', function () { showLink(card); });
-    card.addEventListener('pointerleave', hideSoon);
-    card.addEventListener('focus', function () { showLink(card); });
-    card.addEventListener('blur', hideSoon);
-    card.addEventListener('click', function () {
-      if (id === 'cf-float-a') markMax();
-      else if (id === 'cf-float-b') openSheet();
-      else { showLink(card); $('cf-streak-card').classList.remove('cf-pop'); void card.offsetWidth; $('cf-streak-card').classList.add('cf-pop'); hideSoon(); }
-    });
-    card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); } });
-  });
   ['cf-mark', 'cf-tab-meal'].forEach(function (id) {
     var el = $(id);
     el.addEventListener('pointerenter', function () { clearTimeout(hideTimer); });
@@ -368,6 +354,38 @@
     });
     stage.addEventListener('pointerleave', function () { phone.style.transform = ''; setTimeout(draw, 320); });
   }
+  /* ---------- Scrollen in de telefoon ---------- */
+  var scroller = $('cf-scroll');
+  scroller.addEventListener('scroll', function () { draw(); hideTip(); }, { passive: true });
+
+  /* ---------- Korte uitleg bij hover of tik ---------- */
+  var tip = $('cf-tip'), tipTimer = null;
+  function showTip(el) {
+    clearTimeout(tipTimer);
+    tip.textContent = el.getAttribute('data-tip');
+    tip.classList.add('is-on');
+    var s = stage.getBoundingClientRect(), r = el.getBoundingClientRect();
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    var x = r.left + r.width / 2 - s.left - w / 2;
+    x = Math.max(8, Math.min(x, s.width - w - 8));
+    var y = r.top - s.top - h - 8;
+    if (y < 4) y = r.bottom - s.top + 8;
+    tip.style.left = x + 'px';
+    tip.style.top = y + 'px';
+  }
+  function hideTip() { clearTimeout(tipTimer); tip.classList.remove('is-on'); }
+  document.querySelectorAll('#cf-phone [data-tip]').forEach(function (el) {
+    el.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'touch') showTip(el); });
+    el.addEventListener('pointerleave', function (e) { if (e.pointerType !== 'touch') hideTip(); });
+    el.addEventListener('focus', function () { showTip(el); });
+    el.addEventListener('blur', hideTip);
+    el.addEventListener('pointerup', function (e) {
+      if (e.pointerType !== 'touch') return;
+      showTip(el);
+      tipTimer = setTimeout(hideTip, 2600);
+    });
+  });
+
   window.addEventListener('resize', draw);
 })();
 </script>
@@ -506,11 +524,188 @@
     <div class="feature-visual slide-in">
       <div class="mockup-wrapper">
         <figure class="device phone feature-device">
-          <img src="/images/features/dashboard.png" alt="Couple dashboard on CoupleFit" width="540" height="1080">
+          <div class="fp-screen" id="fp-screen" aria-label="Preview of the CoupleFit couple dashboard">
+            <div class="fp-zoom" id="fp-zoom">
+              <div class="fp-scroll" id="fp-scroll">
+                <div class="fp-top">
+                  <div>
+                    <small id="fp-date">Thu · 12 Nov</small>
+                    <h3>Rachelle &amp; Max</h3>
+                  </div>
+                  <div class="fp-pill" tabindex="0" data-tip="Your shared streak: days in a row you've both trained. The snowflake is a streak freeze.">
+                    <svg class="fp-flame" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1.2 3.2 5 5.4 5 10a5 5 0 0 1-10 0c0-2.4 1.2-3.8 2.4-5 .1 2.2 1 3.4 2.3 3.6C11 7.8 11.6 4.6 12 2z"/></svg><b>23</b>
+                    <svg class="fp-snow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"/></svg><b>1</b>
+                  </div>
+                </div>
+
+                <div class="fp-people">
+                  <div class="fp-person" tabindex="0" data-tip="Your week: workouts done against your own goal, plus how well you hit protein and logged your food.">
+                    <span class="fp-av fp-av--m">M</span>
+                    <strong>You</strong>
+                    <svg class="fp-ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="fp-ring__track" cx="32" cy="32" r="26"/><circle class="fp-ring__val fp-ring__val--m" cx="32" cy="32" r="26" pathLength="100" style="--p:75"/><text x="32" y="33">3</text><text class="fp-ring__of" x="32" y="44">of 4</text></svg>
+                    <em>workouts this week</em>
+                    <dl><dt>Protein</dt><dd>82 %</dd><dt>Food logged</dt><dd>5/7</dd></dl>
+                  </div>
+                  <div class="fp-person" tabindex="0" data-tip="Rachelle's week, right next to yours. Her goals can be different from yours.">
+                    <span class="fp-av fp-av--r">R</span>
+                    <strong>Rachelle</strong>
+                    <svg class="fp-ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="fp-ring__track" cx="32" cy="32" r="26"/><circle class="fp-ring__val fp-ring__val--r" cx="32" cy="32" r="26" pathLength="100" style="--p:100"/><text x="32" y="33">4</text><text class="fp-ring__of" x="32" y="44">of 4</text></svg>
+                    <em>workouts this week</em>
+                    <dl><dt>Protein</dt><dd>91 %</dd><dt>Food logged</dt><dd>6/7</dd></dl>
+                  </div>
+                </div>
+
+                <div class="fp-feed" tabindex="0" data-tip="Live updates: you see it the moment your partner finishes a workout.">
+                  <div class="fp-feed__row"><span class="fp-av fp-av--r">R</span><div><strong>Rachelle finished a workout</strong><small>Today 07:40</small></div></div>
+                  <div class="fp-feed__row"><span class="fp-av fp-av--m">M</span><div><strong>You finished a workout</strong><small>Wed 18:15</small></div></div>
+                </div>
+
+                <div class="fp-card">
+                  <div class="fp-next" tabindex="0" data-tip="Your next workout together, planned on a day you're both free.">
+                    <span class="fp-label">Next together</span>
+                    <strong>Thu 18:00 · Upper body</strong>
+                  </div>
+                  <div class="fp-plan">
+                    <div class="fp-plan__head"><span class="fp-label">Planned this week</span><span>3 days together</span></div>
+                    <div class="fp-days" id="fp-days">
+                      <button type="button" class="fp-day fp-day--m" data-tip="Monday: only you train (Push)."><i>M</i><span></span></button>
+                      <button type="button" class="fp-day fp-day--t" data-tip="Tuesday: you train together (Legs)."><i>T</i><span></span></button>
+                      <button type="button" class="fp-day fp-day--r" data-tip="Wednesday: only Rachelle trains (Pilates)."><i>W</i><span></span></button>
+                      <button type="button" class="fp-day fp-day--t is-today" data-tip="Today: you train together, Upper body at 18:00."><i>T</i><span></span></button>
+                      <button type="button" class="fp-day fp-day--rest" data-tip="Friday: rest day for both of you."><i>F</i><span></span></button>
+                      <button type="button" class="fp-day fp-day--t" data-tip="Saturday: you train together (Full body)."><i>S</i><span></span></button>
+                      <button type="button" class="fp-day fp-day--rest" data-tip="Sunday: rest day for both of you."><i>S</i><span></span></button>
+                    </div>
+                    <div class="fp-legend"><span><i class="fp-dot--m"></i>You</span><span><i class="fp-dot--r"></i>Partner</span><span><i class="fp-dot--t"></i>Together</span></div>
+                  </div>
+                  <div class="fp-done">
+                    <span class="fp-label">Finished this week</span>
+                    <div class="fp-done__row">
+                      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v8a3 3 0 0 0 3 3v7M7 3v5M10 3v5M17 21V3c-2 0-4 2-4 6v4h4"/></svg><b>2×</b> ate together</span>
+                      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg><b>2×</b> trained together</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <nav class="fp-tabs" aria-hidden="true">
+                <span><svg viewBox="0 0 24 24"><path d="M7 3v8a3 3 0 0 0 3 3v7M7 3v5M10 3v5M17 21V3c-2 0-4 2-4 6v4h4"/></svg></span>
+                <span><svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg></span>
+                <span><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span>
+                <span><svg viewBox="0 0 24 24"><path d="M5 20v-4M10 20v-9M15 20V7M20 20V4"/></svg></span>
+                <span class="is-active"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span>
+              </nav>
+            </div>
+          </div>
+          <div class="fp-tip" id="fp-tip" role="tooltip"></div>
         </figure>
       </div>
     </div>
   </div>
+
+  <script>
+/* Features-telefoon 1: CouplePage uit de app (scrollen, zoom en uitleg) */
+(function () {
+  var screen = document.getElementById('fp-screen');
+  if (!screen) return;
+  var zoomEl = document.getElementById('fp-zoom');
+  var scroller = document.getElementById('fp-scroll');
+  var tip = document.getElementById('fp-tip');
+  var dev = screen.closest('.feature-device');
+  var BASE = 276;
+
+  /* telefoon heeft niet overal dezelfde breedte: inhoud meeschalen */
+  function fit() {
+    var w = screen.clientWidth, h = screen.clientHeight;
+    if (!w || !h) return;
+    var z = w / BASE;
+    zoomEl.style.zoom = z;
+    zoomEl.style.height = (h / z) + 'px';
+  }
+  fit();
+  if ('ResizeObserver' in window) new ResizeObserver(fit).observe(screen);
+  else window.addEventListener('resize', fit);
+
+  /* datum van vandaag */
+  try {
+    var d = new Date();
+    document.getElementById('fp-date').textContent =
+      d.toLocaleDateString('en-GB', { weekday: 'short' }) + ' · ' +
+      d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+  } catch (e) {}
+
+  /* week, 'Next together' en updates laten meelopen met de dag van vandaag */
+  try {
+    var PLAN = [
+      { k: 'm', w: 'Push' }, { k: 't', w: 'Legs' }, { k: 'r', w: 'Pilates' },
+      { k: 't', w: 'Upper body' }, { k: 'rest' }, { k: 't', w: 'Full body' }, { k: 'rest' }
+    ];
+    var NAMES = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    var SHORT = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    var today = (new Date().getDay() + 6) % 7;
+    var buttons = screen.querySelectorAll('.fp-day');
+    buttons.forEach(function (b, i) {
+      var p = PLAN[i], name = i === today ? 'Today' : NAMES[i];
+      var txt = p.k === 't' ? 'you train together (' + p.w + (i === today ? ', 18:00' : '') + ').'
+              : p.k === 'm' ? 'only you train (' + p.w + ').'
+              : p.k === 'r' ? 'only Rachelle trains (' + p.w + ').'
+              : 'rest day for both of you.';
+      b.setAttribute('data-tip', name + ': ' + txt);
+      b.classList.toggle('is-today', i === today);
+    });
+    var n = 0, next = today;
+    while (n < 7 && PLAN[next].k !== 't') { next = (next + 1) % 7; n++; }
+    var when = next === today ? 'Today' : SHORT[next];
+    screen.querySelector('.fp-next strong').textContent = when + ' 18:00 · ' + PLAN[next].w;
+    var rows = screen.querySelectorAll('.fp-feed small');
+    rows[0].textContent = 'Today 07:40';
+    rows[1].textContent = (today === 0 ? 'Sun' : SHORT[today - 1]) + ' 18:15';
+  } catch (e) {}
+
+  /* ringen vullen zodra de telefoon in beeld komt */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting) { screen.classList.add('is-in'); io.disconnect(); }
+    }, { threshold: 0.3 });
+    io.observe(screen);
+  } else screen.classList.add('is-in');
+
+  /* uitleg-ballonnetje (staat buiten de telefoon, zodat het niet wordt afgeknipt) */
+  var host = dev.parentNode;
+  if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
+  host.appendChild(tip);
+  var timer = null;
+  function show(el) {
+    clearTimeout(timer);
+    tip.textContent = el.getAttribute('data-tip');
+    tip.classList.add('is-on');
+    var s = host.getBoundingClientRect(), r = el.getBoundingClientRect();
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    var x = r.left + r.width / 2 - s.left - w / 2;
+    x = Math.max(-40, Math.min(x, s.width - w + 40));
+    var y = r.top - s.top - h - 8;
+    if (r.top - h - 8 < 70) y = r.bottom - s.top + 8;
+    tip.style.left = x + 'px';
+    tip.style.top = y + 'px';
+  }
+  function hide() { clearTimeout(timer); tip.classList.remove('is-on'); }
+  screen.querySelectorAll('[data-tip]').forEach(function (el) {
+    el.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'touch') show(el); });
+    el.addEventListener('pointerleave', function (e) { if (e.pointerType !== 'touch') hide(); });
+    el.addEventListener('focus', function () { show(el); });
+    el.addEventListener('blur', hide);
+    el.addEventListener('click', function () {
+      if (el.classList.contains('fp-day')) {
+        screen.querySelectorAll('.fp-day.is-picked').forEach(function (b) { b.classList.remove('is-picked'); });
+        el.classList.add('is-picked');
+      }
+      show(el);
+      timer = setTimeout(hide, 2600);
+    });
+  });
+  scroller.addEventListener('scroll', hide, { passive: true });
+})();
+</script>
 
   <div class="container feature-row feature-row-2 reverse">
     <div class="feature-copy">
