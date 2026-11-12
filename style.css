@@ -3442,3 +3442,21 @@ body.legal-page main.legal .lead { margin-bottom: 20px; color: var(--cf-muted, #
 #main #sync .cf-chart.is-hover .ab-guide, #main #sync .cf-chart.is-hover .ab-pt { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { #main #sync .ab-tip, #main #sync .ab-day span { transition: none; } }
 #main #sync .ab-prog .ab-tip { white-space: nowrap; }
+
+/* ===== App-'stem': kleine bordeaux labels boven sectietitels (12 nov 2026) ===== */
+#main .cf-label {
+  display: block; margin: 0 0 12px; text-align: center;
+  font: 700 12px/1.2 var(--cf-body, -apple-system, sans-serif);
+  letter-spacing: .14em; text-transform: uppercase; color: #5B1E2D; opacity: .85;
+}
+#main .cf-story__eyebrow.cf-label {
+  display: inline-block; background: none; border: 0; padding: 0; border-radius: 0; box-shadow: none; text-align: left;
+}
+/* sync-tegels: alle vier icoontjes dezelfde witte knop, zoals in de app */
+#main #sync .cf-tile.cf-tile::before {
+  background-color: #fff;
+  box-shadow: 0 1px 0 rgba(30,42,68,.04), 0 4px 14px -6px rgba(30,42,68,.18);
+}
+/* groen = samen (zoals in de app) */
+#main #sync .ab-medal { background: #567A5C; }
+#main #faq .cf-label { text-align: left; }
