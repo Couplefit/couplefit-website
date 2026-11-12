@@ -31,11 +31,12 @@ const WAITLIST_LIST_IDS = [];
 
 const COUPLES = 'challenge_couples';
 const CONTACTS = 'challenge_contacts';
+const FEEDBACK = 'challenge_feedback';
 const KEY_RE = /^[A-Za-z0-9_-]{32}$/;
 const MAX_SAVES_PER_DAY = 2000;
 
 // Toegestane velden (alles wat de pagina kan opslaan) en hun maximale lengte.
-const PATH_RE = /^(names\.[ab]|start\.[ab]_q[0-2]|start\.compare|w[1-4]\.(i[0-3]_[ab]|plan_(when|where|what)|sync[01])|t\.w[0-3]d[0-6][ab])$/;
+const PATH_RE = /^(names\.[ab]|start\.[ab]_q[0-2]|start\.compare|fb\.q[0-2]|w[1-4]\.(i[0-3]_[ab]|plan_(when|where|what)|sync[01])|t\.w[0-3]d[0-6][ab])$/;
 
 const ALLOWED_ORIGINS = [
   'https://couple-fit.com',
@@ -92,6 +93,7 @@ async function removeChallenge(email) {
   const key = snap.get('key');
   const batch = db.batch();
   if (key) batch.delete(db.collection(COUPLES).doc(key));
+  if (key) batch.delete(db.collection(FEEDBACK).doc(key));
   batch.delete(contactRef);
   await batch.commit();
 }
@@ -176,6 +178,12 @@ exports.challengeApi = onRequest(async (req, res) => {
         return 200;
       });
       if (result !== 200) return res.status(result).json({ error: result === 404 ? 'not_found' : 'too_many' });
+      // Feedback ook apart bewaren, zodat jullie het makkelijk terugvinden in Firestore (collectie challenge_feedback)
+      const fb = {};
+      for (const [path, value] of entries) if (path.startsWith('fb.') && typeof value === 'string') fb[path.slice(3)] = value.slice(0, 1000);
+      if (Object.keys(fb).length) {
+        await db.collection(FEEDBACK).doc(k).set({ ...fb, updatedAt: FieldValue.serverTimestamp() }, { merge: true });
+      }
       return res.json({ ok: true });
     }
 

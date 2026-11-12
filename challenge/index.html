@@ -6,7 +6,7 @@
 <title>Our First 4 Weeks Together – CoupleFit</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta name="theme-color" content="#FAF8F5">
+<meta name="theme-color" content="#EFE9E2">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
 <!-- Umami: data-exclude-search zorgt dat de geheime ?k=... code NIET naar Umami gaat -->
@@ -15,85 +15,93 @@
 <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
   :root {
-    --bg: #FAF8F5; --ink: #1E2A44; --text: #3A4560; --muted: #56698A;
+    --bg: #EFE9E2; --ink: #1E2A44; --text: #3A4560; --muted: #6B7A93;
     --burgundy: #5B1E2D; --burgundy-hover: #7C2C3A; --powder: #B7C6D6;
-    --soft-blue: #E6ECF2; --ivory: #F3EFE6; --beige: #EFEAE0; --line: #D9DFE8;
+    --soft-blue: #E6ECF2; --ivory: #F3EFE6; --field: #F5F1EC; --line: #E7E1D9;
     --radius: 28px; --radius-sm: 18px;
+    --shadow: 0 10px 30px rgba(30,42,68,0.06), 0 1px 2px rgba(30,42,68,0.04);
     --head: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
-  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.55; -webkit-tap-highlight-color: transparent; }
   button, input, textarea { font: inherit; color: inherit; }
-  .wrap { max-width: 560px; margin: 0 auto; padding: 0 16px calc(48px + env(safe-area-inset-bottom)); }
+  .wrap { max-width: 520px; margin: 0 auto; padding: 4px 16px calc(48px + env(safe-area-inset-bottom)); }
   h1, h2, h3 { font-family: var(--head); color: var(--ink); letter-spacing: -0.02em; margin: 0; }
-  .kicker { font-family: var(--head); font-weight: 600; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .kicker { font-family: var(--head); font-weight: 600; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
 
   /* top bar */
-  .top { position: sticky; top: 0; z-index: 10; background: rgba(250,248,245,0.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-  .top__row { max-width: 560px; margin: 0 auto; padding: 14px 16px 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; font-family: var(--head); font-weight: 700; font-size: 18px; color: var(--ink); letter-spacing: -0.02em; }
-  .save { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; min-height: 20px; }
-  .save__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--powder); }
-  .save[data-state="saving"] .save__dot { background: var(--burgundy-hover); }
+  .top { position: sticky; top: 0; z-index: 10; background: rgba(239,233,226,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .top__row { max-width: 520px; margin: 0 auto; padding: calc(14px + env(safe-area-inset-top)) 16px 10px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .logo { display: flex; align-items: center; gap: 9px; text-decoration: none; font-family: var(--head); font-weight: 700; font-size: 19px; color: var(--ink); letter-spacing: -0.02em; }
+  .save { font-size: 13px; font-weight: 600; color: var(--muted); display: flex; align-items: center; gap: 7px; min-height: 34px; padding: 0 14px; background: #fff; border-radius: 999px; box-shadow: var(--shadow); }
+  .save__dot { width: 7px; height: 7px; border-radius: 50%; background: #6E9277; }
+  .save[data-state="saving"] .save__dot { background: var(--powder); }
   .save[data-state="error"] { color: var(--burgundy); }
   .save[data-state="error"] .save__dot { background: var(--burgundy); }
-  .tabs { max-width: 560px; margin: 0 auto; display: flex; gap: 8px; overflow-x: auto; padding: 4px 16px 12px; scrollbar-width: none; }
-  .tabs::-webkit-scrollbar { display: none; }
-  .tab { flex: 0 0 auto; border: 0; border-radius: 999px; padding: 9px 16px; background: var(--soft-blue); color: var(--ink); font-family: var(--head); font-weight: 600; font-size: 14px; cursor: pointer; }
-  .tab[aria-selected="true"] { background: var(--burgundy); color: #fff; }
+
+  /* weken-tabs bovenaan */
+  .tabs { max-width: 520px; margin: 0 auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px; padding: 2px 16px 14px; }
+  .tab { min-width: 0; border: 0; border-radius: 999px; padding: 9px 0; background: #fff; color: var(--ink); font-family: var(--head); font-weight: 600; font-size: 12.5px; letter-spacing: -0.01em; white-space: nowrap; cursor: pointer; box-shadow: var(--shadow); }
+  .tab[aria-selected="true"] { background: var(--burgundy); color: #fff; box-shadow: 0 6px 16px rgba(91,30,45,0.25); }
 
   /* cards */
-  .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 20px; margin-top: 14px; }
-  .card--beige { background: var(--beige); border-color: transparent; }
-  .card--blue { background: var(--soft-blue); border-color: transparent; }
-  .card--powder { background: var(--powder); border-color: transparent; }
-  .card--burgundy { background: var(--burgundy); border-color: transparent; color: var(--ivory); }
+  .card { background: #fff; border-radius: var(--radius); padding: 24px 22px; margin-top: 14px; box-shadow: var(--shadow); }
+  .card--burgundy { background: var(--burgundy); color: var(--ivory); box-shadow: 0 16px 34px rgba(91,30,45,0.22); }
   .card--burgundy h1, .card--burgundy h2 { color: var(--ivory); }
-  .card--burgundy .kicker { color: var(--powder); }
-  .hero { padding: 28px 22px 26px; }
-  .hero h1 { font-size: 30px; line-height: 1.15; margin: 8px 0 10px; font-weight: 700; }
-  .hero p { margin: 0; font-size: 16px; }
-  .hero__num { float: right; font-family: var(--head); font-weight: 700; font-size: 56px; line-height: 0.9; opacity: 0.55; margin-left: 12px; }
-  h2 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+  .card--burgundy .kicker { color: rgba(243,239,230,0.72); }
+  .card--burgundy .muted { color: rgba(243,239,230,0.7); }
+  .hero { padding: 26px 22px 24px; border-radius: 32px; }
+  .hero__top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .pill { font-family: var(--head); font-weight: 600; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; border: 1.5px solid rgba(243,239,230,0.35); color: var(--ivory); border-radius: 999px; padding: 5px 12px; white-space: nowrap; }
+  .hero h1 { font-size: 31px; line-height: 1.12; margin: 14px 0 10px; font-weight: 700; }
+  .hero p { margin: 0; font-size: 16px; color: rgba(243,239,230,0.85); }
+  h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
   .muted { color: var(--muted); font-size: 14px; }
   p { margin: 0 0 10px; }
+  .card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+
+  /* avatars (zoals de app) */
+  .av { width: 34px; height: 34px; border-radius: 50%; display: inline-grid; place-items: center; flex: 0 0 auto; font-family: var(--head); font-weight: 700; font-size: 13px; }
+  .av--a { background: var(--ivory); color: var(--burgundy); box-shadow: inset 0 0 0 1.5px rgba(91,30,45,0.15); }
+  .av--b { background: var(--powder); color: var(--ink); }
+  .av--sm { width: 22px; height: 22px; font-size: 10px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; flex: 0 0 auto; display: inline-block; }
+  .dot--a { background: var(--burgundy); } .dot--b { background: var(--powder); }
 
   /* who am I */
-  .who { display: flex; gap: 10px; margin-top: 12px; }
-  .who button { flex: 1; border: 1.5px solid var(--line); background: #fff; border-radius: 999px; padding: 11px 12px; font-family: var(--head); font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 0; }
+  .who { display: flex; gap: 8px; margin-top: 14px; background: var(--field); padding: 6px; border-radius: 999px; }
+  .who button { flex: 1; border: 0; background: transparent; border-radius: 999px; padding: 8px 10px; font-family: var(--head); font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 0; color: var(--text); }
   .who button span.n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .who button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: #fff; }
-  .dot { width: 12px; height: 12px; border-radius: 50%; flex: 0 0 auto; }
-  .dot--a { background: var(--burgundy); } .dot--b { background: var(--muted); }
+  .who button[aria-pressed="true"] { background: var(--burgundy); color: #fff; box-shadow: 0 6px 16px rgba(91,30,45,0.25); }
 
   /* fields */
-  label.f { display: block; margin-top: 14px; }
-  label.f > span { display: block; font-family: var(--head); font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 6px; }
-  input[type=text], textarea { width: 100%; border: 1px solid var(--line); background: #fff; border-radius: 14px; padding: 12px 14px; font-size: 16px; outline: none; transition: border-color .15s; }
-  textarea { min-height: 84px; resize: vertical; line-height: 1.45; }
-  input[type=text]:focus, textarea:focus { border-color: var(--burgundy); }
-  .card--beige input[type=text], .card--beige textarea, .card--blue input[type=text], .card--blue textarea { border-color: transparent; }
-  .cols { display: grid; gap: 10px; }
+  label.f { display: block; margin-top: 16px; }
+  label.f > span { display: flex; align-items: center; gap: 8px; font-family: var(--head); font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 7px; }
+  input[type=text], textarea { width: 100%; border: 1.5px solid transparent; background: var(--field); border-radius: 16px; padding: 13px 15px; font-size: 16px; outline: none; transition: border-color .15s, background .15s; }
+  textarea { min-height: 88px; resize: vertical; line-height: 1.45; }
+  input[type=text]:focus, textarea:focus { border-color: var(--burgundy); background: #fff; }
+  .cols { display: grid; gap: 4px; }
 
-  /* menu items */
-  .item { display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-top: 1px solid var(--line); }
-  .item:first-of-type { border-top: 0; padding-top: 6px; }
+  /* menu in de bordeaux kaart (zoals "Today" in de app) */
+  .items { margin-top: 20px; display: grid; gap: 10px; }
+  .item { display: flex; gap: 12px; align-items: center; padding: 14px 14px 14px 16px; border-radius: 20px; background: rgba(255,255,255,0.07); }
   .item__txt { flex: 1; min-width: 0; }
-  .item__t { font-family: var(--head); font-weight: 600; color: var(--ink); font-size: 16px; line-height: 1.3; }
-  .item__d { font-size: 14px; color: var(--text); margin-top: 3px; }
+  .item__t { font-family: var(--head); font-weight: 700; color: var(--ivory); font-size: 16px; line-height: 1.3; }
+  .item__d { font-size: 14px; color: rgba(243,239,230,0.75); margin-top: 3px; line-height: 1.45; }
   .ticks { display: flex; gap: 6px; flex: 0 0 auto; }
-  .tick { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--burgundy); background: #fff; cursor: pointer; display: grid; place-items: center; font-family: var(--head); font-weight: 700; font-size: 13px; color: var(--burgundy); padding: 0; transition: background .15s, color .15s; }
-  .tick--b { border-color: var(--muted); color: var(--muted); }
-  .tick[aria-pressed="true"] { background: var(--burgundy); color: #fff; }
-  .tick--b[aria-pressed="true"] { background: var(--muted); color: #fff; }
-  .extra { margin-top: 6px; border-radius: var(--radius-sm); background: var(--soft-blue); padding: 16px; font-size: 14px; }
-  .extra b { font-family: var(--head); color: var(--burgundy); display: block; margin-bottom: 4px; }
+  .tick { width: 40px; height: 40px; border-radius: 50%; border: 1.5px dashed rgba(243,239,230,0.45); background: transparent; cursor: pointer; display: grid; place-items: center; font-family: var(--head); font-weight: 700; font-size: 13px; color: rgba(243,239,230,0.8); padding: 0; transition: background .15s, color .15s, transform .15s; }
+  .tick:active { transform: scale(0.94); }
+  .tick[aria-pressed="true"] { border: 0; background: var(--ivory); color: var(--burgundy); }
+  .tick--b[aria-pressed="true"] { background: var(--powder); color: var(--ink); }
+  .hint { margin: 14px 0 0; font-size: 13px; color: rgba(243,239,230,0.65); }
 
   /* tracker */
-  .grid { display: grid; grid-template-columns: 52px repeat(7, 1fr); gap: 4px 2px; align-items: center; margin-top: 10px; }
-  .grid .h { text-align: center; font-size: 11px; color: var(--muted); font-family: var(--head); font-weight: 600; }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+  .legend > span { display: flex; align-items: center; gap: 6px; }
+  .grid { display: grid; grid-template-columns: 50px repeat(7, 1fr); gap: 6px 2px; align-items: center; margin-top: 16px; }
+  .grid .h { text-align: center; font-size: 11px; color: var(--muted); font-family: var(--head); font-weight: 600; letter-spacing: 0.06em; }
   .grid .wk { font-family: var(--head); font-weight: 600; font-size: 12px; color: var(--ink); line-height: 1.2; }
   .cell { border: 0; background: none; padding: 4px 0; cursor: pointer; display: grid; place-items: center; }
   .cell svg { width: 100%; max-width: 46px; height: auto; display: block; }
@@ -103,39 +111,41 @@
   .cell.a .ca { fill: var(--burgundy); }
   .cell.b .cbf { fill: var(--powder); }
   .cell.a.b .ov { fill: var(--ink); }
-  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
-  .stat { background: var(--soft-blue); border-radius: var(--radius-sm); padding: 14px 16px; }
-  .stat b { display: block; font-family: var(--head); font-size: 28px; color: var(--ink); line-height: 1.1; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+  .stat { background: #fff; border-radius: 24px; padding: 18px 16px; text-align: center; box-shadow: var(--shadow); }
+  .stat b { display: block; font-family: var(--head); font-size: 34px; color: var(--burgundy); line-height: 1.1; letter-spacing: -0.02em; }
   .stat span { font-size: 13px; color: var(--muted); }
 
   /* buttons + misc */
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; background: var(--burgundy); color: #fff; font-family: var(--head); font-weight: 600; font-size: 15px; padding: 13px 22px; cursor: pointer; text-decoration: none; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; background: var(--burgundy); color: #fff; font-family: var(--head); font-weight: 700; font-size: 15px; padding: 14px 24px; cursor: pointer; text-decoration: none; box-shadow: 0 8px 20px rgba(91,30,45,0.22); }
   .btn:hover { background: var(--burgundy-hover); }
-  .btn--ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
-  .btn--ghost:hover { background: rgba(30,42,68,0.06); }
-  .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
-  .note { margin-top: 26px; border-left: 3px solid var(--burgundy); padding: 2px 0 2px 14px; font-size: 13px; color: var(--muted); }
-  .next { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+  .btn--ghost { background: #fff; color: var(--ink); box-shadow: var(--shadow); }
+  .btn--ghost:hover { background: #fff; color: var(--burgundy); }
+  .card--burgundy .btn { background: var(--ivory); color: var(--burgundy); box-shadow: none; }
+  .card--burgundy .btn--ghost { background: rgba(255,255,255,0.08); color: var(--ivory); }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .row .btn { flex: 1 1 auto; white-space: nowrap; padding: 14px 20px; }
+  .note { margin-top: 26px; padding: 0 6px; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
+  .next { display: flex; justify-content: space-between; gap: 10px; margin-top: 20px; }
   .center { text-align: center; }
-  .locked { padding-top: 12vh; }
-  .locked .card { text-align: center; padding: 40px 24px; }
+  .locked { padding-top: 10vh; }
+  .locked .card { text-align: center; padding: 42px 24px; }
   .locked h1 { font-size: 26px; margin: 18px 0 10px; }
-  .toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom)); transform: translateX(-50%) translateY(20px); background: var(--ink); color: #fff; padding: 11px 18px; border-radius: 999px; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; max-width: calc(100% - 32px); }
+  .toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom)); transform: translateX(-50%) translateY(20px); background: var(--ink); color: #fff; padding: 11px 18px; border-radius: 999px; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; max-width: calc(100% - 32px); z-index: 30; }
   .toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
   [hidden] { display: none !important; }
-  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   :focus-visible { outline: 2px solid var(--burgundy); outline-offset: 2px; }
 </style>
 </head>
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs><symbol id="logo" viewBox="0 0 40 24"><circle cx="12" cy="12" r="11" fill="#5B1E2D"/><circle cx="28" cy="12" r="11" fill="#B7C6D6"/><path d="M20 4.2a11 11 0 0 1 0 15.6a11 11 0 0 1 0-15.6z" fill="#1E2A44"/></symbol></defs>
+  <defs><clipPath id="cf-overlap"><circle cx="11" cy="11" r="9"/></clipPath><symbol id="logo" viewBox="0 0 30 22"><circle cx="11" cy="11" r="9" fill="#5B1E2D"/><circle cx="19" cy="11" r="9" fill="#B7C6D6"/><circle cx="19" cy="11" r="9" fill="#1E2A44" clip-path="url(#cf-overlap)"/></symbol></defs>
 </svg>
 
 <header class="top" id="top" hidden>
   <div class="top__row">
-    <a class="logo" href="/" aria-label="CoupleFit home"><svg width="34" height="20"><use href="#logo"/></svg>CoupleFit</a>
+    <a class="logo" href="/" aria-label="CoupleFit home"><svg width="28" height="21"><use href="#logo"/></svg>CoupleFit</a>
     <div class="save" id="save" data-state="idle" aria-live="polite"><span class="save__dot"></span><span id="saveTxt">Saved</span></div>
   </div>
   <nav class="tabs" id="tabs" role="tablist" aria-label="Challenge sections"></nav>
@@ -158,19 +168,18 @@
     { n: 1, value: 'Connection', title: 'Move together', tone: 'burgundy',
       intro: 'Pick three moments to move this week. Short is fine. Together is the point.',
       items: [['A walk after dinner', 'Twenty minutes, phones in pockets. Talk about your day.'],
-              ["'You go, I go' at home", 'Fifteen minutes. One moves, the other rests, then swap.'],
+              ['Dance in the kitchen', 'One song each. You pick, they pick, then swap.'],
               ['Stretch before bed', 'Ten slow minutes side by side. No goals, just easing in.'],
-              ['Moving at different times?', "Send each other a photo when you're done. It counts."]],
-      extra: ["Your 15-minute 'You go, I go'", "Squats (easier: stand up from a chair) · Wall push-ups · Glute bridges · Plank (easier: on your knees) · Marching on the spot. 40 seconds each while your partner rests, then swap. Two or three rounds."] },
+              ['Explore on foot', "Walk to somewhere you'd normally drive or take the bus."]] },
     { n: 2, value: 'Wellness', title: 'Eat together', tone: 'powder',
       intro: 'Food is one of the easiest ways to spend time together. Pick what fits your week.',
-      items: [['Cook together twice', 'Two evenings. One chops, one stirs, music on.'],
-              ['Try something new', 'One new vegetable or recipe. One of you picks, both cook.'],
-              ['Plan groceries on Sunday', "Ten minutes, one list, fewer 'what's for dinner?' moments."],
-              ['One meal without phones', 'Just the two of you and the table.']] },
+      items: [['Swap the chef', "The one who usually doesn't cook makes dinner. The other assists."],
+              ['Mystery basket', 'You each pick two ingredients without telling the other. Cook something together with all four.'],
+              ['Eat a rainbow', 'Try to get three colours on your plates in one meal.'],
+              ['Just the two of you', 'One dinner with only each other and the food. Phones in another room.']] },
     { n: 3, value: 'Accountability', title: 'Keep each other going', tone: 'beige',
       intro: 'This week is about cheering, not checking. Small nudges, no pressure.',
-      items: [['A daily check-in', "'Have you moved today?' A short message is enough."],
+      items: [['Hype message', "Send one encouraging message before the other's busy day."],
               ['A tiny bet', 'Whoever misses a moment picks the next date.'],
               ['One shared rest day', 'Rest together, on purpose.'],
               ['Say what you admired', 'Once this week, tell each other what you noticed.']] },
@@ -281,10 +290,10 @@
 
   // ---------- views ----------
   function whoBlock() {
-    return '<div class="card card--blue"><h2>Who’s holding this phone?</h2>' +
+    return '<div class="card"><h2>Who’s holding this phone?</h2>' +
       '<p class="muted">So your ticks land in your own circle. You can switch any time.</p>' +
       '<div class="who">' + ['a', 'b'].map(function (p) {
-        return '<button type="button" data-me="' + p + '" aria-pressed="' + (me === p) + '"><span class="dot dot--' + p + '"></span><span class="n" data-name="' + p + '"></span></button>';
+        return '<button type="button" data-me="' + p + '" aria-pressed="' + (me === p) + '"><span class="av av--sm av--' + p + '" data-ini="' + p + '"></span><span class="n" data-name="' + p + '"></span></button>';
       }).join('') + '</div></div>';
   }
   function field(path, label, multi, max) {
@@ -297,30 +306,29 @@
   function viewStart() {
     var h = '<section class="card card--burgundy hero"><div class="kicker">A gentle couples challenge</div>' +
       '<h1>Our First 4 Weeks Together</h1><p>Four weeks of small moments, made for two. From Max &amp; Rachelle.</p></section>';
-    h += '<section class="card"><div class="kicker">How this works</div><h2 style="margin-top:6px">Pick. Plan. Tick.</h2>' +
+    h += '<section class="card"><div class="kicker">How this works</div><h2 style="margin-top:6px">Pick, plan, tick.</h2>' +
       '<p><b>Pick</b> what fits your life from each week’s short menu. <b>Plan</b> it together on Sunday. <b>Tick</b> your own circle when you’ve done it. Both ticked? The overlap fills in, just like our logo.</p>' +
       '<p class="muted" style="margin:0">Missed a day? No catching up needed. Easy is always good enough.</p></section>';
-    h += '<section class="card card--beige"><h2>Your names</h2><p class="muted">Fill these in once. Your partner sees the same page.</p>' +
-      '<div class="cols">' + field('names.a', '<span class="dot dot--a" style="display:inline-block;margin-right:6px"></span>Partner A', false, 40) +
-      field('names.b', '<span class="dot dot--b" style="display:inline-block;margin-right:6px"></span>Partner B', false, 40) + '</div></section>';
+    h += '<section class="card"><h2>Your names</h2><p class="muted">Fill these in once. Your partner sees the same page.</p>' +
+      '<div class="cols">' + field('names.a', '<span class="av av--sm av--a" data-ini="a"></span>Partner A', false, 40) +
+      field('names.b', '<span class="av av--sm av--b" data-ini="b"></span>Partner B', false, 40) + '</div></section>';
     h += whoBlock();
     ['a', 'b'].forEach(function (p) {
-      h += '<section class="card"><div class="kicker" style="display:flex;align-items:center;gap:8px"><span class="dot dot--' + p + '"></span><span data-name="' + p + '"></span></div>' +
-        '<h2 style="margin-top:6px">Our starting point</h2><p class="muted">Answer on your own first, then read each other’s.</p>' +
+      h += '<section class="card"><div class="card-head"><span class="av av--' + p + '" data-ini="' + p + '"></span><span class="kicker" data-name="' + p + '"></span></div>' +
+        '<h2 style="margin-top:8px">Our starting point</h2><p class="muted">Answer on your own first, then read each other’s.</p>' +
         START_Q.map(function (q, i) { return field('start.' + p + '_q' + i, q, true); }).join('') + '</section>';
     });
-    h += '<section class="card card--blue"><h2>Now compare</h2>' + field('start.compare', 'What surprised you?', true) + '</section>';
+    h += '<section class="card"><h2>Now compare</h2>' + field('start.compare', 'What surprised you?', true) + '</section>';
     h += invite();
-    h += '<div class="next"><span></span><button class="btn" data-go="w1">Start week 1 →</button></div>';
     h += '<p class="note">' + DISCLAIMER + '</p>';
     return h;
   }
 
   function viewWeek(n) {
     var w = WEEKS[n - 1], h = '';
-    h += '<section class="card card--' + w.tone + ' hero"><span class="hero__num">' + w.n + '</span><div class="kicker">Week ' + w.n + ' · ' + w.value + '</div>' +
-      '<h1>' + w.title + '</h1><p>' + w.intro + '</p></section>';
-    h += '<section class="card"><h2>The menu</h2><p class="muted">Tap your own circle when you’ve done it.</p>';
+    h += '<section class="card card--burgundy hero"><div class="hero__top"><span class="kicker">Week ' + w.n + '</span><span class="pill">' + w.value + '</span></div>' +
+      '<h1>' + w.title + '</h1><p>' + w.intro + '</p>';
+    h += '<div class="items"><div class="hero__top"><h2 style="font-size:17px">The menu</h2></div>';
     w.items.forEach(function (it, i) {
       h += '<div class="item"><div class="item__txt"><div class="item__t">' + it[0] + '</div><div class="item__d">' + it[1] + '</div></div><div class="ticks">' +
         ['a', 'b'].map(function (p) {
@@ -328,14 +336,11 @@
           return '<button type="button" class="tick tick--' + p + '" data-toggle="' + path + '" data-init="' + p + '"></button>';
         }).join('') + '</div></div>';
     });
-    if (w.extra) h += '<div class="extra"><b>' + w.extra[0] + '</b>' + w.extra[1] + '</div>';
-    h += '</section>';
-    h += '<section class="card card--' + (w.tone === 'beige' ? 'blue' : 'beige') + '"><h2>Plan it</h2><p class="muted">On Sunday, together.</p>' +
+    h += '</div><p class="hint">Tap your own circle when you’ve done it.</p></section>';
+    h += '<section class="card"><h2>Plan it</h2><p class="muted">On Sunday, together.</p>' +
       field('w' + n + '.plan_when', 'When') + field('w' + n + '.plan_where', 'Where') + field('w' + n + '.plan_what', 'What') + '</section>';
     h += '<section class="card"><h2>Sunday sync</h2><p class="muted">Ten minutes at the end of the week.</p>' +
       field('w' + n + '.sync0', 'Our favourite moment this week', true) + field('w' + n + '.sync1', 'What would help us next week', true) + '</section>';
-    var prev = n === 1 ? 'start' : 'w' + (n - 1), nxt = n === 4 ? 'tracker' : 'w' + (n + 1);
-    h += '<div class="next"><button class="btn btn--ghost" data-go="' + prev + '">← Back</button><button class="btn" data-go="' + nxt + '">' + (n === 4 ? 'Our tracker →' : 'Week ' + (n + 1) + ' →') + '</button></div>';
     return h;
   }
 
@@ -348,13 +353,13 @@
       '<circle cx="18.5" cy="15" r="11.5" fill="none" stroke="#5B1E2D" stroke-width="2"/></svg>';
   }
   function viewTracker() {
-    var h = '<section class="card card--powder hero"><div class="kicker" style="color:var(--ink)">28 days, side by side</div><h1>Our tracker</h1>' +
+    var h = '<section class="card card--burgundy hero"><div class="kicker">28 days, side by side</div><h1>Our tracker</h1>' +
       '<p>Each day, tap the day when you did something from that week’s menu. Your circle fills in. When you’ve both ticked, the middle fills in too.</p></section>';
     if (!me) h += whoBlock();
-    h += '<section class="card"><div style="display:flex;gap:16px;flex-wrap:wrap" class="muted">' +
-      '<span style="display:flex;align-items:center;gap:6px"><span class="dot dot--a"></span><span data-name="a"></span></span>' +
-      '<span style="display:flex;align-items:center;gap:6px"><span class="dot" style="background:var(--powder);border:2px solid var(--muted)"></span><span data-name="b"></span></span>' +
-      '<span style="display:flex;align-items:center;gap:6px"><span class="dot" style="background:var(--ink)"></span>Both</span></div>';
+    h += '<section class="card"><div class="legend">' +
+      '<span><span class="dot dot--a"></span><span data-name="a"></span></span>' +
+      '<span><span class="dot dot--b"></span><span data-name="b"></span></span>' +
+      '<span><span class="dot" style="background:var(--ink)"></span>Both</span></div>';
     h += '<div class="grid"><span></span>';
     for (var d = 1; d <= 7; d++) h += '<span class="h">D' + d + '</span>';
     for (var w = 0; w < 4; w++) {
@@ -365,14 +370,20 @@
     h += '<div class="stats"><div class="stat"><b id="stBoth">0</b><span>days we both ticked</span></div><div class="stat"><b id="stStreak">0</b><span>longest together streak</span></div></div>';
     h += '<section class="card card--burgundy" style="margin-top:14px"><div class="kicker">What’s next</div><h2 style="margin-top:6px">This is just the beginning.</h2>' +
       '<p style="margin:0">In early summer 2027 this challenge moves into the CoupleFit app: a shared dashboard, your progress side by side, and new challenges made for two.</p></section>';
+    h += '<section class="card" id="feedback"><div class="kicker" style="color:var(--burgundy)">Help us build CoupleFit</div>' +
+      '<h2 style="margin-top:6px">Tell us what you think</h2>' +
+      '<p class="muted">Optional, and it only takes a minute. Max &amp; Rachelle read every answer.</p>' +
+      field('fb.q0', 'What did you think of the challenge?', true) +
+      field('fb.q1', 'What are you most looking forward to in the CoupleFit app?', true) +
+      field('fb.q2', 'What would you love to see in the app?', true) +
+      '<p class="muted" style="margin:12px 0 0">Your answers are saved automatically, so you can add to them any time.</p></section>';
     h += invite();
-    h += '<div class="next"><button class="btn btn--ghost" data-go="w4">← Week 4</button><span></span></div>';
     h += '<p class="note">' + DISCLAIMER + '</p>';
     return h;
   }
 
   function invite() {
-    return '<section class="card card--blue"><div class="kicker" style="color:var(--burgundy)">Made for two</div><h2 style="margin-top:6px">Doing this together?</h2>' +
+    return '<section class="card"><div class="kicker" style="color:var(--burgundy)">Made for two</div><h2 style="margin-top:6px">Doing this together?</h2>' +
       '<p>Send this page to your partner. You’ll both see the same challenge and each other’s ticks. Only share it with your partner: anyone with the link can open it.</p>' +
       '<div class="row"><button type="button" class="btn" data-share>Send to my partner</button><button type="button" class="btn btn--ghost" data-copy>Copy link</button></div></section>';
   }
@@ -380,7 +391,6 @@
   // ---------- render ----------
   function render() {
     $$('#tabs .tab').forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.tab === tab)); });
-    var sel = $('#tabs [aria-selected="true"]'); if (sel && sel.scrollIntoView) sel.scrollIntoView({ block: 'nearest', inline: 'center' });
     var app = $('#app');
     app.innerHTML = tab === 'start' ? viewStart() : tab === 'tracker' ? viewTracker() : viewWeek(+tab.slice(1));
     fill();
@@ -388,6 +398,7 @@
   function fill() {
     $$('[data-path]').forEach(function (el) { if (document.activeElement !== el) el.value = data[el.dataset.path] || ''; });
     $$('[data-name]').forEach(function (el) { el.textContent = nameOf(el.dataset.name); });
+    $$('[data-ini]').forEach(function (el) { el.textContent = initial(el.dataset.ini); });
     $$('[data-me]').forEach(function (b) { b.setAttribute('aria-pressed', String(me === b.dataset.me)); });
     $$('[data-toggle]').forEach(function (b) {
       var on = !!data[b.dataset.toggle];
@@ -412,7 +423,7 @@
   document.addEventListener('input', function (e) {
     var el = e.target; if (!el.dataset || !el.dataset.path) return;
     set(el.dataset.path, el.value.slice(0, +el.maxLength > 0 ? +el.maxLength : 1000));
-    if (el.dataset.path.indexOf('names.') === 0) $$('[data-name]').forEach(function (n) { n.textContent = nameOf(n.dataset.name); });
+    if (el.dataset.path.indexOf('names.') === 0) { $$('[data-name]').forEach(function (n) { n.textContent = nameOf(n.dataset.name); }); $$('[data-ini]').forEach(function (n) { n.textContent = initial(n.dataset.ini); }); }
   });
   document.addEventListener('click', function (e) {
     var t = e.target.closest('button, a'); if (!t) return;
@@ -444,7 +455,7 @@
   // ---------- locked / offline ----------
   function locked() {
     $('#app').className = 'wrap locked';
-    $('#app').innerHTML = '<div class="card card--blue"><svg width="56" height="34"><use href="#logo"/></svg>' +
+    $('#app').innerHTML = '<div class="card"><svg width="56" height="41"><use href="#logo"/></svg>' +
       '<h1>This challenge is for Founding Couples</h1>' +
       '<p>Join the CoupleFit waitlist and confirm your email. You’ll get your own personal link to the 4-week challenge in your welcome email.</p>' +
       '<div class="row" style="justify-content:center"><a class="btn" href="/#cta">Join the waitlist</a></div>' +
