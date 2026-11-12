@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261112v" />
+<link rel="stylesheet" href="/style.css?v=20261112x" />
 
 
 </head>
@@ -957,6 +957,7 @@
           <span class="cf-amount__per">per month</span>
           <span class="cf-amount__old" data-monthly="€24.99" data-yearly="€22.49">€22.49</span>
         </div>
+        <p class="cf-regular" data-monthly="Regular price after launch: €24.99/month" data-yearly="Regular price after launch: €22.49/month, billed yearly (€269.88)">Regular price after launch: €22.49/month, billed yearly (€269.88)</p>
         <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span><strong class="cf-person__text" data-monthly="That's €8.75 per person" data-yearly="That's €7.87 per person">That's €7.87 per person</strong></div>
         <p class="cf-billing" data-monthly="Billed monthly. You save €7.50 a month" data-yearly="Billed €188.88 a year. You save €81 a year">Billed €188.88 a year. You save €81 a year</p>
       </div>
@@ -983,6 +984,7 @@
           <span class="cf-amount__per">per month</span>
           <span class="cf-amount__old" data-monthly="€34.99" data-yearly="€31.49">€31.49</span>
         </div>
+        <p class="cf-regular" data-monthly="Regular price after launch: €34.99/month" data-yearly="Regular price after launch: €31.49/month, billed yearly (€377.88)">Regular price after launch: €31.49/month, billed yearly (€377.88)</p>
         <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span><strong class="cf-person__text" data-monthly="That's €12.25 per person" data-yearly="That's €11.02 per person">That's €11.02 per person</strong></div>
         <p class="cf-billing" data-monthly="Billed monthly. You save €10.50 a month" data-yearly="Billed €264.48 a year. You save €113.40 a year">Billed €264.48 a year. You save €113.40 a year</p>
       </div>
@@ -1028,7 +1030,7 @@
     root.querySelectorAll('.cf-amount__num[data-' + period + ']').forEach(function (el) {
       tween(el, parseFloat(el.getAttribute('data-' + period)));
     });
-    root.querySelectorAll('.cf-person [data-' + period + '], .cf-billing[data-' + period + '], .cf-amount__old[data-' + period + ']').forEach(function (el) {
+    root.querySelectorAll('.cf-person [data-' + period + '], .cf-billing[data-' + period + '], .cf-amount__old[data-' + period + '], .cf-regular[data-' + period + ']').forEach(function (el) {
       el.textContent = el.getAttribute('data-' + period);
     });
   }

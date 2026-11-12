@@ -3508,3 +3508,8 @@ body.legal-page main.legal .lead { margin-bottom: 20px; color: var(--cf-muted, #
   #main .cf-field:has(.cf-field__hint) { position: relative; }
   #main .cf-field__hint { position: absolute; left: 0; right: 0; top: 100%; margin-top: 6px; }
 }
+
+/* Pricing: uitleg van de doorgestreepte prijs */
+#main .cf-price .cf-regular { margin: 4px 0 10px; font-size: 12.5px; line-height: 1.4; color: var(--cf-label, #56698A); }
+#main .cf-price .cf-plan--pop .cf-regular { color: inherit; opacity: .8; }
+#main .cf-price .cf-regular { min-height: 2.8em; }
