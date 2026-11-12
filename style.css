@@ -3314,3 +3314,73 @@ body.legal-page main.legal .lead { margin-bottom: 20px; color: var(--cf-muted, #
   -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 96px), transparent calc(100% - 64px));
           mask-image: linear-gradient(to bottom, #000 calc(100% - 96px), transparent calc(100% - 64px));
 }
+
+/* ===== Sync-tegels in de stijl van de app (12 nov 2026) ===== */
+#main #sync .ab-label { font: 700 10.5px var(--cf-body); letter-spacing: .12em; text-transform: uppercase; color: var(--cf-burgundy); opacity: .85; }
+#main #sync .ab-label--light { color: var(--cf-ivory); }
+#main #sync .ab-meta { font-size: 12px; color: var(--cf-label); }
+#main #sync .ab-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 12px; }
+#main #sync .ab-plan, #main #sync .ab-prog { padding: 16px 18px; border-radius: 22px; }
+
+/* A: planned this week */
+#main #sync .ab-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+#main #sync .ab-day { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+#main #sync .ab-day i { font-style: normal; font-size: 11px; font-weight: 600; color: var(--cf-label); }
+#main #sync .ab-day span { display: block; width: 100%; height: 46px; border-radius: 12px; }
+#main #sync .ab-day em { font-style: normal; font-size: 10.5px; color: var(--cf-label); white-space: nowrap; }
+#main #sync .ab-day--m span { background: var(--cf-burgundy); }
+#main #sync .ab-day--r span { background: var(--cf-powder); }
+#main #sync .ab-day--t span { background: #567A5C; }
+#main #sync .ab-day--rest span { background: #F4F0E9; box-shadow: inset 0 0 0 1px #E4DCD0; }
+#main #sync .ab-day.is-today i { color: var(--cf-burgundy); }
+#main #sync .ab-day.is-today span { box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--cf-burgundy); }
+#main #sync .ab-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 14px; padding-top: 12px; border-top: 1px solid #EFE9E1; font-size: 12px; color: var(--cf-label); }
+#main #sync .ab-legend span { display: inline-flex; align-items: center; gap: 6px; }
+#main #sync .ab-legend i { width: 8px; height: 8px; border-radius: 2px; display: block; }
+#main #sync .ab-dot--m { background: var(--cf-burgundy); }
+#main #sync .ab-dot--r { background: var(--cf-powder); }
+#main #sync .ab-dot--t { background: #567A5C; }
+#main #sync .ab-dot--rest { background: #F4F0E9; box-shadow: inset 0 0 0 1px #E4DCD0; }
+
+/* B: maaltijd */
+#main #sync .ab-meal { background: #F4F0E9; border-radius: 20px; padding: 14px 16px 16px; }
+#main #sync .ab-meal__name { display: block; font: 600 17px var(--cf-display); color: var(--cf-ink); letter-spacing: -0.01em; margin-top: 4px; }
+#main #sync .ab-meal__kcal { margin: 8px 0 6px; font-size: 13px; color: var(--cf-label); }
+#main #sync .ab-meal__kcal b { font: 700 30px var(--cf-display); color: var(--cf-burgundy); letter-spacing: -0.02em; margin-right: 2px; }
+#main #sync .ab-macro { display: grid; grid-template-columns: 56px 1fr 40px; align-items: center; gap: 10px; font-size: 12.5px; margin-top: 8px; }
+#main #sync .ab-macro span { color: var(--cf-ink); font-weight: 500; }
+#main #sync .ab-macro em { font-style: normal; color: var(--cf-label); text-align: right; font-variant-numeric: tabular-nums; }
+#main #sync .ab-macro > i { display: block; height: 7px; border-radius: 7px; background: #E9E2D8; overflow: hidden; }
+#main #sync .ab-macro > i > i { display: block; height: 100%; width: 0; border-radius: 7px; background: var(--cf-burgundy); transition: width 1s cubic-bezier(.22,1,.36,1) 1.4s; }
+#main #sync .ab-macro:nth-of-type(3) > i > i { background: var(--cf-dusty); }
+#main #sync .ab-macro:nth-of-type(4) > i > i { background: var(--cf-powder); }
+#main #sync.is-visible .ab-macro > i > i { width: var(--w); }
+
+/* C: bordeaux today-kaart */
+#main #sync .ab-today { display: block; background: var(--cf-burgundy); color: var(--cf-ivory); border-radius: 22px; padding: 16px 16px 14px; box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 14px 28px -16px rgba(91,30,45,.6); }
+#main #sync .ab-today__top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+#main #sync .ab-pill { font-size: 11px; font-weight: 600; border: 1px solid rgba(243,239,230,.45); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+#main #sync .ab-today__title { display: block; font: 600 22px/1.15 var(--cf-display); letter-spacing: -0.02em; margin: 10px 0 2px; color: var(--cf-ivory); }
+#main #sync .ab-today__sub { margin: 0 0 10px; font-size: 12.5px; color: var(--cf-ivory); opacity: .8; }
+#main #sync .ab-row { display: flex; align-items: center; gap: 10px; background: rgba(243,239,230,.1); border-radius: 14px; padding: 7px 12px 7px 7px; margin-top: 6px; font-size: 13px; }
+#main #sync .ab-row__name { flex: 1; font-weight: 600; }
+#main #sync .ab-row b { font: 700 16px var(--cf-display); letter-spacing: -0.01em; }
+#main #sync .ab-row em { font-style: normal; font-size: 12px; opacity: .8; min-width: 42px; text-align: right; }
+#main #sync .ab-av { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font: 700 12px var(--cf-display); flex: none; }
+#main #sync .ab-av--m { background: var(--cf-ivory); color: var(--cf-burgundy); }
+#main #sync .ab-av--r { background: var(--cf-powder); color: var(--cf-ink); }
+
+/* D: progress */
+#main #sync .ab-prog .cf-chart { max-height: 104px; }
+#main #sync .ab-milestone { display: flex; align-items: center; gap: 10px; margin-top: 12px; padding: 9px 12px 9px 9px; border-radius: 14px; background: #F4F0E9; }
+#main #sync .ab-milestone strong { display: block; font-size: 13px; font-weight: 600; color: var(--cf-ink); }
+#main #sync .ab-milestone small { display: block; font-size: 11.5px; color: var(--cf-label); }
+#main #sync .ab-medal { width: 30px; height: 30px; border-radius: 50%; background: var(--cf-burgundy); display: grid; place-items: center; flex: none; }
+#main #sync .ab-medal svg { width: 17px; height: 17px; fill: none; stroke: var(--cf-ivory); stroke-width: 1.8; stroke-linejoin: round; }
+
+@media (max-width: 520px) {
+  #main #sync .ab-days { gap: 5px; }
+  #main #sync .ab-day span { height: 40px; border-radius: 10px; }
+  #main #sync .ab-day em { font-size: 9.5px; }
+}
+@media (prefers-reduced-motion: reduce) { #main #sync .ab-macro > i > i { transition: none; } }
