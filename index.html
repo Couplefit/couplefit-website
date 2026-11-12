@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261112t" />
+<link rel="stylesheet" href="/style.css?v=20261112v" />
 
 
 </head>
@@ -1377,7 +1377,8 @@
             </label>
             <label class="cf-field">
               <span>Your partner's first name <em>(optional)</em></span>
-              <input type="text" name="partner_name" autocomplete="off" maxlength="40" placeholder="e.g. Rachelle">
+              <input type="text" name="partner_name" autocomplete="off" maxlength="40" aria-describedby="cf-partner-hint" placeholder="e.g. Rachelle">
+              <small class="cf-field__hint" id="cf-partner-hint">So we can welcome you both by name. We never email your partner.</small>
             </label>
             <button type="submit" class="cf-signup__btn">Join as a founding couple</button>
             <label class="cf-together">
@@ -1386,7 +1387,7 @@
             </label>
           </div>
           <p class="cf-signup__msg" id="cf-signup-msg" role="status" aria-live="polite"></p>
-          <p class="cf-signup__note">No card required. We'll only email you about CoupleFit.</p>
+          <p class="cf-signup__note">No card required. We'll only email you about CoupleFit and you can unsubscribe anytime. By joining, you agree to our <a href="/privacy.html">Privacy Policy</a>.</p>
         </form>
 
         <div class="cf-signup__done" id="cf-signup-done" hidden>
