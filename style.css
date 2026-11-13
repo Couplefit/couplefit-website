@@ -3529,3 +3529,159 @@ body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex
 #main#main #story#story#story .cf-moment.is-flash { animation: cf-moment-flash 2.2s ease; border-radius: 16px; }
 @keyframes cf-moment-flash { 0%, 100% { box-shadow: 0 0 0 0 rgba(91,30,45,0); background-color: transparent; } 15%, 60% { box-shadow: 0 0 0 10px rgba(91,30,45,.06); background-color: rgba(91,30,45,.06); } }
 @media (prefers-reduced-motion: reduce) { #main#main #story#story#story .cf-moment.is-flash { animation: none; } }
+
+/* ===== Welkomstcadeau: 4-weken couples challenge (12 nov 2026) ===== */
+#main#main #cta#cta#cta .cf-gift {
+  max-width: 640px; margin: -8px auto 26px; padding: 16px 18px; border-radius: 22px;
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px; text-align: left;
+  background: var(--cf-burgundy); color: var(--cf-ivory);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 14px 30px -18px rgba(91,30,45,.7);
+}
+#main#main #cta#cta#cta .cf-gift__icon { width: 46px; height: 46px; border-radius: 14px; background: rgba(243,239,230,.14); display: grid; place-items: center; }
+#main#main #cta#cta#cta .cf-gift__icon svg { width: 24px; height: 24px; fill: none; stroke: var(--cf-ivory); stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+#main#main #cta#cta#cta .cf-gift__label { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; opacity: .75; }
+#main#main #cta#cta#cta .cf-gift strong { display: block; margin: 2px 0 4px; font: 600 18px/1.25 var(--cf-display); letter-spacing: -0.01em; color: var(--cf-ivory); }
+#main#main #cta#cta#cta .cf-gift p { margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--cf-ivory); opacity: .85; text-align: left; max-width: none; }
+#main#main #cta#cta#cta .cf-gift__weeks { display: grid; grid-template-columns: repeat(2, 22px); gap: 5px; }
+#main#main #cta#cta#cta .cf-gift__weeks i {
+  width: 22px; height: 22px; border-radius: 7px; display: grid; place-items: center;
+  font: 700 10.5px var(--cf-display); font-style: normal; color: var(--cf-burgundy); background: var(--cf-ivory);
+}
+#main#main #cta#cta#cta .cf-gift__weeks i:nth-child(n+2) { background: rgba(243,239,230,.18); color: var(--cf-ivory); }
+@media (max-width: 600px) {
+  #main#main #cta#cta#cta .cf-gift { grid-template-columns: auto 1fr; padding: 16px; }
+  #main#main #cta#cta#cta .cf-gift__weeks { display: none; }
+}
+/* hero: verwijzing naar het cadeau */
+#main .cf-hero .cf-hero__gift { color: var(--cf-burgundy); font-weight: 600; text-decoration: none; border-bottom: 1.5px solid rgba(91,30,45,.25); }
+#main .cf-hero .cf-hero__gift:hover { border-color: var(--cf-burgundy); }
+#main#main #cta#cta#cta .cf-gift { max-width: none; width: 100%; box-sizing: border-box; }
+
+/* ===== Aanmeldblok: één kaart met cadeau, voordelen en formulier (13 nov 2026) ===== */
+/* echt logo bovenaan, in een wit tegeltje */
+#main#main #cta#cta#cta .cf-signup__logo {
+  display: inline-grid; place-items: center; width: 60px; height: 60px; margin-bottom: 18px; border-radius: 18px;
+  background: #fff; box-shadow: 0 1px 2px rgba(30,42,68,.05), 0 10px 24px -12px rgba(30,42,68,.28);
+}
+#main#main #cta#cta#cta .cf-signup__logo svg { width: 36px; height: auto; display: block; }
+#main#main #cta#cta#cta .cf-signup__lead { margin-bottom: 28px; }
+
+/* de kaart */
+#main#main #cta#cta#cta .cf-offer {
+  background: #fff; border-radius: 28px; overflow: hidden; text-align: left;
+  box-shadow: 0 1px 2px rgba(30,42,68,.04), 0 24px 56px -24px rgba(30,42,68,.30);
+}
+/* bovenkant: het cadeau */
+#main#main #cta#cta#cta .cf-offer .cf-gift {
+  margin: 0; border-radius: 0; box-shadow: none; padding: 22px 26px;
+  background: linear-gradient(135deg, #6A2435 0%, #5B1E2D 55%, #4A1724 100%);
+}
+#main#main #cta#cta#cta .cf-offer .cf-gift__weeks { grid-template-columns: repeat(4, 26px); gap: 6px; }
+#main#main #cta#cta#cta .cf-offer .cf-gift__weeks i { width: 26px; height: 26px; border-radius: 8px; font-size: 11.5px; }
+/* onderkant: voordelen, plekken en formulier */
+#main#main #cta#cta#cta .cf-offer__body { padding: 22px 26px 24px; }
+#main#main #cta#cta#cta .cf-offer .cf-perks { justify-content: flex-start; margin: 0 0 16px; gap: 8px 20px; }
+#main#main #cta#cta#cta .cf-offer .cf-perks li { background: none; padding: 0; border-radius: 0; color: var(--cf-ink); font-weight: 500; font-size: 14.5px; }
+#main#main #cta#cta#cta .cf-offer .cf-perks li::before {
+  content: "\2713"; width: 20px; height: 20px; border-radius: 50%; display: inline-grid; place-items: center;
+  background: rgba(86,122,92,.14); color: #567A5C; font-size: 11px; font-weight: 700;
+}
+#main#main #cta#cta#cta .cf-offer .cf-spots { max-width: none; margin: 0 0 18px; padding-bottom: 18px; border-bottom: 1px solid #EFE9E1; }
+#main#main #cta#cta#cta .cf-offer .cf-spots__top { margin-bottom: 0; }
+#main#main #cta#cta#cta .cf-offer .cf-spots.has-count .cf-spots__top { margin-bottom: 10px; }
+#main#main #cta#cta#cta .cf-offer .cf-signup__form { background: none; box-shadow: none; padding: 0; border-radius: 0; }
+#main#main #cta#cta#cta .cf-offer .cf-signup__done { background: none; box-shadow: none; padding: 8px 0 4px; text-align: center; }
+@media (max-width: 600px) {
+  #main#main #cta#cta#cta .cf-offer { border-radius: 24px; }
+  #main#main #cta#cta#cta .cf-offer .cf-gift { padding: 18px; }
+  #main#main #cta#cta#cta .cf-offer__body { padding: 18px; }
+  #main#main #cta#cta#cta .cf-offer .cf-perks { flex-direction: column; gap: 8px; }
+}
+@media (max-width: 600px) {
+  #main#main #cta#cta#cta .cf-offer .cf-gift { grid-template-columns: 1fr; gap: 12px; }
+  #main#main #cta#cta#cta .cf-offer .cf-gift__icon { width: 40px; height: 40px; border-radius: 12px; }
+  #main#main #cta#cta#cta .cf-offer .cf-gift__weeks { display: grid; grid-template-columns: repeat(4, 26px); }
+  #main#main #cta#cta#cta .cf-offer .cf-spots__label { align-items: flex-start; }
+  #main#main #cta#cta#cta .cf-offer .cf-spots__label i { margin-top: 6px; }
+}
+
+/* ===== Aanmeldsectie v2: uitnodiging links, formulier rechts (13 nov 2026) ===== */
+#main#main #cta#cta#cta.cf-signup {
+  text-align: left !important; padding: 72px 64px !important;
+  background:
+    radial-gradient(60% 70% at 100% 0%, rgba(91,30,45,.10) 0%, rgba(91,30,45,0) 70%),
+    radial-gradient(55% 60% at 0% 100%, rgba(122,143,174,.28) 0%, rgba(122,143,174,0) 70%),
+    linear-gradient(160deg, #F4F0EA 0%, #EDE8E1 50%, #E6EBF1 100%) !important;
+}
+#main#main #cta#cta#cta .cf-join {
+  max-width: 1080px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+  gap: 56px; align-items: center;
+}
+/* links */
+#main#main #cta#cta#cta .cf-join__brand { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+#main#main #cta#cta#cta .cf-join__brand .cf-signup__logo { width: 48px; height: 48px; margin: 0; border-radius: 14px; }
+#main#main #cta#cta#cta .cf-join__brand .cf-signup__logo svg { width: 28px; }
+#main#main #cta#cta#cta .cf-join__brand .cf-label { margin: 0; text-align: left; }
+#main#main #cta#cta#cta .cf-join .cf-signup__title { margin: 0 0 14px; max-width: 16ch; text-align: left; font-size: clamp(32px, 3.8vw, 48px); }
+#main#main #cta#cta#cta .cf-join .cf-signup__lead { margin: 0 0 28px; max-width: 42ch; text-align: left; font-size: 17px; }
+#main#main #cta#cta#cta .cf-join__perks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+#main#main #cta#cta#cta .cf-join__perk {
+  display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start;
+  padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,.62);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.8);
+}
+#main#main #cta#cta#cta .cf-join__ico { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: #fff; box-shadow: 0 1px 2px rgba(30,42,68,.06); }
+#main#main #cta#cta#cta .cf-join__ico svg { width: 20px; height: 20px; fill: none; stroke: var(--cf-burgundy); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+#main#main #cta#cta#cta .cf-join__perk strong { display: block; font: 600 16px/1.3 var(--cf-display); color: var(--cf-ink); letter-spacing: -0.01em; }
+#main#main #cta#cta#cta .cf-join__perk p { margin: 3px 0 0; font-size: 14px; line-height: 1.5; color: var(--cf-text); text-align: left; max-width: none; }
+#main#main #cta#cta#cta .cf-join__perk--gift { background: var(--cf-burgundy); box-shadow: 0 16px 32px -18px rgba(91,30,45,.7); }
+#main#main #cta#cta#cta .cf-join__perk--gift .cf-join__ico { background: rgba(243,239,230,.14); box-shadow: none; }
+#main#main #cta#cta#cta .cf-join__perk--gift .cf-join__ico svg { stroke: var(--cf-ivory); }
+#main#main #cta#cta#cta .cf-join__perk--gift strong { color: var(--cf-ivory); }
+#main#main #cta#cta#cta .cf-join__perk--gift p { color: var(--cf-ivory); opacity: .82; }
+#main#main #cta#cta#cta .cf-join__tag {
+  display: inline-block; margin-bottom: 4px; padding: 2px 8px; border-radius: 999px;
+  background: var(--cf-ivory); color: var(--cf-burgundy); font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+}
+
+/* rechts: de aanmeldkaart */
+#main#main #cta#cta#cta .cf-join__card {
+  background: #fff; border-radius: 28px; padding: 28px; text-align: left;
+  box-shadow: 0 1px 2px rgba(30,42,68,.05), 0 30px 60px -28px rgba(30,42,68,.35);
+}
+#main#main #cta#cta#cta .cf-join__head { margin-bottom: 14px; }
+#main#main #cta#cta#cta .cf-join__head strong { display: block; font: 600 22px/1.2 var(--cf-display); color: var(--cf-ink); letter-spacing: -0.02em; }
+#main#main #cta#cta#cta .cf-join__head span { display: block; margin-top: 4px; font-size: 14px; color: var(--cf-label); }
+#main#main #cta#cta#cta .cf-join__card .cf-spots { max-width: none; margin: 0 0 20px; padding: 10px 12px; border-radius: 12px; background: #F4F0E9; }
+#main#main #cta#cta#cta .cf-join__card .cf-spots__top { margin: 0; font-size: 13px; }
+#main#main #cta#cta#cta .cf-join__card .cf-spots.has-count .cf-spots__top { margin-bottom: 8px; }
+#main#main #cta#cta#cta .cf-join__card .cf-signup__form { background: none; box-shadow: none; padding: 0; border-radius: 0; }
+#main#main #cta#cta#cta .cf-join__card .cf-signup__fields { grid-template-columns: 1fr; gap: 14px; }
+#main#main #cta#cta#cta .cf-join__card .cf-field__hint { position: static; margin-top: 2px; padding-left: 4px; }
+#main#main #cta#cta#cta .cf-join__card .cf-together { order: 3; margin: 0 4px; font-size: 14.5px; }
+#main#main #cta#cta#cta .cf-join__card .cf-signup__btn {
+  order: 4; width: 100%; height: 56px; border-radius: 16px; font-size: 16.5px; margin-top: 4px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 12px 24px -12px rgba(91,30,45,.7);
+}
+#main#main #cta#cta#cta .cf-join__card .cf-signup__btn span { transition: transform .2s ease; }
+#main#main #cta#cta#cta .cf-join__card .cf-signup__btn:hover span { transform: translateX(3px); }
+#main#main #cta#cta#cta .cf-join__card .cf-signup__note { margin-top: 14px; text-align: left; font-size: 12.5px; line-height: 1.5; }
+#main#main #cta#cta#cta .cf-join__card .cf-signup__done { background: none; box-shadow: none; padding: 12px 0 4px; text-align: center; }
+
+@media (max-width: 960px) {
+  #main#main #cta#cta#cta.cf-signup { padding: 56px 32px !important; }
+  #main#main #cta#cta#cta .cf-join { grid-template-columns: 1fr; gap: 32px; }
+  #main#main #cta#cta#cta .cf-join__card { max-width: 560px; }
+}
+@media (max-width: 600px) {
+  #main#main #cta#cta#cta.cf-signup { padding: 40px 16px !important; }
+  #main#main #cta#cta#cta .cf-join__card { padding: 20px; border-radius: 24px; }
+  #main#main #cta#cta#cta .cf-join__perk { padding: 12px 14px; grid-template-columns: 36px 1fr; gap: 12px; }
+  #main#main #cta#cta#cta .cf-join__ico { width: 36px; height: 36px; }
+}
+@media (max-width: 760px) {
+  #main#main #cta#cta#cta .cf-join__card .cf-spots__top { flex-direction: row; align-items: center; gap: 10px; }
+  #main#main #cta#cta#cta .cf-join__card .cf-spots__label i { margin-top: 0; }
+  #main#main #cta#cta#cta .cf-join__card .cf-signup__note { font-size: 12.5px; }
+}

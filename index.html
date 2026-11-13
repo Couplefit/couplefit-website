@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261112z" />
+<link rel="stylesheet" href="/style.css?v=20261113d" />
 
 
 </head>
@@ -97,7 +97,7 @@
         <span><small>Coming soon to</small>Android</span>
       </span>
     </div>
-    <p class="cf-hero__note">Free to join. No card required.</p>
+    <p class="cf-hero__note">Free to join. No card required. <a href="#cta" class="cf-hero__gift">Plus a free 4&#8209;week couples challenge</a>.</p>
   </div>
 
   <div class="cf-stage" id="cf-stage" aria-label="Preview of the CoupleFit app">
@@ -1362,18 +1362,35 @@
 
 
      <section class="cf-signup" id="cta" aria-labelledby="cf-signup-title">
-      <div class="cf-signup__inner">
-        <span class="cf-signup__pair" aria-hidden="true"><i></i><i></i></span>
-        <span class="cf-label">Founding couples</span>
-        <h2 id="cf-signup-title" class="cf-signup__title">Ready to build healthier habits together?</h2>
-        <p class="cf-signup__lead">Become one of our founding couples and help shape CoupleFit from day one.</p>
-        <ul class="cf-perks" aria-label="What founding couples get">
-          <li>30% off Premium and Elite, for life</li>
-          <li>Your discount stays when you upgrade</li>
-        </ul>
-                <div class="cf-spots" id="cf-spots" data-joined="0" data-total="500" data-min="25">
+      <div class="cf-signup__inner cf-join">
+        <div class="cf-join__pitch">
+          <div class="cf-join__brand"><span class="cf-signup__logo" aria-hidden="true"><svg viewBox="0 0 30 22"><defs><clipPath id="cf-signup-overlap"><circle cx="11" cy="11" r="9"/></clipPath></defs><circle cx="11" cy="11" r="9" fill="#5B1E2D"/><circle cx="19" cy="11" r="9" fill="#B7C6D6"/><circle cx="19" cy="11" r="9" fill="#1E2A44" clip-path="url(#cf-signup-overlap)"/></svg></span><span class="cf-label">Founding couples</span></div>
+          <h2 id="cf-signup-title" class="cf-signup__title">Ready to build healthier habits together?</h2>
+          <p class="cf-signup__lead">Join the waitlist as one of our first 500 couples and help shape CoupleFit from day one.</p>
+          <ul class="cf-join__perks" aria-label="What founding couples get">
+            <li class="cf-join__perk cf-join__perk--gift">
+              <span class="cf-join__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="9" width="17" height="11.5" rx="2"/><path d="M2.5 9h19M12 9v11.5M12 9c-1.6-3.6-6.2-4.6-6.2-1.8C5.8 9 12 9 12 9zm0 0c1.6-3.6 6.2-4.6 6.2-1.8C18.2 9 12 9 12 9z"/></svg></span>
+              <div><span class="cf-join__tag">Welcome gift</span><strong>A free 4&#8209;week couples challenge</strong><p>Four weeks, four challenges. The first lands in your inbox minutes after you confirm, then a new one unlocks every week.</p></div>
+            </li>
+            <li class="cf-join__perk">
+              <span class="cf-join__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg></span>
+              <div><strong>30% off Premium and Elite, for life</strong><p>Your founding price stays as long as your subscription is active.</p></div>
+            </li>
+            <li class="cf-join__perk">
+              <span class="cf-join__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 19V5M5.5 11.5L12 5l6.5 6.5"/></svg></span>
+              <div><strong>Your discount moves with you</strong><p>Upgrade from Premium to Elite later and keep your 30%.</p></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="cf-join__card">
+          <div class="cf-join__head">
+            <strong>Claim your founding spot</strong>
+            <span>Free to join · takes 20 seconds</span>
+          </div>
+        <div class="cf-spots" id="cf-spots" data-joined="0" data-total="500" data-min="25">
           <div class="cf-spots__top">
-            <span class="cf-spots__label"><i aria-hidden="true"></i><span id="cf-spots-label">Be one of our first 500 founding couples</span></span>
+            <span class="cf-spots__label"><i aria-hidden="true"></i><span id="cf-spots-label">Only for the first 500 couples</span></span>
             <span class="cf-spots__left" id="cf-spots-left">Limited spots</span>
           </div>
           <div class="cf-spots__bar" aria-hidden="true"><i id="cf-spots-fill"></i></div>
@@ -1410,7 +1427,7 @@
               <input type="text" name="partner_name" autocomplete="off" maxlength="40" aria-describedby="cf-partner-hint" placeholder="e.g. Rachelle">
               <small class="cf-field__hint" id="cf-partner-hint">So we can welcome you both by name. We never email your partner.</small>
             </label>
-            <button type="submit" class="cf-signup__btn">Join as a founding couple</button>
+            <button type="submit" class="cf-signup__btn">Join as a founding couple <span aria-hidden="true">&rarr;</span></button>
             <label class="cf-together">
               <input type="checkbox" name="together">
               <span>We're signing up together</span>
@@ -1433,7 +1450,7 @@
             </div>
           </div>
         </div>
-
+        </div>
       </div>
     </section>
 
