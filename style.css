@@ -3696,3 +3696,17 @@ body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex
 #main #sync .ab-row:focus-visible { box-shadow: 0 0 0 2px var(--cf-ivory); }
 #main #sync .ab-today .ab-tip { background: var(--cf-ivory); color: var(--cf-ink); }
 @media (prefers-reduced-motion: reduce) { #main #sync .ab-food, #main #sync .ab-row { transition: none; } }
+
+/* ===== Sound familiar: mini-kaarten wisselend van kleur (13 nov 2026) =====
+   rij 1: bordeaux · blauw · beige   rij 2: blauw · beige · bordeaux */
+#main#main #testimonials#testimonials#testimonials .cf-tst__grid > .cf-sit:nth-child(2) .cf-sit__ui,
+#main#main #testimonials#testimonials#testimonials .cf-tst__grid > .cf-sit:nth-child(4) .cf-sit__ui { background: #E2E9F1; }
+#main#main #testimonials#testimonials#testimonials .cf-tst__grid > .cf-sit:nth-child(3) .cf-sit__ui,
+#main#main #testimonials#testimonials#testimonials .cf-tst__grid > .cf-sit:nth-child(5) .cf-sit__ui { background: #F4F0E9; }
+#main#main #testimonials#testimonials#testimonials .cf-tst__grid > .cf-sit:nth-child(4) .cf-sit__av--r { background: var(--cf-dusty); color: #fff; }
+#main#main #testimonials#testimonials#testimonials .cf-tst__grid > .cf-sit:nth-child(6) .cf-sit__ui { background: var(--cf-burgundy); color: var(--cf-ivory); }
+#main#main #testimonials#testimonials#testimonials .cf-tst__grid > .cf-sit:nth-child(6) .cf-sit__label { color: var(--cf-ivory); opacity: .75; }
+#main#main #testimonials#testimonials#testimonials .cf-tst__grid > .cf-sit:nth-child(6) .cf-sit__bar em { color: var(--cf-ivory); opacity: .75; }
+#main#main #testimonials#testimonials#testimonials .cf-tst__grid > .cf-sit:nth-child(6) .cf-sit__bar > i { background: rgba(243,239,230,.18); }
+#main#main #testimonials#testimonials#testimonials .cf-tst__grid > .cf-sit:nth-child(6) .cf-sit__bar > i > i { background: var(--cf-ivory); }
+#main#main #testimonials#testimonials#testimonials .cf-tst__grid > .cf-sit:nth-child(6) .cf-sit__bar--r > i > i { background: var(--cf-powder); }
