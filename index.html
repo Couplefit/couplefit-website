@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261113d" />
+<link rel="stylesheet" href="/style.css?v=20261113e" />
 
 
 </head>
@@ -431,14 +431,20 @@
           <circle cx="100" cy="100" r="78" fill="#F3EFE6" />
           <circle cx="100" cy="100" r="66" fill="none" stroke="rgba(91,30,45,.12)" stroke-width="1.5" />
           <!-- salmon -->
+          <g class="ab-food" data-food="Salmon · 120 g · 250 kcal · 27 g protein">
           <path d="M70 70c18-12 46-8 54 6 6 11-6 22-26 24-22 2-40-12-28-30z" fill="#E7B9A6" />
           <path d="M80 76l30 10M84 86l26 6" stroke="#F3EFE6" stroke-width="2" stroke-linecap="round" />
+          </g>
           <!-- rice -->
+          <g class="ab-food" data-food="Jasmine rice · 150 g · 195 kcal · 43 g carbs">
           <ellipse cx="78" cy="128" rx="26" ry="20" fill="#FFFFFF" stroke="rgba(30,42,68,.08)" />
+          </g>
           <!-- greens -->
+          <g class="ab-food" data-food="Edamame &amp; greens · 80 g · 95 kcal · 7 g protein">
           <circle cx="128" cy="124" r="12" fill="#7A8FAE" />
           <circle cx="142" cy="110" r="10" fill="#56698A" />
           <circle cx="138" cy="134" r="9" fill="#B7C6D6" />
+          </g>
         </svg>
         <div class="cf-scan"></div>
       </div>
@@ -463,8 +469,8 @@
         <div class="ab-today__top"><span class="ab-label ab-label--light">Today · Leg day</span><span class="ab-pill">Week 4 · Day 2</span></div>
         <strong class="ab-today__title">Back squat</strong>
         <p class="ab-today__sub">Same exercise, each at your own level</p>
-        <div class="ab-row"><span class="ab-av ab-av--m">M</span><span class="ab-row__name">Max</span><b>4 × 8</b><em>80 kg</em></div>
-        <div class="ab-row"><span class="ab-av ab-av--r">R</span><span class="ab-row__name">Rachelle</span><b>4 × 10</b><em>45 kg</em></div>
+        <div class="ab-row" data-tip="Max: last week 4 × 8 at 77.5 kg, so today +2.5 kg."><span class="ab-av ab-av--m">M</span><span class="ab-row__name">Max</span><b>4 × 8</b><em>80 kg</em></div>
+        <div class="ab-row" data-tip="Rachelle: last week 4 × 10 at 42.5 kg, so today +2.5 kg."><span class="ab-av ab-av--r">R</span><span class="ab-row__name">Rachelle</span><b>4 × 10</b><em>45 kg</em></div>
       </div>
     </article>
 
@@ -587,6 +593,54 @@
         hit.addEventListener('click', function () { showWeek(i); chartTimer = setTimeout(hideWeek, 2600); });
       });
       svg.addEventListener('pointerleave', function (e) { if (e.pointerType !== 'touch') hideWeek(); });
+    }
+
+    /* 3. bord: wat de AI herkent per onderdeel */
+    var mealBody = document.querySelector('#sync .cf-meal-body');
+    var foods = mealBody ? mealBody.querySelectorAll('.ab-food') : [];
+    if (foods.length) {
+      var foodTip = makeTip(mealBody), foodTimer = null;
+      foods.forEach(function (f) {
+        f.setAttribute('tabindex', '0');
+        f.setAttribute('role', 'img');
+        f.setAttribute('aria-label', f.getAttribute('data-food'));
+        function show() {
+          clearTimeout(foodTimer);
+          mealBody.classList.add('is-food');
+          foods.forEach(function (x) { x.classList.toggle('is-picked', x === f); });
+          var hr = mealBody.getBoundingClientRect(), r = f.getBoundingClientRect();
+          place(foodTip, mealBody, r.left + r.width / 2 - hr.left, r.top - hr.top, f.getAttribute('data-food'));
+        }
+        function hide() { mealBody.classList.remove('is-food'); f.classList.remove('is-picked'); foodTip.classList.remove('is-on'); }
+        f.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'touch') show(); });
+        f.addEventListener('pointerleave', function (e) { if (e.pointerType !== 'touch') hide(); });
+        f.addEventListener('focus', show);
+        f.addEventListener('blur', hide);
+        f.addEventListener('click', function () { show(); foodTimer = setTimeout(hide, 2600); });
+      });
+    }
+
+    /* 4. workout: opbouw per persoon */
+    var today = document.querySelector('#sync .ab-today');
+    var rows = today ? today.querySelectorAll('.ab-row[data-tip]') : [];
+    if (rows.length) {
+      var rowTip = makeTip(today), rowTimer = null;
+      rows.forEach(function (row) {
+        row.tabIndex = 0;
+        row.setAttribute('aria-label', row.getAttribute('data-tip'));
+        function show() {
+          clearTimeout(rowTimer);
+          rows.forEach(function (x) { x.classList.toggle('is-picked', x === row); });
+          var hr = today.getBoundingClientRect(), r = row.getBoundingClientRect();
+          place(rowTip, today, r.left + r.width / 2 - hr.left, r.top - hr.top, row.getAttribute('data-tip'));
+        }
+        function hide() { row.classList.remove('is-picked'); rowTip.classList.remove('is-on'); }
+        row.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'touch') show(); });
+        row.addEventListener('pointerleave', function (e) { if (e.pointerType !== 'touch') hide(); });
+        row.addEventListener('focus', show);
+        row.addEventListener('blur', hide);
+        row.addEventListener('click', function () { show(); rowTimer = setTimeout(hide, 2600); });
+      });
     }
   } catch (e) {}
 

@@ -3685,3 +3685,14 @@ body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex
   #main#main #cta#cta#cta .cf-join__card .cf-spots__label i { margin-top: 0; }
   #main#main #cta#cta#cta .cf-join__card .cf-signup__note { font-size: 12.5px; }
 }
+
+/* ===== Sync-tegels: bord en workout interactief (13 nov 2026) ===== */
+#main #sync .cf-meal-body, #main #sync .ab-today { position: relative; }
+#main #sync .ab-food { cursor: pointer; outline: none; transform-box: fill-box; transform-origin: center; transition: opacity .2s ease, transform .2s ease; }
+#main #sync .cf-meal-body.is-food .ab-food { opacity: .35; }
+#main #sync .cf-meal-body.is-food .ab-food.is-picked { opacity: 1; transform: scale(1.08); }
+#main #sync .ab-row { cursor: pointer; outline: none; transition: background-color .18s ease, transform .18s ease; }
+#main #sync .ab-row.is-picked { background: rgba(243,239,230,.2); transform: translateX(3px); }
+#main #sync .ab-row:focus-visible { box-shadow: 0 0 0 2px var(--cf-ivory); }
+#main #sync .ab-today .ab-tip { background: var(--cf-ivory); color: var(--cf-ink); }
+@media (prefers-reduced-motion: reduce) { #main #sync .ab-food, #main #sync .ab-row { transition: none; } }
