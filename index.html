@@ -1517,6 +1517,7 @@
         if (!valid(email)) { form.email.classList.add('is-error'); say('Please enter a valid email address.'); form.email.focus(); return; }
         together = form.together.checked || !!partnerName;
         myCode = makeCode();
+        try { localStorage.setItem('cf_my_code', myCode); if (partnerName) localStorage.setItem('cf_partner', partnerName); else localStorage.removeItem('cf_partner'); } catch (e) {}
 
         if (!CF_SIGNUP_ENDPOINT) {
           if (isLocal) { finish(); } else { say('Sign-ups open very soon. Please check back shortly.'); }
