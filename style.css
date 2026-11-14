@@ -3926,3 +3926,6 @@ body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex
   #main .cf-hero .cf-stores       { order: 6; justify-self: center; }
   #main .cf-hero .cf-hero__note   { order: 7; }
 }
+
+/* ===== Hero: nieuwe kop + tagline (14 nov 2026) ===== */
+#main .cf-hero .cf-hero__tagline { display: block; margin-bottom: 6px; font-family: var(--cf-display, "Plus Jakarta Sans", sans-serif); font-weight: 700; color: var(--cf-burgundy, #5B1E2D); letter-spacing: -.01em; }
