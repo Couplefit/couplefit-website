@@ -3855,3 +3855,7 @@ body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex
   }
   #main #cf-pricing .cf-price__controls .cf-currency select { padding-top: 7px; padding-bottom: 7px; }
 }
+
+/* ===== Features-telefoon: tabbalk-hoeken netjes afsnijden (14 nov 2026) =====
+   Chrome knipt backdrop-filter niet af op afgeronde hoeken; clip-path wel. */
+#features .fp-screen { clip-path: inset(0 round 30px); -webkit-clip-path: inset(0 round 30px); isolation: isolate; }
