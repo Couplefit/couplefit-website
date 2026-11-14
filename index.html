@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261114g" />
+<link rel="stylesheet" href="/style.css?v=20261114i" />
 
 
 </head>
@@ -2018,6 +2018,42 @@
       setTimeout(function () { t.classList.remove('is-flash'); }, 2200);
     });
   });
+})();
+</script>
+<!-- Mobiel: aanmeldbalk onderaan na de hero -->
+<a class="cf-stickybar" id="cf-stickybar" href="#cta" aria-hidden="true" tabindex="-1">
+  <span class="cf-stickybar__text">
+    <strong>Join the waitlist</strong>
+    <small><span class="cf-stickybar__dot" aria-hidden="true"></span>Free · 4-week challenge included</small>
+  </span>
+  <span class="cf-stickybar__btn">Join free</span>
+</a>
+<script>
+(function () {
+  var bar = document.getElementById('cf-stickybar');
+  var hero = document.getElementById('home');
+  var cta = document.getElementById('cta');
+  if (!bar || !hero || !cta) return;
+  var foot = document.getElementById('footer');
+  var ticking = false;
+  function seen(el, pad) {
+    if (!el) return false;
+    var r = el.getBoundingClientRect();
+    return r.top < window.innerHeight - (pad || 0) && r.bottom > 0;
+  }
+  function update() {
+    ticking = false;
+    var on = window.innerWidth <= 760 && !seen(cta, 40) && !seen(foot, 0);
+    if (on === bar.classList.contains('is-on')) return;
+    bar.classList.toggle('is-on', on);
+    bar.setAttribute('aria-hidden', on ? 'false' : 'true');
+    bar.tabIndex = on ? 0 : -1;
+  }
+  function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', req, { passive: true });
+  window.addEventListener('resize', req);
+  update();
+  bar.addEventListener('click', function () { try { if (window.umami) umami.track('Sticky bar click'); } catch (e) {} });
 })();
 </script>
 </body>
