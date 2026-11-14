@@ -3929,3 +3929,19 @@ body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex
 
 /* ===== Hero: nieuwe kop + tagline (14 nov 2026) ===== */
 #main .cf-hero .cf-hero__tagline { display: block; margin-bottom: 6px; font-family: var(--cf-display, "Plus Jakarta Sans", sans-serif); font-weight: 700; color: var(--cf-burgundy, #5B1E2D); letter-spacing: -.01em; }
+
+/* ===== Pijnpunt -> oplossing (14 nov 2026) ===== */
+#main .cf-pain {
+  display: inline-block; max-width: 100%; margin: 0 0 10px; padding: 5px 12px; border-radius: 14px;
+  background: rgba(91,30,45,.07); color: var(--cf-burgundy, #5B1E2D);
+  font-size: 13px; line-height: 1.35; font-style: italic; font-weight: 500;
+}
+#main #features .feature-copy .cf-pain { margin-bottom: 14px; font-size: 14px; }
+#main #sync .cf-bento__lead {
+  max-width: 60ch; margin: -6px auto 30px; text-align: center;
+  font-size: 17px; line-height: 1.55; color: var(--cf-text, #3D4B66);
+}
+@media (max-width: 760px) {
+  #main #sync .cf-bento__lead { font-size: 15.5px; margin-bottom: 22px; padding: 0 6px; }
+  #main #features .feature-copy .cf-pain { font-size: 13px; }
+}
