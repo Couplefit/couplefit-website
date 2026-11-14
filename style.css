@@ -3831,3 +3831,27 @@ body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex
 }
 @media (max-width: 350px) { .cf-stickybar small { display: none; } }
 @media (prefers-reduced-motion: reduce) { .cf-stickybar { transition: none; } }
+
+/* ===== Mobiel: "Sound familiar?" kaarten gecentreerd (14 nov 2026) ===== */
+@media (max-width: 700px) {
+  #main#main #testimonials#testimonials#testimonials.cf-tst { padding: 36px 0 32px !important; }
+  #main#main #testimonials#testimonials#testimonials .cf-tst__head { padding: 0 22px; }
+  #main#main #testimonials#testimonials#testimonials .cf-tst__grid {
+    gap: 12px; padding: 4px 34px 16px; scroll-padding: 0 34px;
+  }
+  #main#main #testimonials#testimonials#testimonials .cf-quote { flex: 0 0 100%; scroll-snap-align: center; }
+}
+
+/* ===== Pricing mobiel: valuta naast Monthly/Yearly (14 nov 2026) ===== */
+@media (max-width: 960px) {
+  #main #cf-pricing .cf-price__controls {
+    flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: center;
+    gap: 8px; margin: 0 auto 18px;
+  }
+  #main #cf-pricing .cf-price__controls .cf-toggle.cf-toggle { margin: 0; }
+  #main #cf-pricing .cf-price__controls .cf-currency { margin: 0; gap: 0; }
+  #main #cf-pricing .cf-price__controls .cf-currency > span {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+  }
+  #main #cf-pricing .cf-price__controls .cf-currency select { padding-top: 7px; padding-bottom: 7px; }
+}
