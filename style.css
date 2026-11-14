@@ -3859,3 +3859,57 @@ body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex
 /* ===== Features-telefoon: tabbalk-hoeken netjes afsnijden (14 nov 2026) =====
    Chrome knipt backdrop-filter niet af op afgeronde hoeken; clip-path wel. */
 #features .fp-screen { clip-path: inset(0 round 30px); -webkit-clip-path: inset(0 round 30px); isolation: isolate; }
+
+/* ===== Features: nette placeholder zolang een app-screenshot ontbreekt (14 nov 2026) ===== */
+#main #features .feature-device.is-ph { position: relative; width: 280px; max-width: 100%; aspect-ratio: 9 / 19.5; height: auto; flex: none; padding: 0; }
+@media (max-width: 1024px) { #main #features .feature-device.is-ph { width: 220px; } }
+@media (max-width: 768px) {
+  #main #features#features .cf-features-track .feature-device.is-ph,
+  #main #features .feature-device.is-ph { width: 200px; }
+}
+#main #features .feature-device.is-ph::before { display: none; }
+#main #features .feature-device.is-ph > img { display: none !important; }
+#features .fp-ph {
+  position: absolute; inset: 12px; border-radius: 30px; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  padding: 24px; text-align: center;
+  background: radial-gradient(120% 70% at 50% 0%, #E6ECF2 0%, #F4F0E9 60%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+#features .fp-ph::before {
+  content: ""; position: absolute; top: 9px; left: 50%; transform: translateX(-50%);
+  width: 33%; height: 4.2%; max-height: 26px; border-radius: 20px; background: #1E2A44;
+}
+#features .fp-ph svg { width: 44px; height: auto; margin-bottom: 4px; }
+#features .fp-ph strong { font: 700 15px/1.25 "Plus Jakarta Sans", -apple-system, sans-serif; color: #1E2A44; letter-spacing: -.01em; }
+#features .fp-ph small { font-size: 12px; line-height: 1.4; color: #56698A; }
+#features .fp-ph em {
+  margin-top: 6px; padding: 5px 11px; border-radius: 999px; font-style: normal;
+  font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  background: rgba(91,30,45,.08); color: #5B1E2D;
+}
+
+/* ===== Mobiele opmaak-check (14 nov 2026) ===== */
+@media (max-width: 760px) {
+  /* Founders: foto naast de naam, compacter */
+  #main #story .cf-founder { display: grid !important; grid-template-columns: 64px 1fr; align-items: center !important; gap: 14px 16px !important; }
+  #main #story .cf-founder h4 { align-self: center !important; }
+  #main #story .cf-founder > div { display: contents; }
+  #main #story .cf-founder .cf-story__photo--founder { width: 64px !important; height: 64px !important; margin: 0 !important; }
+  #main #story .cf-founder .cf-story__photo--founder img { width: 100%; height: 100%; object-fit: cover; }
+  #main #story .cf-founder h4 { margin: 0 !important; }
+  #main #story .cf-founder p { grid-column: 1 / -1; margin: 0 !important; }
+
+  /* Aanmeldformulier: kleine lettertjes onder de knop gelijk aan de hint */
+  #main #cta .cf-signup__note { font-size: 13px !important; line-height: 1.5 !important; }
+
+  /* Grotere tikvlakken zonder dat de opmaak verschuift */
+  #main #story .cf-story__route a,
+  #main #faq a,
+  footer.cf-footer li a { display: inline-block; padding: 10px 2px; margin: -10px -2px; }
+}
+/* Kleine telefoons (≤ 400px): app-store-knoppen naast elkaar houden */
+@media (max-width: 400px) {
+  #main .cf-hero .cf-stores { gap: 8px; flex-wrap: nowrap; }
+  #main .cf-hero .cf-store { padding: 8px 12px 8px 10px; }
+}
