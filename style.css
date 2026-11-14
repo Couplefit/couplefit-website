@@ -3730,3 +3730,51 @@ body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex
   border: 2px solid var(--cf-burgundy); box-shadow: 0 0 0 1.5px rgba(243,239,230,.5); background: var(--cf-powder);
 }
 #main#main #story#story#story .cf-vision__faces img + img { margin-left: -12px; }
+
+/* ===== Pricing: valutakeuze (14 nov 2026) ===== */
+#main .cf-price .cf-currency {
+  display: flex; align-items: center; justify-content: center; gap: 8px; width: fit-content;
+  margin: 12px auto 0; font-size: 13.5px; color: var(--cf-label, #56698A); cursor: pointer;
+}
+#main .cf-price .cf-currency select {
+  appearance: none; -webkit-appearance: none; border: 0; cursor: pointer;
+  padding: 6px 30px 6px 12px; border-radius: 999px; background-color: #fff;
+  font: 600 13.5px var(--cf-body, -apple-system, sans-serif); color: var(--cf-ink, #1E2A44);
+  box-shadow: 0 1px 2px rgba(30,42,68,.06), inset 0 0 0 1px rgba(30,42,68,.08);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' fill='none' stroke='%235B1E2D' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 10px center; background-size: 12px;
+}
+#main .cf-price .cf-currency select:hover { box-shadow: 0 1px 2px rgba(30,42,68,.06), inset 0 0 0 1px rgba(91,30,45,.35); }
+#main .cf-price .cf-currency select:focus-visible { outline: 3px solid var(--cf-dusty, #7A8FAE); outline-offset: 2px; }
+#main .cf-price .cf-price__fine { margin: 18px auto 0; max-width: 60ch; text-align: center; font-size: 12.5px; line-height: 1.5; color: var(--cf-label, #56698A); }
+#main .cf-price .cf-currency { margin: 14px auto 34px; position: relative; z-index: 2; }
+@media (max-width: 760px) { #main .cf-price .cf-currency { margin: 12px auto 4px; } }
+
+/* ===== Pricing in één oogopslag op desktop (14 nov 2026) ===== */
+@media (min-width: 961px) {
+  #main #cf-pricing.cf-price { padding-top: 56px !important; padding-bottom: 56px !important; }
+  #main #cf-pricing .cf-label { margin-bottom: 8px; }
+  #main #cf-pricing .cf-price__title { margin-bottom: 6px; }
+  #main #cf-pricing .cf-price__lead { margin-bottom: 18px; }
+  #main #cf-pricing .cf-founding-wrap { margin-bottom: 18px; }
+  #main #cf-pricing .cf-price__controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 0 auto 30px; }
+  #main #cf-pricing .cf-price__controls .cf-toggle { margin: 0; }
+  #main #cf-pricing .cf-price__controls .cf-currency { margin: 0; }
+  #main #cf-pricing .cf-price__fine { margin-top: 14px; }
+}
+@media (max-width: 960px) {
+  #main #cf-pricing .cf-price__controls { display: flex; flex-direction: column; align-items: center; }
+}
+@media (min-width: 961px) {
+  #main #cf-pricing .cf-price__title { font-size: clamp(30px, 3.2vw, 40px); }
+  #main #cf-pricing .cf-founding-wrap { margin-bottom: 16px; }
+  #main #cf-pricing .cf-price__controls { margin-bottom: 26px; }
+  #main #cf-pricing .cf-plan.cf-plan { padding: 22px 24px; gap: 10px; }
+  #main #cf-pricing .cf-flabel { margin-bottom: 2px; }
+  #main #cf-pricing .cf-regular { min-height: 0; margin: 2px 0 6px; font-size: 12px; }
+  #main #cf-pricing .cf-billing { margin-top: 2px; }
+  #main #cf-pricing .cf-list { gap: 6px; }
+  #main #cf-pricing .cf-list li { line-height: 1.35; }
+  #main #cf-pricing .cf-plan__cta { padding-top: 11px; padding-bottom: 11px; }
+  #main #cf-pricing .cf-plan__note { margin-top: -2px; }
+}
