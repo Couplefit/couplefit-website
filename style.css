@@ -3778,3 +3778,27 @@ body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex
   #main #cf-pricing .cf-plan__cta { padding-top: 11px; padding-bottom: 11px; }
   #main #cf-pricing .cf-plan__note { margin-top: -2px; }
 }
+
+/* ===== Aanmeldblok: drie privacybeloftes (14 nov 2026) ===== */
+#main#main #cta#cta#cta .cf-trust {
+  list-style: none; margin: 40px auto 0; padding: 22px 0 0; max-width: 1080px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  border-top: 1px solid rgba(30,42,68,.10); text-align: left;
+}
+#main#main #cta#cta#cta .cf-trust li { display: grid; grid-template-columns: 38px 1fr; gap: 12px; align-items: start; }
+#main#main #cta#cta#cta .cf-trust__ico { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,.7); box-shadow: inset 0 0 0 1px rgba(255,255,255,.9); }
+#main#main #cta#cta#cta .cf-trust__ico svg { width: 19px; height: 19px; fill: none; stroke: var(--cf-burgundy); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+#main#main #cta#cta#cta .cf-trust li:nth-child(2) .cf-trust__ico svg circle { fill: var(--cf-burgundy); stroke: none; }
+#main#main #cta#cta#cta .cf-trust strong { display: block; font: 600 15px/1.3 var(--cf-display); color: var(--cf-ink); letter-spacing: -0.01em; }
+#main#main #cta#cta#cta .cf-trust span:not(.cf-trust__ico) { display: block; margin-top: 3px; font-size: 13.5px; line-height: 1.45; color: var(--cf-text); }
+@media (max-width: 760px) {
+  #main#main #cta#cta#cta .cf-trust { grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
+}
+
+/* Aanmeldblok in één oogopslag op desktop */
+@media (min-width: 961px) {
+  #main#main #cta#cta#cta.cf-signup { padding: 40px 56px !important; }
+  #main#main #cta#cta#cta .cf-trust { margin-top: 28px; padding-top: 18px; }
+  #main#main #cta#cta#cta .cf-join__brand { margin-bottom: 14px; }
+  #main#main #cta#cta#cta .cf-join .cf-signup__lead { margin-bottom: 22px; }
+}

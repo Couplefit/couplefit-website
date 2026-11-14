@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261114e" />
+<link rel="stylesheet" href="/style.css?v=20261114g" />
 
 
 </head>
@@ -844,10 +844,25 @@
     var z = Math.max(0.68, Math.min(1, avail / need));
     if (z < 1) fit.style.zoom = z.toFixed(3);
   }
+  /* aanmeldblok: hele sectie (met achtergrond) in één scherm */
+  function applyCta() {
+    var cta = document.getElementById('cta'), ctaFit = document.getElementById('cf-cta-fit');
+    if (!cta || !ctaFit) return;
+    ctaFit.style.zoom = '';
+    if (window.innerWidth <= 960) return;
+    var hdr = document.querySelector('.site-header');
+    var hb = hdr ? hdr.getBoundingClientRect().bottom : 80;
+    var avail = window.innerHeight - hb - 24;
+    var inner = ctaFit.getBoundingClientRect().height;
+    var pad = cta.getBoundingClientRect().height - inner;
+    var z = Math.max(0.68, Math.min(1, (avail - pad) / inner));
+    if (z < 1) ctaFit.style.zoom = z.toFixed(3);
+  }
+  function both() { apply(); applyCta(); }
   var t;
-  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(apply, 120); });
-  if (document.readyState === 'complete') apply(); else window.addEventListener('load', apply);
-  setTimeout(apply, 600);
+  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(both, 120); });
+  if (document.readyState === 'complete') both(); else window.addEventListener('load', both);
+  setTimeout(both, 600);
 })();
 </script>
 
@@ -1528,6 +1543,7 @@
 
 
      <section class="cf-signup" id="cta" aria-labelledby="cf-signup-title">
+<div class="cf-cta__fit" id="cf-cta-fit">
       <div class="cf-signup__inner cf-join">
         <div class="cf-join__pitch">
           <div class="cf-join__brand"><span class="cf-signup__logo" aria-hidden="true"><svg viewBox="0 0 30 22"><defs><clipPath id="cf-signup-overlap"><circle cx="11" cy="11" r="9"/></clipPath></defs><circle cx="11" cy="11" r="9" fill="#5B1E2D"/><circle cx="19" cy="11" r="9" fill="#B7C6D6"/><circle cx="19" cy="11" r="9" fill="#1E2A44" clip-path="url(#cf-signup-overlap)"/></svg></span><span class="cf-label">Founding couples</span></div>
@@ -1618,6 +1634,22 @@
         </div>
         </div>
       </div>
+        <ul class="cf-trust" aria-label="How we handle your data">
+          <li>
+            <span class="cf-trust__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></span>
+            <div><strong>We never sell your data</strong><span>Your health data stays yours. We never sell or rent it to anyone.</span></div>
+          </li>
+          <li>
+            <span class="cf-trust__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="4.6" r="1.1"/><circle cx="15.7" cy="5.6" r="1.1"/><circle cx="18.4" cy="8.3" r="1.1"/><circle cx="19.4" cy="12" r="1.1"/><circle cx="18.4" cy="15.7" r="1.1"/><circle cx="15.7" cy="18.4" r="1.1"/><circle cx="12" cy="19.4" r="1.1"/><circle cx="8.3" cy="18.4" r="1.1"/><circle cx="5.6" cy="15.7" r="1.1"/><circle cx="4.6" cy="12" r="1.1"/><circle cx="5.6" cy="8.3" r="1.1"/><circle cx="8.3" cy="5.6" r="1.1"/></svg></span>
+            <div><strong>Protected by EU privacy law</strong><span>We're a European company and follow GDPR. Your waitlist and challenge data is stored in the EU.</span></div>
+          </li>
+          <li>
+            <span class="cf-trust__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><circle cx="16.5" cy="9" r="2.7"/><path d="M3.5 19.5c0-3.2 2.5-5.5 5.5-5.5s5.5 2.3 5.5 5.5M15 14.3c2.9 0 5.5 2 5.5 5.2"/></svg></span>
+            <div><strong>You choose what your partner sees</strong><span>Share your streaks and workouts, and keep the rest private.</span></div>
+          </li>
+        </ul>
+
+    </div>
     </section>
 
     <script>
@@ -1810,6 +1842,12 @@
       return y;
     }
     function targetY(id) {
+      if (id === 'cta' && window.innerWidth > 960) {
+        var sec = document.getElementById('cta');
+        var h2 = document.querySelector('.site-header');
+        var hb2 = h2 ? h2.getBoundingClientRect().bottom : 80;
+        if (sec) return sec.getBoundingClientRect().top + window.scrollY - hb2 - 12;
+      }
       if (id === 'plans' || id === 'cf-pricing') {
         var fit = document.getElementById('cf-price-fit');
         var hdr = document.querySelector('.site-header');
