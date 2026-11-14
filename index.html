@@ -1714,6 +1714,7 @@
       function finish() {
         form.hidden = true; done.hidden = false;
         showShare();
+        try { if (window.cfConfetti) window.cfConfetti(done); } catch (e) {}
         try { if (window.umami) umami.track('Waitlist signup', { partner: together ? 'yes' : 'no', referred: referredBy ? 'yes' : 'no' }); } catch (e) {}
       }
 
@@ -2093,5 +2094,6 @@
   });
 })();
 </script>
+<script src="/confetti.js?v=3" defer></script>
 </body>
 </html>

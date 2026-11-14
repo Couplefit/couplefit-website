@@ -195,5 +195,11 @@
   });
 })();
 </script>
+<script src="/confetti.js?v=3"></script>
+<script>
+  window.addEventListener('load', function () {
+    setTimeout(function () { try { window.cfConfetti(document.querySelector('h1')); } catch (e) {} }, 250);
+  });
+</script>
 </body>
 </html>
