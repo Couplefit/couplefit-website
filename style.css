@@ -3913,3 +3913,16 @@ body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex
   #main .cf-hero .cf-stores { gap: 8px; flex-wrap: nowrap; }
   #main .cf-hero .cf-store { padding: 8px 12px 8px 10px; }
 }
+
+/* ===== Mobiel hero: telefoon direct onder de intro, knoppen eronder (14 nov 2026) ===== */
+@media (max-width: 760px) {
+  #main#main section.cf-hero.cf-hero#home { row-gap: 0 !important; padding-top: 40px !important; padding-bottom: 32px !important; }
+  #main .cf-hero .cf-hero__copy { display: contents; }
+  #main .cf-hero .cf-hero__launch { order: 1; justify-self: center; }
+  #main .cf-hero .cf-hero__title  { order: 2; }
+  #main .cf-hero .cf-hero__lead   { order: 3; margin-bottom: 22px !important; }
+  #main .cf-hero .cf-stage        { order: 4; margin: 0 0 26px !important; padding: 26px 8px 28px !important; }
+  #main .cf-hero .cf-hero__actions{ order: 5; }
+  #main .cf-hero .cf-stores       { order: 6; justify-self: center; }
+  #main .cf-hero .cf-hero__note   { order: 7; }
+}
