@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261114u" />
+<link rel="stylesheet" href="/style.css?v=20261116b" />
 
 
 </head>
@@ -1047,7 +1047,8 @@
     </article>
 
     <!-- ELITE -->
-    <article class="cf-plan" data-plan="elite">
+    <article class="cf-plan cf-plan--soon" data-plan="elite" aria-label="Elite, coming soon">
+      <span class="cf-tag">Coming soon</span>
       <div>
         <h3>Elite</h3>
         <p class="cf-plan__sub">The complete program for two</p>
@@ -1069,8 +1070,8 @@
         <li>Deep analytics and insights</li>
         <li>Monthly couple performance reports</li>
       </ul>
-      <a class="cf-plan__cta" href="#cta">Reserve Elite</a>
-      <p class="cf-plan__note">No payment today. Price locked in at launch.</p>
+      <span class="cf-plan__cta cf-plan__cta--soon" aria-disabled="true">Coming soon</span>
+      <p class="cf-plan__note">Coming after launch. Founding couples keep their 30% off.</p>
     </article>
 
   </div>
@@ -1497,7 +1498,7 @@
 (function () {
   var plans = document.querySelector('#cf-pricing .cf-plans');
   if (!plans) return;
-  var cards = Array.prototype.slice.call(plans.querySelectorAll('.cf-plan'));
+  var cards = Array.prototype.slice.call(plans.querySelectorAll('.cf-plan:not(.cf-plan--soon)'));
   var chosen = plans.querySelector('.cf-plan--pop') || cards[0];
   function light(card) { cards.forEach(function (c) { c.classList.toggle('is-active', c === card); }); }
   cards.forEach(function (c) {

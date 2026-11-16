@@ -3945,3 +3945,30 @@ body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex
   #main #sync .cf-bento__lead { font-size: 15.5px; margin-bottom: 22px; padding: 0 6px; }
   #main #features .feature-copy .cf-pain { font-size: 13px; }
 }
+
+
+/* Elite: nog niet beschikbaar. Doorzichtig zachtblauw met stippellijn, niet klikbaar, label "Coming soon" */
+#main #cf-pricing .cf-plan.cf-plan--soon {
+  position: relative; cursor: default; transform: none;
+  background: rgba(230,236,242,.45);
+  box-shadow: none;
+  outline: 1.5px dashed #B7C6D6; outline-offset: -1.5px;
+}
+#main #cf-pricing .cf-plan--soon > :not(.cf-tag) { opacity: .5; pointer-events: none; user-select: none; }
+#main #cf-pricing .cf-plan--soon .cf-tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: #F3EFE6; color: var(--cf-burgundy);
+  box-shadow: inset 0 0 0 1px rgba(91,30,45,.18), 0 4px 12px -6px rgba(91,30,45,.30);
+}
+#main #cf-pricing .cf-plan--soon .cf-tag::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--cf-burgundy); box-shadow: 0 0 0 3px rgba(91,30,45,.14);
+  animation: cfSoonPulse 2s ease-in-out infinite;
+}
+@keyframes cfSoonPulse { 50% { box-shadow: 0 0 0 5px rgba(91,30,45,.04); } }
+@media (prefers-reduced-motion: reduce) { #main #cf-pricing .cf-plan--soon .cf-tag::before { animation: none; } }
+#main #cf-pricing .cf-plan__cta.cf-plan__cta--soon,
+#main #cf-pricing .cf-plan__cta.cf-plan__cta--soon:hover {
+  background: transparent; color: var(--cf-burgundy); cursor: not-allowed; transform: none;
+  box-shadow: inset 0 0 0 1.5px rgba(91,30,45,.35);
+}
