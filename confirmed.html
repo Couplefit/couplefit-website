@@ -61,6 +61,8 @@
   .share p { margin: -8px 0 16px; font-size: 15px; line-height: 1.5; }
   .share--partner p { opacity: .85; }
   .tag { display: inline-block; margin-bottom: 10px; padding: 3px 10px; border-radius: 999px; background: var(--cream); color: var(--burgundy); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .btns[hidden] { display: none; }
+  .share p.nocode { margin: 0; padding: 14px 16px; border-radius: 14px; background: var(--cream); color: var(--ink); font-size: 14.5px; line-height: 1.5; }
   .share .fine a { color: inherit; }
   .share .fine { margin: 14px 0 0; font-size: 12.5px; line-height: 1.5; color: #56698A; }
   .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -142,7 +144,7 @@
       <span class="tag">Give a month, get a month</span>
       <h2>Invite another couple</h2>
       <p>Know a couple who'd love to get fit together? Send them your link. They get their first 30 days of Premium free at launch. Once they've been paying members for 30 days, you get a month of Premium free.</p>
-      <div class="btns">
+      <div class="btns" id="invite-btns">
         <button type="button" class="btn btn--dark" id="friends-share">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7.5 7.5L12 3l4.5 4.5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>
           <span>Share your invite</span>
@@ -152,6 +154,7 @@
           <span>Copy link</span>
         </button>
       </div>
+      <p class="nocode" id="invite-nocode" hidden>Your personal invite link is in your welcome email. Share it from there so your invites count.</p>
       <p class="fine">Share as often as you like. You can earn a free month for up to 3 invited couples a year, starting once the app is live. <a href="/terms.html#referral">Terms apply</a>.</p>
     </section>
 
@@ -185,7 +188,12 @@
     document.getElementById('partner-title').textContent = 'Bring ' + partner + ' along';
     document.getElementById('partner-lead').textContent = 'Send ' + partner + ' your link to start the couples challenge together and claim your spot as a Founding Couple.';
   }
-  if (!code) document.getElementById('partner-note').hidden = false;
+  if (!code) {
+    document.getElementById('partner-note').hidden = false;
+    // zonder code telt een uitnodiging niet: verwijs naar de welkomstmail
+    document.getElementById('invite-btns').hidden = true;
+    document.getElementById('invite-nocode').hidden = false;
+  }
   function share(text, btn, to) {
     track('Share link', { channel: navigator.share ? 'native' : 'copy', page: 'confirmed', to: to });
     if (navigator.share) { navigator.share({ title: 'CoupleFit', text: text, url: link }).catch(function () {}); }
