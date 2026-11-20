@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261116b" />
+<link rel="stylesheet" href="/style.css?v=20261120a" />
 
 
 </head>
@@ -1612,6 +1612,13 @@
 
         <form class="cf-signup__form" id="cf-signup-form" novalidate>
           <div class="cf-signup__fields">
+            <div class="cf-invited" id="cf-invited" role="radiogroup" aria-labelledby="cf-invited-q" hidden>
+              <p class="cf-invited__q" id="cf-invited-q">You were invited. Who sent you the link?</p>
+              <div class="cf-invited__opts">
+                <label class="cf-invited__opt"><input type="radio" name="ref_type" value="partner"><span><strong>My partner</strong></span></label>
+                <label class="cf-invited__opt"><input type="radio" name="ref_type" value="couple"><span><strong>Another couple</strong></span></label>
+              </div>
+            </div>
             <label class="cf-field">
               <span>Your email</span>
               <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required>
@@ -1686,6 +1693,14 @@
         else { var saved = sessionStorage.getItem('cf_ref') || ''; if (CODE_RE.test(saved)) referredBy = saved; }
       } catch (e) {}
 
+      var invited = document.getElementById('cf-invited');
+      if (referredBy && invited) {
+        invited.hidden = false;
+        var card = invited.closest('.cf-join__card');
+        if (card) card.classList.add('is-invited');
+        invited.addEventListener('change', function () { invited.classList.remove('is-error'); say(''); });
+      }
+
       function makeCode() {
         var chars = 'abcdefghjkmnpqrstuvwxyz23456789', out = '';
         var arr = new Uint8Array(6);
@@ -1694,7 +1709,7 @@
         return out;
       }
 
-      var together = false, myCode = '';
+      var together = false, myCode = '', refType = '';
 
       function say(text) { msg.textContent = text; }
       function showShare() {
@@ -1716,7 +1731,7 @@
         form.hidden = true; done.hidden = false;
         showShare();
         try { if (window.cfConfetti) window.cfConfetti(done); } catch (e) {}
-        try { if (window.umami) umami.track('Waitlist signup', { partner: together ? 'yes' : 'no', referred: referredBy ? 'yes' : 'no' }); } catch (e) {}
+        try { if (window.umami) umami.track('Waitlist signup', { partner: together ? 'yes' : 'no', referred: referredBy ? (refType || 'yes') : 'no' }); } catch (e) {}
       }
 
       form.addEventListener('submit', function (e) {
@@ -1726,7 +1741,13 @@
         form.email.classList.remove('is-error');
 
         if (!valid(email)) { form.email.classList.add('is-error'); say('Please enter a valid email address.'); form.email.focus(); return; }
-        together = form.together.checked || !!partnerName;
+        refType = '';
+        if (referredBy) {
+          var picked = form.querySelector('input[name="ref_type"]:checked');
+          if (!picked) { invited.classList.add('is-error'); say('Please tell us who invited you.'); invited.scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
+          refType = picked.value;
+        }
+        together = form.together.checked || !!partnerName || refType === 'partner';
         myCode = makeCode();
         try { localStorage.setItem('cf_my_code', myCode); if (partnerName) localStorage.setItem('cf_partner', partnerName); else localStorage.removeItem('cf_partner'); } catch (e) {}
 
@@ -1741,7 +1762,7 @@
         if (together) data.append('SIGNED_UP_TOGETHER', '1');
         if (partnerName) data.append('PARTNER_NAME', partnerName);
         data.append('REFERRAL_CODE', myCode);
-        if (referredBy) data.append('REFERRED_BY', referredBy);
+        if (referredBy) { data.append('REFERRED_BY', referredBy); data.append('REFERRAL_TYPE', refType); }
         data.append('email_address_check', '');
         data.append('locale', 'en');
         fetch(CF_SIGNUP_ENDPOINT, {

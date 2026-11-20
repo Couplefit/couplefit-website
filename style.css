@@ -3972,3 +3972,21 @@ body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex
   background: transparent; color: var(--cf-burgundy); cursor: not-allowed; transform: none;
   box-shadow: inset 0 0 0 1.5px rgba(91,30,45,.35);
 }
+
+/* 2026-11-20 · Uitgenodigd: partner of ander koppel */
+#main#main #cta#cta#cta .cf-invited { grid-column: 1 / -1; order: -1; margin: 0; padding: 10px 12px; border: 1px solid #E6DFD2; border-radius: 16px; background: #FAF8F3; min-width: 0; }
+#main#main #cta#cta#cta .cf-invited[hidden] { display: none; }
+#main#main #cta#cta#cta .cf-invited.is-error { border-color: var(--cf-burgundy, #5B1E2D); box-shadow: 0 0 0 3px rgba(91,30,45,.12); }
+#main#main #cta#cta#cta .cf-invited__q { margin: 0; padding: 0 2px 7px; text-align: left; max-width: none; font-size: 14px; font-weight: 600; color: var(--cf-ink, #1E2A44); line-height: 1.35; }
+#main#main #cta#cta#cta .cf-invited__opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+#main#main #cta#cta#cta .cf-invited__opt { position: relative; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1.5px solid #E1DACB; border-radius: 12px; background: #fff; cursor: pointer; transition: border-color .15s, background .15s; min-height: 44px; }
+#main#main #cta#cta#cta .cf-invited__opt input { width: 18px; height: 18px; margin: 0; accent-color: var(--cf-burgundy, #5B1E2D); flex: none; cursor: pointer; }
+#main#main #cta#cta#cta .cf-invited__opt span { display: flex; flex-direction: column; gap: 2px; padding: 0; font-weight: 400; }
+#main#main #cta#cta#cta .cf-invited__opt strong { font-size: 14.5px; color: var(--cf-ink, #1E2A44); }
+#main#main #cta#cta#cta .cf-invited__opt small { font-size: 12.5px; color: var(--cf-label, #56698A); }
+#main#main #cta#cta#cta .cf-invited__opt:has(input:checked) { border-color: var(--cf-burgundy, #5B1E2D); background: #FBF6F5; }
+@media (max-width: 340px) { #main#main #cta#cta#cta .cf-invited__opts { grid-template-columns: 1fr; } }
+
+/* Uitgenodigd: ruil de "first 500"-balk en de hint in voor de vraag, zodat de kaart even hoog blijft */
+#main#main #cta#cta#cta .cf-join__card.is-invited .cf-spots,
+#main#main #cta#cta#cta .cf-join__card.is-invited #cf-partner-hint { display: none; }
