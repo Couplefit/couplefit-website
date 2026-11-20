@@ -1642,14 +1642,6 @@
           <span class="cf-signup__check" aria-hidden="true">✓</span>
            <h3>Check your inbox</h3>
           <p>We've sent you an email. Click the button in it to confirm your spot. Can't find it? Check your Promotions tab or spam folder.</p>
-          <div class="cf-share" id="cf-share" hidden>
-            <p class="cf-share__title">Bring your partner along</p>
-            <p class="cf-share__lead">CoupleFit is built for two. Send them your link so you can join as a Founding Couple together.</p>
-            <div class="cf-share__btns">
-              <a class="cf-share__btn" id="cf-share-wa" href="#" target="_blank" rel="noopener">Send via WhatsApp</a>
-              <button type="button" class="cf-share__btn cf-share__btn--ghost" id="cf-share-copy">Copy link</button>
-            </div>
-          </div>
         </div>
         </div>
       </div>
@@ -1729,7 +1721,6 @@
       }
       function finish() {
         form.hidden = true; done.hidden = false;
-        showShare();
         try { if (window.cfConfetti) window.cfConfetti(done); } catch (e) {}
         try { if (window.umami) umami.track('Waitlist signup', { partner: together ? 'yes' : 'no', referred: referredBy ? (refType || 'yes') : 'no' }); } catch (e) {}
       }

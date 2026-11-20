@@ -116,7 +116,7 @@
     <section class="card">
       <h2>What happens next</h2>
       <ol class="steps">
-        <li class="is-done"><span class="dot">✓</span><div><strong>Your welcome email</strong><small>On its way now, with your founding perks and your personal invite link.</small></div></li>
+        <li class="is-done"><span class="dot">✓</span><div><strong>Your welcome email</strong><small>On its way now, with your founding perks and your personal links to invite your partner and other couples.</small></div></li>
         <li class="is-next"><span class="dot">1</span><div><strong>Week 1 of your couples challenge</strong><small>Lands in your inbox in about 10 minutes.</small></div></li>
         <li><span class="dot">2</span><div><strong>A new challenge every week</strong><small>Weeks 2, 3 and 4 follow one week apart, each with your own page to tick things off together.</small></div></li>
         <li><span class="dot" aria-hidden="true">
@@ -124,94 +124,9 @@
       </ol>
     </section>
 
-    <section class="card share share--partner" id="partner">
-      <h2 id="partner-title">Bring your partner along</h2>
-      <p id="partner-lead">Send your partner your link to start the couples challenge together and claim your spot as a Founding Couple.</p>
-      <div class="btns">
-        <button type="button" class="btn btn--light" id="partner-share">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7.5 7.5L12 3l4.5 4.5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>
-          <span>Share your link</span>
-        </button>
-        <button type="button" class="btn btn--ghost-light" id="partner-copy">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>
-          <span>Copy link</span>
-        </button>
-      </div>
-      <p class="note" id="partner-note" hidden>Your personal invite link is also in your welcome email.</p>
-    </section>
-
-    <section class="card share" id="invite">
-      <span class="tag">Give a month, get a month</span>
-      <h2>Invite another couple</h2>
-      <p>Know a couple who'd love to get fit together? Send them your link. They get their first 30 days of Premium free at launch. Once they've been paying members for 30 days, you get a month of Premium free.</p>
-      <div class="btns" id="invite-btns">
-        <button type="button" class="btn btn--dark" id="friends-share">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7.5 7.5L12 3l4.5 4.5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>
-          <span>Share your invite</span>
-        </button>
-        <button type="button" class="btn btn--soft" id="friends-copy">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>
-          <span>Copy link</span>
-        </button>
-      </div>
-      <p class="nocode" id="invite-nocode" hidden>Your personal invite link is in your welcome email. Share it from there so your invites count.</p>
-      <p class="fine">Share as often as you like. You can earn a free month for up to 3 invited couples a year, starting once the app is live. <a href="/terms.html#referral">Terms apply</a>.</p>
-    </section>
-
     <a class="back" href="/">&larr; Back to CoupleFit</a>
   </main>
 
-<script>
-(function () {
-  var CODE_RE = /^[a-z0-9]{6}$/;
-  var code = '', partner = '';
-  try {
-    var q = new URLSearchParams(location.search).get('code') || '';
-    var saved = localStorage.getItem('cf_my_code') || '';
-    code = CODE_RE.test(q) ? q : (CODE_RE.test(saved) ? saved : '');
-    partner = (localStorage.getItem('cf_partner') || '').replace(/[<>]/g, '').slice(0, 40);
-  } catch (e) {}
-
-  var site = 'https://couple-fit.com/';
-  var link = code ? site + '?ref=' + code : site;
-
-  function track(name, data) { try { if (window.umami) umami.track(name, data); } catch (e) {} }
-  function copy(text, el) {
-    var label = el.querySelector('span') || el, old = label.textContent;
-    var ok = function () { label.textContent = 'Link copied'; setTimeout(function () { label.textContent = old; }, 2000); };
-    if (navigator.clipboard) navigator.clipboard.writeText(text).then(ok, function () { window.prompt('Copy your link:', text); });
-    else window.prompt('Copy your link:', text);
-  }
-
-  // partner
-  if (partner) {
-    document.getElementById('partner-title').textContent = 'Bring ' + partner + ' along';
-    document.getElementById('partner-lead').textContent = 'Send ' + partner + ' your link to start the couples challenge together and claim your spot as a Founding Couple.';
-  }
-  if (!code) {
-    document.getElementById('partner-note').hidden = false;
-    // zonder code telt een uitnodiging niet: verwijs naar de welkomstmail
-    document.getElementById('invite-btns').hidden = true;
-    document.getElementById('invite-nocode').hidden = false;
-  }
-  function share(text, btn, to) {
-    track('Share link', { channel: navigator.share ? 'native' : 'copy', page: 'confirmed', to: to });
-    if (navigator.share) { navigator.share({ title: 'CoupleFit', text: text, url: link }).catch(function () {}); }
-    else copy(link, btn);
-  }
-
-  var partnerText = 'I just joined CoupleFit as a founding couple, a fitness app built for the two of us. Join me so we can start the free 4-week couples challenge together:';
-  var partnerShare = document.getElementById('partner-share');
-  partnerShare.addEventListener('click', function () { share(partnerText, partnerShare, 'partner'); });
-  document.getElementById('partner-copy').addEventListener('click', function () { track('Share link', { channel: 'copy', page: 'confirmed', to: 'partner' }); copy(link, this); });
-
-  // ander koppel
-  var friendText = 'We just joined CoupleFit, a fitness app built for couples. Join the waitlist with our link: you get a free 4-week couples challenge now and your first 30 days of Premium free at launch.';
-  var shareBtn = document.getElementById('friends-share');
-  shareBtn.addEventListener('click', function () { share(friendText, shareBtn, 'couple'); });
-  document.getElementById('friends-copy').addEventListener('click', function () { track('Share link', { channel: 'copy', page: 'confirmed', to: 'couple' }); copy(link, this); });
-})();
-</script>
 <script src="/confetti.js?v=3"></script>
 <script>
   window.addEventListener('load', function () {
