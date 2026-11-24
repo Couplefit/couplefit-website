@@ -23,27 +23,38 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261116b" />
+<link rel="stylesheet" href="/style.css?v=20261124b" />
 </head>
 <body class="legal-page">
   <header id="header"></header>
   <script src="/header-loader.js?v=2" defer></script>
 
-  <main id="main">
+  <main id="main" class="section legal">
+    <div class="container">
+      <h1>Subscriptions</h1>
+      <p class="lead"><strong>Last Updated: November 24, 2026</strong></p>
+      <p>One CoupleFit subscription covers the two of you, so you each pay half. One partner subscribes, the other gets the same access, and you each keep your own account, linked from day one.</p>
 
-<section class="cf-price" id="cf-pricing" data-period="yearly" aria-labelledby="plans">
-  <h1 id="plans" class="cf-price__title">Subscriptions</h1>
-  <p class="cf-price__lead">One subscription covers both of you. Two accounts, linked from day one.</p>
-
-  <div class="cf-founding" role="note">
-    <span class="cf-founding__pair" aria-hidden="true"><i></i><i></i></span>
-    <p><strong>Founding couple offer:</strong> 30% off Premium, for life, as long as your subscription stays active. Only for our first 500 couples. Elite is coming after launch: upgrade later and your founding discount comes with you. If you cancel and sign up again later, the founding discount no longer applies. All prices are in euros and include VAT.</p>
-  </div>
-
+      <h2>Plans and prices</h2>
+<section class="cf-price cf-price--legal" id="cf-pricing" data-period="yearly" aria-label="Plans and prices">
+  <div class="cf-price__controls">
   <div class="cf-toggle" data-period="yearly" role="group" aria-label="Billing period">
     <span class="cf-toggle__thumb" aria-hidden="true"></span>
     <button type="button" data-set="monthly" aria-pressed="false">Monthly</button>
-    <button type="button" data-set="yearly" aria-pressed="true">Yearly <span class="cf-save">Save 10%</span></button>
+    <button type="button" data-set="yearly" aria-pressed="true">Yearly <span class="cf-save">Save 40%</span></button>
+  </div>
+
+  <label class="cf-currency">
+    <span>Prices in</span>
+    <select id="cf-currency" aria-label="Currency">
+      <option value="EUR">€ EUR</option>
+      <option value="USD">$ USD</option>
+      <option value="GBP">£ GBP</option>
+      <option value="CAD">$ CAD</option>
+      <option value="AUD">$ AUD</option>
+    </select>
+  </label>
+
   </div>
 
   <div class="cf-plans">
@@ -55,7 +66,7 @@
         <p class="cf-plan__sub">Get started together</p>
       </div>
       <div>
-        <div class="cf-amount"><span class="cf-amount__num">€0</span><span class="cf-amount__per">per month</span></div>
+        <div class="cf-amount"><span class="cf-amount__num" data-free>€0</span><span class="cf-amount__per">per month</span></div>
         <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span>Free for both of you</div>
         <p class="cf-billing">No card required, free forever</p>
       </div>
@@ -68,7 +79,7 @@
     </article>
 
     <!-- PREMIUM -->
-    <article class="cf-plan cf-plan--pop">
+    <article class="cf-plan cf-plan--pop" data-plan="premium">
       <span class="cf-tag">Our pick</span>
       <div>
         <h3>Premium</h3>
@@ -77,12 +88,13 @@
       <div>
         <span class="cf-flabel">Founding price</span>
         <div class="cf-amount">
-          <span class="cf-amount__num" data-monthly="17.49" data-yearly="15.74">€15.74</span>
+          <span class="cf-amount__num">€10.42</span>
           <span class="cf-amount__per">per month</span>
-          <span class="cf-amount__old" data-monthly="€24.99" data-yearly="€22.49">€22.49</span>
+          <span class="cf-amount__old">€15.00</span>
         </div>
-        <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span><strong class="cf-person__text" data-monthly="That's €8.75 per person" data-yearly="That's €7.87 per person">That's €7.87 per person</strong></div>
-        <p class="cf-billing" data-monthly="Billed monthly. You save €7.50 a month" data-yearly="Billed €188.88 a year. You save €81 a year">Billed €188.88 a year. You save €81 a year</p>
+        <p class="cf-regular">Regular price after launch: €179.99 a year (€15.00/month)</p>
+        <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span><strong class="cf-person__text">Just €5.21 per person a month</strong></div>
+        <p class="cf-billing">Billed €124.99 a year for the two of you. You save €55.00 (31%) every year.</p>
       </div>
       <ul class="cf-list">
         <li>Everything in Basic</li>
@@ -95,7 +107,7 @@
     </article>
 
     <!-- ELITE -->
-    <article class="cf-plan cf-plan--soon" aria-label="Elite, coming soon">
+    <article class="cf-plan cf-plan--soon" data-plan="elite" aria-label="Elite, coming soon">
       <span class="cf-tag">Coming soon</span>
       <div>
         <h3>Elite</h3>
@@ -104,12 +116,13 @@
       <div>
         <span class="cf-flabel">Founding price</span>
         <div class="cf-amount">
-          <span class="cf-amount__num" data-monthly="24.49" data-yearly="22.04">€22.04</span>
+          <span class="cf-amount__num">€22.08</span>
           <span class="cf-amount__per">per month</span>
-          <span class="cf-amount__old" data-monthly="€34.99" data-yearly="€31.49">€31.49</span>
+          <span class="cf-amount__old">€31.67</span>
         </div>
-        <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span><strong class="cf-person__text" data-monthly="That's €12.25 per person" data-yearly="That's €11.02 per person">That's €11.02 per person</strong></div>
-        <p class="cf-billing" data-monthly="Billed monthly. You save €10.50 a month" data-yearly="Billed €264.48 a year. You save €113.40 a year">Billed €264.48 a year. You save €113.40 a year</p>
+        <p class="cf-regular">Regular price after launch: €379.99 a year (€31.67/month)</p>
+        <div class="cf-person"><span class="cf-person__dots"><i></i><i></i></span><strong class="cf-person__text">Just €11.04 per person a month</strong></div>
+        <p class="cf-billing">Billed €264.99 a year for the two of you. You save €115.00 (30%) every year.</p>
       </div>
       <ul class="cf-list">
         <li>Everything in Premium</li>
@@ -122,71 +135,37 @@
     </article>
 
   </div>
+  <p class="cf-price__fine" id="cf-price-fine">Prices in EUR include VAT. Founding prices are rounded to local store price points, so in some currencies your discount is slightly more than 30%. You'll see your exact local price in the App Store or Google Play.</p>
 </section>
 
-    <section class="section legal">
-      <div class="container">
-        <div class="feature-card">
-          <h3>Billing & Cancellations</h3>
-          <ul>
-            <li>Subscriptions auto‑renew until canceled.</li>
-            <li>Manage or cancel via your App Store account (Apple or Google).</li>
-            <li>Deleting your CoupleFit account does <strong>not</strong> cancel your subscription.</li>
-            <li>Refunds are handled by Apple/Google; CoupleFit cannot issue refunds.</li>
-            <li>The founding couple discount applies for as long as your subscription stays active. If you cancel and subscribe again later, regular prices apply.</li>
-          </ul>
-          <p><strong>Availability:</strong> CoupleFit is coming soon to iPhone and Android. Paid subscriptions will be available at launch.</p>
-          <p>Support: <a href="mailto:support@couple-fit.com">support@couple-fit.com</a></p>
-        </div>
-      </div>
-    </section>
+      <h2>Founding couple offer</h2>
+      <p>Our first 500 couples get 30% off Premium for life, for as long as their subscription stays active. Elite is coming after launch: upgrade later and your founding discount comes with you. If you cancel and subscribe again later, the founding discount no longer applies and regular prices apply. <span id="cf-tax-line">All prices are in euros and include VAT.</span></p>
 
+      <h2>Billing and cancellations</h2>
+      <ul class="bullets">
+        <li>Subscriptions are bought through the App Store or Google Play and renew automatically until you cancel.</li>
+        <li>Cancel at least 24 hours before the end of your current period to avoid renewal. You keep access until the end of the period you paid for.</li>
+        <li>Manage or cancel your subscription in your Apple or Google account settings.</li>
+        <li>Deleting your CoupleFit account does <strong>not</strong> cancel your subscription.</li>
+        <li>Refunds are handled by Apple or Google under their own policies. CoupleFit cannot issue refunds itself.</li>
+      </ul>
+
+      <h2>Prices, currencies and rounding</h2>
+      <p>Prices are set per country by the App Store and Google Play and rounded to local price points. Because of this rounding, the founding discount can be slightly more than 30% in some currencies, and the yearly saving can also differ slightly. The price shown in the store before you buy is the price you pay. See section 6 of our <a href="/terms.html#pricing">Terms of Service</a>.</p>
+
+      <h2>Availability</h2>
+      <p>CoupleFit is coming soon to iPhone and Android. Paid subscriptions will be available at launch.</p>
+
+      <h2>Contact</h2>
+      <p><a href="mailto:support@couple-fit.com">support@couple-fit.com</a></p>
+    </div>
   </main>
 
   <div id="footer"></div>
   <script src="/footer-loader.js?v=4"></script>
 
-<!-- Monthly / Yearly schakelaar -->
-<script>
-(function () {
-  var root = document.querySelector('.cf-price');
-  if (!root) return;
-  var toggle = root.querySelector('.cf-toggle');
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function tween(el, to) {
-    var from = parseFloat(el.textContent.replace('€', '')) || 0;
-    if (reduce || from === to) { el.textContent = '€' + to.toFixed(2); return; }
-    var start = null;
-    function step(t) {
-      if (!start) start = t;
-      var p = Math.min((t - start) / 450, 1);
-      var e = 1 - Math.pow(1 - p, 3);
-      el.textContent = '€' + (from + (to - from) * e).toFixed(2);
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
-  function setPeriod(period) {
-    root.setAttribute('data-period', period);
-    toggle.setAttribute('data-period', period);
-    toggle.querySelectorAll('button').forEach(function (b) {
-      b.setAttribute('aria-pressed', b.getAttribute('data-set') === period ? 'true' : 'false');
-    });
-    root.querySelectorAll('.cf-amount__num[data-' + period + ']').forEach(function (el) {
-      tween(el, parseFloat(el.getAttribute('data-' + period)));
-    });
-    root.querySelectorAll('.cf-person [data-' + period + '], .cf-billing[data-' + period + '], .cf-amount__old[data-' + period + ']').forEach(function (el) {
-      el.textContent = el.getAttribute('data-' + period);
-    });
-  }
-
-  toggle.querySelectorAll('button').forEach(function (b) {
-    b.addEventListener('click', function () { setPeriod(b.getAttribute('data-set')); });
-  });
-})();
-</script>
+<!-- Prijzen per valuta + Monthly/Yearly schakelaar -->
+<script src="/pricing.js?v=2"></script>
 
 <!-- Prijskaarten op telefoon: swipe-rij met bolletjes -->
 <script>

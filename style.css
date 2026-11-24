@@ -3990,3 +3990,32 @@ body footer.cf-footer.cf-footer .cf-footer__bottom .cf-footer__disclaimer { flex
 /* Uitgenodigd: ruil de "first 500"-balk en de hint in voor de vraag, zodat de kaart even hoog blijft */
 #main#main #cta#cta#cta .cf-join__card.is-invited .cf-spots,
 #main#main #cta#cta#cta .cf-join__card.is-invited #cf-partner-hint { display: none; }
+
+/* Subscriptions-pagina: prijskaarten binnen de witte juridische kaart */
+body.legal-page main#main.legal #cf-pricing.cf-price--legal {
+  width: 100%; margin: 12px 0 8px; padding: 0 !important;
+  background: transparent !important; border-radius: 0 !important; box-shadow: none !important;
+}
+body.legal-page main#main.legal #cf-pricing.cf-price--legal .cf-price__controls { margin: 8px auto 24px; }
+body.legal-page main#main.legal #cf-pricing.cf-price--legal .cf-plan h3 { margin-top: 0; font-size: 22px; line-height: 1.2; }
+body.legal-page main#main.legal #cf-pricing.cf-price--legal .cf-plan p,
+body.legal-page main#main.legal #cf-pricing.cf-price--legal .cf-plan li { font-size: 14px; line-height: 1.45; }
+body.legal-page main#main.legal #cf-pricing.cf-price--legal .cf-price__fine { font-size: 13px; line-height: 1.5; margin: 18px auto 0; max-width: 70ch; color: var(--cf-muted, #56698A); }
+@media (max-width: 760px) {
+  body.legal-page main#main.legal #cf-pricing.cf-price--legal { width: 100%; padding: 0 !important; }
+}
+
+/* Juridische pagina's: rustige witruimte tussen alinea's, tussenkopjes en lijsten */
+body.legal-page main.legal > .container > p,
+body.legal-page main.legal > .container > section:not(.cf-price) > p { margin: 0 0 16px; max-width: 75ch; }
+body.legal-page main.legal > .container h2 { margin-top: 44px; margin-bottom: 12px; }
+body.legal-page main.legal > .container h3 { font-size: 18px; line-height: 1.35; margin: 26px 0 8px; color: var(--cf-ink, #1E2A44); }
+body.legal-page main.legal > .container h2 + h3 { margin-top: 12px; }
+body.legal-page main.legal > .container > ul,
+body.legal-page main.legal > .container > ol { margin: 4px 0 18px; padding-left: 22px; max-width: 75ch; }
+body.legal-page main.legal > .container > ul > li, body.legal-page main.legal > .container > ol > li { margin-bottom: 8px; }
+body.legal-page main.legal > .container > ul > li:last-child { margin-bottom: 0; }
+@media (max-width: 700px) {
+  body.legal-page main.legal > .container h2 { margin-top: 34px; }
+  body.legal-page main.legal > .container h3 { font-size: 17px; margin-top: 22px; }
+}
