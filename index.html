@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261127a" />
+<link rel="stylesheet" href="/style.css?v=20261127e" />
 
 
 </head>
@@ -830,9 +830,9 @@
   if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
   host.appendChild(tip);
   var timer = null;
-  function show(el) {
+  function show(el, text) {
     clearTimeout(timer);
-    tip.textContent = el.getAttribute('data-tip');
+    tip.textContent = text || el.getAttribute('data-tip');
     tip.classList.add('is-on');
     var s = host.getBoundingClientRect(), r = el.getBoundingClientRect();
     var w = tip.offsetWidth, h = tip.offsetHeight;
@@ -858,7 +858,118 @@
       timer = setTimeout(hide, 2600);
     });
   });
-  scroller.addEventListener('scroll', hide, { passive: true });
+  scroller.addEventListener('scroll', function () {
+    if (!screen.classList.contains('is-demo')) hide();
+  }, { passive: true });
+
+  /* Demo: speelt één keer vanzelf af als de telefoon in beeld komt (scrollen en tikken).
+     Het scrollen gebeurt met een vloeiende CSS-overgang (zachter dan scrollTop per frame).
+     Zodra de bezoeker in de telefoon klikt of tikt, stopt de demo en is alles gewoon te gebruiken. */
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+    var stopped = false, waits = [], curY = 0;
+    var EASE = 'cubic-bezier(.45, 0, .2, 1)';
+    var kids = Array.prototype.slice.call(scroller.children);
+    var finger = document.createElement('span');
+    finger.className = 'fp-finger';
+    finger.setAttribute('aria-hidden', 'true');
+    zoomEl.appendChild(finger);
+
+    function wait(ms) {
+      return new Promise(function (res) { waits.push(setTimeout(res, ms)); });
+    }
+    function topIn(el) {
+      var y = 0;
+      while (el && el !== scroller) { y += el.offsetTop; el = el.offsetParent; }
+      return y;
+    }
+    function leftIn(el) {
+      var x = 0;
+      while (el && el !== scroller) { x += el.offsetLeft; el = el.offsetParent; }
+      return x;
+    }
+    function maxY() { return Math.max(0, scroller.scrollHeight - scroller.clientHeight); }
+    function glide(y, ms) {
+      curY = Math.max(0, Math.min(y, maxY()));
+      kids.forEach(function (k) {
+        k.style.transition = 'transform ' + ms + 'ms ' + EASE;
+        k.style.transform = 'translate3d(0,' + (-curY) + 'px,0)';
+      });
+      return wait(ms + 40);
+    }
+    function center(el) {
+      return topIn(el) - (scroller.clientHeight - el.offsetHeight) / 2;
+    }
+    /* na afloop of bij stoppen: de verschuiving omzetten naar echte scrollpositie, zonder sprong */
+    function settle() {
+      var y = curY;
+      try {
+        var m = new DOMMatrixReadOnly(getComputedStyle(kids[0]).transform);
+        y = -m.m42;
+      } catch (e) {}
+      kids.forEach(function (k) { k.style.transition = 'none'; k.style.transform = ''; });
+      screen.classList.remove('is-demo');
+      scroller.scrollTop = y;
+    }
+    function stop() {
+      if (stopped) return;
+      stopped = true;
+      waits.forEach(clearTimeout);
+      finger.classList.remove('is-on', 'is-press');
+      if (screen.classList.contains('is-demo')) { hide(); settle(); }
+    }
+    ['pointerdown', 'touchstart', 'keydown'].forEach(function (t) {
+      screen.addEventListener(t, stop, { passive: true });
+    });
+
+    async function tap(el, text) {
+      if (stopped) return;
+      finger.style.left = (leftIn(el) + el.offsetWidth / 2) + 'px';
+      finger.style.top = (scroller.offsetTop + topIn(el) - curY + el.offsetHeight / 2) + 'px';
+      finger.classList.add('is-on');
+      await wait(450); if (stopped) return;
+      finger.classList.add('is-press');
+      el.classList.add('fp-pressed');
+      if (el.classList.contains('fp-day')) {
+        screen.querySelectorAll('.fp-day.is-picked').forEach(function (b) { b.classList.remove('is-picked'); });
+        el.classList.add('is-picked');
+      }
+      await wait(160); if (stopped) return;
+      finger.classList.remove('is-press');
+      el.classList.remove('fp-pressed');
+      show(el, text);
+      await wait(350); if (stopped) return;
+      finger.classList.remove('is-on');
+    }
+
+    async function run() {
+      screen.classList.add('is-demo');
+      var feed = screen.querySelector('.fp-feed');
+      var day = screen.querySelector('.fp-day.is-today') || screen.querySelector('.fp-day');
+      var pill = screen.querySelector('.fp-pill');
+      await wait(1400); if (stopped) return;
+      await glide(maxY(), 2400); if (stopped) return;
+      await wait(200); await tap(day); await wait(2400); if (stopped) return;
+      hide(); await wait(250); if (stopped) return;
+      await glide(center(feed), 1600); if (stopped) return;
+      await wait(200); await tap(feed); await wait(2400); if (stopped) return;
+      hide(); await wait(250); if (stopped) return;
+      await glide(0, 1600); if (stopped) return;
+      await wait(200); await tap(pill); await wait(2400); if (stopped) return;
+      hide(); await wait(450); if (stopped) return;
+      show(screen, 'Your turn: scroll and tap around.');
+      await wait(3200); if (stopped) return;
+      hide();
+      stopped = true;
+      settle();
+    }
+
+    var seen = new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting) { seen.disconnect(); run(); }
+    }, { threshold: 0.5 });
+    seen.observe(screen);
+  })();
 })();
 </script>
 

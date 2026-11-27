@@ -4027,3 +4027,24 @@ html.cf-founding-closed #main #cf-pricing .cf-regular,
 html.cf-founding-closed #main #cf-pricing .cf-founding__more,
 html.cf-founding-closed #main #cf-pricing .cf-founding__details,
 html.cf-founding-closed #main .cf-founding-only { display: none !important; }
+
+
+/* Features-telefoon 1: demo (vinger en indruk-effect) */
+#features .fp-finger {
+  position: absolute; left: 0; top: 0; z-index: 15; width: 38px; height: 38px;
+  margin: -19px 0 0 -19px; border-radius: 50%; pointer-events: none;
+  background: rgba(30, 42, 68, 0.22); border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 18px rgba(30, 42, 68, 0.22);
+  opacity: 0; transform: scale(1.25);
+  transition: opacity .4s ease, transform .45s cubic-bezier(.2, .8, .2, 1);
+}
+#features .fp-finger.is-on { opacity: 1; transform: scale(1); }
+#features .fp-finger.is-on.is-press { transform: scale(.82); transition-duration: .4s, .16s; }
+#features .fp-pressed { transform: scale(.97); transition: transform .16s ease; }
+#features .fp-feed, #features .fp-pill, #features .fp-day { transition: transform .35s cubic-bezier(.2, .8, .2, 1); }
+#features .fp-screen.is-demo .fp-scroll > * { will-change: transform; }
+#features .fp-tip { transition: opacity .35s ease, transform .35s cubic-bezier(.2, .8, .2, 1); transform: translateY(6px) scale(.98); }
+#features .fp-tip.is-on { transform: none; }
+
+/* Tijdens de demo scrolt de telefoon niet mee met de muis, zodat de pagina gewoon doorscrolt */
+#features .fp-screen.is-demo .fp-scroll { overflow-y: hidden; }
