@@ -80,7 +80,7 @@
         : 'Regular price after launch: ' + money2(s, p.m) + ' a month');
       set(card, '.cf-person__text', 'Just ' + money2(s, amount / 2) + ' per person a month');
       set(card, '.cf-billing', closed
-        ? (y ? 'Billed ' + money2(s, p.y) + ' a year for the two of you. You save ' + pct(p.y, p.m * 12) + '% compared with monthly.'
+        ? (y ? '7 days free, then ' + money2(s, p.y) + ' a year for the two of you. You save ' + pct(p.y, p.m * 12) + '% compared with monthly.'
              : 'Billed ' + money2(s, p.m) + ' a month for the two of you. Cancel anytime.')
         : y
         ? 'Billed ' + money2(s, p.fy) + ' a year for the two of you. You save ' + money2(s, p.y - p.fy) + ' (' + pct(p.fy, p.y) + '%) every year.'

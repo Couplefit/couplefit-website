@@ -4048,3 +4048,6 @@ html.cf-founding-closed #main .cf-founding-only { display: none !important; }
 
 /* Tijdens de demo scrolt de telefoon niet mee met de muis, zodat de pagina gewoon doorscrolt */
 #features .fp-screen.is-demo .fp-scroll { overflow-y: hidden; }
+
+/* Alleen tonen als founding vol is (bijv. de FAQ over de 7-daagse proefperiode) */
+html:not(.cf-founding-closed) #main .cf-closed-only { display: none !important; }

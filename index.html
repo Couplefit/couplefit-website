@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261127e" />
+<link rel="stylesheet" href="/style.css?v=20261127f" />
 
 
 </head>
@@ -919,8 +919,10 @@
       finger.classList.remove('is-on', 'is-press');
       if (screen.classList.contains('is-demo')) { hide(); settle(); }
     }
-    ['pointerdown', 'touchstart', 'keydown'].forEach(function (t) {
-      screen.addEventListener(t, stop, { passive: true });
+    /* Alleen een echte klik of tik stopt de demo. Met je duim over de telefoon de pagina
+       verder scrollen (mobiel) of met het trackpad scrollen telt niet. */
+    ['click', 'keydown'].forEach(function (t) {
+      screen.addEventListener(t, stop);
     });
 
     async function tap(el, text) {
@@ -1233,7 +1235,7 @@
  
 
 
-<script src="/pricing.js?v=3"></script>
+<script src="/pricing.js?v=4"></script>
 
     
 
@@ -1429,6 +1431,13 @@
           <span>Is the price per person or per couple?</span><i aria-hidden="true"></i>
         </button>
         <div class="cf-faq__a"><div><p>Per couple. One subscription covers both of you, with two separate accounts. Premium is <span data-cf-p="premium.m">€24.99</span> a month for the two of you, about <span data-cf-p="premium.half">€12.50</span> per person. With yearly billing it's <span data-cf-p="premium.y">€179.99</span> a year, just <span data-cf-p="premium.yhalf">€7.50</span> per person a month. As a founding couple you pay <span data-cf-p="premium.fm">€16.99</span> a month or <span data-cf-p="premium.fy">€124.99</span> a year, that's <span data-cf-p="premium.fyhalf">€5.21</span> per person a month.</p></div></div>
+      </div>
+
+      <div class="cf-faq__item cf-closed-only">
+        <button class="cf-faq__q" type="button" aria-expanded="false">
+          <span>Is there a free trial?</span><i aria-hidden="true"></i>
+        </button>
+        <div class="cf-faq__a"><div><p>Yes. The yearly Premium plan comes with 7 days free for new subscribers, and you both get full access during the trial. Cancel at least 24 hours before it ends and you won't pay anything. Otherwise it continues at <span data-cf-p="premium.y">€179.99</span> a year for the two of you. The monthly plan has no trial. <a href="/terms.html#free-trial">See the trial terms</a></p></div></div>
       </div>
 
       <div class="cf-faq__item">
