@@ -13,6 +13,10 @@
       {
         "source": "/api/challenge/**",
         "function": { "functionId": "challengeApi", "region": "europe-west1" }
+      },
+      {
+        "source": "/api/founding",
+        "function": { "functionId": "foundingApi", "region": "europe-west1" }
       }
     ],
     "headers": [

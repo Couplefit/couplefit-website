@@ -4019,3 +4019,11 @@ body.legal-page main.legal > .container > ul > li:last-child { margin-bottom: 0;
   body.legal-page main.legal > .container h2 { margin-top: 34px; }
   body.legal-page main.legal > .container h3 { font-size: 17px; margin-top: 22px; }
 }
+
+/* Founding vol (founding-live.js zet html.cf-founding-closed): founding-onderdelen verbergen */
+html.cf-founding-closed #main #cf-pricing .cf-flabel,
+html.cf-founding-closed #main #cf-pricing .cf-amount__old,
+html.cf-founding-closed #main #cf-pricing .cf-regular,
+html.cf-founding-closed #main #cf-pricing .cf-founding__more,
+html.cf-founding-closed #main #cf-pricing .cf-founding__details,
+html.cf-founding-closed #main .cf-founding-only { display: none !important; }

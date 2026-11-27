@@ -64,7 +64,7 @@
 </script>
 <link rel="preload" href="/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/style.css?v=20261120e" />
+<link rel="stylesheet" href="/style.css?v=20261127a" />
 
 
 </head>
@@ -969,7 +969,7 @@
   <div class="cf-founding-wrap">
     <div class="cf-founding" role="note">
       <span class="cf-founding__pair" aria-hidden="true"><i></i><i></i></span>
-      <p><strong>Founding couple offer:</strong> 30% off Premium for life, as long as you stay subscribed. First 500 couples only.</p>
+      <p id="cf-founding-text"><strong>Founding couple offer:</strong> 30% off Premium for life, as long as you stay subscribed. First 500 couples only.</p>
       <button type="button" class="cf-founding__more" aria-expanded="false" aria-controls="cf-founding-details">Details</button>
     </div>
     <ul class="cf-founding__details" id="cf-founding-details" hidden>
@@ -1044,7 +1044,7 @@
         <li>Meal tracker with barcode scanner</li>
       </ul>
       <a class="cf-plan__cta" href="#cta">Reserve Premium</a>
-      <p class="cf-plan__note">No payment today. Price locked in at launch.</p>
+      <p class="cf-plan__note cf-founding-only">No payment today. Price locked in at launch.</p>
     </article>
 
     <!-- ELITE -->
@@ -1122,7 +1122,7 @@
  
 
 
-<script src="/pricing.js?v=2"></script>
+<script src="/pricing.js?v=3"></script>
 
     
 
@@ -1474,17 +1474,17 @@
         <div class="cf-join__pitch">
           <div class="cf-join__brand"><span class="cf-signup__logo" aria-hidden="true"><svg viewBox="0 0 30 22"><defs><clipPath id="cf-signup-overlap"><circle cx="11" cy="11" r="9"/></clipPath></defs><circle cx="11" cy="11" r="9" fill="#5B1E2D"/><circle cx="19" cy="11" r="9" fill="#B7C6D6"/><circle cx="19" cy="11" r="9" fill="#1E2A44" clip-path="url(#cf-signup-overlap)"/></svg></span><span class="cf-label">Founding couples</span></div>
           <h2 id="cf-signup-title" class="cf-signup__title">Start your journey, together.</h2>
-          <p class="cf-signup__lead">Be one of our first 500 founding couples. Grow stronger together from day one, and help us shape the app along the way.</p>
+          <p class="cf-signup__lead" id="cf-signup-lead">Be one of our first 500 founding couples. Grow stronger together from day one, and help us shape the app along the way.</p>
           <ul class="cf-join__perks" aria-label="What founding couples get">
             <li class="cf-join__perk cf-join__perk--gift">
               <span class="cf-join__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="9" width="17" height="11.5" rx="2"/><path d="M2.5 9h19M12 9v11.5M12 9c-1.6-3.6-6.2-4.6-6.2-1.8C5.8 9 12 9 12 9zm0 0c1.6-3.6 6.2-4.6 6.2-1.8C18.2 9 12 9 12 9z"/></svg></span>
               <div><span class="cf-join__tag">Welcome gift</span><strong>A free 4&#8209;week couples challenge</strong><p>Four weeks, four challenges. The first lands in your inbox minutes after you confirm, then a new one unlocks every week.</p></div>
             </li>
-            <li class="cf-join__perk">
+            <li class="cf-join__perk cf-founding-only">
               <span class="cf-join__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg></span>
               <div><strong>30% off Premium, for life</strong><p>Your founding price stays as long as your subscription is active.</p></div>
             </li>
-            <li class="cf-join__perk">
+            <li class="cf-join__perk cf-founding-only">
               <span class="cf-join__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 19V5M5.5 11.5L12 5l6.5 6.5"/></svg></span>
               <div><strong>Your discount moves with you</strong><p>When Elite launches, upgrade and keep your 30%.</p></div>
             </li>
@@ -1493,7 +1493,7 @@
 
         <div class="cf-join__card">
           <div class="cf-join__head">
-            <strong>Claim your founding spot</strong>
+            <strong id="cf-join-head">Claim your founding spot</strong>
             <span>Free to join · takes 20 seconds</span>
           </div>
         <div class="cf-spots" id="cf-spots" data-joined="0" data-total="500" data-min="25">
@@ -1503,26 +1503,7 @@
           </div>
           <div class="cf-spots__bar" aria-hidden="true"><i id="cf-spots-fill"></i></div>
         </div>
-        <script>
-        (function () {
-          var box = document.getElementById('cf-spots');
-          if (!box) return;
-          var joined = parseInt(box.getAttribute('data-joined'), 10) || 0;
-          var total = parseInt(box.getAttribute('data-total'), 10) || 500;
-          var min = parseInt(box.getAttribute('data-min'), 10) || 25;
-          var fill = document.getElementById('cf-spots-fill');
-          if (joined >= min) {
-            document.getElementById('cf-spots-label').textContent = joined + ' couples have joined';
-            document.getElementById('cf-spots-left').textContent = Math.max(total - joined, 0) + ' of ' + total + ' spots left';
-            box.classList.add('has-count');
-          }
-          var pct = joined >= min ? Math.min(joined / total * 100, 100) : 0;
-          var io = new IntersectionObserver(function (e) {
-            if (e[0].isIntersecting) { fill.style.width = pct + '%'; io.disconnect(); }
-          }, { threshold: 0.5 });
-          io.observe(box);
-        })();
-        </script>
+        <script src="/founding-live.js?v=1" defer></script>
 
         <form class="cf-signup__form" id="cf-signup-form" novalidate>
           <div class="cf-signup__fields">
@@ -1542,7 +1523,7 @@
               <input type="text" name="partner_name" autocomplete="off" maxlength="40" aria-describedby="cf-partner-hint" placeholder="e.g. Rachelle">
               <small class="cf-field__hint" id="cf-partner-hint">So we can welcome you both by name. We never email your partner.</small>
             </label>
-            <button type="submit" class="cf-signup__btn">Join as a founding couple <span aria-hidden="true">&rarr;</span></button>
+            <button type="submit" class="cf-signup__btn"><span id="cf-signup-btn-text">Join as a founding couple</span> <span aria-hidden="true">&rarr;</span></button>
             <label class="cf-together">
               <input type="checkbox" name="together">
               <span>We're signing up together</span>

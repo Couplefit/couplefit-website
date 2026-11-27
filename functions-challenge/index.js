@@ -9,7 +9,7 @@
  *   challenge_couples/{key}        -> { data: {...}, createdAt, updatedAt, saves }
  *   challenge_contacts/{emailHash} -> { key, createdAt }   (geen e-mailadres in klare tekst)
  */
-const { onRequest } = require('firebase-functions/v2/https');
+const { onRequest, onCall, HttpsError } = require('firebase-functions/v2/https');
 const { setGlobalOptions } = require('firebase-functions/v2');
 const { defineSecret } = require('firebase-functions/params');
 const logger = require('firebase-functions/logger');
@@ -25,6 +25,7 @@ setGlobalOptions({ region: 'europe-west1', maxInstances: 5, memory: '256MiB', ti
 
 const BREVO_API_KEY = defineSecret('BREVO_API_KEY');
 const WEBHOOK_TOKEN = defineSecret('CHALLENGE_WEBHOOK_TOKEN');
+const RC_WEBHOOK_TOKEN = defineSecret('REVENUECAT_WEBHOOK_TOKEN');
 
 // ID('s) van de Brevo-wachtlijst. Leeg = elke lijst-toevoeging telt.
 const WAITLIST_LIST_IDS = [];
@@ -61,6 +62,9 @@ function originOk(req) {
   if (!o) return true; // same-origin GET / sendBeacon kan geen Origin sturen
   return ALLOWED_ORIGINS.includes(o) || PREVIEW_ORIGIN_RE.test(o);
 }
+
+// Founding-plekken (zie founding.js)
+const founding = require('./founding')({ db, FieldValue, logger, hashEmail, normEmail, brevoKey: () => BREVO_API_KEY.value() });
 
 async function brevoSetKey(email, key) {
   const res = await fetch(`https://api.brevo.com/v3/contacts/${encodeURIComponent(email)}`, {
@@ -120,6 +124,12 @@ exports.challengeBrevoWebhook = onRequest({ secrets: [BREVO_API_KEY, WEBHOOK_TOK
         const lists = [].concat(ev.list_id || ev.listId || ev.list_ids || []).map(Number);
         if (WAITLIST_LIST_IDS.length && !lists.some((l) => WAITLIST_LIST_IDS.includes(l))) continue;
         await ensureChallenge(email);
+        try {
+          await founding.assignFounding(email);
+        } catch (err) {
+          failed = true; // Brevo stuurt het event opnieuw; assignFounding is veilig om te herhalen
+          logger.error('founding assign failed', { error: String(err && err.message || err).slice(0, 500) });
+        }
       }
     } catch (err) {
       failed = true;
@@ -191,5 +201,106 @@ exports.challengeApi = onRequest(async (req, res) => {
   } catch (err) {
     logger.error('challengeApi error', { route, error: String(err && err.message || err).slice(0, 500), code: String(err && err.code || '') });
     return res.status(500).json({ error: 'server' });
+  }
+});
+
+// ---------------------------------------------------------------- Founding: publieke stand voor de site
+// Bereikbaar via couple-fit.com/api/founding (Hosting rewrite in firebase.json)
+exports.foundingApi = onRequest(async (req, res) => {
+  res.set('X-Robots-Tag', 'noindex');
+  if (req.method !== 'GET') return res.status(405).json({ error: 'method' });
+  try {
+    res.set('Cache-Control', 'public, max-age=30, s-maxage=30');
+    return res.json(await founding.publicStats());
+  } catch (err) {
+    logger.error('foundingApi error', { error: String(err && err.message || err).slice(0, 500) });
+    res.set('Cache-Control', 'no-store');
+    return res.status(500).json({ error: 'server' });
+  }
+});
+
+// ---------------------------------------------------------------- Founding: status voor de app (callable)
+// App (na inloggen met Firebase Auth): httpsCallable('foundingStatus') in regio europe-west1.
+// Antwoord: { founding: true, number } of { founding: false, number?, ended? }
+exports.foundingStatus = onCall(async (request) => {
+  const auth = request.auth;
+  if (!auth || !auth.token || !auth.token.email) throw new HttpsError('unauthenticated', 'Sign in first.');
+  if (auth.token.email_verified === false && auth.token.firebase && auth.token.firebase.sign_in_provider === 'password') {
+    return { founding: false, needsVerifiedEmail: true };
+  }
+  return founding.statusForUser(auth.uid, auth.token.email);
+});
+
+// ---------------------------------------------------------------- Founding: RevenueCat-webhook
+// In RevenueCat: Project settings > Integrations > Webhooks
+//   URL: https://europe-west1-couple-fit-vqmblh.cloudfunctions.net/foundingRevenueCatWebhook
+//   Authorization header: Bearer <REVENUECAT_WEBHOOK_TOKEN>
+// Een verlopen founding-abonnement = founding-prijs vervalt (voorwaarden, sectie 2).
+exports.foundingRevenueCatWebhook = onRequest({ secrets: [RC_WEBHOOK_TOKEN] }, async (req, res) => {
+  if (req.method !== 'POST') return res.status(405).send('Method not allowed');
+  const auth = String(req.get('authorization') || '').replace(/^Bearer\s+/i, '');
+  if (!safeEqual(auth, RC_WEBHOOK_TOKEN.value())) return res.status(401).send('Unauthorized');
+  const ev = (req.body && req.body.event) || {};
+  const productId = String(ev.product_id || '');
+  if (String(ev.environment || '').toUpperCase() === 'SANDBOX') return res.json({ ok: true, skipped: 'sandbox' });
+  if (!/^cf_premium_founding|^cf_elite_founding/.test(productId)) return res.json({ ok: true, skipped: 'not_founding' });
+  try {
+    if (ev.type === 'EXPIRATION') {
+      await founding.markEnded(String(ev.app_user_id || ''), productId);
+    } else if (ev.type === 'INITIAL_PURCHASE') {
+      const u = await db.doc(`founding_users/${String(ev.app_user_id || '')}`).get();
+      if (!u.exists) logger.warn('founding purchase without founding spot', { productId });
+    }
+    return res.json({ ok: true });
+  } catch (err) {
+    logger.error('founding rc webhook failed', { type: ev.type, error: String(err && err.message || err).slice(0, 500) });
+    return res.status(500).json({ ok: false });
+  }
+});
+
+// ---------------------------------------------------------------- Founding: beheer (eenmalige backfill)
+// POST /foundingAdmin  Authorization: Bearer <REVENUECAT_WEBHOOK_TOKEN>
+// body: { "listId": 3, "skip": ["test@example.com"], "apply": false }
+// Geeft bevestigde wachtlijst-contacten een nummer op volgorde van aanmaakdatum. Stuurt geen mail.
+exports.foundingAdmin = onRequest({ secrets: [BREVO_API_KEY, RC_WEBHOOK_TOKEN] }, async (req, res) => {
+  res.set('Cache-Control', 'no-store');
+  if (req.method !== 'POST') return res.status(405).send('Method not allowed');
+  const auth = String(req.get('authorization') || '').replace(/^Bearer\s+/i, '');
+  if (!safeEqual(auth, RC_WEBHOOK_TOKEN.value())) return res.status(401).send('Unauthorized');
+  const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
+  const listId = Number(body.listId) || 3;
+  const skip = new Set([].concat(body.skip || []).map(normEmail));
+  const apply = body.apply === true;
+  try {
+    // Veld FOUNDING_NUMBER in Brevo aanmaken als het nog niet bestaat (400 = bestaat al)
+    if (apply) {
+      const ar = await fetch('https://api.brevo.com/v3/contacts/attributes/normal/FOUNDING_NUMBER', {
+        method: 'POST', headers: { 'api-key': BREVO_API_KEY.value(), 'content-type': 'application/json', accept: 'application/json' },
+        body: JSON.stringify({ type: 'float' }),
+      });
+      if (!ar.ok && ar.status !== 400) throw new Error(`Brevo attribute failed: ${ar.status}`);
+    }
+    const contacts = [];
+    for (let offset = 0; ; offset += 500) {
+      const r = await fetch(`https://api.brevo.com/v3/contacts/lists/${listId}/contacts?limit=500&offset=${offset}&sort=asc`,
+        { headers: { 'api-key': BREVO_API_KEY.value(), accept: 'application/json' } });
+      if (!r.ok) throw new Error(`Brevo list failed: ${r.status}`);
+      const j = await r.json();
+      contacts.push(...(j.contacts || []));
+      if (!j.contacts || j.contacts.length < 500) break;
+    }
+    contacts.sort((a, b) => String(a.createdAt).localeCompare(String(b.createdAt)));
+    const out = [];
+    for (const c of contacts) {
+      const masked = c.email.replace(/(^.).*(@.*$)/, '$1***$2');
+      if (skip.has(normEmail(c.email))) { out.push({ email: masked, result: 'skipped' }); continue; }
+      if (!apply) { out.push({ email: masked, createdAt: c.createdAt, result: 'would assign' }); continue; }
+      const n = await founding.assignFounding(c.email, { contact: c, confirmedAt: admin.firestore.Timestamp.fromDate(new Date(c.createdAt)) });
+      out.push({ email: masked, number: n });
+    }
+    return res.json({ apply, count: contacts.length, results: out, stats: await founding.publicStats() });
+  } catch (err) {
+    logger.error('foundingAdmin failed', { error: String(err && err.message || err).slice(0, 500) });
+    return res.status(500).json({ error: String(err && err.message || err).slice(0, 200) });
   }
 });

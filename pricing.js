@@ -70,7 +70,8 @@
     root.querySelectorAll('.cf-plan[data-plan]').forEach(function (card) {
       var p = c[card.getAttribute('data-plan')];
       if (!p) return;
-      var amount = r2(y ? p.fy / 12 : p.fm);          // founding, per maand
+      var closed = !!window.cfFoundingClosed;          // founding vol: gewone prijzen tonen
+      var amount = closed ? r2(y ? p.y / 12 : p.m) : r2(y ? p.fy / 12 : p.fm);
       var num = card.querySelector('.cf-amount__num');
       if (num) { if (animate) tween(num, s, amount); else num.textContent = s + amount.toFixed(2); }
       set(card, '.cf-amount__old', money2(s, y ? p.y / 12 : p.m));
@@ -78,13 +79,16 @@
         ? 'Regular price after launch: ' + money2(s, p.y) + ' a year (' + money2(s, p.y / 12) + '/month)'
         : 'Regular price after launch: ' + money2(s, p.m) + ' a month');
       set(card, '.cf-person__text', 'Just ' + money2(s, amount / 2) + ' per person a month');
-      set(card, '.cf-billing', y
+      set(card, '.cf-billing', closed
+        ? (y ? 'Billed ' + money2(s, p.y) + ' a year for the two of you. You save ' + pct(p.y, p.m * 12) + '% compared with monthly.'
+             : 'Billed ' + money2(s, p.m) + ' a month for the two of you. Cancel anytime.')
+        : y
         ? 'Billed ' + money2(s, p.fy) + ' a year for the two of you. You save ' + money2(s, p.y - p.fy) + ' (' + pct(p.fy, p.y) + '%) every year.'
         : 'Billed ' + money2(s, p.fm) + ' a month for the two of you. You save ' + money2(s, p.m - p.fm) + ' (' + pct(p.fm, p.m) + '%) every month.');
     });
 
     var tax = document.getElementById('cf-tax-line'); if (tax) tax.textContent = c.tax;
-    var fine = document.getElementById('cf-price-fine'); if (fine) fine.textContent = c.fine + FINE_TAIL;
+    var fine = document.getElementById('cf-price-fine'); if (fine) fine.textContent = c.fine + (window.cfFoundingClosed ? " You'll see your exact local price in the App Store or Google Play." : FINE_TAIL);
 
     /* Losse prijzen in teksten, bv. <span data-cf-p="premium.m">. Sleutels: m, y, fm, fy, half (m/2), yhalf (y/12/2), fyhalf (fy/12/2) */
     document.querySelectorAll('[data-cf-p]').forEach(function (el) {
@@ -121,5 +125,6 @@
       render(true);
     });
   }
+  document.addEventListener('cf:founding', function () { render(false); });
   render(false);
 })();
