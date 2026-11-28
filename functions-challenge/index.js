@@ -271,6 +271,25 @@ exports.foundingAdmin = onRequest({ secrets: [BREVO_API_KEY, RC_WEBHOOK_TOKEN] }
   const listId = Number(body.listId) || 3;
   const skip = new Set([].concat(body.skip || []).map(normEmail));
   const apply = body.apply === true;
+  // Testplek weghalen: { "removeTest": "test@adres", "apply": true }
+  // Haalt de plek weg (alleen de laatst uitgegeven), zet de teller terug en verwijdert het testcontact uit Brevo.
+  if (body.removeTest) {
+    try {
+      const email = normEmail(body.removeTest);
+      if (!apply) return res.json({ apply, wouldRemove: email.replace(/(^.).*(@.*$)/, '$1***$2') });
+      const result = await founding.removeTestSpot(email);
+      let brevo = 'skipped';
+      if (result.removed) {
+        const dr = await fetch(`https://api.brevo.com/v3/contacts/${encodeURIComponent(email)}`,
+          { method: 'DELETE', headers: { 'api-key': BREVO_API_KEY.value(), accept: 'application/json' } });
+        brevo = dr.ok || dr.status === 404 ? 'deleted' : `failed ${dr.status}`;
+      }
+      return res.json({ apply, ...result, brevo, stats: await founding.publicStats() });
+    } catch (err) {
+      logger.error('removeTest failed', { error: String(err && err.message || err).slice(0, 500) });
+      return res.status(500).json({ error: String(err && err.message || err).slice(0, 200) });
+    }
+  }
   try {
     // Veld FOUNDING_NUMBER in Brevo aanmaken als het nog niet bestaat (400 = bestaat al)
     if (apply) {

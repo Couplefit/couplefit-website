@@ -89,6 +89,33 @@ module.exports = function founding({ db, FieldValue, logger, hashEmail, normEmai
     return number;
   }
 
+  /**
+   * Haalt een TESTplek weg. Alleen toegestaan als dit de laatst uitgegeven plek is
+   * (geen partner, geen gat in de nummering). Zet de teller één terug.
+   */
+  async function removeTestSpot(rawEmail) {
+    const email = normEmail(rawEmail);
+    const hash = hashEmail(email);
+    return db.runTransaction(async (tx) => {
+      const spotRef = db.doc(`founding_spots/${hash}`);
+      const stateRef = db.doc('founding_state/counter');
+      const spot = await tx.get(spotRef);
+      if (!spot.exists) return { removed: false, reason: 'no_spot' };
+      const state = await tx.get(stateRef);
+      const issued = (state.exists && state.get('issued')) || 0;
+      const limit = (state.exists && state.get('limit')) || LIMIT;
+      const n = spot.get('number') || 0;
+      if (spot.get('partnerOf') || n !== issued) return { removed: false, reason: 'not_last_spot', number: n, issued };
+      const code = spot.get('code');
+      if (code) tx.delete(db.doc(`founding_codes/${code}`));
+      tx.delete(spotRef);
+      const m = issued - 1;
+      tx.set(stateRef, { issued: m, limit, closed: false }, { merge: true });
+      tx.set(db.doc('public_founding/stats'), { issued: m, left: Math.max(limit - m, 0), closed: false, updatedAt: FieldValue.serverTimestamp() });
+      return { removed: true, number: n, issued: m };
+    });
+  }
+
   /** Publieke stand voor de site: { issued, left, closed }. */
   async function publicStats() {
     const snap = await db.doc('public_founding/stats').get();
@@ -116,5 +143,5 @@ module.exports = function founding({ db, FieldValue, logger, hashEmail, normEmai
     return true;
   }
 
-  return { assignFounding, publicStats, statusForUser, markEnded, brevoGetContact, LIMIT };
+  return { assignFounding, publicStats, statusForUser, markEnded, brevoGetContact, removeTestSpot, LIMIT };
 };
